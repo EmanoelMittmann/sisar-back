@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../../orm-build/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id           Int            @id @default(autoincrement())
+  uuid         String         @unique @default(uuid()) @db.Uuid
+  name         String
+  email        String
+  phone        String
+  cpf          String         @db.VarChar(30)
+  role         Role           @default(USER)
+  password     String
+  createdAt    DateTime       @default(now()) @map("created_at")
+  updatedAt    DateTime       @updatedAt @map("updated_at")
+  Organization Organization[]
+
+  @@map("user")
+}
+
+model Organization {
+  id           Int       @id @default(autoincrement())
+  uuid         String    @unique @default(uuid()) @db.Uuid
+  social_name  String    @db.VarChar(100)
+  fantasy_name String    @db.VarChar(120)
+  cnpj         String    @db.VarChar(14)
+  email        String    @db.VarChar(100)
+  phone        String    @db.VarChar(15)
+  is_active    Boolean   @default(true)
+  office       String    @db.VarChar(200)
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+  inactiveAt   DateTime? @map("inactive_at")
+  user         User?     @relation(fields: [userId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  userId       Int?
+
+  @@map("organization")
+}
