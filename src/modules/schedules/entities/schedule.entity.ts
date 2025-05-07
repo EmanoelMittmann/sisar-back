@@ -1,15 +1,28 @@
 import { StatusSchedules } from "src/shared/enum/status_schedules.enum";
+import { ServiceEntity } from "../../services/entities/service.entity";
+import { UserEntity } from "../../users/entities/user.entity";
+import { OrganizationEntity } from "src/modules/organization/entities/organization.entity";
 
 export class ScheduleEntity {
     private _id: number;
     private _uuid: string;
-    private _user_id: number;
-    private _service_id: number;
+    private _service: ServiceEntity;
+    private _user: UserEntity;
+    private _organization: OrganizationEntity;
+    private _contract_at: Date;
     private _status: StatusSchedules;
     private _remember_user: boolean;
     private _created_at: Date;
     private _updated_at: Date;
     private _canceled_at: Date;
+
+    getOrganization(): OrganizationEntity {
+        return this._organization;
+    }
+
+    setOrganization(value: OrganizationEntity): void {
+        this._organization = value;
+    }
 
     getId(): number {
         return this._id;
@@ -27,20 +40,20 @@ export class ScheduleEntity {
         this._uuid = value;
     }
 
-    getUserId(): number {
-        return this._user_id;
+    getUser(): UserEntity {
+        return this._user;
     }
 
-    setUserId(value: number): void {
-        this._user_id = value;
+    setUser(value: UserEntity): void {
+        this._user = value;
     }
 
-    getServiceId(): number {
-        return this._service_id;
+    getService(): ServiceEntity {
+        return this._service;
     }
 
-    setServiceId(value: number): void {
-        this._service_id = value;
+    setService(value: ServiceEntity): void {
+        this._service = value;
     }
 
     getStatus(): StatusSchedules {
@@ -81,6 +94,14 @@ export class ScheduleEntity {
 
     setCanceledAt(value: Date): void {
         this._canceled_at = value;
+    }
+
+    getContractAt(): Date {
+        return this._contract_at;
+    }
+
+    setContractAt(value: Date): void {
+        this._contract_at = value;
     }
 }
 

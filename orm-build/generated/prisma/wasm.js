@@ -140,10 +140,25 @@ exports.Prisma.OrganizationScalarFieldEnum = {
   phone: 'phone',
   is_active: 'is_active',
   office: 'office',
+  image_path: 'image_path',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   inactiveAt: 'inactiveAt',
   userId: 'userId'
+};
+
+exports.Prisma.ServiceScalarFieldEnum = {
+  id: 'id',
+  uuid: 'uuid',
+  name: 'name',
+  price: 'price',
+  is_active: 'is_active',
+  duration: 'duration',
+  is_quantitative: 'is_quantitative',
+  limit_for_day: 'limit_for_day',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  organizationId: 'organizationId'
 };
 
 exports.Prisma.SortOrder = {
@@ -167,7 +182,8 @@ exports.Role = exports.$Enums.Role = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Organization: 'Organization'
+  Organization: 'Organization',
+  Service: 'Service'
 };
 
 /**

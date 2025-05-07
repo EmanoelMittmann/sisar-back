@@ -6,6 +6,12 @@ import { OrganizationModule } from './modules/organization/organization.module';
 import { UserModule } from './modules/users/user.module';
 import { PrismaModule } from './infrastructure/postgres/prisma/prisma.module';
 import { HashedModule } from './shared/hashed/hashed.module';
+import { ScheduleModule } from './modules/schedules/schedule.module';
+import { WarnEmailModule } from './infrastructure/warn-emails/warn-email.module';
+import { CacheModule } from '@nestjs/cache-manager';
+import { ConfigModule } from '@nestjs/config';
+import { REDIS_OPTIONS } from './infrastructure/redis/options';
+import { ServiceModule } from './modules/services/service.module';
 
 @Module({
   imports: [
@@ -13,7 +19,15 @@ import { HashedModule } from './shared/hashed/hashed.module';
     OrganizationModule,
     AuthModule,
     PrismaModule,
-    HashedModule
+    HashedModule,
+    OrganizationModule,
+    ScheduleModule,
+    ServiceModule,
+    WarnEmailModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    CacheModule.register(REDIS_OPTIONS)
   ],
   controllers: [AppController],
   providers: [AppService, PrismaModule],

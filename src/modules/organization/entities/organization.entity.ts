@@ -5,13 +5,21 @@ export class OrganizationEntity {
     private _cnpj: string;
     private _email: string;
     private _phone: string;
+    private _image_path: string;
     private _is_active: boolean;
     private _office: string;
     private _created_at: Date;
     private _updated_at: Date;
     private _inactive_at: Date;
 
-    // Getters and Setters
+    getImagePath(): string {
+        return this._image_path;
+    }
+
+    setImagePath(value: string) {
+        this._image_path = value;
+    }
+
     getId(): number {
         return this._id;
     }
