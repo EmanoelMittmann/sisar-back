@@ -31,27 +31,30 @@ model User {
   createdAt    DateTime       @default(now()) @map("created_at")
   updatedAt    DateTime       @updatedAt @map("updated_at")
   Organization Organization[]
+  schedules    Schedule[]
 
   @@map("user")
 }
 
 model Organization {
-  id           Int       @id @default(autoincrement())
-  uuid         String    @unique @default(uuid()) @db.Uuid
-  social_name  String    @db.VarChar(100)
-  fantasy_name String    @db.VarChar(120)
-  cnpj         String    @db.VarChar(14)
-  email        String    @db.VarChar(100)
-  phone        String    @db.VarChar(15)
-  is_active    Boolean   @default(true)
-  office       String    @db.VarChar(200)
-  image_path   String?   @db.Text
-  createdAt    DateTime  @default(now()) @map("created_at")
-  updatedAt    DateTime  @updatedAt @map("updated_at")
-  inactiveAt   DateTime? @map("inactive_at")
-  user         User?     @relation(fields: [userId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  id           Int        @id @default(autoincrement())
+  uuid         String     @unique @default(uuid()) @db.Uuid
+  social_name  String     @db.VarChar(100)
+  fantasy_name String     @db.VarChar(120)
+  cnpj         String     @db.VarChar(14)
+  email        String     @db.VarChar(100)
+  phone        String     @db.VarChar(15)
+  is_active    Boolean    @default(true)
+  office       String     @db.VarChar(200)
+  image_path   String?    @db.Text
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+  inactiveAt   DateTime?  @map("inactive_at")
+  user         User?      @relation(fields: [userId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   userId       Int?
   services     Service[]
+  plans        Plan[]
+  schedules    Schedule[]
 
   @@map("organization")
 }
@@ -69,6 +72,55 @@ model Service {
   updatedAt       DateTime     @updatedAt @map("updated_at")
   organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   organizationId  Int
+  schedules       Schedule[]
 
   @@map("service")
+}
+
+enum Recurrent {
+  WEEKLY
+  MONTHLY
+  YEARLY
+}
+
+model Plan {
+  id             Int          @id @default(autoincrement())
+  uuid           String       @unique @default(uuid()) @db.Uuid
+  name           String       @db.VarChar(100)
+  price          Int
+  recurrent      Recurrent
+  description    String       @db.Text
+  dueDate        DateTime?
+  createdAt      DateTime     @default(now()) @map("created_at")
+  updatedAt      DateTime     @updatedAt @map("updated_at")
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  organizationId Int
+
+  @@map("plan")
+}
+
+enum StatusSchedules {
+  PENDING
+  FINISH
+  NOT_PAY
+  CANCELED
+}
+
+model Schedule {
+  id             Int             @id @default(autoincrement())
+  uuid           String          @unique @default(uuid()) @db.Uuid
+  service        Service         @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  serviceId      Int
+  user           User            @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  userId         Int
+  organization   Organization    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  organizationId Int
+  contract_at    DateTime
+  status         StatusSchedules
+  remember_user  Boolean
+  created_at     DateTime
+  updated_at     DateTime
+  canceled_at    DateTime?
+
+  @@map("schedule")
 }

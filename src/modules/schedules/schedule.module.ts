@@ -6,10 +6,10 @@ import { FindByUuidService } from "./services/find-by-uuid.service";
 import { DeleteScheduleService } from "./services/delete-schedule.service";
 import { ListScheduleService } from "./services/list-schedule.service";
 import { UpdateScheduleService } from "./services/update-schedule.service";
-
+import { PublicScheduleController } from "./controllers/public-schedule.controller";
 
 @Module({
-    controllers: [ScheduleController],
+    controllers: [ScheduleController, PublicScheduleController],
     providers: [
         {
             provide: 'IScheduleRepository',

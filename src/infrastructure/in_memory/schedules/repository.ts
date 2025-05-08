@@ -1,8 +1,6 @@
 import { ScheduleEntity } from "src/modules/schedules/entities/schedule.entity";
 import { IScheduleRepository } from "src/modules/schedules/repositories/schedules.repository";
 
-
-
 export class ScheduleInMemoryRepository implements IScheduleRepository {
     public schedules: ScheduleEntity[] = []
 

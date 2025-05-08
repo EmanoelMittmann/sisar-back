@@ -12,6 +12,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { ConfigModule } from '@nestjs/config';
 import { REDIS_OPTIONS } from './infrastructure/redis/options';
 import { ServiceModule } from './modules/services/service.module';
+import { PlansModule } from './modules/plans/plans.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ServiceModule } from './modules/services/service.module';
     ScheduleModule,
     ServiceModule,
     WarnEmailModule,
+    PlansModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),

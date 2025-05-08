@@ -161,6 +161,33 @@ exports.Prisma.ServiceScalarFieldEnum = {
   organizationId: 'organizationId'
 };
 
+exports.Prisma.PlanScalarFieldEnum = {
+  id: 'id',
+  uuid: 'uuid',
+  name: 'name',
+  price: 'price',
+  recurrent: 'recurrent',
+  description: 'description',
+  dueDate: 'dueDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  organizationId: 'organizationId'
+};
+
+exports.Prisma.ScheduleScalarFieldEnum = {
+  id: 'id',
+  uuid: 'uuid',
+  serviceId: 'serviceId',
+  userId: 'userId',
+  organizationId: 'organizationId',
+  contract_at: 'contract_at',
+  status: 'status',
+  remember_user: 'remember_user',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  canceled_at: 'canceled_at'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -180,10 +207,25 @@ exports.Role = exports.$Enums.Role = {
   ADMIN: 'ADMIN'
 };
 
+exports.Recurrent = exports.$Enums.Recurrent = {
+  WEEKLY: 'WEEKLY',
+  MONTHLY: 'MONTHLY',
+  YEARLY: 'YEARLY'
+};
+
+exports.StatusSchedules = exports.$Enums.StatusSchedules = {
+  PENDING: 'PENDING',
+  FINISH: 'FINISH',
+  NOT_PAY: 'NOT_PAY',
+  CANCELED: 'CANCELED'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Organization: 'Organization',
-  Service: 'Service'
+  Service: 'Service',
+  Plan: 'Plan',
+  Schedule: 'Schedule'
 };
 
 /**
