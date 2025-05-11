@@ -6320,12 +6320,12 @@ export namespace Prisma {
     serviceId: number | null
     userId: number | null
     organizationId: number | null
-    contract_at: Date | null
+    contractAt: Date | null
     status: $Enums.StatusSchedules | null
-    remember_user: boolean | null
-    created_at: Date | null
-    updated_at: Date | null
-    canceled_at: Date | null
+    rememberUser: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    canceledAt: Date | null
   }
 
   export type ScheduleMaxAggregateOutputType = {
@@ -6334,12 +6334,12 @@ export namespace Prisma {
     serviceId: number | null
     userId: number | null
     organizationId: number | null
-    contract_at: Date | null
+    contractAt: Date | null
     status: $Enums.StatusSchedules | null
-    remember_user: boolean | null
-    created_at: Date | null
-    updated_at: Date | null
-    canceled_at: Date | null
+    rememberUser: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    canceledAt: Date | null
   }
 
   export type ScheduleCountAggregateOutputType = {
@@ -6348,12 +6348,12 @@ export namespace Prisma {
     serviceId: number
     userId: number
     organizationId: number
-    contract_at: number
+    contractAt: number
     status: number
-    remember_user: number
-    created_at: number
-    updated_at: number
-    canceled_at: number
+    rememberUser: number
+    createdAt: number
+    updatedAt: number
+    canceledAt: number
     _all: number
   }
 
@@ -6378,12 +6378,12 @@ export namespace Prisma {
     serviceId?: true
     userId?: true
     organizationId?: true
-    contract_at?: true
+    contractAt?: true
     status?: true
-    remember_user?: true
-    created_at?: true
-    updated_at?: true
-    canceled_at?: true
+    rememberUser?: true
+    createdAt?: true
+    updatedAt?: true
+    canceledAt?: true
   }
 
   export type ScheduleMaxAggregateInputType = {
@@ -6392,12 +6392,12 @@ export namespace Prisma {
     serviceId?: true
     userId?: true
     organizationId?: true
-    contract_at?: true
+    contractAt?: true
     status?: true
-    remember_user?: true
-    created_at?: true
-    updated_at?: true
-    canceled_at?: true
+    rememberUser?: true
+    createdAt?: true
+    updatedAt?: true
+    canceledAt?: true
   }
 
   export type ScheduleCountAggregateInputType = {
@@ -6406,12 +6406,12 @@ export namespace Prisma {
     serviceId?: true
     userId?: true
     organizationId?: true
-    contract_at?: true
+    contractAt?: true
     status?: true
-    remember_user?: true
-    created_at?: true
-    updated_at?: true
-    canceled_at?: true
+    rememberUser?: true
+    createdAt?: true
+    updatedAt?: true
+    canceledAt?: true
     _all?: true
   }
 
@@ -6507,12 +6507,12 @@ export namespace Prisma {
     serviceId: number
     userId: number
     organizationId: number
-    contract_at: Date
+    contractAt: Date
     status: $Enums.StatusSchedules
-    remember_user: boolean
-    created_at: Date
-    updated_at: Date
-    canceled_at: Date | null
+    rememberUser: boolean
+    createdAt: Date
+    updatedAt: Date
+    canceledAt: Date | null
     _count: ScheduleCountAggregateOutputType | null
     _avg: ScheduleAvgAggregateOutputType | null
     _sum: ScheduleSumAggregateOutputType | null
@@ -6540,12 +6540,12 @@ export namespace Prisma {
     serviceId?: boolean
     userId?: boolean
     organizationId?: boolean
-    contract_at?: boolean
+    contractAt?: boolean
     status?: boolean
-    remember_user?: boolean
-    created_at?: boolean
-    updated_at?: boolean
-    canceled_at?: boolean
+    rememberUser?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    canceledAt?: boolean
     service?: boolean | ServiceDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     organization?: boolean | OrganizationDefaultArgs<ExtArgs>
@@ -6557,12 +6557,12 @@ export namespace Prisma {
     serviceId?: boolean
     userId?: boolean
     organizationId?: boolean
-    contract_at?: boolean
+    contractAt?: boolean
     status?: boolean
-    remember_user?: boolean
-    created_at?: boolean
-    updated_at?: boolean
-    canceled_at?: boolean
+    rememberUser?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    canceledAt?: boolean
     service?: boolean | ServiceDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     organization?: boolean | OrganizationDefaultArgs<ExtArgs>
@@ -6574,12 +6574,12 @@ export namespace Prisma {
     serviceId?: boolean
     userId?: boolean
     organizationId?: boolean
-    contract_at?: boolean
+    contractAt?: boolean
     status?: boolean
-    remember_user?: boolean
-    created_at?: boolean
-    updated_at?: boolean
-    canceled_at?: boolean
+    rememberUser?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    canceledAt?: boolean
     service?: boolean | ServiceDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     organization?: boolean | OrganizationDefaultArgs<ExtArgs>
@@ -6591,15 +6591,15 @@ export namespace Prisma {
     serviceId?: boolean
     userId?: boolean
     organizationId?: boolean
-    contract_at?: boolean
+    contractAt?: boolean
     status?: boolean
-    remember_user?: boolean
-    created_at?: boolean
-    updated_at?: boolean
-    canceled_at?: boolean
+    rememberUser?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    canceledAt?: boolean
   }
 
-  export type ScheduleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uuid" | "serviceId" | "userId" | "organizationId" | "contract_at" | "status" | "remember_user" | "created_at" | "updated_at" | "canceled_at", ExtArgs["result"]["schedule"]>
+  export type ScheduleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uuid" | "serviceId" | "userId" | "organizationId" | "contractAt" | "status" | "rememberUser" | "createdAt" | "updatedAt" | "canceledAt", ExtArgs["result"]["schedule"]>
   export type ScheduleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     service?: boolean | ServiceDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -6629,12 +6629,12 @@ export namespace Prisma {
       serviceId: number
       userId: number
       organizationId: number
-      contract_at: Date
+      contractAt: Date
       status: $Enums.StatusSchedules
-      remember_user: boolean
-      created_at: Date
-      updated_at: Date
-      canceled_at: Date | null
+      rememberUser: boolean
+      createdAt: Date
+      updatedAt: Date
+      canceledAt: Date | null
     }, ExtArgs["result"]["schedule"]>
     composites: {}
   }
@@ -7066,12 +7066,12 @@ export namespace Prisma {
     readonly serviceId: FieldRef<"Schedule", 'Int'>
     readonly userId: FieldRef<"Schedule", 'Int'>
     readonly organizationId: FieldRef<"Schedule", 'Int'>
-    readonly contract_at: FieldRef<"Schedule", 'DateTime'>
+    readonly contractAt: FieldRef<"Schedule", 'DateTime'>
     readonly status: FieldRef<"Schedule", 'StatusSchedules'>
-    readonly remember_user: FieldRef<"Schedule", 'Boolean'>
-    readonly created_at: FieldRef<"Schedule", 'DateTime'>
-    readonly updated_at: FieldRef<"Schedule", 'DateTime'>
-    readonly canceled_at: FieldRef<"Schedule", 'DateTime'>
+    readonly rememberUser: FieldRef<"Schedule", 'Boolean'>
+    readonly createdAt: FieldRef<"Schedule", 'DateTime'>
+    readonly updatedAt: FieldRef<"Schedule", 'DateTime'>
+    readonly canceledAt: FieldRef<"Schedule", 'DateTime'>
   }
     
 
@@ -7575,12 +7575,12 @@ export namespace Prisma {
     serviceId: 'serviceId',
     userId: 'userId',
     organizationId: 'organizationId',
-    contract_at: 'contract_at',
+    contractAt: 'contractAt',
     status: 'status',
-    remember_user: 'remember_user',
-    created_at: 'created_at',
-    updated_at: 'updated_at',
-    canceled_at: 'canceled_at'
+    rememberUser: 'rememberUser',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    canceledAt: 'canceledAt'
   };
 
   export type ScheduleScalarFieldEnum = (typeof ScheduleScalarFieldEnum)[keyof typeof ScheduleScalarFieldEnum]
@@ -8100,12 +8100,12 @@ export namespace Prisma {
     serviceId?: IntFilter<"Schedule"> | number
     userId?: IntFilter<"Schedule"> | number
     organizationId?: IntFilter<"Schedule"> | number
-    contract_at?: DateTimeFilter<"Schedule"> | Date | string
+    contractAt?: DateTimeFilter<"Schedule"> | Date | string
     status?: EnumStatusSchedulesFilter<"Schedule"> | $Enums.StatusSchedules
-    remember_user?: BoolFilter<"Schedule"> | boolean
-    created_at?: DateTimeFilter<"Schedule"> | Date | string
-    updated_at?: DateTimeFilter<"Schedule"> | Date | string
-    canceled_at?: DateTimeNullableFilter<"Schedule"> | Date | string | null
+    rememberUser?: BoolFilter<"Schedule"> | boolean
+    createdAt?: DateTimeFilter<"Schedule"> | Date | string
+    updatedAt?: DateTimeFilter<"Schedule"> | Date | string
+    canceledAt?: DateTimeNullableFilter<"Schedule"> | Date | string | null
     service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     organization?: XOR<OrganizationScalarRelationFilter, OrganizationWhereInput>
@@ -8117,12 +8117,12 @@ export namespace Prisma {
     serviceId?: SortOrder
     userId?: SortOrder
     organizationId?: SortOrder
-    contract_at?: SortOrder
+    contractAt?: SortOrder
     status?: SortOrder
-    remember_user?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
-    canceled_at?: SortOrderInput | SortOrder
+    rememberUser?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    canceledAt?: SortOrderInput | SortOrder
     service?: ServiceOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
     organization?: OrganizationOrderByWithRelationInput
@@ -8137,12 +8137,12 @@ export namespace Prisma {
     serviceId?: IntFilter<"Schedule"> | number
     userId?: IntFilter<"Schedule"> | number
     organizationId?: IntFilter<"Schedule"> | number
-    contract_at?: DateTimeFilter<"Schedule"> | Date | string
+    contractAt?: DateTimeFilter<"Schedule"> | Date | string
     status?: EnumStatusSchedulesFilter<"Schedule"> | $Enums.StatusSchedules
-    remember_user?: BoolFilter<"Schedule"> | boolean
-    created_at?: DateTimeFilter<"Schedule"> | Date | string
-    updated_at?: DateTimeFilter<"Schedule"> | Date | string
-    canceled_at?: DateTimeNullableFilter<"Schedule"> | Date | string | null
+    rememberUser?: BoolFilter<"Schedule"> | boolean
+    createdAt?: DateTimeFilter<"Schedule"> | Date | string
+    updatedAt?: DateTimeFilter<"Schedule"> | Date | string
+    canceledAt?: DateTimeNullableFilter<"Schedule"> | Date | string | null
     service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     organization?: XOR<OrganizationScalarRelationFilter, OrganizationWhereInput>
@@ -8154,12 +8154,12 @@ export namespace Prisma {
     serviceId?: SortOrder
     userId?: SortOrder
     organizationId?: SortOrder
-    contract_at?: SortOrder
+    contractAt?: SortOrder
     status?: SortOrder
-    remember_user?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
-    canceled_at?: SortOrderInput | SortOrder
+    rememberUser?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    canceledAt?: SortOrderInput | SortOrder
     _count?: ScheduleCountOrderByAggregateInput
     _avg?: ScheduleAvgOrderByAggregateInput
     _max?: ScheduleMaxOrderByAggregateInput
@@ -8176,12 +8176,12 @@ export namespace Prisma {
     serviceId?: IntWithAggregatesFilter<"Schedule"> | number
     userId?: IntWithAggregatesFilter<"Schedule"> | number
     organizationId?: IntWithAggregatesFilter<"Schedule"> | number
-    contract_at?: DateTimeWithAggregatesFilter<"Schedule"> | Date | string
+    contractAt?: DateTimeWithAggregatesFilter<"Schedule"> | Date | string
     status?: EnumStatusSchedulesWithAggregatesFilter<"Schedule"> | $Enums.StatusSchedules
-    remember_user?: BoolWithAggregatesFilter<"Schedule"> | boolean
-    created_at?: DateTimeWithAggregatesFilter<"Schedule"> | Date | string
-    updated_at?: DateTimeWithAggregatesFilter<"Schedule"> | Date | string
-    canceled_at?: DateTimeNullableWithAggregatesFilter<"Schedule"> | Date | string | null
+    rememberUser?: BoolWithAggregatesFilter<"Schedule"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Schedule"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Schedule"> | Date | string
+    canceledAt?: DateTimeNullableWithAggregatesFilter<"Schedule"> | Date | string | null
   }
 
   export type UserCreateInput = {
@@ -8594,12 +8594,12 @@ export namespace Prisma {
 
   export type ScheduleCreateInput = {
     uuid?: string
-    contract_at: Date | string
+    contractAt: Date | string
     status: $Enums.StatusSchedules
-    remember_user: boolean
-    created_at: Date | string
-    updated_at: Date | string
-    canceled_at?: Date | string | null
+    rememberUser: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    canceledAt?: Date | string | null
     service: ServiceCreateNestedOneWithoutSchedulesInput
     user: UserCreateNestedOneWithoutSchedulesInput
     organization: OrganizationCreateNestedOneWithoutSchedulesInput
@@ -8611,22 +8611,22 @@ export namespace Prisma {
     serviceId: number
     userId: number
     organizationId: number
-    contract_at: Date | string
+    contractAt: Date | string
     status: $Enums.StatusSchedules
-    remember_user: boolean
-    created_at: Date | string
-    updated_at: Date | string
-    canceled_at?: Date | string | null
+    rememberUser: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    canceledAt?: Date | string | null
   }
 
   export type ScheduleUpdateInput = {
     uuid?: StringFieldUpdateOperationsInput | string
-    contract_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
-    remember_user?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    canceled_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rememberUser?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     service?: ServiceUpdateOneRequiredWithoutSchedulesNestedInput
     user?: UserUpdateOneRequiredWithoutSchedulesNestedInput
     organization?: OrganizationUpdateOneRequiredWithoutSchedulesNestedInput
@@ -8638,12 +8638,12 @@ export namespace Prisma {
     serviceId?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     organizationId?: IntFieldUpdateOperationsInput | number
-    contract_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
-    remember_user?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    canceled_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rememberUser?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ScheduleCreateManyInput = {
@@ -8652,22 +8652,22 @@ export namespace Prisma {
     serviceId: number
     userId: number
     organizationId: number
-    contract_at: Date | string
+    contractAt: Date | string
     status: $Enums.StatusSchedules
-    remember_user: boolean
-    created_at: Date | string
-    updated_at: Date | string
-    canceled_at?: Date | string | null
+    rememberUser: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    canceledAt?: Date | string | null
   }
 
   export type ScheduleUpdateManyMutationInput = {
     uuid?: StringFieldUpdateOperationsInput | string
-    contract_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
-    remember_user?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    canceled_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rememberUser?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ScheduleUncheckedUpdateManyInput = {
@@ -8676,12 +8676,12 @@ export namespace Prisma {
     serviceId?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     organizationId?: IntFieldUpdateOperationsInput | number
-    contract_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
-    remember_user?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    canceled_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rememberUser?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -9248,12 +9248,12 @@ export namespace Prisma {
     serviceId?: SortOrder
     userId?: SortOrder
     organizationId?: SortOrder
-    contract_at?: SortOrder
+    contractAt?: SortOrder
     status?: SortOrder
-    remember_user?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
-    canceled_at?: SortOrder
+    rememberUser?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    canceledAt?: SortOrder
   }
 
   export type ScheduleAvgOrderByAggregateInput = {
@@ -9269,12 +9269,12 @@ export namespace Prisma {
     serviceId?: SortOrder
     userId?: SortOrder
     organizationId?: SortOrder
-    contract_at?: SortOrder
+    contractAt?: SortOrder
     status?: SortOrder
-    remember_user?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
-    canceled_at?: SortOrder
+    rememberUser?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    canceledAt?: SortOrder
   }
 
   export type ScheduleMinOrderByAggregateInput = {
@@ -9283,12 +9283,12 @@ export namespace Prisma {
     serviceId?: SortOrder
     userId?: SortOrder
     organizationId?: SortOrder
-    contract_at?: SortOrder
+    contractAt?: SortOrder
     status?: SortOrder
-    remember_user?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
-    canceled_at?: SortOrder
+    rememberUser?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    canceledAt?: SortOrder
   }
 
   export type ScheduleSumOrderByAggregateInput = {
@@ -10044,12 +10044,12 @@ export namespace Prisma {
 
   export type ScheduleCreateWithoutUserInput = {
     uuid?: string
-    contract_at: Date | string
+    contractAt: Date | string
     status: $Enums.StatusSchedules
-    remember_user: boolean
-    created_at: Date | string
-    updated_at: Date | string
-    canceled_at?: Date | string | null
+    rememberUser: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    canceledAt?: Date | string | null
     service: ServiceCreateNestedOneWithoutSchedulesInput
     organization: OrganizationCreateNestedOneWithoutSchedulesInput
   }
@@ -10059,12 +10059,12 @@ export namespace Prisma {
     uuid?: string
     serviceId: number
     organizationId: number
-    contract_at: Date | string
+    contractAt: Date | string
     status: $Enums.StatusSchedules
-    remember_user: boolean
-    created_at: Date | string
-    updated_at: Date | string
-    canceled_at?: Date | string | null
+    rememberUser: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    canceledAt?: Date | string | null
   }
 
   export type ScheduleCreateOrConnectWithoutUserInput = {
@@ -10138,12 +10138,12 @@ export namespace Prisma {
     serviceId?: IntFilter<"Schedule"> | number
     userId?: IntFilter<"Schedule"> | number
     organizationId?: IntFilter<"Schedule"> | number
-    contract_at?: DateTimeFilter<"Schedule"> | Date | string
+    contractAt?: DateTimeFilter<"Schedule"> | Date | string
     status?: EnumStatusSchedulesFilter<"Schedule"> | $Enums.StatusSchedules
-    remember_user?: BoolFilter<"Schedule"> | boolean
-    created_at?: DateTimeFilter<"Schedule"> | Date | string
-    updated_at?: DateTimeFilter<"Schedule"> | Date | string
-    canceled_at?: DateTimeNullableFilter<"Schedule"> | Date | string | null
+    rememberUser?: BoolFilter<"Schedule"> | boolean
+    createdAt?: DateTimeFilter<"Schedule"> | Date | string
+    updatedAt?: DateTimeFilter<"Schedule"> | Date | string
+    canceledAt?: DateTimeNullableFilter<"Schedule"> | Date | string | null
   }
 
   export type UserCreateWithoutOrganizationInput = {
@@ -10250,12 +10250,12 @@ export namespace Prisma {
 
   export type ScheduleCreateWithoutOrganizationInput = {
     uuid?: string
-    contract_at: Date | string
+    contractAt: Date | string
     status: $Enums.StatusSchedules
-    remember_user: boolean
-    created_at: Date | string
-    updated_at: Date | string
-    canceled_at?: Date | string | null
+    rememberUser: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    canceledAt?: Date | string | null
     service: ServiceCreateNestedOneWithoutSchedulesInput
     user: UserCreateNestedOneWithoutSchedulesInput
   }
@@ -10265,12 +10265,12 @@ export namespace Prisma {
     uuid?: string
     serviceId: number
     userId: number
-    contract_at: Date | string
+    contractAt: Date | string
     status: $Enums.StatusSchedules
-    remember_user: boolean
-    created_at: Date | string
-    updated_at: Date | string
-    canceled_at?: Date | string | null
+    rememberUser: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    canceledAt?: Date | string | null
   }
 
   export type ScheduleCreateOrConnectWithoutOrganizationInput = {
@@ -10446,12 +10446,12 @@ export namespace Prisma {
 
   export type ScheduleCreateWithoutServiceInput = {
     uuid?: string
-    contract_at: Date | string
+    contractAt: Date | string
     status: $Enums.StatusSchedules
-    remember_user: boolean
-    created_at: Date | string
-    updated_at: Date | string
-    canceled_at?: Date | string | null
+    rememberUser: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    canceledAt?: Date | string | null
     user: UserCreateNestedOneWithoutSchedulesInput
     organization: OrganizationCreateNestedOneWithoutSchedulesInput
   }
@@ -10461,12 +10461,12 @@ export namespace Prisma {
     uuid?: string
     userId: number
     organizationId: number
-    contract_at: Date | string
+    contractAt: Date | string
     status: $Enums.StatusSchedules
-    remember_user: boolean
-    created_at: Date | string
-    updated_at: Date | string
-    canceled_at?: Date | string | null
+    rememberUser: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    canceledAt?: Date | string | null
   }
 
   export type ScheduleCreateOrConnectWithoutServiceInput = {
@@ -10884,12 +10884,12 @@ export namespace Prisma {
     uuid?: string
     serviceId: number
     organizationId: number
-    contract_at: Date | string
+    contractAt: Date | string
     status: $Enums.StatusSchedules
-    remember_user: boolean
-    created_at: Date | string
-    updated_at: Date | string
-    canceled_at?: Date | string | null
+    rememberUser: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    canceledAt?: Date | string | null
   }
 
   export type OrganizationUpdateWithoutUserInput = {
@@ -10947,12 +10947,12 @@ export namespace Prisma {
 
   export type ScheduleUpdateWithoutUserInput = {
     uuid?: StringFieldUpdateOperationsInput | string
-    contract_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
-    remember_user?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    canceled_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rememberUser?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     service?: ServiceUpdateOneRequiredWithoutSchedulesNestedInput
     organization?: OrganizationUpdateOneRequiredWithoutSchedulesNestedInput
   }
@@ -10962,12 +10962,12 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     serviceId?: IntFieldUpdateOperationsInput | number
     organizationId?: IntFieldUpdateOperationsInput | number
-    contract_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
-    remember_user?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    canceled_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rememberUser?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ScheduleUncheckedUpdateManyWithoutUserInput = {
@@ -10975,12 +10975,12 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     serviceId?: IntFieldUpdateOperationsInput | number
     organizationId?: IntFieldUpdateOperationsInput | number
-    contract_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
-    remember_user?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    canceled_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rememberUser?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ServiceCreateManyOrganizationInput = {
@@ -11013,12 +11013,12 @@ export namespace Prisma {
     uuid?: string
     serviceId: number
     userId: number
-    contract_at: Date | string
+    contractAt: Date | string
     status: $Enums.StatusSchedules
-    remember_user: boolean
-    created_at: Date | string
-    updated_at: Date | string
-    canceled_at?: Date | string | null
+    rememberUser: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    canceledAt?: Date | string | null
   }
 
   export type ServiceUpdateWithoutOrganizationInput = {
@@ -11098,12 +11098,12 @@ export namespace Prisma {
 
   export type ScheduleUpdateWithoutOrganizationInput = {
     uuid?: StringFieldUpdateOperationsInput | string
-    contract_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
-    remember_user?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    canceled_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rememberUser?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     service?: ServiceUpdateOneRequiredWithoutSchedulesNestedInput
     user?: UserUpdateOneRequiredWithoutSchedulesNestedInput
   }
@@ -11113,12 +11113,12 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     serviceId?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    contract_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
-    remember_user?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    canceled_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rememberUser?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ScheduleUncheckedUpdateManyWithoutOrganizationInput = {
@@ -11126,12 +11126,12 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     serviceId?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    contract_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
-    remember_user?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    canceled_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rememberUser?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ScheduleCreateManyServiceInput = {
@@ -11139,22 +11139,22 @@ export namespace Prisma {
     uuid?: string
     userId: number
     organizationId: number
-    contract_at: Date | string
+    contractAt: Date | string
     status: $Enums.StatusSchedules
-    remember_user: boolean
-    created_at: Date | string
-    updated_at: Date | string
-    canceled_at?: Date | string | null
+    rememberUser: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    canceledAt?: Date | string | null
   }
 
   export type ScheduleUpdateWithoutServiceInput = {
     uuid?: StringFieldUpdateOperationsInput | string
-    contract_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
-    remember_user?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    canceled_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rememberUser?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneRequiredWithoutSchedulesNestedInput
     organization?: OrganizationUpdateOneRequiredWithoutSchedulesNestedInput
   }
@@ -11164,12 +11164,12 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
     organizationId?: IntFieldUpdateOperationsInput | number
-    contract_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
-    remember_user?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    canceled_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rememberUser?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ScheduleUncheckedUpdateManyWithoutServiceInput = {
@@ -11177,12 +11177,12 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
     organizationId?: IntFieldUpdateOperationsInput | number
-    contract_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
-    remember_user?: BoolFieldUpdateOperationsInput | boolean
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    canceled_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rememberUser?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 

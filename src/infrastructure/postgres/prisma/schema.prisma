@@ -115,12 +115,12 @@ model Schedule {
   userId         Int
   organization   Organization    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   organizationId Int
-  contract_at    DateTime
-  status         StatusSchedules
-  remember_user  Boolean
-  created_at     DateTime
-  updated_at     DateTime
-  canceled_at    DateTime?
+  contractAt     DateTime        @map("contract_at")
+  status         StatusSchedules @default(PENDING)
+  rememberUser   Boolean         @map("remember_user")
+  createdAt      DateTime        @default(now()) @map("created_at")
+  updatedAt      DateTime        @updatedAt @map("updated_at")
+  canceledAt     DateTime?       @map("canceled_at")
 
   @@map("schedule")
 }

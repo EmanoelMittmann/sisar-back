@@ -7,19 +7,23 @@ import { DeleteScheduleService } from "./services/delete-schedule.service";
 import { ListScheduleService } from "./services/list-schedule.service";
 import { UpdateScheduleService } from "./services/update-schedule.service";
 import { PublicScheduleController } from "./controllers/public-schedule.controller";
+import { SchedulePostgresRepository } from "src/infrastructure/postgres/repositories/schedule.repository";
 
 @Module({
     controllers: [ScheduleController, PublicScheduleController],
     providers: [
         {
             provide: 'IScheduleRepository',
-            useClass: ScheduleInMemoryRepository
+            useClass: SchedulePostgresRepository
         },
         CreateScheduleService,
         FindByUuidService,
         DeleteScheduleService,
         ListScheduleService,
         UpdateScheduleService
+    ],
+    exports: [
+        'IScheduleRepository'
     ]
 })
-export class ScheduleModule { }
+export class SchedulesModule { }

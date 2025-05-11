@@ -6,13 +6,13 @@ import { OrganizationModule } from './modules/organization/organization.module';
 import { UserModule } from './modules/users/user.module';
 import { PrismaModule } from './infrastructure/postgres/prisma/prisma.module';
 import { HashedModule } from './shared/hashed/hashed.module';
-import { ScheduleModule } from './modules/schedules/schedule.module';
-import { WarnEmailModule } from './infrastructure/warn-emails/warn-email.module';
+import { SchedulesModule } from './modules/schedules/schedule.module';
 import { CacheModule } from '@nestjs/cache-manager';
 import { ConfigModule } from '@nestjs/config';
 import { REDIS_OPTIONS } from './infrastructure/redis/options';
 import { ServiceModule } from './modules/services/service.module';
 import { PlansModule } from './modules/plans/plans.module';
+import { EmailModule } from './infrastructure/warn-emails/warn-email.module';
 
 @Module({
   imports: [
@@ -22,9 +22,9 @@ import { PlansModule } from './modules/plans/plans.module';
     PrismaModule,
     HashedModule,
     OrganizationModule,
-    ScheduleModule,
+    SchedulesModule,
     ServiceModule,
-    WarnEmailModule,
+    EmailModule,
     PlansModule,
     ConfigModule.forRoot({
       isGlobal: true,

@@ -37,4 +37,4 @@ import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter'
         EmailService
     ]
 })
-export class WarnEmailModule { }
+export class EmailModule { }

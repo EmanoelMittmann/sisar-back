@@ -180,12 +180,12 @@ exports.Prisma.ScheduleScalarFieldEnum = {
   serviceId: 'serviceId',
   userId: 'userId',
   organizationId: 'organizationId',
-  contract_at: 'contract_at',
+  contractAt: 'contractAt',
   status: 'status',
-  remember_user: 'remember_user',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  canceled_at: 'canceled_at'
+  rememberUser: 'rememberUser',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  canceledAt: 'canceledAt'
 };
 
 exports.Prisma.SortOrder = {

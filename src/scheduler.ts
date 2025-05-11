@@ -4,7 +4,7 @@ import { ScheduleModule } from "./modules/schedules/schedule.module";
 
 async function bootstrap_scheduler() {
     const scheduler = await NestFactory.createApplicationContext(AppModule)
-
+    
 }
 
 bootstrap_scheduler()
