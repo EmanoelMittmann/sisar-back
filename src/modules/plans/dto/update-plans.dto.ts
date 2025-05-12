@@ -1,3 +1,3 @@
-import { CreatePlansDto } from "./create-plans.dto";
+import { CreatePlansDto } from './create-plans.dto';
 
-export class UpdatePlansDto extends CreatePlansDto { }
+export class UpdatePlansDto extends CreatePlansDto {}

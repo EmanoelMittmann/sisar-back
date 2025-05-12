@@ -11,7 +11,7 @@ import { Role } from 'orm-build/generated/prisma';
 @Injectable()
 export class UserPostgresRepository implements IUserRepository {
   private readonly userSerializer = UserSerializer;
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   async create(args: UserEntity): Promise<UserEntity> {
     const user = await this.prisma.user.create({
@@ -64,15 +64,15 @@ export class UserPostgresRepository implements IUserRepository {
     const user = await this.prisma.user.findFirst({
       where: {
         email: email,
-      }
-    })
+      },
+    });
 
     if (!user) {
-      return null
+      return null;
     }
 
     return this.userSerializer.SerializeFindOne(
       user as unknown as PrismaFindOneContract,
-    )
+    );
   }
 }

@@ -1,19 +1,23 @@
-import { CacheModuleAsyncOptions } from "@nestjs/cache-manager";
-import { ConfigService } from "@nestjs/config";
-import { redisStore } from "cache-manager-redis-store";
+import { FactoryProvider, Logger } from '@nestjs/common';
+import { Redis } from 'ioredis';
 
-export const REDIS_OPTIONS: CacheModuleAsyncOptions = {
-    isGlobal: true,
-    useFactory: async (configService: ConfigService) => {
-        const store = await redisStore({
-            socket: {
-                host: configService.get<string>('REDIS_HOST'),
-                port: parseInt(configService.get<string>('REDIS_PORT')!),
-            },
-        });
-        return {
-            store: () => store,
-        };
-    },
-    inject: [ConfigService],
-}
+const REDIS_HOST = process.env.REDIS_HOST || 'localhost';
+const REDIS_PORT = process.env.REDIS_PORT || 6379;
+
+export const REDIS_CLIENT_FACTORY: FactoryProvider<Redis> = {
+  provide: 'RedisClient',
+  useFactory: async () => {
+    const logger = new Logger('REDIS_CLIENT_FACTORY')
+    const client = new Redis({
+      host: REDIS_HOST,
+      port: +REDIS_PORT,
+    });
+
+    client.on('error', (error) => {
+      logger.error('Redis client error', error);
+    });
+
+    return client;
+  },
+  inject: [],
+};

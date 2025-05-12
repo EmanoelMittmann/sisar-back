@@ -1,13 +1,24 @@
 {
-    "configurations": [
+  "configurations": [
     {
-        "name": "Launch Program",
-        "program": "${workspaceFolder}/main.ts",
-        "request": "launch",
-        "skipFiles": [
-            "<node_internals>/**"
-        ],
-        "type": "node"
+      "type": "node",
+      "request": "launch",
+      "name": "Launch SCHEDULER",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/src/scheduler.ts",
+      "cwd": "${workspaceFolder}",
+      "sourceMaps": true,
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/main.ts",
+      "cwd": "${workspaceFolder}",
+      "sourceMaps": true,
+      "console": "integratedTerminal"
     }
-    ]
+  ]
 }

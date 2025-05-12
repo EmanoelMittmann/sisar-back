@@ -1,103 +1,103 @@
-import { OrganizationEntity } from "src/modules/organization/entities/organization.entity";
+import { OrganizationEntity } from 'src/modules/organization/entities/organization.entity';
 
 export class ServiceEntity {
-    private _id: number;
-    private _uuid: string;
-    private _name: string;
-    private _price: number;
-    private _is_active: boolean;
-    private _duration: string;
-    private _is_quantitative: boolean;
-    private _limit_for_day: number;
-    private _created_at: Date;
-    private _updated_at: Date;
-    private _organization: OrganizationEntity;
+  private _id: number;
+  private _uuid: string;
+  private _name: string;
+  private _price: number;
+  private _is_active: boolean;
+  private _duration: string;
+  private _is_quantitative: boolean;
+  private _limit_for_day: number;
+  private _created_at: Date;
+  private _updated_at: Date;
+  private _organization: OrganizationEntity;
 
-    getDuration(): string {
-        return this._duration;
-    }
+  getDuration(): string {
+    return this._duration;
+  }
 
-    setDuration(value: string): void {
-        this._duration = value;
-    }
+  setDuration(value: string): void {
+    this._duration = value;
+  }
 
-    getId(): number {
-        return this._id;
-    }
+  getId(): number {
+    return this._id;
+  }
 
-    setId(value: number): void {
-        this._id = value;
-    }
+  setId(value: number): void {
+    this._id = value;
+  }
 
-    getUuid(): string {
-        return this._uuid;
-    }
+  getUuid(): string {
+    return this._uuid;
+  }
 
-    setUuid(value: string): void {
-        this._uuid = value;
-    }
+  setUuid(value: string): void {
+    this._uuid = value;
+  }
 
-    getName(): string {
-        return this._name;
-    }
+  getName(): string {
+    return this._name;
+  }
 
-    setName(value: string): void {
-        this._name = value;
-    }
+  setName(value: string): void {
+    this._name = value;
+  }
 
-    getPrice(): number {
-        return this._price;
-    }
+  getPrice(): number {
+    return this._price;
+  }
 
-    setPrice(value: number): void {
-        this._price = value;
-    }
+  setPrice(value: number): void {
+    this._price = value;
+  }
 
-    getIsActive(): boolean {
-        return this._is_active;
-    }
+  getIsActive(): boolean {
+    return this._is_active;
+  }
 
-    setIsActive(value: boolean): void {
-        this._is_active = value;
-    }
+  setIsActive(value: boolean): void {
+    this._is_active = value;
+  }
 
-    getIsQuantitative(): boolean {
-        return this._is_quantitative;
-    }
+  getIsQuantitative(): boolean {
+    return this._is_quantitative;
+  }
 
-    setIsQuantitative(value: boolean): void {
-        this._is_quantitative = value;
-    }
+  setIsQuantitative(value: boolean): void {
+    this._is_quantitative = value;
+  }
 
-    getLimitForDay(): number {
-        return this._limit_for_day;
-    }
+  getLimitForDay(): number {
+    return this._limit_for_day;
+  }
 
-    setLimitForDay(value: number): void {
-        this._limit_for_day = value;
-    }
+  setLimitForDay(value: number): void {
+    this._limit_for_day = value;
+  }
 
-    getOrganization(): OrganizationEntity {
-        return this._organization;
-    }
+  getOrganization(): OrganizationEntity {
+    return this._organization;
+  }
 
-    setOrganization(value: OrganizationEntity): void {
-        this._organization = value;
-    }
+  setOrganization(value: OrganizationEntity): void {
+    this._organization = value;
+  }
 
-    getCreatedAt(): Date {
-        return this._created_at;
-    }
+  getCreatedAt(): Date {
+    return this._created_at;
+  }
 
-    setCreatedAt(value: Date): void {
-        this._created_at = value;
-    }
+  setCreatedAt(value: Date): void {
+    this._created_at = value;
+  }
 
-    getUpdatedAt(): Date {
-        return this._updated_at;
-    }
+  getUpdatedAt(): Date {
+    return this._updated_at;
+  }
 
-    setUpdatedAt(value: Date): void {
-        this._updated_at = value;
-    }
-} 
+  setUpdatedAt(value: Date): void {
+    this._updated_at = value;
+  }
+}

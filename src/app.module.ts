@@ -7,12 +7,11 @@ import { UserModule } from './modules/users/user.module';
 import { PrismaModule } from './infrastructure/postgres/prisma/prisma.module';
 import { HashedModule } from './shared/hashed/hashed.module';
 import { SchedulesModule } from './modules/schedules/schedule.module';
-import { CacheModule } from '@nestjs/cache-manager';
 import { ConfigModule } from '@nestjs/config';
-import { REDIS_OPTIONS } from './infrastructure/redis/options';
 import { ServiceModule } from './modules/services/service.module';
 import { PlansModule } from './modules/plans/plans.module';
 import { EmailModule } from './infrastructure/warn-emails/warn-email.module';
+import { RedisModule } from './infrastructure/redis/redis.module';
 
 @Module({
   imports: [
@@ -26,12 +25,12 @@ import { EmailModule } from './infrastructure/warn-emails/warn-email.module';
     ServiceModule,
     EmailModule,
     PlansModule,
+    RedisModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    CacheModule.register(REDIS_OPTIONS)
   ],
   controllers: [AppController],
   providers: [AppService, PrismaModule],
 })
-export class AppModule { }
+export class AppModule {}

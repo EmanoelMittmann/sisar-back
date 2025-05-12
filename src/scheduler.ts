@@ -1,10 +1,14 @@
-import { NestFactory } from "@nestjs/core";
-import { AppModule } from "./app.module";
-import { ScheduleModule } from "./modules/schedules/schedule.module";
+import { NestFactory } from '@nestjs/core';
+import { SchedulerService } from './scheduler/scheduler.service';
+import { SchedulerModule } from './scheduler/scheduler.module';
+import { Logger } from '@nestjs/common';
 
 async function bootstrap_scheduler() {
-    const scheduler = await NestFactory.createApplicationContext(AppModule)
-    
+    const logger = new Logger('WORKER')
+    const worker = await NestFactory.create(SchedulerModule);
+
+    await worker.listen(8081)
+    logger.log('WORKER STARTED')
 }
 
-bootstrap_scheduler()
+bootstrap_scheduler();

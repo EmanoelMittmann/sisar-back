@@ -10,8 +10,6 @@ import { UserPostgresRepository } from 'src/infrastructure/postgres/repositories
     },
     FindUserByIdService,
   ],
-  exports: [
-    'IUserRepository',
-  ]
+  exports: ['IUserRepository'],
 })
-export class UserModule { }
+export class UserModule {}

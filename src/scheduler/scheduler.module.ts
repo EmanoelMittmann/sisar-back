@@ -1,17 +1,16 @@
-import { CacheModule } from "@nestjs/cache-manager";
-import { Module } from "@nestjs/common";
-import { ScheduleModule } from "@nestjs/schedule";
-import { REDIS_OPTIONS } from "src/infrastructure/redis/options";
-import { EmailModule } from "src/infrastructure/warn-emails/warn-email.module";
-import { SchedulesModule } from "src/modules/schedules/schedule.module";
-
+import { Module } from '@nestjs/common';
+import { ScheduleModule } from '@nestjs/schedule';
+import { RedisModule } from 'src/infrastructure/redis/redis.module';
+import { EmailModule } from 'src/infrastructure/warn-emails/warn-email.module';
+import { SchedulesModule } from 'src/modules/schedules/schedule.module';
+import { SchedulerService } from './scheduler.service';
 
 @Module({
-    imports: [
-        SchedulesModule,
-        ScheduleModule.forRoot(),
-        EmailModule,
-        CacheModule.register(REDIS_OPTIONS)
-    ]
+  imports: [
+    RedisModule,
+    ScheduleModule.forRoot(),
+    EmailModule,
+  ],
+  providers: [SchedulerService],
 })
-export class SchedulerModule { }
+export class SchedulerModule {}

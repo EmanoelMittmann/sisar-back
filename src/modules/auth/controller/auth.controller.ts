@@ -16,8 +16,8 @@ export class AuthController {
     private readonly signInService: SignInService,
     private readonly signUpService: SignUpService,
     private readonly signUpCompanyService: SignUpCompanyService,
-    private readonly generateTokenService: GenerateTokenService
-  ) { }
+    private readonly generateTokenService: GenerateTokenService,
+  ) {}
 
   @HttpCode(200)
   @Post('/signin')
@@ -31,8 +31,8 @@ export class AuthController {
     const token = await this.generateTokenService.execute(user);
 
     return {
-      token
-    }
+      token,
+    };
   }
 
   @HttpCode(200)
@@ -47,13 +47,15 @@ export class AuthController {
     await this.signUpService.execute(user);
 
     return {
-      message: 'User created successfully'
-    }
+      message: 'User created successfully',
+    };
   }
 
   @HttpCode(200)
   @Post('/signup-company')
-  async signUpCompany(@Body() body: SignUpCompanyDto): Promise<{ message: string }> {
+  async signUpCompany(
+    @Body() body: SignUpCompanyDto,
+  ): Promise<{ message: string }> {
     const organization = new OrganizationEntity();
     organization.setSocialName(body.organization_name);
     organization.setEmail(body.organization_email);
@@ -64,7 +66,7 @@ export class AuthController {
     await this.signUpCompanyService.execute(organization);
 
     return {
-      message: 'Company created successfully'
-    }
+      message: 'Company created successfully',
+    };
   }
 }

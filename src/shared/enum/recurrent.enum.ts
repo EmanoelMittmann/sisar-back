@@ -1,5 +1,5 @@
 export enum Recurrent {
-    WEEKLY = 'WEEKLY',
-    MONTHLY = 'MONTHLY',
-    YEARLY = 'YEARLY'
-} 
+  WEEKLY = 'WEEKLY',
+  MONTHLY = 'MONTHLY',
+  YEARLY = 'YEARLY',
+}
