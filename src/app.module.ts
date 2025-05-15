@@ -31,6 +31,6 @@ import { RedisModule } from './infrastructure/redis/redis.module';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, PrismaModule],
+  providers: [AppService, PrismaModule, RedisModule],
 })
 export class AppModule {}

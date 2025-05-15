@@ -1,3 +1,8 @@
+/*
+    @ I = Input
+    @ O = Output
+*/
+
 export interface BaseCrudOperationsContract<I, O> {
   create(args: I): Promise<O>;
   findAll(args: I): Promise<O[]>;

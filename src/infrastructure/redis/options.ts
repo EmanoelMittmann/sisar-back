@@ -6,8 +6,8 @@ const REDIS_PORT = process.env.REDIS_PORT || 6379;
 
 export const REDIS_CLIENT_FACTORY: FactoryProvider<Redis> = {
   provide: 'RedisClient',
-  useFactory: async () => {
-    const logger = new Logger('REDIS_CLIENT_FACTORY')
+  useFactory: () => {
+    const logger = new Logger('REDIS_CLIENT_FACTORY');
     const client = new Redis({
       host: REDIS_HOST,
       port: +REDIS_PORT,
