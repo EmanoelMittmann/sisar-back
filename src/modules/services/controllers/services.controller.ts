@@ -6,10 +6,9 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ListServicesDto } from '../dtos/list-services.dto';
-import { UseAuthUser } from 'src/shared/decorator/use-auth-user.decorator';
-import { UserEntity } from 'src/modules/users';
 import { ServiceEntity } from '../entities/service.entity';
 import { OrganizationEntity } from 'src/modules/organization/entities/organization.entity';
 import { ListServicesService } from '../services/list-services.service';
@@ -19,6 +18,9 @@ import { CreateServiceService } from '../services/create-service';
 import { UpdateServiceService } from '../services/update-service';
 import { GetByIdServiceService } from '../services/get-by-id-service';
 import { UpdateServiceDto } from '../dtos/update-service.dto';
+import { AuthGuard } from 'src/modules/auth/guards/auth.guard';
+import { UseAuthUser } from 'src/shared/decorator/use-auth-user.decorator';
+import { UserEntity } from 'src/modules/users';
 
 @Controller('services')
 export class ServicesController {
@@ -30,6 +32,7 @@ export class ServicesController {
     private readonly getByIdService: GetByIdServiceService,
   ) {}
 
+  @UseGuards(AuthGuard)
   @Get()
   async listAll(
     @Param('organization_id') organization_id: string,
@@ -42,6 +45,7 @@ export class ServicesController {
     return this.listServicesService.execute(service);
   }
 
+  @UseGuards(AuthGuard)
   @Put(':id')
   async update(
     @Param('id') id: string,
@@ -57,6 +61,7 @@ export class ServicesController {
     await this.updateServiceService.execute(service);
   }
 
+  @UseGuards(AuthGuard)
   @Delete(':id')
   async delete(@Param('id') id: string): Promise<ServiceEntity> {
     const service = new ServiceEntity();
@@ -64,6 +69,7 @@ export class ServicesController {
     return this.deleteServiceService.execute(service);
   }
 
+  @UseGuards(AuthGuard)
   @Get(':id')
   async getById(@Param('id') id: string): Promise<ListServicesDto> {
     const service = new ServiceEntity();
@@ -71,14 +77,19 @@ export class ServicesController {
     return this.getByIdService.execute(service);
   }
 
+  @UseGuards(AuthGuard)
   @Post()
-  async create(@Body() body: CreateServiceDto): Promise<ServiceEntity> {
+  async create(
+    @Body() body: CreateServiceDto,
+    @UseAuthUser() user: UserEntity,
+  ): Promise<ServiceEntity> {
     const service = new ServiceEntity();
     service.setName(body.name);
     service.setPrice(body.price);
     service.setDuration(body.duration);
     service.setIsQuantitative(body.is_quantitative);
     service.setLimitForDay(body.limit_for_day);
+    service.setOrganization(user.getOrganization() as OrganizationEntity);
     return this.createServiceService.execute(service);
   }
 }

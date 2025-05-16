@@ -13,6 +13,7 @@ import { GenerateTokenService } from './services/generate-token.service';
     UserModule,
     OrganizationModule,
     JwtModule.register({
+      global: true,
       secret: process.env.JWT_SECRET,
     }),
   ],

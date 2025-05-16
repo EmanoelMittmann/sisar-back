@@ -6,6 +6,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { Request } from 'express';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -13,7 +14,8 @@ export class AuthGuard implements CanActivate {
   constructor(private readonly jwtService: JwtService) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    const request = context.switchToHttp().getRequest();
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const request: Request = context.switchToHttp().getRequest();
 
     if (!request.headers.authorization) {
       throw new UnauthorizedException({ message: 'Token is required' });
@@ -26,10 +28,12 @@ export class AuthGuard implements CanActivate {
     }
     this.logger.log('[AuthGuard] Get Token sucessfully');
     try {
-      const payload = await this.jwtService.verifyAsync(token.trim(), {
+      await this.jwtService.verifyAsync(token.trim(), {
         secret: process.env.JWT_SECRET,
       });
     } catch (error) {
+      this.logger.error('[AuthGuard] Token is invalid');
+      this.logger.error(error);
       throw new UnauthorizedException({ message: 'Invalid token' });
     }
     this.logger.log('[AuthGuard] Token is valid');

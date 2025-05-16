@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, HttpCode, Post } from '@nestjs/common';
 import { SignInService } from '../services/sign-in.service';
 import { SignUpService } from '../services/sign-up.service';
 import { GenerateTokenService } from '../services/generate-token.service';
@@ -8,7 +8,6 @@ import { SignUpDto } from '../dtos/signup-up.dto';
 import { SignUpCompanyDto } from '../dtos/sign-up-company.dto';
 import { OrganizationEntity } from 'src/modules/organization/entities/organization.entity';
 import { SignUpCompanyService } from '../services/sign-up-company.service';
-import { AuthGuard } from '../guards/auth.guard';
 
 @Controller('auth')
 export class AuthController {

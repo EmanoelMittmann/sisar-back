@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateScheduleDto } from '../dtos/create-schedule.dto';
 import { CreateScheduleService } from '../services/create-schedule.service';
@@ -17,6 +18,7 @@ import { UserEntity } from 'src/modules/users';
 import { ListScheduleService } from '../services/list-schedule.service';
 import { UpdateScheduleService } from '../services/update-schedule.service';
 import { UpdateScheduleDto } from '../dtos/update-scedule.dto';
+import { AuthGuard } from 'src/modules/auth/guards/auth.guard';
 
 @Controller('schedules')
 export class ScheduleController {
@@ -28,28 +30,33 @@ export class ScheduleController {
     private readonly updateScheduleService: UpdateScheduleService,
   ) {}
 
+  @UseGuards(AuthGuard)
   @Post('/create')
   async create(@Body() body: CreateScheduleDto) {
     return this.createScheduleService.execute(body);
   }
 
+  @UseGuards(AuthGuard)
   @Get('/')
   async findAll(@UseAuthUser() user: UserEntity) {
     return this.listScheduleService.execute({ user_id: user.getUuid() });
   }
 
+  @UseGuards(AuthGuard)
   @Get('/:id')
   async findOne(@Param('id') id: string) {
     const schedule = await this.findByUuidService.execute(id);
     return ScheduleSerializer.toListOne(schedule);
   }
 
+  @UseGuards(AuthGuard)
   @Delete('/:id')
   async delete(@Param('id') id: string) {
     const exists = await this.findByUuidService.execute(id);
-    this.deleteScheduleService.execute(exists);
+    await this.deleteScheduleService.execute(exists);
   }
 
+  @UseGuards(AuthGuard)
   @Put('/:id')
   async update(@Param('id') id: string, @Body() body: UpdateScheduleDto) {
     const serialize = ScheduleSerializer.toEntity(body);

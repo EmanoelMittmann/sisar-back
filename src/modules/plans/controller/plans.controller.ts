@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { CreatePlansService } from '../services/create-plans.service';
 import { DeletePlansService } from '../services/delete-plans.service';
@@ -17,6 +18,7 @@ import { PlanEntity } from '../entities/plan.entity';
 import { ListPlansDto } from '../dto/list-plans.dto';
 import { CreatePlansDto } from '../dto/create-plans.dto';
 import { UpdatePlansDto } from '../dto/update-plans.dto';
+import { AuthGuard } from 'src/modules/auth/guards/auth.guard';
 
 @Controller('plans')
 export class PlansController {
@@ -28,6 +30,7 @@ export class PlansController {
     private readonly findOnePlanService: FindOnePlanService,
   ) {}
 
+  @UseGuards(AuthGuard)
   @Get('/:organization_id')
   async findAll(
     @Param('organization_id') organization_id: string,
@@ -41,6 +44,7 @@ export class PlansController {
     return this.listPlansService.execute(plans);
   }
 
+  @UseGuards(AuthGuard)
   @Post('/create/:organization_id')
   async create(
     @Param('organization_id') organization_id: string,
@@ -51,10 +55,16 @@ export class PlansController {
 
     const plan = new PlanEntity();
     plan.setOrganization(organization);
+    plan.setName(createPlansDto.name);
+    plan.setDescription(createPlansDto.description);
+    plan.setPrice(createPlansDto.price);
+    plan.setDueDate(createPlansDto.dueDate);
+    plan.setRecurrent(createPlansDto.recurrent);
 
     return this.createPlansService.execute(plan);
   }
 
+  @UseGuards(AuthGuard)
   @Put(':id')
   async update(
     @Param('id') id: string,
@@ -63,9 +73,17 @@ export class PlansController {
     const plan = new PlanEntity();
     plan.setUuid(id);
 
+    plan.setName(updatePlansDto.name);
+    plan.setName(updatePlansDto.name);
+    plan.setDescription(updatePlansDto.description);
+    plan.setPrice(updatePlansDto.price);
+    plan.setDueDate(updatePlansDto.dueDate);
+    plan.setRecurrent(updatePlansDto.recurrent);
+
     return this.updatePlansService.execute(plan);
   }
 
+  @UseGuards(AuthGuard)
   @Delete(':id')
   async delete(@Param('id') id: string): Promise<void> {
     const plan = new PlanEntity();
@@ -74,6 +92,7 @@ export class PlansController {
     return this.deletePlansService.execute(plan);
   }
 
+  @UseGuards(AuthGuard)
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<ListPlansDto> {
     const plan = new PlanEntity();

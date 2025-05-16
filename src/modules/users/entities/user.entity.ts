@@ -1,3 +1,4 @@
+import { OrganizationEntity } from 'src/modules/organization/entities/organization.entity';
 import { Role_Control } from 'src/shared/enum/role.enum';
 
 export class UserEntity {
@@ -11,6 +12,7 @@ export class UserEntity {
   private _createdAt: Date;
   private _updatedAt: Date;
   private _role: Role_Control;
+  private _organization: OrganizationEntity | null;
 
   public getEmail(): string {
     return this._email;
@@ -90,5 +92,12 @@ export class UserEntity {
 
   public setCpf(value: string) {
     this._cpf = value;
+  }
+
+  public getOrganization(): OrganizationEntity | null {
+    return this._organization;
+  }
+  public setOrganization(value: OrganizationEntity | null) {
+    this._organization = value;
   }
 }
