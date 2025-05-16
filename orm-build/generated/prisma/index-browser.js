@@ -188,6 +188,17 @@ exports.Prisma.ScheduleScalarFieldEnum = {
   canceledAt: 'canceledAt'
 };
 
+exports.Prisma.PublicScheduleScalarFieldEnum = {
+  id: 'id',
+  serviceId: 'serviceId',
+  contractAt: 'contractAt',
+  description: 'description',
+  organizationId: 'organizationId',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -225,7 +236,8 @@ exports.Prisma.ModelName = {
   Organization: 'Organization',
   Service: 'Service',
   Plan: 'Plan',
-  Schedule: 'Schedule'
+  Schedule: 'Schedule',
+  PublicSchedule: 'PublicSchedule'
 };
 
 /**

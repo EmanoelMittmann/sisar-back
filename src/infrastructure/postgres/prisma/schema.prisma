@@ -37,42 +37,44 @@ model User {
 }
 
 model Organization {
-  id           Int        @id @default(autoincrement())
-  uuid         String     @unique @default(uuid()) @db.Uuid
-  social_name  String     @db.VarChar(100)
-  fantasy_name String     @db.VarChar(120)
-  cnpj         String     @db.VarChar(14)
-  email        String     @db.VarChar(100)
-  phone        String     @db.VarChar(15)
-  is_active    Boolean    @default(true)
-  office       String     @db.VarChar(200)
-  image_path   String?    @db.Text
-  createdAt    DateTime   @default(now()) @map("created_at")
-  updatedAt    DateTime   @updatedAt @map("updated_at")
-  inactiveAt   DateTime?  @map("inactive_at")
-  user         User?      @relation(fields: [userId], references: [id], onDelete: SetNull, onUpdate: Cascade)
-  userId       Int?
-  services     Service[]
-  plans        Plan[]
-  schedules    Schedule[]
+  id             Int              @id @default(autoincrement())
+  uuid           String           @unique @default(uuid()) @db.Uuid
+  social_name    String           @db.VarChar(100)
+  fantasy_name   String           @db.VarChar(120)
+  cnpj           String           @db.VarChar(14)
+  email          String           @db.VarChar(100)
+  phone          String           @db.VarChar(15)
+  is_active      Boolean          @default(true)
+  office         String           @db.VarChar(200)
+  image_path     String?          @db.Text
+  createdAt      DateTime         @default(now()) @map("created_at")
+  updatedAt      DateTime         @updatedAt @map("updated_at")
+  inactiveAt     DateTime?        @map("inactive_at")
+  user           User?            @relation(fields: [userId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  userId         Int?
+  services       Service[]
+  plans          Plan[]
+  schedules      Schedule[]
+  PublicSchedule PublicSchedule[]
 
   @@map("organization")
 }
 
 model Service {
-  id              Int          @id @default(autoincrement())
-  uuid            String       @unique @default(uuid()) @db.Uuid
-  name            String       @db.VarChar(100)
+  id              Int              @id @default(autoincrement())
+  uuid            String           @unique @default(uuid()) @db.Uuid
+  name            String           @db.VarChar(100)
   price           Float
-  is_active       Boolean      @default(true)
-  duration        String       @db.VarChar(50)
-  is_quantitative Boolean      @default(false)
+  is_active       Boolean          @default(true)
+  duration        String           @db.VarChar(50)
+  is_quantitative Boolean          @default(false)
   limit_for_day   Int?
-  createdAt       DateTime     @default(now()) @map("created_at")
-  updatedAt       DateTime     @updatedAt @map("updated_at")
-  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  createdAt       DateTime         @default(now()) @map("created_at")
+  updatedAt       DateTime         @updatedAt @map("updated_at")
+  organization    Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   organizationId  Int
   schedules       Schedule[]
+  PublicSchedule  PublicSchedule[]
 
   @@map("service")
 }
@@ -123,4 +125,19 @@ model Schedule {
   canceledAt     DateTime?       @map("canceled_at")
 
   @@map("schedule")
+}
+
+model PublicSchedule {
+  id             Int             @id @default(autoincrement())
+  service        Service         @relation(fields: [serviceId], references: [id])
+  serviceId      Int
+  contractAt     DateTime        @map("contract_at")
+  description    String          @db.Text
+  organization   Organization    @relation(fields: [organizationId], references: [id])
+  organizationId Int
+  status         StatusSchedules @default(PENDING)
+  createdAt      DateTime        @default(now()) @map("created_at")
+  updatedAt      DateTime        @updatedAt @map("updated_at")
+
+  @@map("public_schedule")
 }

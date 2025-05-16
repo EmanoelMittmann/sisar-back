@@ -8,6 +8,7 @@ import { UpdateScheduleService } from './services/update-schedule.service';
 import { PublicScheduleController } from './controllers/public-schedule.controller';
 import { SchedulePostgresRepository } from 'src/infrastructure/postgres/repositories/schedule.repository';
 import { RedisModule } from 'src/infrastructure/redis/redis.module';
+import { CreatePublicScheduleService } from './services/create-public-schedule.service';
 
 @Module({
   imports: [RedisModule],
@@ -17,11 +18,16 @@ import { RedisModule } from 'src/infrastructure/redis/redis.module';
       provide: 'IScheduleRepository',
       useClass: SchedulePostgresRepository,
     },
+    {
+      provide: 'ISchedulePublicRepository',
+      useClass: SchedulePostgresRepository,
+    },
     CreateScheduleService,
     FindByUuidService,
     DeleteScheduleService,
     ListScheduleService,
     UpdateScheduleService,
+    CreatePublicScheduleService,
   ],
   exports: ['IScheduleRepository', FindByUuidService],
 })

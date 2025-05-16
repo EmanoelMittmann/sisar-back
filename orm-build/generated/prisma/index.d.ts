@@ -38,6 +38,11 @@ export type Plan = $Result.DefaultSelection<Prisma.$PlanPayload>
  * 
  */
 export type Schedule = $Result.DefaultSelection<Prisma.$SchedulePayload>
+/**
+ * Model PublicSchedule
+ * 
+ */
+export type PublicSchedule = $Result.DefaultSelection<Prisma.$PublicSchedulePayload>
 
 /**
  * Enums
@@ -257,6 +262,16 @@ export class PrismaClient<
     * ```
     */
   get schedule(): Prisma.ScheduleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.publicSchedule`: Exposes CRUD operations for the **PublicSchedule** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PublicSchedules
+    * const publicSchedules = await prisma.publicSchedule.findMany()
+    * ```
+    */
+  get publicSchedule(): Prisma.PublicScheduleDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -701,7 +716,8 @@ export namespace Prisma {
     Organization: 'Organization',
     Service: 'Service',
     Plan: 'Plan',
-    Schedule: 'Schedule'
+    Schedule: 'Schedule',
+    PublicSchedule: 'PublicSchedule'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -720,7 +736,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "organization" | "service" | "plan" | "schedule"
+      modelProps: "user" | "organization" | "service" | "plan" | "schedule" | "publicSchedule"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1094,6 +1110,80 @@ export namespace Prisma {
           }
         }
       }
+      PublicSchedule: {
+        payload: Prisma.$PublicSchedulePayload<ExtArgs>
+        fields: Prisma.PublicScheduleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PublicScheduleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicSchedulePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PublicScheduleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicSchedulePayload>
+          }
+          findFirst: {
+            args: Prisma.PublicScheduleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicSchedulePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PublicScheduleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicSchedulePayload>
+          }
+          findMany: {
+            args: Prisma.PublicScheduleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicSchedulePayload>[]
+          }
+          create: {
+            args: Prisma.PublicScheduleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicSchedulePayload>
+          }
+          createMany: {
+            args: Prisma.PublicScheduleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PublicScheduleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicSchedulePayload>[]
+          }
+          delete: {
+            args: Prisma.PublicScheduleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicSchedulePayload>
+          }
+          update: {
+            args: Prisma.PublicScheduleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicSchedulePayload>
+          }
+          deleteMany: {
+            args: Prisma.PublicScheduleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PublicScheduleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PublicScheduleUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicSchedulePayload>[]
+          }
+          upsert: {
+            args: Prisma.PublicScheduleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PublicSchedulePayload>
+          }
+          aggregate: {
+            args: Prisma.PublicScheduleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePublicSchedule>
+          }
+          groupBy: {
+            args: Prisma.PublicScheduleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PublicScheduleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PublicScheduleCountArgs<ExtArgs>
+            result: $Utils.Optional<PublicScheduleCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1183,6 +1273,7 @@ export namespace Prisma {
     service?: ServiceOmit
     plan?: PlanOmit
     schedule?: ScheduleOmit
+    publicSchedule?: PublicScheduleOmit
   }
 
   /* Types for Logging */
@@ -1320,12 +1411,14 @@ export namespace Prisma {
     services: number
     plans: number
     schedules: number
+    PublicSchedule: number
   }
 
   export type OrganizationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     services?: boolean | OrganizationCountOutputTypeCountServicesArgs
     plans?: boolean | OrganizationCountOutputTypeCountPlansArgs
     schedules?: boolean | OrganizationCountOutputTypeCountSchedulesArgs
+    PublicSchedule?: boolean | OrganizationCountOutputTypeCountPublicScheduleArgs
   }
 
   // Custom InputTypes
@@ -1360,6 +1453,13 @@ export namespace Prisma {
     where?: ScheduleWhereInput
   }
 
+  /**
+   * OrganizationCountOutputType without action
+   */
+  export type OrganizationCountOutputTypeCountPublicScheduleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicScheduleWhereInput
+  }
+
 
   /**
    * Count Type ServiceCountOutputType
@@ -1367,10 +1467,12 @@ export namespace Prisma {
 
   export type ServiceCountOutputType = {
     schedules: number
+    PublicSchedule: number
   }
 
   export type ServiceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     schedules?: boolean | ServiceCountOutputTypeCountSchedulesArgs
+    PublicSchedule?: boolean | ServiceCountOutputTypeCountPublicScheduleArgs
   }
 
   // Custom InputTypes
@@ -1389,6 +1491,13 @@ export namespace Prisma {
    */
   export type ServiceCountOutputTypeCountSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ScheduleWhereInput
+  }
+
+  /**
+   * ServiceCountOutputType without action
+   */
+  export type ServiceCountOutputTypeCountPublicScheduleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicScheduleWhereInput
   }
 
 
@@ -2871,6 +2980,7 @@ export namespace Prisma {
     services?: boolean | Organization$servicesArgs<ExtArgs>
     plans?: boolean | Organization$plansArgs<ExtArgs>
     schedules?: boolean | Organization$schedulesArgs<ExtArgs>
+    PublicSchedule?: boolean | Organization$PublicScheduleArgs<ExtArgs>
     _count?: boolean | OrganizationCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organization"]>
 
@@ -2933,6 +3043,7 @@ export namespace Prisma {
     services?: boolean | Organization$servicesArgs<ExtArgs>
     plans?: boolean | Organization$plansArgs<ExtArgs>
     schedules?: boolean | Organization$schedulesArgs<ExtArgs>
+    PublicSchedule?: boolean | Organization$PublicScheduleArgs<ExtArgs>
     _count?: boolean | OrganizationCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type OrganizationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2949,6 +3060,7 @@ export namespace Prisma {
       services: Prisma.$ServicePayload<ExtArgs>[]
       plans: Prisma.$PlanPayload<ExtArgs>[]
       schedules: Prisma.$SchedulePayload<ExtArgs>[]
+      PublicSchedule: Prisma.$PublicSchedulePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3363,6 +3475,7 @@ export namespace Prisma {
     services<T extends Organization$servicesArgs<ExtArgs> = {}>(args?: Subset<T, Organization$servicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     plans<T extends Organization$plansArgs<ExtArgs> = {}>(args?: Subset<T, Organization$plansArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     schedules<T extends Organization$schedulesArgs<ExtArgs> = {}>(args?: Subset<T, Organization$schedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    PublicSchedule<T extends Organization$PublicScheduleArgs<ExtArgs> = {}>(args?: Subset<T, Organization$PublicScheduleArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3893,6 +4006,30 @@ export namespace Prisma {
   }
 
   /**
+   * Organization.PublicSchedule
+   */
+  export type Organization$PublicScheduleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicSchedule
+     */
+    select?: PublicScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicSchedule
+     */
+    omit?: PublicScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicScheduleInclude<ExtArgs> | null
+    where?: PublicScheduleWhereInput
+    orderBy?: PublicScheduleOrderByWithRelationInput | PublicScheduleOrderByWithRelationInput[]
+    cursor?: PublicScheduleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PublicScheduleScalarFieldEnum | PublicScheduleScalarFieldEnum[]
+  }
+
+  /**
    * Organization without action
    */
   export type OrganizationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4171,6 +4308,7 @@ export namespace Prisma {
     organizationId?: boolean
     organization?: boolean | OrganizationDefaultArgs<ExtArgs>
     schedules?: boolean | Service$schedulesArgs<ExtArgs>
+    PublicSchedule?: boolean | Service$PublicScheduleArgs<ExtArgs>
     _count?: boolean | ServiceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["service"]>
 
@@ -4222,6 +4360,7 @@ export namespace Prisma {
   export type ServiceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     organization?: boolean | OrganizationDefaultArgs<ExtArgs>
     schedules?: boolean | Service$schedulesArgs<ExtArgs>
+    PublicSchedule?: boolean | Service$PublicScheduleArgs<ExtArgs>
     _count?: boolean | ServiceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ServiceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4236,6 +4375,7 @@ export namespace Prisma {
     objects: {
       organization: Prisma.$OrganizationPayload<ExtArgs>
       schedules: Prisma.$SchedulePayload<ExtArgs>[]
+      PublicSchedule: Prisma.$PublicSchedulePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4645,6 +4785,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     organization<T extends OrganizationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganizationDefaultArgs<ExtArgs>>): Prisma__OrganizationClient<$Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     schedules<T extends Service$schedulesArgs<ExtArgs> = {}>(args?: Subset<T, Service$schedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    PublicSchedule<T extends Service$PublicScheduleArgs<ExtArgs> = {}>(args?: Subset<T, Service$PublicScheduleArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5102,6 +5243,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ScheduleScalarFieldEnum | ScheduleScalarFieldEnum[]
+  }
+
+  /**
+   * Service.PublicSchedule
+   */
+  export type Service$PublicScheduleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicSchedule
+     */
+    select?: PublicScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicSchedule
+     */
+    omit?: PublicScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicScheduleInclude<ExtArgs> | null
+    where?: PublicScheduleWhereInput
+    orderBy?: PublicScheduleOrderByWithRelationInput | PublicScheduleOrderByWithRelationInput[]
+    cursor?: PublicScheduleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PublicScheduleScalarFieldEnum | PublicScheduleScalarFieldEnum[]
   }
 
   /**
@@ -7487,6 +7652,1153 @@ export namespace Prisma {
 
 
   /**
+   * Model PublicSchedule
+   */
+
+  export type AggregatePublicSchedule = {
+    _count: PublicScheduleCountAggregateOutputType | null
+    _avg: PublicScheduleAvgAggregateOutputType | null
+    _sum: PublicScheduleSumAggregateOutputType | null
+    _min: PublicScheduleMinAggregateOutputType | null
+    _max: PublicScheduleMaxAggregateOutputType | null
+  }
+
+  export type PublicScheduleAvgAggregateOutputType = {
+    id: number | null
+    serviceId: number | null
+    organizationId: number | null
+  }
+
+  export type PublicScheduleSumAggregateOutputType = {
+    id: number | null
+    serviceId: number | null
+    organizationId: number | null
+  }
+
+  export type PublicScheduleMinAggregateOutputType = {
+    id: number | null
+    serviceId: number | null
+    contractAt: Date | null
+    description: string | null
+    organizationId: number | null
+    status: $Enums.StatusSchedules | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PublicScheduleMaxAggregateOutputType = {
+    id: number | null
+    serviceId: number | null
+    contractAt: Date | null
+    description: string | null
+    organizationId: number | null
+    status: $Enums.StatusSchedules | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PublicScheduleCountAggregateOutputType = {
+    id: number
+    serviceId: number
+    contractAt: number
+    description: number
+    organizationId: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PublicScheduleAvgAggregateInputType = {
+    id?: true
+    serviceId?: true
+    organizationId?: true
+  }
+
+  export type PublicScheduleSumAggregateInputType = {
+    id?: true
+    serviceId?: true
+    organizationId?: true
+  }
+
+  export type PublicScheduleMinAggregateInputType = {
+    id?: true
+    serviceId?: true
+    contractAt?: true
+    description?: true
+    organizationId?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PublicScheduleMaxAggregateInputType = {
+    id?: true
+    serviceId?: true
+    contractAt?: true
+    description?: true
+    organizationId?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PublicScheduleCountAggregateInputType = {
+    id?: true
+    serviceId?: true
+    contractAt?: true
+    description?: true
+    organizationId?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PublicScheduleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PublicSchedule to aggregate.
+     */
+    where?: PublicScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PublicSchedules to fetch.
+     */
+    orderBy?: PublicScheduleOrderByWithRelationInput | PublicScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PublicScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PublicSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PublicSchedules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PublicSchedules
+    **/
+    _count?: true | PublicScheduleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PublicScheduleAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PublicScheduleSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PublicScheduleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PublicScheduleMaxAggregateInputType
+  }
+
+  export type GetPublicScheduleAggregateType<T extends PublicScheduleAggregateArgs> = {
+        [P in keyof T & keyof AggregatePublicSchedule]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePublicSchedule[P]>
+      : GetScalarType<T[P], AggregatePublicSchedule[P]>
+  }
+
+
+
+
+  export type PublicScheduleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PublicScheduleWhereInput
+    orderBy?: PublicScheduleOrderByWithAggregationInput | PublicScheduleOrderByWithAggregationInput[]
+    by: PublicScheduleScalarFieldEnum[] | PublicScheduleScalarFieldEnum
+    having?: PublicScheduleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PublicScheduleCountAggregateInputType | true
+    _avg?: PublicScheduleAvgAggregateInputType
+    _sum?: PublicScheduleSumAggregateInputType
+    _min?: PublicScheduleMinAggregateInputType
+    _max?: PublicScheduleMaxAggregateInputType
+  }
+
+  export type PublicScheduleGroupByOutputType = {
+    id: number
+    serviceId: number
+    contractAt: Date
+    description: string
+    organizationId: number
+    status: $Enums.StatusSchedules
+    createdAt: Date
+    updatedAt: Date
+    _count: PublicScheduleCountAggregateOutputType | null
+    _avg: PublicScheduleAvgAggregateOutputType | null
+    _sum: PublicScheduleSumAggregateOutputType | null
+    _min: PublicScheduleMinAggregateOutputType | null
+    _max: PublicScheduleMaxAggregateOutputType | null
+  }
+
+  type GetPublicScheduleGroupByPayload<T extends PublicScheduleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PublicScheduleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PublicScheduleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PublicScheduleGroupByOutputType[P]>
+            : GetScalarType<T[P], PublicScheduleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PublicScheduleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    serviceId?: boolean
+    contractAt?: boolean
+    description?: boolean
+    organizationId?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+    organization?: boolean | OrganizationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["publicSchedule"]>
+
+  export type PublicScheduleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    serviceId?: boolean
+    contractAt?: boolean
+    description?: boolean
+    organizationId?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+    organization?: boolean | OrganizationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["publicSchedule"]>
+
+  export type PublicScheduleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    serviceId?: boolean
+    contractAt?: boolean
+    description?: boolean
+    organizationId?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+    organization?: boolean | OrganizationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["publicSchedule"]>
+
+  export type PublicScheduleSelectScalar = {
+    id?: boolean
+    serviceId?: boolean
+    contractAt?: boolean
+    description?: boolean
+    organizationId?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PublicScheduleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "serviceId" | "contractAt" | "description" | "organizationId" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["publicSchedule"]>
+  export type PublicScheduleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+    organization?: boolean | OrganizationDefaultArgs<ExtArgs>
+  }
+  export type PublicScheduleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+    organization?: boolean | OrganizationDefaultArgs<ExtArgs>
+  }
+  export type PublicScheduleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+    organization?: boolean | OrganizationDefaultArgs<ExtArgs>
+  }
+
+  export type $PublicSchedulePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PublicSchedule"
+    objects: {
+      service: Prisma.$ServicePayload<ExtArgs>
+      organization: Prisma.$OrganizationPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      serviceId: number
+      contractAt: Date
+      description: string
+      organizationId: number
+      status: $Enums.StatusSchedules
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["publicSchedule"]>
+    composites: {}
+  }
+
+  type PublicScheduleGetPayload<S extends boolean | null | undefined | PublicScheduleDefaultArgs> = $Result.GetResult<Prisma.$PublicSchedulePayload, S>
+
+  type PublicScheduleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PublicScheduleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PublicScheduleCountAggregateInputType | true
+    }
+
+  export interface PublicScheduleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PublicSchedule'], meta: { name: 'PublicSchedule' } }
+    /**
+     * Find zero or one PublicSchedule that matches the filter.
+     * @param {PublicScheduleFindUniqueArgs} args - Arguments to find a PublicSchedule
+     * @example
+     * // Get one PublicSchedule
+     * const publicSchedule = await prisma.publicSchedule.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PublicScheduleFindUniqueArgs>(args: SelectSubset<T, PublicScheduleFindUniqueArgs<ExtArgs>>): Prisma__PublicScheduleClient<$Result.GetResult<Prisma.$PublicSchedulePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PublicSchedule that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PublicScheduleFindUniqueOrThrowArgs} args - Arguments to find a PublicSchedule
+     * @example
+     * // Get one PublicSchedule
+     * const publicSchedule = await prisma.publicSchedule.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PublicScheduleFindUniqueOrThrowArgs>(args: SelectSubset<T, PublicScheduleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PublicScheduleClient<$Result.GetResult<Prisma.$PublicSchedulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PublicSchedule that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PublicScheduleFindFirstArgs} args - Arguments to find a PublicSchedule
+     * @example
+     * // Get one PublicSchedule
+     * const publicSchedule = await prisma.publicSchedule.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PublicScheduleFindFirstArgs>(args?: SelectSubset<T, PublicScheduleFindFirstArgs<ExtArgs>>): Prisma__PublicScheduleClient<$Result.GetResult<Prisma.$PublicSchedulePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PublicSchedule that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PublicScheduleFindFirstOrThrowArgs} args - Arguments to find a PublicSchedule
+     * @example
+     * // Get one PublicSchedule
+     * const publicSchedule = await prisma.publicSchedule.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PublicScheduleFindFirstOrThrowArgs>(args?: SelectSubset<T, PublicScheduleFindFirstOrThrowArgs<ExtArgs>>): Prisma__PublicScheduleClient<$Result.GetResult<Prisma.$PublicSchedulePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PublicSchedules that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PublicScheduleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PublicSchedules
+     * const publicSchedules = await prisma.publicSchedule.findMany()
+     * 
+     * // Get first 10 PublicSchedules
+     * const publicSchedules = await prisma.publicSchedule.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const publicScheduleWithIdOnly = await prisma.publicSchedule.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PublicScheduleFindManyArgs>(args?: SelectSubset<T, PublicScheduleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PublicSchedule.
+     * @param {PublicScheduleCreateArgs} args - Arguments to create a PublicSchedule.
+     * @example
+     * // Create one PublicSchedule
+     * const PublicSchedule = await prisma.publicSchedule.create({
+     *   data: {
+     *     // ... data to create a PublicSchedule
+     *   }
+     * })
+     * 
+     */
+    create<T extends PublicScheduleCreateArgs>(args: SelectSubset<T, PublicScheduleCreateArgs<ExtArgs>>): Prisma__PublicScheduleClient<$Result.GetResult<Prisma.$PublicSchedulePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PublicSchedules.
+     * @param {PublicScheduleCreateManyArgs} args - Arguments to create many PublicSchedules.
+     * @example
+     * // Create many PublicSchedules
+     * const publicSchedule = await prisma.publicSchedule.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PublicScheduleCreateManyArgs>(args?: SelectSubset<T, PublicScheduleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PublicSchedules and returns the data saved in the database.
+     * @param {PublicScheduleCreateManyAndReturnArgs} args - Arguments to create many PublicSchedules.
+     * @example
+     * // Create many PublicSchedules
+     * const publicSchedule = await prisma.publicSchedule.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PublicSchedules and only return the `id`
+     * const publicScheduleWithIdOnly = await prisma.publicSchedule.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PublicScheduleCreateManyAndReturnArgs>(args?: SelectSubset<T, PublicScheduleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicSchedulePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PublicSchedule.
+     * @param {PublicScheduleDeleteArgs} args - Arguments to delete one PublicSchedule.
+     * @example
+     * // Delete one PublicSchedule
+     * const PublicSchedule = await prisma.publicSchedule.delete({
+     *   where: {
+     *     // ... filter to delete one PublicSchedule
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PublicScheduleDeleteArgs>(args: SelectSubset<T, PublicScheduleDeleteArgs<ExtArgs>>): Prisma__PublicScheduleClient<$Result.GetResult<Prisma.$PublicSchedulePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PublicSchedule.
+     * @param {PublicScheduleUpdateArgs} args - Arguments to update one PublicSchedule.
+     * @example
+     * // Update one PublicSchedule
+     * const publicSchedule = await prisma.publicSchedule.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PublicScheduleUpdateArgs>(args: SelectSubset<T, PublicScheduleUpdateArgs<ExtArgs>>): Prisma__PublicScheduleClient<$Result.GetResult<Prisma.$PublicSchedulePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PublicSchedules.
+     * @param {PublicScheduleDeleteManyArgs} args - Arguments to filter PublicSchedules to delete.
+     * @example
+     * // Delete a few PublicSchedules
+     * const { count } = await prisma.publicSchedule.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PublicScheduleDeleteManyArgs>(args?: SelectSubset<T, PublicScheduleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PublicSchedules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PublicScheduleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PublicSchedules
+     * const publicSchedule = await prisma.publicSchedule.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PublicScheduleUpdateManyArgs>(args: SelectSubset<T, PublicScheduleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PublicSchedules and returns the data updated in the database.
+     * @param {PublicScheduleUpdateManyAndReturnArgs} args - Arguments to update many PublicSchedules.
+     * @example
+     * // Update many PublicSchedules
+     * const publicSchedule = await prisma.publicSchedule.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PublicSchedules and only return the `id`
+     * const publicScheduleWithIdOnly = await prisma.publicSchedule.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PublicScheduleUpdateManyAndReturnArgs>(args: SelectSubset<T, PublicScheduleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicSchedulePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PublicSchedule.
+     * @param {PublicScheduleUpsertArgs} args - Arguments to update or create a PublicSchedule.
+     * @example
+     * // Update or create a PublicSchedule
+     * const publicSchedule = await prisma.publicSchedule.upsert({
+     *   create: {
+     *     // ... data to create a PublicSchedule
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PublicSchedule we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PublicScheduleUpsertArgs>(args: SelectSubset<T, PublicScheduleUpsertArgs<ExtArgs>>): Prisma__PublicScheduleClient<$Result.GetResult<Prisma.$PublicSchedulePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PublicSchedules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PublicScheduleCountArgs} args - Arguments to filter PublicSchedules to count.
+     * @example
+     * // Count the number of PublicSchedules
+     * const count = await prisma.publicSchedule.count({
+     *   where: {
+     *     // ... the filter for the PublicSchedules we want to count
+     *   }
+     * })
+    **/
+    count<T extends PublicScheduleCountArgs>(
+      args?: Subset<T, PublicScheduleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PublicScheduleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PublicSchedule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PublicScheduleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PublicScheduleAggregateArgs>(args: Subset<T, PublicScheduleAggregateArgs>): Prisma.PrismaPromise<GetPublicScheduleAggregateType<T>>
+
+    /**
+     * Group by PublicSchedule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PublicScheduleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PublicScheduleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PublicScheduleGroupByArgs['orderBy'] }
+        : { orderBy?: PublicScheduleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PublicScheduleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPublicScheduleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PublicSchedule model
+   */
+  readonly fields: PublicScheduleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PublicSchedule.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PublicScheduleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    service<T extends ServiceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ServiceDefaultArgs<ExtArgs>>): Prisma__ServiceClient<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    organization<T extends OrganizationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganizationDefaultArgs<ExtArgs>>): Prisma__OrganizationClient<$Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PublicSchedule model
+   */
+  interface PublicScheduleFieldRefs {
+    readonly id: FieldRef<"PublicSchedule", 'Int'>
+    readonly serviceId: FieldRef<"PublicSchedule", 'Int'>
+    readonly contractAt: FieldRef<"PublicSchedule", 'DateTime'>
+    readonly description: FieldRef<"PublicSchedule", 'String'>
+    readonly organizationId: FieldRef<"PublicSchedule", 'Int'>
+    readonly status: FieldRef<"PublicSchedule", 'StatusSchedules'>
+    readonly createdAt: FieldRef<"PublicSchedule", 'DateTime'>
+    readonly updatedAt: FieldRef<"PublicSchedule", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PublicSchedule findUnique
+   */
+  export type PublicScheduleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicSchedule
+     */
+    select?: PublicScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicSchedule
+     */
+    omit?: PublicScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicScheduleInclude<ExtArgs> | null
+    /**
+     * Filter, which PublicSchedule to fetch.
+     */
+    where: PublicScheduleWhereUniqueInput
+  }
+
+  /**
+   * PublicSchedule findUniqueOrThrow
+   */
+  export type PublicScheduleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicSchedule
+     */
+    select?: PublicScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicSchedule
+     */
+    omit?: PublicScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicScheduleInclude<ExtArgs> | null
+    /**
+     * Filter, which PublicSchedule to fetch.
+     */
+    where: PublicScheduleWhereUniqueInput
+  }
+
+  /**
+   * PublicSchedule findFirst
+   */
+  export type PublicScheduleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicSchedule
+     */
+    select?: PublicScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicSchedule
+     */
+    omit?: PublicScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicScheduleInclude<ExtArgs> | null
+    /**
+     * Filter, which PublicSchedule to fetch.
+     */
+    where?: PublicScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PublicSchedules to fetch.
+     */
+    orderBy?: PublicScheduleOrderByWithRelationInput | PublicScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PublicSchedules.
+     */
+    cursor?: PublicScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PublicSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PublicSchedules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PublicSchedules.
+     */
+    distinct?: PublicScheduleScalarFieldEnum | PublicScheduleScalarFieldEnum[]
+  }
+
+  /**
+   * PublicSchedule findFirstOrThrow
+   */
+  export type PublicScheduleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicSchedule
+     */
+    select?: PublicScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicSchedule
+     */
+    omit?: PublicScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicScheduleInclude<ExtArgs> | null
+    /**
+     * Filter, which PublicSchedule to fetch.
+     */
+    where?: PublicScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PublicSchedules to fetch.
+     */
+    orderBy?: PublicScheduleOrderByWithRelationInput | PublicScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PublicSchedules.
+     */
+    cursor?: PublicScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PublicSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PublicSchedules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PublicSchedules.
+     */
+    distinct?: PublicScheduleScalarFieldEnum | PublicScheduleScalarFieldEnum[]
+  }
+
+  /**
+   * PublicSchedule findMany
+   */
+  export type PublicScheduleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicSchedule
+     */
+    select?: PublicScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicSchedule
+     */
+    omit?: PublicScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicScheduleInclude<ExtArgs> | null
+    /**
+     * Filter, which PublicSchedules to fetch.
+     */
+    where?: PublicScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PublicSchedules to fetch.
+     */
+    orderBy?: PublicScheduleOrderByWithRelationInput | PublicScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PublicSchedules.
+     */
+    cursor?: PublicScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PublicSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PublicSchedules.
+     */
+    skip?: number
+    distinct?: PublicScheduleScalarFieldEnum | PublicScheduleScalarFieldEnum[]
+  }
+
+  /**
+   * PublicSchedule create
+   */
+  export type PublicScheduleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicSchedule
+     */
+    select?: PublicScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicSchedule
+     */
+    omit?: PublicScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicScheduleInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PublicSchedule.
+     */
+    data: XOR<PublicScheduleCreateInput, PublicScheduleUncheckedCreateInput>
+  }
+
+  /**
+   * PublicSchedule createMany
+   */
+  export type PublicScheduleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PublicSchedules.
+     */
+    data: PublicScheduleCreateManyInput | PublicScheduleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PublicSchedule createManyAndReturn
+   */
+  export type PublicScheduleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicSchedule
+     */
+    select?: PublicScheduleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicSchedule
+     */
+    omit?: PublicScheduleOmit<ExtArgs> | null
+    /**
+     * The data used to create many PublicSchedules.
+     */
+    data: PublicScheduleCreateManyInput | PublicScheduleCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicScheduleIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PublicSchedule update
+   */
+  export type PublicScheduleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicSchedule
+     */
+    select?: PublicScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicSchedule
+     */
+    omit?: PublicScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicScheduleInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PublicSchedule.
+     */
+    data: XOR<PublicScheduleUpdateInput, PublicScheduleUncheckedUpdateInput>
+    /**
+     * Choose, which PublicSchedule to update.
+     */
+    where: PublicScheduleWhereUniqueInput
+  }
+
+  /**
+   * PublicSchedule updateMany
+   */
+  export type PublicScheduleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PublicSchedules.
+     */
+    data: XOR<PublicScheduleUpdateManyMutationInput, PublicScheduleUncheckedUpdateManyInput>
+    /**
+     * Filter which PublicSchedules to update
+     */
+    where?: PublicScheduleWhereInput
+    /**
+     * Limit how many PublicSchedules to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PublicSchedule updateManyAndReturn
+   */
+  export type PublicScheduleUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicSchedule
+     */
+    select?: PublicScheduleSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicSchedule
+     */
+    omit?: PublicScheduleOmit<ExtArgs> | null
+    /**
+     * The data used to update PublicSchedules.
+     */
+    data: XOR<PublicScheduleUpdateManyMutationInput, PublicScheduleUncheckedUpdateManyInput>
+    /**
+     * Filter which PublicSchedules to update
+     */
+    where?: PublicScheduleWhereInput
+    /**
+     * Limit how many PublicSchedules to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicScheduleIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PublicSchedule upsert
+   */
+  export type PublicScheduleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicSchedule
+     */
+    select?: PublicScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicSchedule
+     */
+    omit?: PublicScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicScheduleInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PublicSchedule to update in case it exists.
+     */
+    where: PublicScheduleWhereUniqueInput
+    /**
+     * In case the PublicSchedule found by the `where` argument doesn't exist, create a new PublicSchedule with this data.
+     */
+    create: XOR<PublicScheduleCreateInput, PublicScheduleUncheckedCreateInput>
+    /**
+     * In case the PublicSchedule was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PublicScheduleUpdateInput, PublicScheduleUncheckedUpdateInput>
+  }
+
+  /**
+   * PublicSchedule delete
+   */
+  export type PublicScheduleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicSchedule
+     */
+    select?: PublicScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicSchedule
+     */
+    omit?: PublicScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicScheduleInclude<ExtArgs> | null
+    /**
+     * Filter which PublicSchedule to delete.
+     */
+    where: PublicScheduleWhereUniqueInput
+  }
+
+  /**
+   * PublicSchedule deleteMany
+   */
+  export type PublicScheduleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PublicSchedules to delete
+     */
+    where?: PublicScheduleWhereInput
+    /**
+     * Limit how many PublicSchedules to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PublicSchedule without action
+   */
+  export type PublicScheduleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PublicSchedule
+     */
+    select?: PublicScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PublicSchedule
+     */
+    omit?: PublicScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PublicScheduleInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -7584,6 +8896,20 @@ export namespace Prisma {
   };
 
   export type ScheduleScalarFieldEnum = (typeof ScheduleScalarFieldEnum)[keyof typeof ScheduleScalarFieldEnum]
+
+
+  export const PublicScheduleScalarFieldEnum: {
+    id: 'id',
+    serviceId: 'serviceId',
+    contractAt: 'contractAt',
+    description: 'description',
+    organizationId: 'organizationId',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PublicScheduleScalarFieldEnum = (typeof PublicScheduleScalarFieldEnum)[keyof typeof PublicScheduleScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7830,6 +9156,7 @@ export namespace Prisma {
     services?: ServiceListRelationFilter
     plans?: PlanListRelationFilter
     schedules?: ScheduleListRelationFilter
+    PublicSchedule?: PublicScheduleListRelationFilter
   }
 
   export type OrganizationOrderByWithRelationInput = {
@@ -7851,6 +9178,7 @@ export namespace Prisma {
     services?: ServiceOrderByRelationAggregateInput
     plans?: PlanOrderByRelationAggregateInput
     schedules?: ScheduleOrderByRelationAggregateInput
+    PublicSchedule?: PublicScheduleOrderByRelationAggregateInput
   }
 
   export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
@@ -7875,6 +9203,7 @@ export namespace Prisma {
     services?: ServiceListRelationFilter
     plans?: PlanListRelationFilter
     schedules?: ScheduleListRelationFilter
+    PublicSchedule?: PublicScheduleListRelationFilter
   }, "id" | "uuid">
 
   export type OrganizationOrderByWithAggregationInput = {
@@ -7936,6 +9265,7 @@ export namespace Prisma {
     organizationId?: IntFilter<"Service"> | number
     organization?: XOR<OrganizationScalarRelationFilter, OrganizationWhereInput>
     schedules?: ScheduleListRelationFilter
+    PublicSchedule?: PublicScheduleListRelationFilter
   }
 
   export type ServiceOrderByWithRelationInput = {
@@ -7952,6 +9282,7 @@ export namespace Prisma {
     organizationId?: SortOrder
     organization?: OrganizationOrderByWithRelationInput
     schedules?: ScheduleOrderByRelationAggregateInput
+    PublicSchedule?: PublicScheduleOrderByRelationAggregateInput
   }
 
   export type ServiceWhereUniqueInput = Prisma.AtLeast<{
@@ -7971,6 +9302,7 @@ export namespace Prisma {
     organizationId?: IntFilter<"Service"> | number
     organization?: XOR<OrganizationScalarRelationFilter, OrganizationWhereInput>
     schedules?: ScheduleListRelationFilter
+    PublicSchedule?: PublicScheduleListRelationFilter
   }, "id" | "uuid">
 
   export type ServiceOrderByWithAggregationInput = {
@@ -8184,6 +9516,81 @@ export namespace Prisma {
     canceledAt?: DateTimeNullableWithAggregatesFilter<"Schedule"> | Date | string | null
   }
 
+  export type PublicScheduleWhereInput = {
+    AND?: PublicScheduleWhereInput | PublicScheduleWhereInput[]
+    OR?: PublicScheduleWhereInput[]
+    NOT?: PublicScheduleWhereInput | PublicScheduleWhereInput[]
+    id?: IntFilter<"PublicSchedule"> | number
+    serviceId?: IntFilter<"PublicSchedule"> | number
+    contractAt?: DateTimeFilter<"PublicSchedule"> | Date | string
+    description?: StringFilter<"PublicSchedule"> | string
+    organizationId?: IntFilter<"PublicSchedule"> | number
+    status?: EnumStatusSchedulesFilter<"PublicSchedule"> | $Enums.StatusSchedules
+    createdAt?: DateTimeFilter<"PublicSchedule"> | Date | string
+    updatedAt?: DateTimeFilter<"PublicSchedule"> | Date | string
+    service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
+    organization?: XOR<OrganizationScalarRelationFilter, OrganizationWhereInput>
+  }
+
+  export type PublicScheduleOrderByWithRelationInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    contractAt?: SortOrder
+    description?: SortOrder
+    organizationId?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    service?: ServiceOrderByWithRelationInput
+    organization?: OrganizationOrderByWithRelationInput
+  }
+
+  export type PublicScheduleWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: PublicScheduleWhereInput | PublicScheduleWhereInput[]
+    OR?: PublicScheduleWhereInput[]
+    NOT?: PublicScheduleWhereInput | PublicScheduleWhereInput[]
+    serviceId?: IntFilter<"PublicSchedule"> | number
+    contractAt?: DateTimeFilter<"PublicSchedule"> | Date | string
+    description?: StringFilter<"PublicSchedule"> | string
+    organizationId?: IntFilter<"PublicSchedule"> | number
+    status?: EnumStatusSchedulesFilter<"PublicSchedule"> | $Enums.StatusSchedules
+    createdAt?: DateTimeFilter<"PublicSchedule"> | Date | string
+    updatedAt?: DateTimeFilter<"PublicSchedule"> | Date | string
+    service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
+    organization?: XOR<OrganizationScalarRelationFilter, OrganizationWhereInput>
+  }, "id">
+
+  export type PublicScheduleOrderByWithAggregationInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    contractAt?: SortOrder
+    description?: SortOrder
+    organizationId?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PublicScheduleCountOrderByAggregateInput
+    _avg?: PublicScheduleAvgOrderByAggregateInput
+    _max?: PublicScheduleMaxOrderByAggregateInput
+    _min?: PublicScheduleMinOrderByAggregateInput
+    _sum?: PublicScheduleSumOrderByAggregateInput
+  }
+
+  export type PublicScheduleScalarWhereWithAggregatesInput = {
+    AND?: PublicScheduleScalarWhereWithAggregatesInput | PublicScheduleScalarWhereWithAggregatesInput[]
+    OR?: PublicScheduleScalarWhereWithAggregatesInput[]
+    NOT?: PublicScheduleScalarWhereWithAggregatesInput | PublicScheduleScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"PublicSchedule"> | number
+    serviceId?: IntWithAggregatesFilter<"PublicSchedule"> | number
+    contractAt?: DateTimeWithAggregatesFilter<"PublicSchedule"> | Date | string
+    description?: StringWithAggregatesFilter<"PublicSchedule"> | string
+    organizationId?: IntWithAggregatesFilter<"PublicSchedule"> | number
+    status?: EnumStatusSchedulesWithAggregatesFilter<"PublicSchedule"> | $Enums.StatusSchedules
+    createdAt?: DateTimeWithAggregatesFilter<"PublicSchedule"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PublicSchedule"> | Date | string
+  }
+
   export type UserCreateInput = {
     uuid?: string
     name: string
@@ -8297,6 +9704,7 @@ export namespace Prisma {
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
+    PublicSchedule?: PublicScheduleCreateNestedManyWithoutOrganizationInput
   }
 
   export type OrganizationUncheckedCreateInput = {
@@ -8317,6 +9725,7 @@ export namespace Prisma {
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
+    PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
   }
 
   export type OrganizationUpdateInput = {
@@ -8336,6 +9745,7 @@ export namespace Prisma {
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
+    PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
   }
 
   export type OrganizationUncheckedUpdateInput = {
@@ -8356,6 +9766,7 @@ export namespace Prisma {
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
+    PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
   }
 
   export type OrganizationCreateManyInput = {
@@ -8419,6 +9830,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     organization: OrganizationCreateNestedOneWithoutServicesInput
     schedules?: ScheduleCreateNestedManyWithoutServiceInput
+    PublicSchedule?: PublicScheduleCreateNestedManyWithoutServiceInput
   }
 
   export type ServiceUncheckedCreateInput = {
@@ -8434,6 +9846,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     organizationId: number
     schedules?: ScheduleUncheckedCreateNestedManyWithoutServiceInput
+    PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutServiceInput
   }
 
   export type ServiceUpdateInput = {
@@ -8448,6 +9861,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     organization?: OrganizationUpdateOneRequiredWithoutServicesNestedInput
     schedules?: ScheduleUpdateManyWithoutServiceNestedInput
+    PublicSchedule?: PublicScheduleUpdateManyWithoutServiceNestedInput
   }
 
   export type ServiceUncheckedUpdateInput = {
@@ -8463,6 +9877,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     organizationId?: IntFieldUpdateOperationsInput | number
     schedules?: ScheduleUncheckedUpdateManyWithoutServiceNestedInput
+    PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutServiceNestedInput
   }
 
   export type ServiceCreateManyInput = {
@@ -8595,7 +10010,7 @@ export namespace Prisma {
   export type ScheduleCreateInput = {
     uuid?: string
     contractAt: Date | string
-    status: $Enums.StatusSchedules
+    status?: $Enums.StatusSchedules
     rememberUser: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8612,7 +10027,7 @@ export namespace Prisma {
     userId: number
     organizationId: number
     contractAt: Date | string
-    status: $Enums.StatusSchedules
+    status?: $Enums.StatusSchedules
     rememberUser: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8653,7 +10068,7 @@ export namespace Prisma {
     userId: number
     organizationId: number
     contractAt: Date | string
-    status: $Enums.StatusSchedules
+    status?: $Enums.StatusSchedules
     rememberUser: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8682,6 +10097,78 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PublicScheduleCreateInput = {
+    contractAt: Date | string
+    description: string
+    status?: $Enums.StatusSchedules
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    service: ServiceCreateNestedOneWithoutPublicScheduleInput
+    organization: OrganizationCreateNestedOneWithoutPublicScheduleInput
+  }
+
+  export type PublicScheduleUncheckedCreateInput = {
+    id?: number
+    serviceId: number
+    contractAt: Date | string
+    description: string
+    organizationId: number
+    status?: $Enums.StatusSchedules
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PublicScheduleUpdateInput = {
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    service?: ServiceUpdateOneRequiredWithoutPublicScheduleNestedInput
+    organization?: OrganizationUpdateOneRequiredWithoutPublicScheduleNestedInput
+  }
+
+  export type PublicScheduleUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    serviceId?: IntFieldUpdateOperationsInput | number
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    organizationId?: IntFieldUpdateOperationsInput | number
+    status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicScheduleCreateManyInput = {
+    id?: number
+    serviceId: number
+    contractAt: Date | string
+    description: string
+    organizationId: number
+    status?: $Enums.StatusSchedules
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PublicScheduleUpdateManyMutationInput = {
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicScheduleUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    serviceId?: IntFieldUpdateOperationsInput | number
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    organizationId?: IntFieldUpdateOperationsInput | number
+    status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -8939,6 +10426,12 @@ export namespace Prisma {
     none?: PlanWhereInput
   }
 
+  export type PublicScheduleListRelationFilter = {
+    every?: PublicScheduleWhereInput
+    some?: PublicScheduleWhereInput
+    none?: PublicScheduleWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -8949,6 +10442,10 @@ export namespace Prisma {
   }
 
   export type PlanOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PublicScheduleOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9308,6 +10805,51 @@ export namespace Prisma {
     _max?: NestedEnumStatusSchedulesFilter<$PrismaModel>
   }
 
+  export type PublicScheduleCountOrderByAggregateInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    contractAt?: SortOrder
+    description?: SortOrder
+    organizationId?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PublicScheduleAvgOrderByAggregateInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    organizationId?: SortOrder
+  }
+
+  export type PublicScheduleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    contractAt?: SortOrder
+    description?: SortOrder
+    organizationId?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PublicScheduleMinOrderByAggregateInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    contractAt?: SortOrder
+    description?: SortOrder
+    organizationId?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PublicScheduleSumOrderByAggregateInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    organizationId?: SortOrder
+  }
+
   export type OrganizationCreateNestedManyWithoutUserInput = {
     create?: XOR<OrganizationCreateWithoutUserInput, OrganizationUncheckedCreateWithoutUserInput> | OrganizationCreateWithoutUserInput[] | OrganizationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: OrganizationCreateOrConnectWithoutUserInput | OrganizationCreateOrConnectWithoutUserInput[]
@@ -9439,6 +10981,13 @@ export namespace Prisma {
     connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
   }
 
+  export type PublicScheduleCreateNestedManyWithoutOrganizationInput = {
+    create?: XOR<PublicScheduleCreateWithoutOrganizationInput, PublicScheduleUncheckedCreateWithoutOrganizationInput> | PublicScheduleCreateWithoutOrganizationInput[] | PublicScheduleUncheckedCreateWithoutOrganizationInput[]
+    connectOrCreate?: PublicScheduleCreateOrConnectWithoutOrganizationInput | PublicScheduleCreateOrConnectWithoutOrganizationInput[]
+    createMany?: PublicScheduleCreateManyOrganizationInputEnvelope
+    connect?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+  }
+
   export type ServiceUncheckedCreateNestedManyWithoutOrganizationInput = {
     create?: XOR<ServiceCreateWithoutOrganizationInput, ServiceUncheckedCreateWithoutOrganizationInput> | ServiceCreateWithoutOrganizationInput[] | ServiceUncheckedCreateWithoutOrganizationInput[]
     connectOrCreate?: ServiceCreateOrConnectWithoutOrganizationInput | ServiceCreateOrConnectWithoutOrganizationInput[]
@@ -9458,6 +11007,13 @@ export namespace Prisma {
     connectOrCreate?: ScheduleCreateOrConnectWithoutOrganizationInput | ScheduleCreateOrConnectWithoutOrganizationInput[]
     createMany?: ScheduleCreateManyOrganizationInputEnvelope
     connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  }
+
+  export type PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput = {
+    create?: XOR<PublicScheduleCreateWithoutOrganizationInput, PublicScheduleUncheckedCreateWithoutOrganizationInput> | PublicScheduleCreateWithoutOrganizationInput[] | PublicScheduleUncheckedCreateWithoutOrganizationInput[]
+    connectOrCreate?: PublicScheduleCreateOrConnectWithoutOrganizationInput | PublicScheduleCreateOrConnectWithoutOrganizationInput[]
+    createMany?: PublicScheduleCreateManyOrganizationInputEnvelope
+    connect?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -9524,6 +11080,20 @@ export namespace Prisma {
     deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
   }
 
+  export type PublicScheduleUpdateManyWithoutOrganizationNestedInput = {
+    create?: XOR<PublicScheduleCreateWithoutOrganizationInput, PublicScheduleUncheckedCreateWithoutOrganizationInput> | PublicScheduleCreateWithoutOrganizationInput[] | PublicScheduleUncheckedCreateWithoutOrganizationInput[]
+    connectOrCreate?: PublicScheduleCreateOrConnectWithoutOrganizationInput | PublicScheduleCreateOrConnectWithoutOrganizationInput[]
+    upsert?: PublicScheduleUpsertWithWhereUniqueWithoutOrganizationInput | PublicScheduleUpsertWithWhereUniqueWithoutOrganizationInput[]
+    createMany?: PublicScheduleCreateManyOrganizationInputEnvelope
+    set?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    disconnect?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    delete?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    connect?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    update?: PublicScheduleUpdateWithWhereUniqueWithoutOrganizationInput | PublicScheduleUpdateWithWhereUniqueWithoutOrganizationInput[]
+    updateMany?: PublicScheduleUpdateManyWithWhereWithoutOrganizationInput | PublicScheduleUpdateManyWithWhereWithoutOrganizationInput[]
+    deleteMany?: PublicScheduleScalarWhereInput | PublicScheduleScalarWhereInput[]
+  }
+
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -9574,6 +11144,20 @@ export namespace Prisma {
     deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
   }
 
+  export type PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput = {
+    create?: XOR<PublicScheduleCreateWithoutOrganizationInput, PublicScheduleUncheckedCreateWithoutOrganizationInput> | PublicScheduleCreateWithoutOrganizationInput[] | PublicScheduleUncheckedCreateWithoutOrganizationInput[]
+    connectOrCreate?: PublicScheduleCreateOrConnectWithoutOrganizationInput | PublicScheduleCreateOrConnectWithoutOrganizationInput[]
+    upsert?: PublicScheduleUpsertWithWhereUniqueWithoutOrganizationInput | PublicScheduleUpsertWithWhereUniqueWithoutOrganizationInput[]
+    createMany?: PublicScheduleCreateManyOrganizationInputEnvelope
+    set?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    disconnect?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    delete?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    connect?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    update?: PublicScheduleUpdateWithWhereUniqueWithoutOrganizationInput | PublicScheduleUpdateWithWhereUniqueWithoutOrganizationInput[]
+    updateMany?: PublicScheduleUpdateManyWithWhereWithoutOrganizationInput | PublicScheduleUpdateManyWithWhereWithoutOrganizationInput[]
+    deleteMany?: PublicScheduleScalarWhereInput | PublicScheduleScalarWhereInput[]
+  }
+
   export type OrganizationCreateNestedOneWithoutServicesInput = {
     create?: XOR<OrganizationCreateWithoutServicesInput, OrganizationUncheckedCreateWithoutServicesInput>
     connectOrCreate?: OrganizationCreateOrConnectWithoutServicesInput
@@ -9587,11 +11171,25 @@ export namespace Prisma {
     connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
   }
 
+  export type PublicScheduleCreateNestedManyWithoutServiceInput = {
+    create?: XOR<PublicScheduleCreateWithoutServiceInput, PublicScheduleUncheckedCreateWithoutServiceInput> | PublicScheduleCreateWithoutServiceInput[] | PublicScheduleUncheckedCreateWithoutServiceInput[]
+    connectOrCreate?: PublicScheduleCreateOrConnectWithoutServiceInput | PublicScheduleCreateOrConnectWithoutServiceInput[]
+    createMany?: PublicScheduleCreateManyServiceInputEnvelope
+    connect?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+  }
+
   export type ScheduleUncheckedCreateNestedManyWithoutServiceInput = {
     create?: XOR<ScheduleCreateWithoutServiceInput, ScheduleUncheckedCreateWithoutServiceInput> | ScheduleCreateWithoutServiceInput[] | ScheduleUncheckedCreateWithoutServiceInput[]
     connectOrCreate?: ScheduleCreateOrConnectWithoutServiceInput | ScheduleCreateOrConnectWithoutServiceInput[]
     createMany?: ScheduleCreateManyServiceInputEnvelope
     connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  }
+
+  export type PublicScheduleUncheckedCreateNestedManyWithoutServiceInput = {
+    create?: XOR<PublicScheduleCreateWithoutServiceInput, PublicScheduleUncheckedCreateWithoutServiceInput> | PublicScheduleCreateWithoutServiceInput[] | PublicScheduleUncheckedCreateWithoutServiceInput[]
+    connectOrCreate?: PublicScheduleCreateOrConnectWithoutServiceInput | PublicScheduleCreateOrConnectWithoutServiceInput[]
+    createMany?: PublicScheduleCreateManyServiceInputEnvelope
+    connect?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -9624,6 +11222,20 @@ export namespace Prisma {
     deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
   }
 
+  export type PublicScheduleUpdateManyWithoutServiceNestedInput = {
+    create?: XOR<PublicScheduleCreateWithoutServiceInput, PublicScheduleUncheckedCreateWithoutServiceInput> | PublicScheduleCreateWithoutServiceInput[] | PublicScheduleUncheckedCreateWithoutServiceInput[]
+    connectOrCreate?: PublicScheduleCreateOrConnectWithoutServiceInput | PublicScheduleCreateOrConnectWithoutServiceInput[]
+    upsert?: PublicScheduleUpsertWithWhereUniqueWithoutServiceInput | PublicScheduleUpsertWithWhereUniqueWithoutServiceInput[]
+    createMany?: PublicScheduleCreateManyServiceInputEnvelope
+    set?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    disconnect?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    delete?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    connect?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    update?: PublicScheduleUpdateWithWhereUniqueWithoutServiceInput | PublicScheduleUpdateWithWhereUniqueWithoutServiceInput[]
+    updateMany?: PublicScheduleUpdateManyWithWhereWithoutServiceInput | PublicScheduleUpdateManyWithWhereWithoutServiceInput[]
+    deleteMany?: PublicScheduleScalarWhereInput | PublicScheduleScalarWhereInput[]
+  }
+
   export type ScheduleUncheckedUpdateManyWithoutServiceNestedInput = {
     create?: XOR<ScheduleCreateWithoutServiceInput, ScheduleUncheckedCreateWithoutServiceInput> | ScheduleCreateWithoutServiceInput[] | ScheduleUncheckedCreateWithoutServiceInput[]
     connectOrCreate?: ScheduleCreateOrConnectWithoutServiceInput | ScheduleCreateOrConnectWithoutServiceInput[]
@@ -9636,6 +11248,20 @@ export namespace Prisma {
     update?: ScheduleUpdateWithWhereUniqueWithoutServiceInput | ScheduleUpdateWithWhereUniqueWithoutServiceInput[]
     updateMany?: ScheduleUpdateManyWithWhereWithoutServiceInput | ScheduleUpdateManyWithWhereWithoutServiceInput[]
     deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
+  }
+
+  export type PublicScheduleUncheckedUpdateManyWithoutServiceNestedInput = {
+    create?: XOR<PublicScheduleCreateWithoutServiceInput, PublicScheduleUncheckedCreateWithoutServiceInput> | PublicScheduleCreateWithoutServiceInput[] | PublicScheduleUncheckedCreateWithoutServiceInput[]
+    connectOrCreate?: PublicScheduleCreateOrConnectWithoutServiceInput | PublicScheduleCreateOrConnectWithoutServiceInput[]
+    upsert?: PublicScheduleUpsertWithWhereUniqueWithoutServiceInput | PublicScheduleUpsertWithWhereUniqueWithoutServiceInput[]
+    createMany?: PublicScheduleCreateManyServiceInputEnvelope
+    set?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    disconnect?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    delete?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    connect?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+    update?: PublicScheduleUpdateWithWhereUniqueWithoutServiceInput | PublicScheduleUpdateWithWhereUniqueWithoutServiceInput[]
+    updateMany?: PublicScheduleUpdateManyWithWhereWithoutServiceInput | PublicScheduleUpdateManyWithWhereWithoutServiceInput[]
+    deleteMany?: PublicScheduleScalarWhereInput | PublicScheduleScalarWhereInput[]
   }
 
   export type OrganizationCreateNestedOneWithoutPlansInput = {
@@ -9700,6 +11326,34 @@ export namespace Prisma {
     upsert?: OrganizationUpsertWithoutSchedulesInput
     connect?: OrganizationWhereUniqueInput
     update?: XOR<XOR<OrganizationUpdateToOneWithWhereWithoutSchedulesInput, OrganizationUpdateWithoutSchedulesInput>, OrganizationUncheckedUpdateWithoutSchedulesInput>
+  }
+
+  export type ServiceCreateNestedOneWithoutPublicScheduleInput = {
+    create?: XOR<ServiceCreateWithoutPublicScheduleInput, ServiceUncheckedCreateWithoutPublicScheduleInput>
+    connectOrCreate?: ServiceCreateOrConnectWithoutPublicScheduleInput
+    connect?: ServiceWhereUniqueInput
+  }
+
+  export type OrganizationCreateNestedOneWithoutPublicScheduleInput = {
+    create?: XOR<OrganizationCreateWithoutPublicScheduleInput, OrganizationUncheckedCreateWithoutPublicScheduleInput>
+    connectOrCreate?: OrganizationCreateOrConnectWithoutPublicScheduleInput
+    connect?: OrganizationWhereUniqueInput
+  }
+
+  export type ServiceUpdateOneRequiredWithoutPublicScheduleNestedInput = {
+    create?: XOR<ServiceCreateWithoutPublicScheduleInput, ServiceUncheckedCreateWithoutPublicScheduleInput>
+    connectOrCreate?: ServiceCreateOrConnectWithoutPublicScheduleInput
+    upsert?: ServiceUpsertWithoutPublicScheduleInput
+    connect?: ServiceWhereUniqueInput
+    update?: XOR<XOR<ServiceUpdateToOneWithWhereWithoutPublicScheduleInput, ServiceUpdateWithoutPublicScheduleInput>, ServiceUncheckedUpdateWithoutPublicScheduleInput>
+  }
+
+  export type OrganizationUpdateOneRequiredWithoutPublicScheduleNestedInput = {
+    create?: XOR<OrganizationCreateWithoutPublicScheduleInput, OrganizationUncheckedCreateWithoutPublicScheduleInput>
+    connectOrCreate?: OrganizationCreateOrConnectWithoutPublicScheduleInput
+    upsert?: OrganizationUpsertWithoutPublicScheduleInput
+    connect?: OrganizationWhereUniqueInput
+    update?: XOR<XOR<OrganizationUpdateToOneWithWhereWithoutPublicScheduleInput, OrganizationUpdateWithoutPublicScheduleInput>, OrganizationUncheckedUpdateWithoutPublicScheduleInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -10011,6 +11665,7 @@ export namespace Prisma {
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
+    PublicSchedule?: PublicScheduleCreateNestedManyWithoutOrganizationInput
   }
 
   export type OrganizationUncheckedCreateWithoutUserInput = {
@@ -10030,6 +11685,7 @@ export namespace Prisma {
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
+    PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
   }
 
   export type OrganizationCreateOrConnectWithoutUserInput = {
@@ -10045,7 +11701,7 @@ export namespace Prisma {
   export type ScheduleCreateWithoutUserInput = {
     uuid?: string
     contractAt: Date | string
-    status: $Enums.StatusSchedules
+    status?: $Enums.StatusSchedules
     rememberUser: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10060,7 +11716,7 @@ export namespace Prisma {
     serviceId: number
     organizationId: number
     contractAt: Date | string
-    status: $Enums.StatusSchedules
+    status?: $Enums.StatusSchedules
     rememberUser: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10189,6 +11845,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     schedules?: ScheduleCreateNestedManyWithoutServiceInput
+    PublicSchedule?: PublicScheduleCreateNestedManyWithoutServiceInput
   }
 
   export type ServiceUncheckedCreateWithoutOrganizationInput = {
@@ -10203,6 +11860,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     schedules?: ScheduleUncheckedCreateNestedManyWithoutServiceInput
+    PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutServiceInput
   }
 
   export type ServiceCreateOrConnectWithoutOrganizationInput = {
@@ -10251,7 +11909,7 @@ export namespace Prisma {
   export type ScheduleCreateWithoutOrganizationInput = {
     uuid?: string
     contractAt: Date | string
-    status: $Enums.StatusSchedules
+    status?: $Enums.StatusSchedules
     rememberUser: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10266,7 +11924,7 @@ export namespace Prisma {
     serviceId: number
     userId: number
     contractAt: Date | string
-    status: $Enums.StatusSchedules
+    status?: $Enums.StatusSchedules
     rememberUser: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10280,6 +11938,35 @@ export namespace Prisma {
 
   export type ScheduleCreateManyOrganizationInputEnvelope = {
     data: ScheduleCreateManyOrganizationInput | ScheduleCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PublicScheduleCreateWithoutOrganizationInput = {
+    contractAt: Date | string
+    description: string
+    status?: $Enums.StatusSchedules
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    service: ServiceCreateNestedOneWithoutPublicScheduleInput
+  }
+
+  export type PublicScheduleUncheckedCreateWithoutOrganizationInput = {
+    id?: number
+    serviceId: number
+    contractAt: Date | string
+    description: string
+    status?: $Enums.StatusSchedules
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PublicScheduleCreateOrConnectWithoutOrganizationInput = {
+    where: PublicScheduleWhereUniqueInput
+    create: XOR<PublicScheduleCreateWithoutOrganizationInput, PublicScheduleUncheckedCreateWithoutOrganizationInput>
+  }
+
+  export type PublicScheduleCreateManyOrganizationInputEnvelope = {
+    data: PublicScheduleCreateManyOrganizationInput | PublicScheduleCreateManyOrganizationInput[]
     skipDuplicates?: boolean
   }
 
@@ -10402,6 +12089,36 @@ export namespace Prisma {
     data: XOR<ScheduleUpdateManyMutationInput, ScheduleUncheckedUpdateManyWithoutOrganizationInput>
   }
 
+  export type PublicScheduleUpsertWithWhereUniqueWithoutOrganizationInput = {
+    where: PublicScheduleWhereUniqueInput
+    update: XOR<PublicScheduleUpdateWithoutOrganizationInput, PublicScheduleUncheckedUpdateWithoutOrganizationInput>
+    create: XOR<PublicScheduleCreateWithoutOrganizationInput, PublicScheduleUncheckedCreateWithoutOrganizationInput>
+  }
+
+  export type PublicScheduleUpdateWithWhereUniqueWithoutOrganizationInput = {
+    where: PublicScheduleWhereUniqueInput
+    data: XOR<PublicScheduleUpdateWithoutOrganizationInput, PublicScheduleUncheckedUpdateWithoutOrganizationInput>
+  }
+
+  export type PublicScheduleUpdateManyWithWhereWithoutOrganizationInput = {
+    where: PublicScheduleScalarWhereInput
+    data: XOR<PublicScheduleUpdateManyMutationInput, PublicScheduleUncheckedUpdateManyWithoutOrganizationInput>
+  }
+
+  export type PublicScheduleScalarWhereInput = {
+    AND?: PublicScheduleScalarWhereInput | PublicScheduleScalarWhereInput[]
+    OR?: PublicScheduleScalarWhereInput[]
+    NOT?: PublicScheduleScalarWhereInput | PublicScheduleScalarWhereInput[]
+    id?: IntFilter<"PublicSchedule"> | number
+    serviceId?: IntFilter<"PublicSchedule"> | number
+    contractAt?: DateTimeFilter<"PublicSchedule"> | Date | string
+    description?: StringFilter<"PublicSchedule"> | string
+    organizationId?: IntFilter<"PublicSchedule"> | number
+    status?: EnumStatusSchedulesFilter<"PublicSchedule"> | $Enums.StatusSchedules
+    createdAt?: DateTimeFilter<"PublicSchedule"> | Date | string
+    updatedAt?: DateTimeFilter<"PublicSchedule"> | Date | string
+  }
+
   export type OrganizationCreateWithoutServicesInput = {
     uuid?: string
     social_name: string
@@ -10418,6 +12135,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
+    PublicSchedule?: PublicScheduleCreateNestedManyWithoutOrganizationInput
   }
 
   export type OrganizationUncheckedCreateWithoutServicesInput = {
@@ -10437,6 +12155,7 @@ export namespace Prisma {
     userId?: number | null
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
+    PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
   }
 
   export type OrganizationCreateOrConnectWithoutServicesInput = {
@@ -10447,7 +12166,7 @@ export namespace Prisma {
   export type ScheduleCreateWithoutServiceInput = {
     uuid?: string
     contractAt: Date | string
-    status: $Enums.StatusSchedules
+    status?: $Enums.StatusSchedules
     rememberUser: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10462,7 +12181,7 @@ export namespace Prisma {
     userId: number
     organizationId: number
     contractAt: Date | string
-    status: $Enums.StatusSchedules
+    status?: $Enums.StatusSchedules
     rememberUser: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10476,6 +12195,35 @@ export namespace Prisma {
 
   export type ScheduleCreateManyServiceInputEnvelope = {
     data: ScheduleCreateManyServiceInput | ScheduleCreateManyServiceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PublicScheduleCreateWithoutServiceInput = {
+    contractAt: Date | string
+    description: string
+    status?: $Enums.StatusSchedules
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    organization: OrganizationCreateNestedOneWithoutPublicScheduleInput
+  }
+
+  export type PublicScheduleUncheckedCreateWithoutServiceInput = {
+    id?: number
+    contractAt: Date | string
+    description: string
+    organizationId: number
+    status?: $Enums.StatusSchedules
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PublicScheduleCreateOrConnectWithoutServiceInput = {
+    where: PublicScheduleWhereUniqueInput
+    create: XOR<PublicScheduleCreateWithoutServiceInput, PublicScheduleUncheckedCreateWithoutServiceInput>
+  }
+
+  export type PublicScheduleCreateManyServiceInputEnvelope = {
+    data: PublicScheduleCreateManyServiceInput | PublicScheduleCreateManyServiceInput[]
     skipDuplicates?: boolean
   }
 
@@ -10506,6 +12254,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
+    PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
   }
 
   export type OrganizationUncheckedUpdateWithoutServicesInput = {
@@ -10525,6 +12274,7 @@ export namespace Prisma {
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
+    PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
   }
 
   export type ScheduleUpsertWithWhereUniqueWithoutServiceInput = {
@@ -10543,6 +12293,22 @@ export namespace Prisma {
     data: XOR<ScheduleUpdateManyMutationInput, ScheduleUncheckedUpdateManyWithoutServiceInput>
   }
 
+  export type PublicScheduleUpsertWithWhereUniqueWithoutServiceInput = {
+    where: PublicScheduleWhereUniqueInput
+    update: XOR<PublicScheduleUpdateWithoutServiceInput, PublicScheduleUncheckedUpdateWithoutServiceInput>
+    create: XOR<PublicScheduleCreateWithoutServiceInput, PublicScheduleUncheckedCreateWithoutServiceInput>
+  }
+
+  export type PublicScheduleUpdateWithWhereUniqueWithoutServiceInput = {
+    where: PublicScheduleWhereUniqueInput
+    data: XOR<PublicScheduleUpdateWithoutServiceInput, PublicScheduleUncheckedUpdateWithoutServiceInput>
+  }
+
+  export type PublicScheduleUpdateManyWithWhereWithoutServiceInput = {
+    where: PublicScheduleScalarWhereInput
+    data: XOR<PublicScheduleUpdateManyMutationInput, PublicScheduleUncheckedUpdateManyWithoutServiceInput>
+  }
+
   export type OrganizationCreateWithoutPlansInput = {
     uuid?: string
     social_name: string
@@ -10559,6 +12325,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutOrganizationInput
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
+    PublicSchedule?: PublicScheduleCreateNestedManyWithoutOrganizationInput
   }
 
   export type OrganizationUncheckedCreateWithoutPlansInput = {
@@ -10578,6 +12345,7 @@ export namespace Prisma {
     userId?: number | null
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
+    PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
   }
 
   export type OrganizationCreateOrConnectWithoutPlansInput = {
@@ -10612,6 +12380,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutOrganizationNestedInput
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
+    PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
   }
 
   export type OrganizationUncheckedUpdateWithoutPlansInput = {
@@ -10631,6 +12400,7 @@ export namespace Prisma {
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
+    PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
   }
 
   export type ServiceCreateWithoutSchedulesInput = {
@@ -10644,6 +12414,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     organization: OrganizationCreateNestedOneWithoutServicesInput
+    PublicSchedule?: PublicScheduleCreateNestedManyWithoutServiceInput
   }
 
   export type ServiceUncheckedCreateWithoutSchedulesInput = {
@@ -10658,6 +12429,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     organizationId: number
+    PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutServiceInput
   }
 
   export type ServiceCreateOrConnectWithoutSchedulesInput = {
@@ -10713,6 +12485,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutOrganizationInput
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
+    PublicSchedule?: PublicScheduleCreateNestedManyWithoutOrganizationInput
   }
 
   export type OrganizationUncheckedCreateWithoutSchedulesInput = {
@@ -10732,6 +12505,7 @@ export namespace Prisma {
     userId?: number | null
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
+    PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
   }
 
   export type OrganizationCreateOrConnectWithoutSchedulesInput = {
@@ -10761,6 +12535,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     organization?: OrganizationUpdateOneRequiredWithoutServicesNestedInput
+    PublicSchedule?: PublicScheduleUpdateManyWithoutServiceNestedInput
   }
 
   export type ServiceUncheckedUpdateWithoutSchedulesInput = {
@@ -10775,6 +12550,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     organizationId?: IntFieldUpdateOperationsInput | number
+    PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutServiceNestedInput
   }
 
   export type UserUpsertWithoutSchedulesInput = {
@@ -10842,6 +12618,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutOrganizationNestedInput
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
+    PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
   }
 
   export type OrganizationUncheckedUpdateWithoutSchedulesInput = {
@@ -10861,6 +12638,175 @@ export namespace Prisma {
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
+    PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
+  }
+
+  export type ServiceCreateWithoutPublicScheduleInput = {
+    uuid?: string
+    name: string
+    price: number
+    is_active?: boolean
+    duration: string
+    is_quantitative?: boolean
+    limit_for_day?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    organization: OrganizationCreateNestedOneWithoutServicesInput
+    schedules?: ScheduleCreateNestedManyWithoutServiceInput
+  }
+
+  export type ServiceUncheckedCreateWithoutPublicScheduleInput = {
+    id?: number
+    uuid?: string
+    name: string
+    price: number
+    is_active?: boolean
+    duration: string
+    is_quantitative?: boolean
+    limit_for_day?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    organizationId: number
+    schedules?: ScheduleUncheckedCreateNestedManyWithoutServiceInput
+  }
+
+  export type ServiceCreateOrConnectWithoutPublicScheduleInput = {
+    where: ServiceWhereUniqueInput
+    create: XOR<ServiceCreateWithoutPublicScheduleInput, ServiceUncheckedCreateWithoutPublicScheduleInput>
+  }
+
+  export type OrganizationCreateWithoutPublicScheduleInput = {
+    uuid?: string
+    social_name: string
+    fantasy_name: string
+    cnpj: string
+    email: string
+    phone: string
+    is_active?: boolean
+    office: string
+    image_path?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    inactiveAt?: Date | string | null
+    user?: UserCreateNestedOneWithoutOrganizationInput
+    services?: ServiceCreateNestedManyWithoutOrganizationInput
+    plans?: PlanCreateNestedManyWithoutOrganizationInput
+    schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
+  }
+
+  export type OrganizationUncheckedCreateWithoutPublicScheduleInput = {
+    id?: number
+    uuid?: string
+    social_name: string
+    fantasy_name: string
+    cnpj: string
+    email: string
+    phone: string
+    is_active?: boolean
+    office: string
+    image_path?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    inactiveAt?: Date | string | null
+    userId?: number | null
+    services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
+    plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
+    schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
+  }
+
+  export type OrganizationCreateOrConnectWithoutPublicScheduleInput = {
+    where: OrganizationWhereUniqueInput
+    create: XOR<OrganizationCreateWithoutPublicScheduleInput, OrganizationUncheckedCreateWithoutPublicScheduleInput>
+  }
+
+  export type ServiceUpsertWithoutPublicScheduleInput = {
+    update: XOR<ServiceUpdateWithoutPublicScheduleInput, ServiceUncheckedUpdateWithoutPublicScheduleInput>
+    create: XOR<ServiceCreateWithoutPublicScheduleInput, ServiceUncheckedCreateWithoutPublicScheduleInput>
+    where?: ServiceWhereInput
+  }
+
+  export type ServiceUpdateToOneWithWhereWithoutPublicScheduleInput = {
+    where?: ServiceWhereInput
+    data: XOR<ServiceUpdateWithoutPublicScheduleInput, ServiceUncheckedUpdateWithoutPublicScheduleInput>
+  }
+
+  export type ServiceUpdateWithoutPublicScheduleInput = {
+    uuid?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    duration?: StringFieldUpdateOperationsInput | string
+    is_quantitative?: BoolFieldUpdateOperationsInput | boolean
+    limit_for_day?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    organization?: OrganizationUpdateOneRequiredWithoutServicesNestedInput
+    schedules?: ScheduleUpdateManyWithoutServiceNestedInput
+  }
+
+  export type ServiceUncheckedUpdateWithoutPublicScheduleInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    uuid?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    duration?: StringFieldUpdateOperationsInput | string
+    is_quantitative?: BoolFieldUpdateOperationsInput | boolean
+    limit_for_day?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    organizationId?: IntFieldUpdateOperationsInput | number
+    schedules?: ScheduleUncheckedUpdateManyWithoutServiceNestedInput
+  }
+
+  export type OrganizationUpsertWithoutPublicScheduleInput = {
+    update: XOR<OrganizationUpdateWithoutPublicScheduleInput, OrganizationUncheckedUpdateWithoutPublicScheduleInput>
+    create: XOR<OrganizationCreateWithoutPublicScheduleInput, OrganizationUncheckedCreateWithoutPublicScheduleInput>
+    where?: OrganizationWhereInput
+  }
+
+  export type OrganizationUpdateToOneWithWhereWithoutPublicScheduleInput = {
+    where?: OrganizationWhereInput
+    data: XOR<OrganizationUpdateWithoutPublicScheduleInput, OrganizationUncheckedUpdateWithoutPublicScheduleInput>
+  }
+
+  export type OrganizationUpdateWithoutPublicScheduleInput = {
+    uuid?: StringFieldUpdateOperationsInput | string
+    social_name?: StringFieldUpdateOperationsInput | string
+    fantasy_name?: StringFieldUpdateOperationsInput | string
+    cnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    office?: StringFieldUpdateOperationsInput | string
+    image_path?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneWithoutOrganizationNestedInput
+    services?: ServiceUpdateManyWithoutOrganizationNestedInput
+    plans?: PlanUpdateManyWithoutOrganizationNestedInput
+    schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
+  }
+
+  export type OrganizationUncheckedUpdateWithoutPublicScheduleInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    uuid?: StringFieldUpdateOperationsInput | string
+    social_name?: StringFieldUpdateOperationsInput | string
+    fantasy_name?: StringFieldUpdateOperationsInput | string
+    cnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    office?: StringFieldUpdateOperationsInput | string
+    image_path?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
+    plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
+    schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
   }
 
   export type OrganizationCreateManyUserInput = {
@@ -10885,7 +12831,7 @@ export namespace Prisma {
     serviceId: number
     organizationId: number
     contractAt: Date | string
-    status: $Enums.StatusSchedules
+    status?: $Enums.StatusSchedules
     rememberUser: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10908,6 +12854,7 @@ export namespace Prisma {
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
+    PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
   }
 
   export type OrganizationUncheckedUpdateWithoutUserInput = {
@@ -10927,6 +12874,7 @@ export namespace Prisma {
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
+    PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
   }
 
   export type OrganizationUncheckedUpdateManyWithoutUserInput = {
@@ -11014,11 +12962,21 @@ export namespace Prisma {
     serviceId: number
     userId: number
     contractAt: Date | string
-    status: $Enums.StatusSchedules
+    status?: $Enums.StatusSchedules
     rememberUser: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     canceledAt?: Date | string | null
+  }
+
+  export type PublicScheduleCreateManyOrganizationInput = {
+    id?: number
+    serviceId: number
+    contractAt: Date | string
+    description: string
+    status?: $Enums.StatusSchedules
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ServiceUpdateWithoutOrganizationInput = {
@@ -11032,6 +12990,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     schedules?: ScheduleUpdateManyWithoutServiceNestedInput
+    PublicSchedule?: PublicScheduleUpdateManyWithoutServiceNestedInput
   }
 
   export type ServiceUncheckedUpdateWithoutOrganizationInput = {
@@ -11046,6 +13005,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     schedules?: ScheduleUncheckedUpdateManyWithoutServiceNestedInput
+    PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutServiceNestedInput
   }
 
   export type ServiceUncheckedUpdateManyWithoutOrganizationInput = {
@@ -11134,17 +13094,56 @@ export namespace Prisma {
     canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type PublicScheduleUpdateWithoutOrganizationInput = {
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    service?: ServiceUpdateOneRequiredWithoutPublicScheduleNestedInput
+  }
+
+  export type PublicScheduleUncheckedUpdateWithoutOrganizationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    serviceId?: IntFieldUpdateOperationsInput | number
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicScheduleUncheckedUpdateManyWithoutOrganizationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    serviceId?: IntFieldUpdateOperationsInput | number
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type ScheduleCreateManyServiceInput = {
     id?: number
     uuid?: string
     userId: number
     organizationId: number
     contractAt: Date | string
-    status: $Enums.StatusSchedules
+    status?: $Enums.StatusSchedules
     rememberUser: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     canceledAt?: Date | string | null
+  }
+
+  export type PublicScheduleCreateManyServiceInput = {
+    id?: number
+    contractAt: Date | string
+    description: string
+    organizationId: number
+    status?: $Enums.StatusSchedules
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ScheduleUpdateWithoutServiceInput = {
@@ -11183,6 +13182,35 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     canceledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PublicScheduleUpdateWithoutServiceInput = {
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    organization?: OrganizationUpdateOneRequiredWithoutPublicScheduleNestedInput
+  }
+
+  export type PublicScheduleUncheckedUpdateWithoutServiceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    organizationId?: IntFieldUpdateOperationsInput | number
+    status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PublicScheduleUncheckedUpdateManyWithoutServiceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    organizationId?: IntFieldUpdateOperationsInput | number
+    status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
