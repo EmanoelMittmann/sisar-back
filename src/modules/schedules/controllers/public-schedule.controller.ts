@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Patch } from '@nestjs/common';
+import { Body, Controller, Param, Post } from '@nestjs/common';
 import { CreatePublicScheduleService } from '../services/create-public-schedule.service';
 import { CreatePublicScheduleDto } from '../dtos/public-schedule.dto';
 
@@ -8,7 +8,7 @@ export class PublicScheduleController {
     private readonly createPublicScheduleService: CreatePublicScheduleService,
   ) {}
 
-  @Patch('/:uuid')
+  @Post('/:uuid')
   async toPublicSchedule(
     @Param('uuid') organization_uuid: string,
     @Body() body: Omit<CreatePublicScheduleDto, 'organization_uuid'>,

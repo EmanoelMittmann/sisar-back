@@ -39,7 +39,7 @@ export class AuthMiddleware implements NestMiddleware {
       },
     );
 
-    const findById = this.user_service.execute(verifyToken.sub);
+    const findById = await this.user_service.execute(verifyToken.sub);
 
     if (!findById) {
       throw new ForbiddenException({
