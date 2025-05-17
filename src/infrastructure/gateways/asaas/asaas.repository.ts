@@ -1,10 +1,5 @@
 import { HttpService } from '@nestjs/axios';
-import {
-  BadGatewayException,
-  HttpStatus,
-  Injectable,
-  Logger,
-} from '@nestjs/common';
+import { BadGatewayException, Injectable, Logger } from '@nestjs/common';
 import { IChargeRequiredInput } from 'src/shared/contracts/charge.contract';
 import { IAbstractGatewayRepository } from 'src/shared/contracts/gateway-abstract.contract';
 import { IChargeResponse } from './_contracts-response';

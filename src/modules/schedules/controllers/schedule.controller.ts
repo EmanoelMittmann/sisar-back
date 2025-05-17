@@ -19,6 +19,7 @@ import { ListScheduleService } from '../services/list-schedule.service';
 import { UpdateScheduleService } from '../services/update-schedule.service';
 import { UpdateScheduleDto } from '../dtos/update-scedule.dto';
 import { AuthGuard } from 'src/modules/auth/guards/auth.guard';
+import { ScheduleListDto } from '../dtos/schedule-list.dto';
 
 @Controller('schedules')
 export class ScheduleController {
@@ -37,14 +38,14 @@ export class ScheduleController {
   }
 
   @UseGuards(AuthGuard)
-  @Get('/')
-  async findAll(@UseAuthUser() user: UserEntity) {
+  @Get()
+  async findAll(@UseAuthUser() user: UserEntity): Promise<ScheduleListDto[]> {
     return this.listScheduleService.execute({ user_id: user.getUuid() });
   }
 
   @UseGuards(AuthGuard)
   @Get('/:id')
-  async findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string): Promise<ScheduleListDto> {
     const schedule = await this.findByUuidService.execute(id);
     return ScheduleSerializer.toListOne(schedule);
   }
@@ -60,6 +61,6 @@ export class ScheduleController {
   @Put('/:id')
   async update(@Param('id') id: string, @Body() body: UpdateScheduleDto) {
     const serialize = ScheduleSerializer.toEntity(body);
-    return this.updateScheduleService.execute(serialize);
+    await this.updateScheduleService.execute(serialize);
   }
 }

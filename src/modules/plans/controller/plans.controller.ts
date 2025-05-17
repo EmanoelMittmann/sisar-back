@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  Patch,
   Post,
   Put,
   UseGuards,
@@ -65,7 +66,7 @@ export class PlansController {
   }
 
   @UseGuards(AuthGuard)
-  @Put(':id')
+  @Put('/update/:id')
   async update(
     @Param('id') id: string,
     @Body() updatePlansDto: UpdatePlansDto,
@@ -93,7 +94,7 @@ export class PlansController {
   }
 
   @UseGuards(AuthGuard)
-  @Get(':id')
+  @Patch(':id')
   async findOne(@Param('id') id: string): Promise<ListPlansDto> {
     const plan = new PlanEntity();
     plan.setUuid(id);

@@ -33,7 +33,7 @@ export class ServicesController {
   ) {}
 
   @UseGuards(AuthGuard)
-  @Get()
+  @Get(':organization_id')
   async listAll(
     @Param('organization_id') organization_id: string,
   ): Promise<ListServicesDto[]> {
@@ -63,10 +63,10 @@ export class ServicesController {
 
   @UseGuards(AuthGuard)
   @Delete(':id')
-  async delete(@Param('id') id: string): Promise<ServiceEntity> {
+  async delete(@Param('id') id: string): Promise<void> {
     const service = new ServiceEntity();
     service.setUuid(id);
-    return this.deleteServiceService.execute(service);
+    await this.deleteServiceService.execute(service);
   }
 
   @UseGuards(AuthGuard)
@@ -82,7 +82,7 @@ export class ServicesController {
   async create(
     @Body() body: CreateServiceDto,
     @UseAuthUser() user: UserEntity,
-  ): Promise<ServiceEntity> {
+  ): Promise<void> {
     const service = new ServiceEntity();
     service.setName(body.name);
     service.setPrice(body.price);
@@ -90,6 +90,6 @@ export class ServicesController {
     service.setIsQuantitative(body.is_quantitative);
     service.setLimitForDay(body.limit_for_day);
     service.setOrganization(user.getOrganization() as OrganizationEntity);
-    return this.createServiceService.execute(service);
+    await this.createServiceService.execute(service);
   }
 }

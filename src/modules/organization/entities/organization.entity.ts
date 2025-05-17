@@ -1,3 +1,5 @@
+import { UserEntity } from 'src/modules/users';
+
 export class OrganizationEntity {
   private _id: number;
   private _uuid: string;
@@ -11,6 +13,7 @@ export class OrganizationEntity {
   private _created_at: Date;
   private _updated_at: Date;
   private _inactive_at: Date;
+  private _user: UserEntity | null;
 
   getImagePath(): string {
     return this._image_path;
@@ -106,5 +109,12 @@ export class OrganizationEntity {
 
   setInactiveAt(value: Date) {
     this._inactive_at = value;
+  }
+
+  getUser(): UserEntity | null {
+    return this._user;
+  }
+  setUser(value: UserEntity) {
+    this._user = value;
   }
 }
