@@ -59,8 +59,11 @@ export class ScheduleController {
 
   @UseGuards(AuthGuard)
   @Put('/:id')
-  async update(@Param('id') id: string, @Body() body: UpdateScheduleDto) {
-    const serialize = ScheduleSerializer.toEntity(body);
+  async update(
+    @Param('id') id: string,
+    @Body() body: Omit<UpdateScheduleDto, 'id'>,
+  ) {
+    const serialize = ScheduleSerializer.toEntity({ id, ...body });
     await this.updateScheduleService.execute(serialize);
   }
 }

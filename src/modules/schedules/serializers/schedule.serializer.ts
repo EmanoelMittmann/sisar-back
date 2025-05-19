@@ -2,11 +2,11 @@ import { ServiceEntity } from 'src/modules/services/entities/service.entity';
 import { ScheduleListDto } from '../dtos/schedule-list.dto';
 import { UpdateScheduleDto } from '../dtos/update-scedule.dto';
 import { ScheduleEntity } from '../entities/schedule.entity';
-import { OrganizationEntity } from 'src/modules/organization/entities/organization.entity';
 import { UserEntity } from 'src/modules/users/entities/user.entity';
 
 export class ScheduleSerializer {
   static toListMany(schedules: ScheduleEntity[]): ScheduleListDto[] {
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     return schedules.map(this.toListOne);
   }
 

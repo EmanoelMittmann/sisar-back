@@ -1,4 +1,3 @@
-import { HashedRepository } from 'src/shared/hashed/hashed-repository.hashed';
 import { UserEntity } from 'src/modules/users';
 import { IUserRepository } from 'src/modules/users/repositories/user.repository';
 import { BaseService } from 'src/shared/contracts';

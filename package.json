@@ -14,6 +14,7 @@
     "start:prod": "node dist/main",
     "start:worker": "node dist/scheduler",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "set:initial:data": "ts-node -r tsconfig-paths/register ./src/infrastructure/seeder/seed.ts",
     "test": "jest",
     "format:schema": "prisma format --schema=./src/infrastructure/postgres/prisma/schema.prisma",
     "migrate": "prisma migrate dev --schema=./src/infrastructure/postgres/prisma/schema.prisma",
