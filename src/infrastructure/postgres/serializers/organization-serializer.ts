@@ -18,6 +18,7 @@ export class OrganizationSerializer {
   }
 
   toManyEntity(input: IListAll[]): OrganizationEntity[] {
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     return input.map(this.toEntity);
   }
 }

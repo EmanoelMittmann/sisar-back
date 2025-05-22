@@ -13,9 +13,9 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Launch PROGRAM",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/main.ts",
+      "program": "${workspaceFolder}/src/main.ts",
       "cwd": "${workspaceFolder}",
       "sourceMaps": true,
       "console": "integratedTerminal"

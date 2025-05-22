@@ -1,4 +1,4 @@
-import { IsPhoneNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 import { IsNotEmpty } from 'class-validator';
 import { IsEmail } from 'class-validator';
 
@@ -11,7 +11,7 @@ export class SignUpCompanyDto {
   @IsNotEmpty()
   cnpj: string;
 
-  @IsPhoneNumber()
+  @IsString()
   @IsNotEmpty()
   phone: string;
 

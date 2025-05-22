@@ -29,4 +29,8 @@ export class SignUpDto {
   @IsString()
   @IsNotEmpty()
   cpf: string;
+
+  @IsString()
+  @IsNotEmpty()
+  phone: string;
 }

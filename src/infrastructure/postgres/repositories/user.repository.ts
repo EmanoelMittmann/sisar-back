@@ -52,11 +52,11 @@ export class UserPostgresRepository implements IUserRepository {
     );
   }
 
-  async update(args: UserEntity): Promise<UserEntity> {
+  update(args: UserEntity): Promise<UserEntity> {
     throw new Error('Method not implemented.');
   }
 
-  async delete(args: UserEntity): Promise<UserEntity> {
+  delete(args: UserEntity): Promise<UserEntity> {
     throw new Error('Method not implemented.');
   }
 

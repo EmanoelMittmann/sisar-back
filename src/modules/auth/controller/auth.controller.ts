@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, Post } from '@nestjs/common';
+import { Body, Controller, HttpCode, Param, Post } from '@nestjs/common';
 import { SignInService } from '../services/sign-in.service';
 import { SignUpService } from '../services/sign-up.service';
 import { GenerateTokenService } from '../services/generate-token.service';
@@ -36,23 +36,26 @@ export class AuthController {
 
   @HttpCode(200)
   @Post('/signup')
-  async signUp(@Body() body: SignUpDto): Promise<{ message: string }> {
+  async signUp(@Body() body: SignUpDto): Promise<{ userId: string }> {
     const user = new UserEntity();
     user.setName(body.name);
     user.setEmail(body.email);
+    user.setPhone(body.phone);
     user.setPassword(body.password);
     user.setCpf(body.cpf);
+    user.setPhone(body.phone);
 
-    await this.signUpService.execute(user);
+    const created_user = await this.signUpService.execute(user);
 
     return {
-      message: 'User created successfully',
+      userId: created_user.getUuid(),
     };
   }
 
   @HttpCode(200)
-  @Post('/signup-company')
+  @Post('/signup-company/:userid')
   async signUpCompany(
+    @Param('userid') userId: string,
     @Body() body: SignUpCompanyDto,
   ): Promise<{ message: string }> {
     const organization = new OrganizationEntity();
@@ -61,6 +64,10 @@ export class AuthController {
     organization.setCnpj(body.cnpj);
     organization.setOffice(body.type_service);
     organization.setPhone(body.phone);
+
+    const user = new UserEntity();
+    user.setUuid(userId);
+    organization.setUser(user);
 
     await this.signUpCompanyService.execute(organization);
 

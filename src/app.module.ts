@@ -18,6 +18,7 @@ import { PlansModule } from './modules/plans/plans.module';
 import { EmailModule } from './infrastructure/warn-emails/warn-email.module';
 import { RedisModule } from './infrastructure/redis/redis.module';
 import { AuthMiddleware } from './modules/auth/middleware/auth.middleware';
+// import { AuthMiddleware } from './modules/auth/middleware/auth.middleware';s
 
 @Module({
   imports: [
@@ -43,20 +44,10 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(AuthMiddleware)
-      .exclude(
-        {
-          method: RequestMethod.ALL,
-          path: '/auth/signup',
-        },
-        {
-          method: RequestMethod.ALL,
-          path: '/auth/signin',
-        },
-        {
-          method: RequestMethod.POST,
-          path: '/public/schedules/:uuid',
-        },
-      )
+      .exclude({
+        path: 'auth/*',
+        method: RequestMethod.ALL,
+      })
       .forRoutes('*');
   }
 }
