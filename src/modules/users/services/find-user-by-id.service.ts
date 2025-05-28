@@ -1,10 +1,14 @@
 import { BaseService } from 'src/shared/contracts';
 import { IUserRepository } from '../repositories/user.repository';
 import { UserEntity } from '../entities/user.entity';
-import { NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 
+@Injectable()
 export class FindUserByIdService implements BaseService<string, UserEntity> {
-  constructor(private readonly userRepository: IUserRepository) {}
+  constructor(
+    @Inject('IUserRepository')
+    private readonly userRepository: IUserRepository,
+  ) {}
 
   async execute(args: string): Promise<UserEntity> {
     // @TODO create class serialize to static method

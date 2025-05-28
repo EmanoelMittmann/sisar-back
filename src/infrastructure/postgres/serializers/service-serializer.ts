@@ -1,6 +1,6 @@
 import { ServiceEntity } from 'src/modules/services/entities/service.entity';
 
-export interface ServiceSerializerContract {
+export interface ServiceDBReflection {
   name: string;
   id: number;
   uuid: string;
@@ -14,12 +14,19 @@ export interface ServiceSerializerContract {
   organizationId: number;
 }
 
+export interface FindByOrganization {
+  uuid: string;
+  name: string;
+  duration: string;
+  price: string;
+}
+
 export class ServiceSerializer {
-  toManyEntity(data: ServiceSerializerContract[]): ServiceEntity[] {
+  toManyEntity(data: ServiceDBReflection[]): ServiceEntity[] {
     return data.map(this.toEntity);
   }
 
-  toEntity(data: ServiceSerializerContract): ServiceEntity {
+  toEntity(data: ServiceDBReflection): ServiceEntity {
     const entity = new ServiceEntity();
     entity.setId(data.id);
     entity.setUuid(data.uuid);
@@ -34,5 +41,18 @@ export class ServiceSerializer {
     entity.setCreatedAt(data.createdAt);
     entity.setUpdatedAt(data.updatedAt);
     return entity;
+  }
+
+  toEntityFindByOrganization(data: FindByOrganization): ServiceEntity {
+    const entity = new ServiceEntity();
+    entity.setUuid(data.uuid);
+    entity.setName(data.name);
+    entity.setDuration(data.duration);
+    entity.setPrice(Number(data.price));
+    return entity;
+  }
+
+  toManyEntityFindByOrganization(data: FindByOrganization[]): ServiceEntity[] {
+    return data.map(this.toEntityFindByOrganization);
   }
 }

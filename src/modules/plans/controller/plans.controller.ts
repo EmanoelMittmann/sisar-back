@@ -13,7 +13,7 @@ import { CreatePlansService } from '../services/create-plans.service';
 import { DeletePlansService } from '../services/delete-plans.service';
 import { UpdatePlansService } from '../services/update-plans.service';
 import { FindOnePlanService } from '../services/find-one-plan.service';
-import { ListAllService } from '../services/list-all-service.service';
+import { ListAllPlansService } from '../services/list-all-plans.service';
 import { OrganizationEntity } from 'src/modules/organization/entities/organization.entity';
 import { PlanEntity } from '../entities/plan.entity';
 import { ListPlansDto } from '../dto/list-plans.dto';
@@ -24,7 +24,7 @@ import { AuthGuard } from 'src/modules/auth/guards/auth.guard';
 @Controller('plans')
 export class PlansController {
   constructor(
-    private readonly listPlansService: ListAllService,
+    private readonly listPlansService: ListAllPlansService,
     private readonly createPlansService: CreatePlansService,
     private readonly updatePlansService: UpdatePlansService,
     private readonly deletePlansService: DeletePlansService,

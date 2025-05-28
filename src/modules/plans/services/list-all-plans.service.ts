@@ -6,7 +6,9 @@ import { PlansSerializer } from '../serializer/plans.serializer';
 import { ListPlansDto } from '../dto/list-plans.dto';
 
 @Injectable()
-export class ListAllService implements BaseService<PlanEntity, ListPlansDto[]> {
+export class ListAllPlansService
+  implements BaseService<PlanEntity, ListPlansDto[]>
+{
   constructor(
     @Inject('IPlanRepository')
     private readonly planRepository: IPlanRepository,

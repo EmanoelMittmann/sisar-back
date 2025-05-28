@@ -26,7 +26,6 @@ export class AuthGuard implements CanActivate {
     if (!token) {
       throw new UnauthorizedException({ message: 'Token is required' });
     }
-    this.logger.log('[AuthGuard] Get Token sucessfully');
     try {
       await this.jwtService.verifyAsync(token.trim(), {
         secret: process.env.JWT_SECRET,

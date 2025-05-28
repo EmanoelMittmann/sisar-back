@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  Patch,
   Post,
   Put,
   UseGuards,
@@ -33,16 +34,11 @@ export class ServicesController {
   ) {}
 
   @UseGuards(AuthGuard)
-  @Get(':organization_id')
+  @Patch('/:organization_id')
   async listAll(
     @Param('organization_id') organization_id: string,
   ): Promise<ListServicesDto[]> {
-    const service = new ServiceEntity();
-    const org = new OrganizationEntity();
-    org.setUuid(organization_id);
-    service.setOrganization(org);
-
-    return this.listServicesService.execute(service);
+    return this.listServicesService.execute(organization_id);
   }
 
   @UseGuards(AuthGuard)

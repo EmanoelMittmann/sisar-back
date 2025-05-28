@@ -49,18 +49,18 @@ export class OrganizationPostgresRepository implements IOrganizationRepository {
   }
 
   findOne(args: OrganizationEntity): Promise<OrganizationEntity> {
-    throw new Error('Method not implemented.');
+    throw new Error(`Method not implemented. ${args.getUuid()}`);
   }
 
   update(args: OrganizationEntity): Promise<OrganizationEntity> {
-    throw new Error('Method not implemented.');
+    throw new Error(`Method not implemented. ${args.getUuid()}`);
   }
 
   delete(args: OrganizationEntity): Promise<OrganizationEntity> {
-    throw new Error('Method not implemented.');
+    throw new Error(`Method not implemented. ${args.getUuid()}`);
   }
 
   findByEmail(email: string): Promise<OrganizationEntity | null> {
-    throw new Error('Method not implemented.');
+    throw new Error(`Method not implemented. ${email}`);
   }
 }

@@ -1,4 +1,9 @@
-import { ForbiddenException, Injectable, NestMiddleware } from '@nestjs/common';
+import {
+  ForbiddenException,
+  Inject,
+  Injectable,
+  NestMiddleware,
+} from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
 import { JwtService } from '@nestjs/jwt';
 import { JwtDataContract } from 'src/shared/contracts/jwt-data.contract';
@@ -8,6 +13,7 @@ import { FindUserByIdService } from 'src/modules/users/services/find-user-by-id.
 export class AuthMiddleware implements NestMiddleware {
   constructor(
     private jwt_service: JwtService,
+    @Inject(FindUserByIdService)
     private readonly user_service: FindUserByIdService,
   ) {}
 

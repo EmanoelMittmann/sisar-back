@@ -3,8 +3,9 @@ import { IServiceRepository } from 'src/modules/services/repositories/services.r
 import { PrismaService } from '../prisma/prisma.service';
 import { ServiceEntity } from 'src/modules/services/entities/service.entity';
 import {
+  FindByOrganization,
   ServiceSerializer,
-  ServiceSerializerContract,
+  ServiceDBReflection,
 } from '../serializers/service-serializer';
 
 @Injectable()
@@ -23,7 +24,7 @@ export class ServicePostgresRepository implements IServiceRepository {
         limit_for_day: args.getLimitForDay(),
         organizationId: args.getOrganization().getId(),
       },
-    })) as unknown as ServiceSerializerContract;
+    })) as unknown as ServiceDBReflection;
 
     return this.serializer.toEntity(data);
   }
@@ -33,7 +34,7 @@ export class ServicePostgresRepository implements IServiceRepository {
       where: {
         organizationId: args.getOrganization().getId(),
       },
-    })) as unknown as ServiceSerializerContract[];
+    })) as unknown as ServiceDBReflection[];
 
     return this.serializer.toManyEntity(services);
   }
@@ -43,7 +44,7 @@ export class ServicePostgresRepository implements IServiceRepository {
       where: {
         id: args.getId(),
       },
-    })) as unknown as ServiceSerializerContract;
+    })) as unknown as ServiceDBReflection;
 
     return this.serializer.toEntity(service);
   }
@@ -60,7 +61,7 @@ export class ServicePostgresRepository implements IServiceRepository {
         is_active: args.getIsActive(),
         is_quantitative: args.getIsQuantitative(),
       },
-    })) as unknown as ServiceSerializerContract;
+    })) as unknown as ServiceDBReflection;
 
     return this.serializer.toEntity(data);
   }
@@ -72,5 +73,27 @@ export class ServicePostgresRepository implements IServiceRepository {
     });
 
     return args;
+  }
+
+  async findByCompanyId(company_id: string): Promise<ServiceEntity[]> {
+    const data = (await this.prisma.service.findMany({
+      where: {
+        organization: {
+          uuid: company_id,
+        },
+        is_active: true,
+      },
+      select: {
+        uuid: true,
+        name: true,
+        duration: true,
+        price: true,
+      },
+      orderBy: {
+        updatedAt: 'desc',
+      },
+    })) as unknown as FindByOrganization[];
+
+    return this.serializer.toManyEntityFindByOrganization(data);
   }
 }
