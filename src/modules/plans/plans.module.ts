@@ -6,6 +6,7 @@ import { ListAllPlansService } from './services/list-all-plans.service';
 import { CreatePlansService } from './services/create-plans.service';
 import { UpdatePlansService } from './services/update-plans.service';
 import { DeletePlansService } from './services/delete-plans.service';
+import { ListPlansByUserService } from './services/list-by-user.service';
 
 @Module({
   controllers: [PlansController],
@@ -19,6 +20,7 @@ import { DeletePlansService } from './services/delete-plans.service';
     UpdatePlansService,
     DeletePlansService,
     FindOnePlanService,
+    ListPlansByUserService,
   ],
 })
 export class PlansModule {}

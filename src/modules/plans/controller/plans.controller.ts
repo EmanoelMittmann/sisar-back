@@ -20,6 +20,9 @@ import { ListPlansDto } from '../dto/list-plans.dto';
 import { CreatePlansDto } from '../dto/create-plans.dto';
 import { UpdatePlansDto } from '../dto/update-plans.dto';
 import { AuthGuard } from 'src/modules/auth/guards/auth.guard';
+import { ListPlansByUserService } from '../services/list-by-user.service';
+import { UserEntity } from 'src/modules/users';
+import { UseAuthUser } from 'src/shared/decorator/use-auth-user.decorator';
 
 @Controller('plans')
 export class PlansController {
@@ -29,6 +32,7 @@ export class PlansController {
     private readonly updatePlansService: UpdatePlansService,
     private readonly deletePlansService: DeletePlansService,
     private readonly findOnePlanService: FindOnePlanService,
+    private readonly listByUserService: ListPlansByUserService,
   ) {}
 
   @UseGuards(AuthGuard)
@@ -43,6 +47,11 @@ export class PlansController {
     plans.setOrganization(organization);
 
     return this.listPlansService.execute(plans);
+  }
+
+  @Patch('/user')
+  async listByUser(@UseAuthUser() user: UserEntity): Promise<ListPlansDto[]> {
+    return this.listByUserService.execute(user.getUuid());
   }
 
   @UseGuards(AuthGuard)

@@ -53,7 +53,7 @@ export class SchedulePostgresRepository implements IScheduleRepository {
   async findAll(args: ScheduleEntity): Promise<ScheduleEntity[]> {
     const data = (await this.prisma.schedule.findMany({
       where: {
-        organizationId: args.getOrganization().getId(),
+        organizationId: args.getUser().getId(),
       },
     })) as unknown as IScheduleDBReflection[];
 

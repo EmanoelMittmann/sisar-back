@@ -35,7 +35,6 @@ export class AuthGuard implements CanActivate {
       this.logger.error(error);
       throw new UnauthorizedException({ message: 'Invalid token' });
     }
-    this.logger.log('[AuthGuard] Token is valid');
     return true;
   }
 }

@@ -71,4 +71,29 @@ export class PlansPostgresRepository implements IPlanRepository {
 
     return PlansSerializer.toEntity(plan);
   }
+
+  async findByUserId(user_id: string): Promise<PlanEntity[]> {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call,  @typescript-eslint/no-unsafe-member-access,
+    const plans = await this.prisma.userPlans.findMany({
+      where: {
+        user: {
+          uuid: user_id,
+        },
+      },
+      include: {
+        plan: true,
+      },
+    });
+
+    if (!plans || !Array.isArray(plans)) {
+      return [];
+    }
+
+    return (
+      plans
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return
+        .flatMap((i) => i.plan)
+        .map((item) => PlansSerializer.toEntity(item as IPlanDBReflection))
+    );
+  }
 }
