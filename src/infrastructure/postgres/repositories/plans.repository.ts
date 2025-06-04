@@ -16,10 +16,15 @@ export class PlansPostgresRepository implements IPlanRepository {
     const plan = (await this.prisma.plan.create({
       data: {
         name: args.getName(),
-        price: args.getPrice(),
+        price: +args.getPrice(),
         recurrent: args.getRecurrent() as Recurrent,
         description: args.getDescription(),
-        organizationId: args.getOrganization().getId(),
+        dueDate: args.getDueDate(),
+        organization: {
+          connect: {
+            uuid: args.getOrganization().getUuid(),
+          },
+        },
       },
     })) as unknown as IPlanDBReflection;
 

@@ -71,7 +71,7 @@ export class PlansController {
     plan.setDueDate(createPlansDto.dueDate);
     plan.setRecurrent(createPlansDto.recurrent);
 
-    return this.createPlansService.execute(plan);
+    return await this.createPlansService.execute(plan);
   }
 
   @UseGuards(AuthGuard)

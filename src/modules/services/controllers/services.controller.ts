@@ -79,6 +79,7 @@ export class ServicesController {
     @Body() body: CreateServiceDto,
     @UseAuthUser() user: UserEntity,
   ): Promise<void> {
+    console.log(body);
     const service = new ServiceEntity();
     service.setName(body.name);
     service.setPrice(body.price);

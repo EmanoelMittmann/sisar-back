@@ -1459,13 +1459,11 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    Organization: number
     schedules: number
     UserPlans: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Organization?: boolean | UserCountOutputTypeCountOrganizationArgs
     schedules?: boolean | UserCountOutputTypeCountSchedulesArgs
     UserPlans?: boolean | UserCountOutputTypeCountUserPlansArgs
   }
@@ -1479,13 +1477,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserCountOutputType
      */
     select?: UserCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountOrganizationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: OrganizationWhereInput
   }
 
   /**
@@ -1932,7 +1923,7 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      Organization: Prisma.$OrganizationPayload<ExtArgs>[]
+      Organization: Prisma.$OrganizationPayload<ExtArgs> | null
       schedules: Prisma.$SchedulePayload<ExtArgs>[]
       UserPlans: Prisma.$UserPlansPayload<ExtArgs>[]
     }
@@ -2341,7 +2332,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Organization<T extends User$OrganizationArgs<ExtArgs> = {}>(args?: Subset<T, User$OrganizationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Organization<T extends User$OrganizationArgs<ExtArgs> = {}>(args?: Subset<T, User$OrganizationArgs<ExtArgs>>): Prisma__OrganizationClient<$Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     schedules<T extends User$schedulesArgs<ExtArgs> = {}>(args?: Subset<T, User$schedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     UserPlans<T extends User$UserPlansArgs<ExtArgs> = {}>(args?: Subset<T, User$UserPlansArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPlansPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -2787,11 +2778,6 @@ export namespace Prisma {
      */
     include?: OrganizationInclude<ExtArgs> | null
     where?: OrganizationWhereInput
-    orderBy?: OrganizationOrderByWithRelationInput | OrganizationOrderByWithRelationInput[]
-    cursor?: OrganizationWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: OrganizationScalarFieldEnum | OrganizationScalarFieldEnum[]
   }
 
   /**
@@ -3098,7 +3084,7 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     inactiveAt: Date | null
-    userId: number | null
+    userId: number
     _count: OrganizationCountAggregateOutputType | null
     _avg: OrganizationAvgAggregateOutputType | null
     _sum: OrganizationSumAggregateOutputType | null
@@ -3135,7 +3121,7 @@ export namespace Prisma {
     updatedAt?: boolean
     inactiveAt?: boolean
     userId?: boolean
-    user?: boolean | Organization$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     services?: boolean | Organization$servicesArgs<ExtArgs>
     plans?: boolean | Organization$plansArgs<ExtArgs>
     schedules?: boolean | Organization$schedulesArgs<ExtArgs>
@@ -3158,7 +3144,7 @@ export namespace Prisma {
     updatedAt?: boolean
     inactiveAt?: boolean
     userId?: boolean
-    user?: boolean | Organization$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organization"]>
 
   export type OrganizationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3176,7 +3162,7 @@ export namespace Prisma {
     updatedAt?: boolean
     inactiveAt?: boolean
     userId?: boolean
-    user?: boolean | Organization$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organization"]>
 
   export type OrganizationSelectScalar = {
@@ -3198,7 +3184,7 @@ export namespace Prisma {
 
   export type OrganizationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uuid" | "social_name" | "fantasy_name" | "cnpj" | "email" | "phone" | "is_active" | "office" | "image_path" | "createdAt" | "updatedAt" | "inactiveAt" | "userId", ExtArgs["result"]["organization"]>
   export type OrganizationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | Organization$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     services?: boolean | Organization$servicesArgs<ExtArgs>
     plans?: boolean | Organization$plansArgs<ExtArgs>
     schedules?: boolean | Organization$schedulesArgs<ExtArgs>
@@ -3206,16 +3192,16 @@ export namespace Prisma {
     _count?: boolean | OrganizationCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type OrganizationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | Organization$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type OrganizationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | Organization$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $OrganizationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Organization"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs> | null
+      user: Prisma.$UserPayload<ExtArgs>
       services: Prisma.$ServicePayload<ExtArgs>[]
       plans: Prisma.$PlanPayload<ExtArgs>[]
       schedules: Prisma.$SchedulePayload<ExtArgs>[]
@@ -3235,7 +3221,7 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       inactiveAt: Date | null
-      userId: number | null
+      userId: number
     }, ExtArgs["result"]["organization"]>
     composites: {}
   }
@@ -3630,7 +3616,7 @@ export namespace Prisma {
    */
   export interface Prisma__OrganizationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends Organization$userArgs<ExtArgs> = {}>(args?: Subset<T, Organization$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     services<T extends Organization$servicesArgs<ExtArgs> = {}>(args?: Subset<T, Organization$servicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     plans<T extends Organization$plansArgs<ExtArgs> = {}>(args?: Subset<T, Organization$plansArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     schedules<T extends Organization$schedulesArgs<ExtArgs> = {}>(args?: Subset<T, Organization$schedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -4071,25 +4057,6 @@ export namespace Prisma {
      * Limit how many Organizations to delete.
      */
     limit?: number
-  }
-
-  /**
-   * Organization.user
-   */
-  export type Organization$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
   }
 
   /**
@@ -4977,7 +4944,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Service", 'Int'>
     readonly uuid: FieldRef<"Service", 'String'>
     readonly name: FieldRef<"Service", 'String'>
-    readonly price: FieldRef<"Service", 'Float'>
+    readonly price: FieldRef<"Service", 'Int'>
     readonly is_active: FieldRef<"Service", 'Boolean'>
     readonly duration: FieldRef<"Service", 'String'>
     readonly is_quantitative: FieldRef<"Service", 'Boolean'>
@@ -10313,20 +10280,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Recurrent'
    */
   export type EnumRecurrentFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Recurrent'>
@@ -10352,6 +10305,20 @@ export namespace Prisma {
    */
   export type ListEnumStatusSchedulesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusSchedules[]'>
     
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
   /**
    * Deep Input Types
    */
@@ -10371,7 +10338,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    Organization?: OrganizationListRelationFilter
+    Organization?: XOR<OrganizationNullableScalarRelationFilter, OrganizationWhereInput> | null
     schedules?: ScheduleListRelationFilter
     UserPlans?: UserPlansListRelationFilter
   }
@@ -10387,7 +10354,7 @@ export namespace Prisma {
     password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    Organization?: OrganizationOrderByRelationAggregateInput
+    Organization?: OrganizationOrderByWithRelationInput
     schedules?: ScheduleOrderByRelationAggregateInput
     UserPlans?: UserPlansOrderByRelationAggregateInput
   }
@@ -10406,7 +10373,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    Organization?: OrganizationListRelationFilter
+    Organization?: XOR<OrganizationNullableScalarRelationFilter, OrganizationWhereInput> | null
     schedules?: ScheduleListRelationFilter
     UserPlans?: UserPlansListRelationFilter
   }, "id" | "uuid">
@@ -10462,8 +10429,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Organization"> | Date | string
     updatedAt?: DateTimeFilter<"Organization"> | Date | string
     inactiveAt?: DateTimeNullableFilter<"Organization"> | Date | string | null
-    userId?: IntNullableFilter<"Organization"> | number | null
-    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    userId?: IntFilter<"Organization"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     services?: ServiceListRelationFilter
     plans?: PlanListRelationFilter
     schedules?: ScheduleListRelationFilter
@@ -10484,7 +10451,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     inactiveAt?: SortOrderInput | SortOrder
-    userId?: SortOrderInput | SortOrder
+    userId?: SortOrder
     user?: UserOrderByWithRelationInput
     services?: ServiceOrderByRelationAggregateInput
     plans?: PlanOrderByRelationAggregateInput
@@ -10495,6 +10462,7 @@ export namespace Prisma {
   export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     uuid?: string
+    userId?: number
     AND?: OrganizationWhereInput | OrganizationWhereInput[]
     OR?: OrganizationWhereInput[]
     NOT?: OrganizationWhereInput | OrganizationWhereInput[]
@@ -10509,13 +10477,12 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Organization"> | Date | string
     updatedAt?: DateTimeFilter<"Organization"> | Date | string
     inactiveAt?: DateTimeNullableFilter<"Organization"> | Date | string | null
-    userId?: IntNullableFilter<"Organization"> | number | null
-    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     services?: ServiceListRelationFilter
     plans?: PlanListRelationFilter
     schedules?: ScheduleListRelationFilter
     PublicSchedule?: PublicScheduleListRelationFilter
-  }, "id" | "uuid">
+  }, "id" | "uuid" | "userId">
 
   export type OrganizationOrderByWithAggregationInput = {
     id?: SortOrder
@@ -10531,7 +10498,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     inactiveAt?: SortOrderInput | SortOrder
-    userId?: SortOrderInput | SortOrder
+    userId?: SortOrder
     _count?: OrganizationCountOrderByAggregateInput
     _avg?: OrganizationAvgOrderByAggregateInput
     _max?: OrganizationMaxOrderByAggregateInput
@@ -10556,7 +10523,7 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Organization"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Organization"> | Date | string
     inactiveAt?: DateTimeNullableWithAggregatesFilter<"Organization"> | Date | string | null
-    userId?: IntNullableWithAggregatesFilter<"Organization"> | number | null
+    userId?: IntWithAggregatesFilter<"Organization"> | number
   }
 
   export type ServiceWhereInput = {
@@ -10566,7 +10533,7 @@ export namespace Prisma {
     id?: IntFilter<"Service"> | number
     uuid?: UuidFilter<"Service"> | string
     name?: StringFilter<"Service"> | string
-    price?: FloatFilter<"Service"> | number
+    price?: IntFilter<"Service"> | number
     is_active?: BoolFilter<"Service"> | boolean
     duration?: StringFilter<"Service"> | string
     is_quantitative?: BoolFilter<"Service"> | boolean
@@ -10603,7 +10570,7 @@ export namespace Prisma {
     OR?: ServiceWhereInput[]
     NOT?: ServiceWhereInput | ServiceWhereInput[]
     name?: StringFilter<"Service"> | string
-    price?: FloatFilter<"Service"> | number
+    price?: IntFilter<"Service"> | number
     is_active?: BoolFilter<"Service"> | boolean
     duration?: StringFilter<"Service"> | string
     is_quantitative?: BoolFilter<"Service"> | boolean
@@ -10642,7 +10609,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Service"> | number
     uuid?: UuidWithAggregatesFilter<"Service"> | string
     name?: StringWithAggregatesFilter<"Service"> | string
-    price?: FloatWithAggregatesFilter<"Service"> | number
+    price?: IntWithAggregatesFilter<"Service"> | number
     is_active?: BoolWithAggregatesFilter<"Service"> | boolean
     duration?: StringWithAggregatesFilter<"Service"> | string
     is_quantitative?: BoolWithAggregatesFilter<"Service"> | boolean
@@ -10975,7 +10942,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    Organization?: OrganizationCreateNestedManyWithoutUserInput
+    Organization?: OrganizationCreateNestedOneWithoutUserInput
     schedules?: ScheduleCreateNestedManyWithoutUserInput
     UserPlans?: UserPlansCreateNestedManyWithoutUserInput
   }
@@ -10991,7 +10958,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    Organization?: OrganizationUncheckedCreateNestedManyWithoutUserInput
+    Organization?: OrganizationUncheckedCreateNestedOneWithoutUserInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutUserInput
     UserPlans?: UserPlansUncheckedCreateNestedManyWithoutUserInput
   }
@@ -11006,7 +10973,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Organization?: OrganizationUpdateManyWithoutUserNestedInput
+    Organization?: OrganizationUpdateOneWithoutUserNestedInput
     schedules?: ScheduleUpdateManyWithoutUserNestedInput
     UserPlans?: UserPlansUpdateManyWithoutUserNestedInput
   }
@@ -11022,7 +10989,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Organization?: OrganizationUncheckedUpdateManyWithoutUserNestedInput
+    Organization?: OrganizationUncheckedUpdateOneWithoutUserNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutUserNestedInput
     UserPlans?: UserPlansUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -11078,7 +11045,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    user?: UserCreateNestedOneWithoutOrganizationInput
+    user: UserCreateNestedOneWithoutOrganizationInput
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
@@ -11099,7 +11066,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    userId?: number | null
+    userId: number
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
@@ -11119,7 +11086,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user?: UserUpdateOneWithoutOrganizationNestedInput
+    user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
@@ -11140,7 +11107,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: IntFieldUpdateOperationsInput | number
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -11161,7 +11128,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    userId?: number | null
+    userId: number
   }
 
   export type OrganizationUpdateManyMutationInput = {
@@ -11193,7 +11160,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ServiceCreateInput = {
@@ -11230,7 +11197,7 @@ export namespace Prisma {
   export type ServiceUpdateInput = {
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
     is_active?: BoolFieldUpdateOperationsInput | boolean
     duration?: StringFieldUpdateOperationsInput | string
     is_quantitative?: BoolFieldUpdateOperationsInput | boolean
@@ -11246,7 +11213,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
     is_active?: BoolFieldUpdateOperationsInput | boolean
     duration?: StringFieldUpdateOperationsInput | string
     is_quantitative?: BoolFieldUpdateOperationsInput | boolean
@@ -11275,7 +11242,7 @@ export namespace Prisma {
   export type ServiceUpdateManyMutationInput = {
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
     is_active?: BoolFieldUpdateOperationsInput | boolean
     duration?: StringFieldUpdateOperationsInput | string
     is_quantitative?: BoolFieldUpdateOperationsInput | boolean
@@ -11288,7 +11255,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
     is_active?: BoolFieldUpdateOperationsInput | boolean
     duration?: StringFieldUpdateOperationsInput | string
     is_quantitative?: BoolFieldUpdateOperationsInput | boolean
@@ -11660,10 +11627,9 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type OrganizationListRelationFilter = {
-    every?: OrganizationWhereInput
-    some?: OrganizationWhereInput
-    none?: OrganizationWhereInput
+  export type OrganizationNullableScalarRelationFilter = {
+    is?: OrganizationWhereInput | null
+    isNot?: OrganizationWhereInput | null
   }
 
   export type ScheduleListRelationFilter = {
@@ -11676,10 +11642,6 @@ export namespace Prisma {
     every?: UserPlansWhereInput
     some?: UserPlansWhereInput
     none?: UserPlansWhereInput
-  }
-
-  export type OrganizationOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type ScheduleOrderByRelationAggregateInput = {
@@ -11841,20 +11803,9 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type UserNullableScalarRelationFilter = {
-    is?: UserWhereInput | null
-    isNot?: UserWhereInput | null
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
   }
 
   export type ServiceListRelationFilter = {
@@ -11993,7 +11944,7 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -12001,23 +11952,7 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type OrganizationScalarRelationFilter = {
@@ -12081,20 +12016,20 @@ export namespace Prisma {
     organizationId?: SortOrder
   }
 
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type EnumRecurrentFilter<$PrismaModel = never> = {
@@ -12175,11 +12110,6 @@ export namespace Prisma {
   export type ServiceScalarRelationFilter = {
     is?: ServiceWhereInput
     isNot?: ServiceWhereInput
-  }
-
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
   }
 
   export type ScheduleCountOrderByAggregateInput = {
@@ -12334,11 +12264,10 @@ export namespace Prisma {
     planId?: SortOrder
   }
 
-  export type OrganizationCreateNestedManyWithoutUserInput = {
-    create?: XOR<OrganizationCreateWithoutUserInput, OrganizationUncheckedCreateWithoutUserInput> | OrganizationCreateWithoutUserInput[] | OrganizationUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: OrganizationCreateOrConnectWithoutUserInput | OrganizationCreateOrConnectWithoutUserInput[]
-    createMany?: OrganizationCreateManyUserInputEnvelope
-    connect?: OrganizationWhereUniqueInput | OrganizationWhereUniqueInput[]
+  export type OrganizationCreateNestedOneWithoutUserInput = {
+    create?: XOR<OrganizationCreateWithoutUserInput, OrganizationUncheckedCreateWithoutUserInput>
+    connectOrCreate?: OrganizationCreateOrConnectWithoutUserInput
+    connect?: OrganizationWhereUniqueInput
   }
 
   export type ScheduleCreateNestedManyWithoutUserInput = {
@@ -12355,11 +12284,10 @@ export namespace Prisma {
     connect?: UserPlansWhereUniqueInput | UserPlansWhereUniqueInput[]
   }
 
-  export type OrganizationUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<OrganizationCreateWithoutUserInput, OrganizationUncheckedCreateWithoutUserInput> | OrganizationCreateWithoutUserInput[] | OrganizationUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: OrganizationCreateOrConnectWithoutUserInput | OrganizationCreateOrConnectWithoutUserInput[]
-    createMany?: OrganizationCreateManyUserInputEnvelope
-    connect?: OrganizationWhereUniqueInput | OrganizationWhereUniqueInput[]
+  export type OrganizationUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<OrganizationCreateWithoutUserInput, OrganizationUncheckedCreateWithoutUserInput>
+    connectOrCreate?: OrganizationCreateOrConnectWithoutUserInput
+    connect?: OrganizationWhereUniqueInput
   }
 
   export type ScheduleUncheckedCreateNestedManyWithoutUserInput = {
@@ -12388,18 +12316,14 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type OrganizationUpdateManyWithoutUserNestedInput = {
-    create?: XOR<OrganizationCreateWithoutUserInput, OrganizationUncheckedCreateWithoutUserInput> | OrganizationCreateWithoutUserInput[] | OrganizationUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: OrganizationCreateOrConnectWithoutUserInput | OrganizationCreateOrConnectWithoutUserInput[]
-    upsert?: OrganizationUpsertWithWhereUniqueWithoutUserInput | OrganizationUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: OrganizationCreateManyUserInputEnvelope
-    set?: OrganizationWhereUniqueInput | OrganizationWhereUniqueInput[]
-    disconnect?: OrganizationWhereUniqueInput | OrganizationWhereUniqueInput[]
-    delete?: OrganizationWhereUniqueInput | OrganizationWhereUniqueInput[]
-    connect?: OrganizationWhereUniqueInput | OrganizationWhereUniqueInput[]
-    update?: OrganizationUpdateWithWhereUniqueWithoutUserInput | OrganizationUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: OrganizationUpdateManyWithWhereWithoutUserInput | OrganizationUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: OrganizationScalarWhereInput | OrganizationScalarWhereInput[]
+  export type OrganizationUpdateOneWithoutUserNestedInput = {
+    create?: XOR<OrganizationCreateWithoutUserInput, OrganizationUncheckedCreateWithoutUserInput>
+    connectOrCreate?: OrganizationCreateOrConnectWithoutUserInput
+    upsert?: OrganizationUpsertWithoutUserInput
+    disconnect?: OrganizationWhereInput | boolean
+    delete?: OrganizationWhereInput | boolean
+    connect?: OrganizationWhereUniqueInput
+    update?: XOR<XOR<OrganizationUpdateToOneWithWhereWithoutUserInput, OrganizationUpdateWithoutUserInput>, OrganizationUncheckedUpdateWithoutUserInput>
   }
 
   export type ScheduleUpdateManyWithoutUserNestedInput = {
@@ -12438,18 +12362,14 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type OrganizationUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<OrganizationCreateWithoutUserInput, OrganizationUncheckedCreateWithoutUserInput> | OrganizationCreateWithoutUserInput[] | OrganizationUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: OrganizationCreateOrConnectWithoutUserInput | OrganizationCreateOrConnectWithoutUserInput[]
-    upsert?: OrganizationUpsertWithWhereUniqueWithoutUserInput | OrganizationUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: OrganizationCreateManyUserInputEnvelope
-    set?: OrganizationWhereUniqueInput | OrganizationWhereUniqueInput[]
-    disconnect?: OrganizationWhereUniqueInput | OrganizationWhereUniqueInput[]
-    delete?: OrganizationWhereUniqueInput | OrganizationWhereUniqueInput[]
-    connect?: OrganizationWhereUniqueInput | OrganizationWhereUniqueInput[]
-    update?: OrganizationUpdateWithWhereUniqueWithoutUserInput | OrganizationUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: OrganizationUpdateManyWithWhereWithoutUserInput | OrganizationUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: OrganizationScalarWhereInput | OrganizationScalarWhereInput[]
+  export type OrganizationUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<OrganizationCreateWithoutUserInput, OrganizationUncheckedCreateWithoutUserInput>
+    connectOrCreate?: OrganizationCreateOrConnectWithoutUserInput
+    upsert?: OrganizationUpsertWithoutUserInput
+    disconnect?: OrganizationWhereInput | boolean
+    delete?: OrganizationWhereInput | boolean
+    connect?: OrganizationWhereUniqueInput
+    update?: XOR<XOR<OrganizationUpdateToOneWithWhereWithoutUserInput, OrganizationUpdateWithoutUserInput>, OrganizationUncheckedUpdateWithoutUserInput>
   }
 
   export type ScheduleUncheckedUpdateManyWithoutUserNestedInput = {
@@ -12554,12 +12474,10 @@ export namespace Prisma {
     set?: Date | string | null
   }
 
-  export type UserUpdateOneWithoutOrganizationNestedInput = {
+  export type UserUpdateOneRequiredWithoutOrganizationNestedInput = {
     create?: XOR<UserCreateWithoutOrganizationInput, UserUncheckedCreateWithoutOrganizationInput>
     connectOrCreate?: UserCreateOrConnectWithoutOrganizationInput
     upsert?: UserUpsertWithoutOrganizationInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOrganizationInput, UserUpdateWithoutOrganizationInput>, UserUncheckedUpdateWithoutOrganizationInput>
   }
@@ -12618,14 +12536,6 @@ export namespace Prisma {
     update?: PublicScheduleUpdateWithWhereUniqueWithoutOrganizationInput | PublicScheduleUpdateWithWhereUniqueWithoutOrganizationInput[]
     updateMany?: PublicScheduleUpdateManyWithWhereWithoutOrganizationInput | PublicScheduleUpdateManyWithWhereWithoutOrganizationInput[]
     deleteMany?: PublicScheduleScalarWhereInput | PublicScheduleScalarWhereInput[]
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type ServiceUncheckedUpdateManyWithoutOrganizationNestedInput = {
@@ -12718,8 +12628,8 @@ export namespace Prisma {
     connect?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
   }
 
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
     increment?: number
     decrement?: number
     multiply?: number
@@ -13118,17 +13028,6 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -13152,6 +13051,17 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -13193,22 +13103,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type NestedEnumRecurrentFilter<$PrismaModel = never> = {
@@ -13289,11 +13183,6 @@ export namespace Prisma {
     create: XOR<OrganizationCreateWithoutUserInput, OrganizationUncheckedCreateWithoutUserInput>
   }
 
-  export type OrganizationCreateManyUserInputEnvelope = {
-    data: OrganizationCreateManyUserInput | OrganizationCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
   export type ScheduleCreateWithoutUserInput = {
     uuid?: string
     contractAt: Date | string
@@ -13352,40 +13241,54 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type OrganizationUpsertWithWhereUniqueWithoutUserInput = {
-    where: OrganizationWhereUniqueInput
+  export type OrganizationUpsertWithoutUserInput = {
     update: XOR<OrganizationUpdateWithoutUserInput, OrganizationUncheckedUpdateWithoutUserInput>
     create: XOR<OrganizationCreateWithoutUserInput, OrganizationUncheckedCreateWithoutUserInput>
+    where?: OrganizationWhereInput
   }
 
-  export type OrganizationUpdateWithWhereUniqueWithoutUserInput = {
-    where: OrganizationWhereUniqueInput
+  export type OrganizationUpdateToOneWithWhereWithoutUserInput = {
+    where?: OrganizationWhereInput
     data: XOR<OrganizationUpdateWithoutUserInput, OrganizationUncheckedUpdateWithoutUserInput>
   }
 
-  export type OrganizationUpdateManyWithWhereWithoutUserInput = {
-    where: OrganizationScalarWhereInput
-    data: XOR<OrganizationUpdateManyMutationInput, OrganizationUncheckedUpdateManyWithoutUserInput>
+  export type OrganizationUpdateWithoutUserInput = {
+    uuid?: StringFieldUpdateOperationsInput | string
+    social_name?: StringFieldUpdateOperationsInput | string
+    fantasy_name?: StringFieldUpdateOperationsInput | string
+    cnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    office?: StringFieldUpdateOperationsInput | string
+    image_path?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    services?: ServiceUpdateManyWithoutOrganizationNestedInput
+    plans?: PlanUpdateManyWithoutOrganizationNestedInput
+    schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
+    PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
   }
 
-  export type OrganizationScalarWhereInput = {
-    AND?: OrganizationScalarWhereInput | OrganizationScalarWhereInput[]
-    OR?: OrganizationScalarWhereInput[]
-    NOT?: OrganizationScalarWhereInput | OrganizationScalarWhereInput[]
-    id?: IntFilter<"Organization"> | number
-    uuid?: UuidFilter<"Organization"> | string
-    social_name?: StringFilter<"Organization"> | string
-    fantasy_name?: StringFilter<"Organization"> | string
-    cnpj?: StringFilter<"Organization"> | string
-    email?: StringFilter<"Organization"> | string
-    phone?: StringFilter<"Organization"> | string
-    is_active?: BoolFilter<"Organization"> | boolean
-    office?: StringFilter<"Organization"> | string
-    image_path?: StringNullableFilter<"Organization"> | string | null
-    createdAt?: DateTimeFilter<"Organization"> | Date | string
-    updatedAt?: DateTimeFilter<"Organization"> | Date | string
-    inactiveAt?: DateTimeNullableFilter<"Organization"> | Date | string | null
-    userId?: IntNullableFilter<"Organization"> | number | null
+  export type OrganizationUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    uuid?: StringFieldUpdateOperationsInput | string
+    social_name?: StringFieldUpdateOperationsInput | string
+    fantasy_name?: StringFieldUpdateOperationsInput | string
+    cnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    office?: StringFieldUpdateOperationsInput | string
+    image_path?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
+    plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
+    schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
+    PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
   }
 
   export type ScheduleUpsertWithWhereUniqueWithoutUserInput = {
@@ -13683,7 +13586,7 @@ export namespace Prisma {
     id?: IntFilter<"Service"> | number
     uuid?: UuidFilter<"Service"> | string
     name?: StringFilter<"Service"> | string
-    price?: FloatFilter<"Service"> | number
+    price?: IntFilter<"Service"> | number
     is_active?: BoolFilter<"Service"> | boolean
     duration?: StringFilter<"Service"> | string
     is_quantitative?: BoolFilter<"Service"> | boolean
@@ -13784,7 +13687,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    user?: UserCreateNestedOneWithoutOrganizationInput
+    user: UserCreateNestedOneWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleCreateNestedManyWithoutOrganizationInput
@@ -13804,7 +13707,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    userId?: number | null
+    userId: number
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
@@ -13903,7 +13806,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user?: UserUpdateOneWithoutOrganizationNestedInput
+    user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
@@ -13923,7 +13826,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: IntFieldUpdateOperationsInput | number
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -13974,7 +13877,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    user?: UserCreateNestedOneWithoutOrganizationInput
+    user: UserCreateNestedOneWithoutOrganizationInput
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleCreateNestedManyWithoutOrganizationInput
@@ -13994,7 +13897,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    userId?: number | null
+    userId: number
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
@@ -14052,7 +13955,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user?: UserUpdateOneWithoutOrganizationNestedInput
+    user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
@@ -14072,7 +13975,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: IntFieldUpdateOperationsInput | number
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -14138,7 +14041,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    Organization?: OrganizationCreateNestedManyWithoutUserInput
+    Organization?: OrganizationCreateNestedOneWithoutUserInput
     UserPlans?: UserPlansCreateNestedManyWithoutUserInput
   }
 
@@ -14153,7 +14056,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    Organization?: OrganizationUncheckedCreateNestedManyWithoutUserInput
+    Organization?: OrganizationUncheckedCreateNestedOneWithoutUserInput
     UserPlans?: UserPlansUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -14175,7 +14078,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    user?: UserCreateNestedOneWithoutOrganizationInput
+    user: UserCreateNestedOneWithoutOrganizationInput
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleCreateNestedManyWithoutOrganizationInput
@@ -14195,7 +14098,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    userId?: number | null
+    userId: number
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
@@ -14220,7 +14123,7 @@ export namespace Prisma {
   export type ServiceUpdateWithoutSchedulesInput = {
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
     is_active?: BoolFieldUpdateOperationsInput | boolean
     duration?: StringFieldUpdateOperationsInput | string
     is_quantitative?: BoolFieldUpdateOperationsInput | boolean
@@ -14235,7 +14138,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
     is_active?: BoolFieldUpdateOperationsInput | boolean
     duration?: StringFieldUpdateOperationsInput | string
     is_quantitative?: BoolFieldUpdateOperationsInput | boolean
@@ -14267,7 +14170,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Organization?: OrganizationUpdateManyWithoutUserNestedInput
+    Organization?: OrganizationUpdateOneWithoutUserNestedInput
     UserPlans?: UserPlansUpdateManyWithoutUserNestedInput
   }
 
@@ -14282,7 +14185,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Organization?: OrganizationUncheckedUpdateManyWithoutUserNestedInput
+    Organization?: OrganizationUncheckedUpdateOneWithoutUserNestedInput
     UserPlans?: UserPlansUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -14310,7 +14213,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user?: UserUpdateOneWithoutOrganizationNestedInput
+    user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
@@ -14330,7 +14233,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: IntFieldUpdateOperationsInput | number
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -14383,7 +14286,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    user?: UserCreateNestedOneWithoutOrganizationInput
+    user: UserCreateNestedOneWithoutOrganizationInput
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
@@ -14403,7 +14306,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    userId?: number | null
+    userId: number
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
@@ -14428,7 +14331,7 @@ export namespace Prisma {
   export type ServiceUpdateWithoutPublicScheduleInput = {
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
     is_active?: BoolFieldUpdateOperationsInput | boolean
     duration?: StringFieldUpdateOperationsInput | string
     is_quantitative?: BoolFieldUpdateOperationsInput | boolean
@@ -14443,7 +14346,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
     is_active?: BoolFieldUpdateOperationsInput | boolean
     duration?: StringFieldUpdateOperationsInput | string
     is_quantitative?: BoolFieldUpdateOperationsInput | boolean
@@ -14478,7 +14381,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user?: UserUpdateOneWithoutOrganizationNestedInput
+    user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
@@ -14498,7 +14401,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: IntFieldUpdateOperationsInput | number
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -14514,7 +14417,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    Organization?: OrganizationCreateNestedManyWithoutUserInput
+    Organization?: OrganizationCreateNestedOneWithoutUserInput
     schedules?: ScheduleCreateNestedManyWithoutUserInput
   }
 
@@ -14529,7 +14432,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    Organization?: OrganizationUncheckedCreateNestedManyWithoutUserInput
+    Organization?: OrganizationUncheckedCreateNestedOneWithoutUserInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -14589,7 +14492,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Organization?: OrganizationUpdateManyWithoutUserNestedInput
+    Organization?: OrganizationUpdateOneWithoutUserNestedInput
     schedules?: ScheduleUpdateManyWithoutUserNestedInput
   }
 
@@ -14604,7 +14507,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Organization?: OrganizationUncheckedUpdateManyWithoutUserNestedInput
+    Organization?: OrganizationUncheckedUpdateOneWithoutUserNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -14644,22 +14547,6 @@ export namespace Prisma {
     organizationId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type OrganizationCreateManyUserInput = {
-    id?: number
-    uuid?: string
-    social_name: string
-    fantasy_name: string
-    cnpj: string
-    email: string
-    phone: string
-    is_active?: boolean
-    office: string
-    image_path?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    inactiveAt?: Date | string | null
-  }
-
   export type ScheduleCreateManyUserInput = {
     id?: number
     uuid?: string
@@ -14678,61 +14565,6 @@ export namespace Prisma {
     planId: number
     createdAt?: Date | string
     updatedAt?: Date | string
-  }
-
-  export type OrganizationUpdateWithoutUserInput = {
-    uuid?: StringFieldUpdateOperationsInput | string
-    social_name?: StringFieldUpdateOperationsInput | string
-    fantasy_name?: StringFieldUpdateOperationsInput | string
-    cnpj?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    is_active?: BoolFieldUpdateOperationsInput | boolean
-    office?: StringFieldUpdateOperationsInput | string
-    image_path?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    services?: ServiceUpdateManyWithoutOrganizationNestedInput
-    plans?: PlanUpdateManyWithoutOrganizationNestedInput
-    schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
-    PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
-  }
-
-  export type OrganizationUncheckedUpdateWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    uuid?: StringFieldUpdateOperationsInput | string
-    social_name?: StringFieldUpdateOperationsInput | string
-    fantasy_name?: StringFieldUpdateOperationsInput | string
-    cnpj?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    is_active?: BoolFieldUpdateOperationsInput | boolean
-    office?: StringFieldUpdateOperationsInput | string
-    image_path?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
-    plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
-    schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
-    PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
-  }
-
-  export type OrganizationUncheckedUpdateManyWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    uuid?: StringFieldUpdateOperationsInput | string
-    social_name?: StringFieldUpdateOperationsInput | string
-    fantasy_name?: StringFieldUpdateOperationsInput | string
-    cnpj?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    is_active?: BoolFieldUpdateOperationsInput | boolean
-    office?: StringFieldUpdateOperationsInput | string
-    image_path?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ScheduleUpdateWithoutUserInput = {
@@ -14844,7 +14676,7 @@ export namespace Prisma {
   export type ServiceUpdateWithoutOrganizationInput = {
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
     is_active?: BoolFieldUpdateOperationsInput | boolean
     duration?: StringFieldUpdateOperationsInput | string
     is_quantitative?: BoolFieldUpdateOperationsInput | boolean
@@ -14859,7 +14691,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
     is_active?: BoolFieldUpdateOperationsInput | boolean
     duration?: StringFieldUpdateOperationsInput | string
     is_quantitative?: BoolFieldUpdateOperationsInput | boolean
@@ -14874,7 +14706,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
     is_active?: BoolFieldUpdateOperationsInput | boolean
     duration?: StringFieldUpdateOperationsInput | string
     is_quantitative?: BoolFieldUpdateOperationsInput | boolean

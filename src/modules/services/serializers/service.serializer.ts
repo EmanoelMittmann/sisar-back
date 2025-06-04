@@ -14,6 +14,7 @@ export class ServiceSerializer {
       price: services.getPrice(),
       is_quantitative: services.getIsQuantitative(),
       limit_for_day: services.getLimitForDay(),
+      created_at: services.getCreatedAt(),
     };
   }
 }

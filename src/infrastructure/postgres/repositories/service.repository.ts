@@ -17,12 +17,16 @@ export class ServicePostgresRepository implements IServiceRepository {
     const data = (await this.prisma.service.create({
       data: {
         name: args.getName(),
-        price: args.getPrice(),
+        price: +args.getPrice(),
         duration: args.getDuration(),
         is_active: args.getIsActive(),
         is_quantitative: args.getIsQuantitative(),
         limit_for_day: args.getLimitForDay(),
-        organizationId: args.getOrganization().getId(),
+        organization: {
+          connect: {
+            uuid: args.getOrganization().getUuid(),
+          },
+        },
       },
     })) as unknown as ServiceDBReflection;
 

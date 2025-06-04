@@ -1,3 +1,4 @@
+import { OrganizationEntity } from 'src/modules/organization/entities/organization.entity';
 import { UserEntity } from 'src/modules/users';
 import { Role_Control } from 'src/shared/enum/role.enum';
 
@@ -11,6 +12,10 @@ export interface PrismaFindOneContract {
   password: string;
   createdAt: Date;
   updatedAt: Date;
+  Organization?: {
+    uuid: string;
+    social_name: string;
+  };
 }
 
 export class UserSerializer {
@@ -25,6 +30,13 @@ export class UserSerializer {
     entity.setRole(input.role);
     entity.setCreatedAt(input.createdAt);
     entity.setUpdatedAt(input.updatedAt);
+
+    if (input.Organization) {
+      const organization = new OrganizationEntity();
+      organization.setUuid(input.Organization?.uuid);
+      organization.setSocialName(input.Organization?.social_name);
+      entity.setOrganization(organization);
+    }
     return entity;
   }
 }

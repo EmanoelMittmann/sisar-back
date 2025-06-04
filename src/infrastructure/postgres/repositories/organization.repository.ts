@@ -63,4 +63,27 @@ export class OrganizationPostgresRepository implements IOrganizationRepository {
   findByEmail(email: string): Promise<OrganizationEntity | null> {
     throw new Error(`Method not implemented. ${email}`);
   }
+
+  async findByUserId(userId: string): Promise<OrganizationEntity | null> {
+    const organization = await this.prisma.organization.findFirst({
+      where: {
+        user: {
+          uuid: userId,
+        },
+      },
+      select: {
+        uuid: true,
+        social_name: true,
+        image_path: true,
+        office: true,
+        email: true,
+        phone: true,
+        cnpj: true,
+      },
+    });
+
+    if (!organization) return null;
+
+    return new OrganizationSerializer().transformToEntity(organization);
+  }
 }

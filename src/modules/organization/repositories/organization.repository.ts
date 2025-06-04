@@ -8,4 +8,5 @@ export interface IOrganizationRepository
   > {
   findByEmail(email: string): Promise<OrganizationEntity | null>;
   findAll(): Promise<OrganizationEntity[]>;
+  findByUserId(userId: string): Promise<OrganizationEntity | null>;
 }

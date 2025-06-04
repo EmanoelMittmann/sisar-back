@@ -17,7 +17,7 @@ export class SchedulerService {
     private readonly email_service: EmailService,
   ) {}
 
-  @Cron('* */1 * * *')
+  @Cron('* * * * *')
   async notify_clients() {
     this.logger.log('INIT PROCESS OF NOTIFY CLIENTS');
     const USER_NOTIFY_LIST_KEY = REMEMBER_USER_KEY;

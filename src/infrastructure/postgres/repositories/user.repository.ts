@@ -41,6 +41,14 @@ export class UserPostgresRepository implements IUserRepository {
       where: {
         uuid: args.getUuid(),
       },
+      include: {
+        Organization: {
+          select: {
+            uuid: true,
+            social_name: true,
+          },
+        },
+      },
     });
 
     if (!user) {
