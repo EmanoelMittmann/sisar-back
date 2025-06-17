@@ -16,7 +16,7 @@ export class CreatePublicScheduleService
     `MAIN-${CreatePublicScheduleService.name.toUpperCase()}`,
   );
   constructor(
-    @Inject('IScheduleRepository')
+    @Inject('ISchedulePublicRepository')
     private readonly scheduleRepository: ISchedulePublicRepository,
   ) {}
 

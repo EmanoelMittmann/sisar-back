@@ -20,6 +20,9 @@ import { UpdateScheduleService } from '../services/update-schedule.service';
 import { UpdateScheduleDto } from '../dtos/update-scedule.dto';
 import { AuthGuard } from 'src/modules/auth/guards/auth.guard';
 import { ScheduleListDto } from '../dtos/schedule-list.dto';
+import { FindByCompanyService } from '../services/find-by-company.service';
+import { AlterStatusScheduleService } from '../services/alter-status-schedule.service';
+import { StatusSchedules } from 'src/shared/enum/status_schedules.enum';
 
 @Controller('schedules')
 export class ScheduleController {
@@ -29,18 +32,37 @@ export class ScheduleController {
     private readonly deleteScheduleService: DeleteScheduleService,
     private readonly listScheduleService: ListScheduleService,
     private readonly updateScheduleService: UpdateScheduleService,
+    private readonly findByCompanyService: FindByCompanyService,
+    private readonly alterStatusScheduleService: AlterStatusScheduleService,
   ) {}
 
   @UseGuards(AuthGuard)
   @Post('/create')
-  async create(@Body() body: CreateScheduleDto) {
-    return this.createScheduleService.execute(body);
+  async create(
+    @Body() body: CreateScheduleDto,
+    @UseAuthUser() user: UserEntity,
+  ) {
+    return this.createScheduleService.execute({
+      ...body,
+      user_id: user.getId(),
+      user_uuid: user.getUuid(),
+    });
   }
 
   @UseGuards(AuthGuard)
   @Get()
   async findAll(@UseAuthUser() user: UserEntity): Promise<ScheduleListDto[]> {
     return this.listScheduleService.execute({ user_id: user.getUuid() });
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('/by-company')
+  async findByCompany(
+    @UseAuthUser() user: UserEntity,
+  ): Promise<ScheduleListDto[]> {
+    return this.findByCompanyService.execute({
+      company_id: user.getOrganization()?.getUuid() as string,
+    });
   }
 
   @UseGuards(AuthGuard)
@@ -61,9 +83,27 @@ export class ScheduleController {
   @Put('/:id')
   async update(
     @Param('id') id: string,
-    @Body() body: Omit<UpdateScheduleDto, 'id'>,
+    @Body() body: UpdateScheduleDto,
+    @UseAuthUser() user: UserEntity,
   ) {
-    const serialize = ScheduleSerializer.toEntity({ id, ...body });
+    const serialize = ScheduleSerializer.toEntity({
+      id,
+      ...body,
+      user_id: user.getUuid(),
+    });
     await this.updateScheduleService.execute(serialize);
+  }
+
+  @UseGuards(AuthGuard)
+  @Put('/alter-status/:id')
+  async alterStatus(
+    @Param('id') id: string,
+    @Body() body: { status: string },
+  ): Promise<void> {
+    await this.alterStatusScheduleService.execute({
+      schedule_uuid: id,
+      status: body.status as StatusSchedules,
+    });
+    return;
   }
 }

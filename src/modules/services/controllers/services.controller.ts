@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
@@ -34,7 +35,7 @@ export class ServicesController {
   ) {}
 
   @UseGuards(AuthGuard)
-  @Patch('/:organization_id')
+  @Patch(':organization_id')
   async listAll(
     @Param('organization_id') organization_id: string,
   ): Promise<ListServicesDto[]> {
@@ -79,7 +80,6 @@ export class ServicesController {
     @Body() body: CreateServiceDto,
     @UseAuthUser() user: UserEntity,
   ): Promise<void> {
-    console.log(body);
     const service = new ServiceEntity();
     service.setName(body.name);
     service.setPrice(body.price);
@@ -88,5 +88,15 @@ export class ServicesController {
     service.setLimitForDay(body.limit_for_day);
     service.setOrganization(user.getOrganization() as OrganizationEntity);
     await this.createServiceService.execute(service);
+  }
+
+  @UseGuards(AuthGuard)
+  @Patch()
+  async authenticated_services(@UseAuthUser() user: UserEntity) {
+    const userOrganization = user.getOrganization();
+    if (!userOrganization) {
+      throw new BadRequestException('User does not belong to any organization');
+    }
+    return this.listServicesService.execute(userOrganization.getUuid());
   }
 }

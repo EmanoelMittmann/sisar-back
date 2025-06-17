@@ -2918,6 +2918,7 @@ export namespace Prisma {
     updatedAt: number
     inactiveAt: number
     userId: number
+    openingHours: number
     _all: number
   }
 
@@ -2981,6 +2982,7 @@ export namespace Prisma {
     updatedAt?: true
     inactiveAt?: true
     userId?: true
+    openingHours?: true
     _all?: true
   }
 
@@ -3085,6 +3087,7 @@ export namespace Prisma {
     updatedAt: Date
     inactiveAt: Date | null
     userId: number
+    openingHours: JsonValue | null
     _count: OrganizationCountAggregateOutputType | null
     _avg: OrganizationAvgAggregateOutputType | null
     _sum: OrganizationSumAggregateOutputType | null
@@ -3121,6 +3124,7 @@ export namespace Prisma {
     updatedAt?: boolean
     inactiveAt?: boolean
     userId?: boolean
+    openingHours?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     services?: boolean | Organization$servicesArgs<ExtArgs>
     plans?: boolean | Organization$plansArgs<ExtArgs>
@@ -3144,6 +3148,7 @@ export namespace Prisma {
     updatedAt?: boolean
     inactiveAt?: boolean
     userId?: boolean
+    openingHours?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organization"]>
 
@@ -3162,6 +3167,7 @@ export namespace Prisma {
     updatedAt?: boolean
     inactiveAt?: boolean
     userId?: boolean
+    openingHours?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organization"]>
 
@@ -3180,9 +3186,10 @@ export namespace Prisma {
     updatedAt?: boolean
     inactiveAt?: boolean
     userId?: boolean
+    openingHours?: boolean
   }
 
-  export type OrganizationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uuid" | "social_name" | "fantasy_name" | "cnpj" | "email" | "phone" | "is_active" | "office" | "image_path" | "createdAt" | "updatedAt" | "inactiveAt" | "userId", ExtArgs["result"]["organization"]>
+  export type OrganizationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uuid" | "social_name" | "fantasy_name" | "cnpj" | "email" | "phone" | "is_active" | "office" | "image_path" | "createdAt" | "updatedAt" | "inactiveAt" | "userId" | "openingHours", ExtArgs["result"]["organization"]>
   export type OrganizationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     services?: boolean | Organization$servicesArgs<ExtArgs>
@@ -3222,6 +3229,7 @@ export namespace Prisma {
       updatedAt: Date
       inactiveAt: Date | null
       userId: number
+      openingHours: Prisma.JsonValue | null
     }, ExtArgs["result"]["organization"]>
     composites: {}
   }
@@ -3664,6 +3672,7 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"Organization", 'DateTime'>
     readonly inactiveAt: FieldRef<"Organization", 'DateTime'>
     readonly userId: FieldRef<"Organization", 'Int'>
+    readonly openingHours: FieldRef<"Organization", 'Json'>
   }
     
 
@@ -5445,6 +5454,7 @@ export namespace Prisma {
     price: number | null
     recurrent: $Enums.Recurrent | null
     description: string | null
+    status: boolean | null
     dueDate: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -5458,6 +5468,7 @@ export namespace Prisma {
     price: number | null
     recurrent: $Enums.Recurrent | null
     description: string | null
+    status: boolean | null
     dueDate: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -5471,6 +5482,7 @@ export namespace Prisma {
     price: number
     recurrent: number
     description: number
+    status: number
     dueDate: number
     createdAt: number
     updatedAt: number
@@ -5498,6 +5510,7 @@ export namespace Prisma {
     price?: true
     recurrent?: true
     description?: true
+    status?: true
     dueDate?: true
     createdAt?: true
     updatedAt?: true
@@ -5511,6 +5524,7 @@ export namespace Prisma {
     price?: true
     recurrent?: true
     description?: true
+    status?: true
     dueDate?: true
     createdAt?: true
     updatedAt?: true
@@ -5524,6 +5538,7 @@ export namespace Prisma {
     price?: true
     recurrent?: true
     description?: true
+    status?: true
     dueDate?: true
     createdAt?: true
     updatedAt?: true
@@ -5624,6 +5639,7 @@ export namespace Prisma {
     price: number
     recurrent: $Enums.Recurrent
     description: string
+    status: boolean
     dueDate: Date | null
     createdAt: Date
     updatedAt: Date
@@ -5656,6 +5672,7 @@ export namespace Prisma {
     price?: boolean
     recurrent?: boolean
     description?: boolean
+    status?: boolean
     dueDate?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -5672,6 +5689,7 @@ export namespace Prisma {
     price?: boolean
     recurrent?: boolean
     description?: boolean
+    status?: boolean
     dueDate?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -5686,6 +5704,7 @@ export namespace Prisma {
     price?: boolean
     recurrent?: boolean
     description?: boolean
+    status?: boolean
     dueDate?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -5700,13 +5719,14 @@ export namespace Prisma {
     price?: boolean
     recurrent?: boolean
     description?: boolean
+    status?: boolean
     dueDate?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     organizationId?: boolean
   }
 
-  export type PlanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uuid" | "name" | "price" | "recurrent" | "description" | "dueDate" | "createdAt" | "updatedAt" | "organizationId", ExtArgs["result"]["plan"]>
+  export type PlanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uuid" | "name" | "price" | "recurrent" | "description" | "status" | "dueDate" | "createdAt" | "updatedAt" | "organizationId", ExtArgs["result"]["plan"]>
   export type PlanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     organization?: boolean | OrganizationDefaultArgs<ExtArgs>
     UserPlans?: boolean | Plan$UserPlansArgs<ExtArgs>
@@ -5732,6 +5752,7 @@ export namespace Prisma {
       price: number
       recurrent: $Enums.Recurrent
       description: string
+      status: boolean
       dueDate: Date | null
       createdAt: Date
       updatedAt: Date
@@ -6167,6 +6188,7 @@ export namespace Prisma {
     readonly price: FieldRef<"Plan", 'Int'>
     readonly recurrent: FieldRef<"Plan", 'Recurrent'>
     readonly description: FieldRef<"Plan", 'String'>
+    readonly status: FieldRef<"Plan", 'Boolean'>
     readonly dueDate: FieldRef<"Plan", 'DateTime'>
     readonly createdAt: FieldRef<"Plan", 'DateTime'>
     readonly updatedAt: FieldRef<"Plan", 'DateTime'>
@@ -10106,7 +10128,8 @@ export namespace Prisma {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     inactiveAt: 'inactiveAt',
-    userId: 'userId'
+    userId: 'userId',
+    openingHours: 'openingHours'
   };
 
   export type OrganizationScalarFieldEnum = (typeof OrganizationScalarFieldEnum)[keyof typeof OrganizationScalarFieldEnum]
@@ -10136,6 +10159,7 @@ export namespace Prisma {
     price: 'price',
     recurrent: 'recurrent',
     description: 'description',
+    status: 'status',
     dueDate: 'dueDate',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -10195,12 +10219,29 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
   export const QueryMode: {
     default: 'default',
     insensitive: 'insensitive'
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   export const NullsOrder: {
@@ -10276,6 +10317,20 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -10430,6 +10485,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Organization"> | Date | string
     inactiveAt?: DateTimeNullableFilter<"Organization"> | Date | string | null
     userId?: IntFilter<"Organization"> | number
+    openingHours?: JsonNullableFilter<"Organization">
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     services?: ServiceListRelationFilter
     plans?: PlanListRelationFilter
@@ -10452,6 +10508,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     inactiveAt?: SortOrderInput | SortOrder
     userId?: SortOrder
+    openingHours?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     services?: ServiceOrderByRelationAggregateInput
     plans?: PlanOrderByRelationAggregateInput
@@ -10477,6 +10534,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Organization"> | Date | string
     updatedAt?: DateTimeFilter<"Organization"> | Date | string
     inactiveAt?: DateTimeNullableFilter<"Organization"> | Date | string | null
+    openingHours?: JsonNullableFilter<"Organization">
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     services?: ServiceListRelationFilter
     plans?: PlanListRelationFilter
@@ -10499,6 +10557,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     inactiveAt?: SortOrderInput | SortOrder
     userId?: SortOrder
+    openingHours?: SortOrderInput | SortOrder
     _count?: OrganizationCountOrderByAggregateInput
     _avg?: OrganizationAvgOrderByAggregateInput
     _max?: OrganizationMaxOrderByAggregateInput
@@ -10524,6 +10583,7 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Organization"> | Date | string
     inactiveAt?: DateTimeNullableWithAggregatesFilter<"Organization"> | Date | string | null
     userId?: IntWithAggregatesFilter<"Organization"> | number
+    openingHours?: JsonNullableWithAggregatesFilter<"Organization">
   }
 
   export type ServiceWhereInput = {
@@ -10629,6 +10689,7 @@ export namespace Prisma {
     price?: IntFilter<"Plan"> | number
     recurrent?: EnumRecurrentFilter<"Plan"> | $Enums.Recurrent
     description?: StringFilter<"Plan"> | string
+    status?: BoolFilter<"Plan"> | boolean
     dueDate?: DateTimeNullableFilter<"Plan"> | Date | string | null
     createdAt?: DateTimeFilter<"Plan"> | Date | string
     updatedAt?: DateTimeFilter<"Plan"> | Date | string
@@ -10644,6 +10705,7 @@ export namespace Prisma {
     price?: SortOrder
     recurrent?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     dueDate?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -10662,6 +10724,7 @@ export namespace Prisma {
     price?: IntFilter<"Plan"> | number
     recurrent?: EnumRecurrentFilter<"Plan"> | $Enums.Recurrent
     description?: StringFilter<"Plan"> | string
+    status?: BoolFilter<"Plan"> | boolean
     dueDate?: DateTimeNullableFilter<"Plan"> | Date | string | null
     createdAt?: DateTimeFilter<"Plan"> | Date | string
     updatedAt?: DateTimeFilter<"Plan"> | Date | string
@@ -10677,6 +10740,7 @@ export namespace Prisma {
     price?: SortOrder
     recurrent?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     dueDate?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -10698,6 +10762,7 @@ export namespace Prisma {
     price?: IntWithAggregatesFilter<"Plan"> | number
     recurrent?: EnumRecurrentWithAggregatesFilter<"Plan"> | $Enums.Recurrent
     description?: StringWithAggregatesFilter<"Plan"> | string
+    status?: BoolWithAggregatesFilter<"Plan"> | boolean
     dueDate?: DateTimeNullableWithAggregatesFilter<"Plan"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Plan"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Plan"> | Date | string
@@ -11045,6 +11110,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user: UserCreateNestedOneWithoutOrganizationInput
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
@@ -11067,6 +11133,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
     userId: number
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
@@ -11086,6 +11153,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
@@ -11108,6 +11176,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: IntFieldUpdateOperationsInput | number
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -11129,6 +11198,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
     userId: number
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type OrganizationUpdateManyMutationInput = {
@@ -11144,6 +11214,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type OrganizationUncheckedUpdateManyInput = {
@@ -11161,6 +11232,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: IntFieldUpdateOperationsInput | number
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type ServiceCreateInput = {
@@ -11271,6 +11343,7 @@ export namespace Prisma {
     price: number
     recurrent: $Enums.Recurrent
     description: string
+    status?: boolean
     dueDate?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11285,6 +11358,7 @@ export namespace Prisma {
     price: number
     recurrent: $Enums.Recurrent
     description: string
+    status?: boolean
     dueDate?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11298,6 +11372,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
     description?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11312,6 +11387,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
     description?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11326,6 +11402,7 @@ export namespace Prisma {
     price: number
     recurrent: $Enums.Recurrent
     description: string
+    status?: boolean
     dueDate?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11338,6 +11415,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
     description?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11350,6 +11428,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
     description?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11802,6 +11881,29 @@ export namespace Prisma {
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
@@ -11858,6 +11960,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     inactiveAt?: SortOrder
     userId?: SortOrder
+    openingHours?: SortOrder
   }
 
   export type OrganizationAvgOrderByAggregateInput = {
@@ -11942,6 +12045,32 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -12046,6 +12175,7 @@ export namespace Prisma {
     price?: SortOrder
     recurrent?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     dueDate?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -12065,6 +12195,7 @@ export namespace Prisma {
     price?: SortOrder
     recurrent?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     dueDate?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -12078,6 +12209,7 @@ export namespace Prisma {
     price?: SortOrder
     recurrent?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     dueDate?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -13077,6 +13209,29 @@ export namespace Prisma {
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
@@ -13152,6 +13307,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
@@ -13172,6 +13328,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
@@ -13265,6 +13422,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
@@ -13285,6 +13443,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -13430,6 +13589,7 @@ export namespace Prisma {
     price: number
     recurrent: $Enums.Recurrent
     description: string
+    status?: boolean
     dueDate?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -13443,6 +13603,7 @@ export namespace Prisma {
     price: number
     recurrent: $Enums.Recurrent
     description: string
+    status?: boolean
     dueDate?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -13622,6 +13783,7 @@ export namespace Prisma {
     price?: IntFilter<"Plan"> | number
     recurrent?: EnumRecurrentFilter<"Plan"> | $Enums.Recurrent
     description?: StringFilter<"Plan"> | string
+    status?: BoolFilter<"Plan"> | boolean
     dueDate?: DateTimeNullableFilter<"Plan"> | Date | string | null
     createdAt?: DateTimeFilter<"Plan"> | Date | string
     updatedAt?: DateTimeFilter<"Plan"> | Date | string
@@ -13687,6 +13849,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user: UserCreateNestedOneWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
@@ -13708,6 +13871,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
     userId: number
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
@@ -13806,6 +13970,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
@@ -13827,6 +13992,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: IntFieldUpdateOperationsInput | number
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -13877,6 +14043,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user: UserCreateNestedOneWithoutOrganizationInput
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
@@ -13898,6 +14065,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
     userId: number
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
@@ -13955,6 +14123,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
@@ -13976,6 +14145,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: IntFieldUpdateOperationsInput | number
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -14078,6 +14248,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user: UserCreateNestedOneWithoutOrganizationInput
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
@@ -14099,6 +14270,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
     userId: number
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
@@ -14213,6 +14385,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
@@ -14234,6 +14407,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: IntFieldUpdateOperationsInput | number
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -14286,6 +14460,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user: UserCreateNestedOneWithoutOrganizationInput
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
@@ -14307,6 +14482,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
     userId: number
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
@@ -14381,6 +14557,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
@@ -14402,6 +14579,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: IntFieldUpdateOperationsInput | number
+    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
@@ -14447,6 +14625,7 @@ export namespace Prisma {
     price: number
     recurrent: $Enums.Recurrent
     description: string
+    status?: boolean
     dueDate?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -14460,6 +14639,7 @@ export namespace Prisma {
     price: number
     recurrent: $Enums.Recurrent
     description: string
+    status?: boolean
     dueDate?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -14528,6 +14708,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
     description?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14541,6 +14722,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
     description?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14645,6 +14827,7 @@ export namespace Prisma {
     price: number
     recurrent: $Enums.Recurrent
     description: string
+    status?: boolean
     dueDate?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -14721,6 +14904,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
     description?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14734,6 +14918,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
     description?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14747,6 +14932,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
     description?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

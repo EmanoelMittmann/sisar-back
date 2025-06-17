@@ -4,6 +4,7 @@ export class ListPlansDto {
   uuid: string;
   name: string;
   price: number;
+  status: boolean;
   recurrent: Recurrent;
   description: string;
   dueDate: Date;

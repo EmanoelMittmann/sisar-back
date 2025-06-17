@@ -34,7 +34,9 @@ export class PlansPostgresRepository implements IPlanRepository {
   async findAll(args: PlanEntity): Promise<PlanEntity[]> {
     const plans = (await this.prisma.plan.findMany({
       where: {
-        organizationId: args.getOrganization().getId(),
+        organization: {
+          uuid: args.getOrganization().getUuid(),
+        },
       },
     })) as unknown as IPlanDBReflection[];
 
@@ -44,7 +46,7 @@ export class PlansPostgresRepository implements IPlanRepository {
   async findOne(args: PlanEntity): Promise<PlanEntity> {
     const plan = (await this.prisma.plan.findUnique({
       where: {
-        id: args.getId(),
+        uuid: args.getUuid(),
       },
     })) as unknown as IPlanDBReflection;
 

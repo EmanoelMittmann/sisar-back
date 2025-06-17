@@ -53,6 +53,7 @@ model Organization {
   inactiveAt     DateTime?        @map("inactive_at")
   user           User             @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId         Int              @unique
+  openingHours   Json?            @map("opening_hours") @db.Json
   services       Service[]
   plans          Plan[]
   schedules      Schedule[]
@@ -93,6 +94,7 @@ model Plan {
   price          Int
   recurrent      Recurrent
   description    String       @db.Text
+  status         Boolean      @default(true)
   dueDate        DateTime?
   createdAt      DateTime     @default(now()) @map("created_at")
   updatedAt      DateTime     @updatedAt @map("updated_at")
@@ -155,3 +157,15 @@ model UserPlans {
 
   @@map("user_plans")
 }
+
+// model AvailableTime {
+//   id             Int          @id @default(autoincrement())
+//   startTime      DateTime     @map("start_time")
+//   endTime        DateTime     @map("end_time")
+//   organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+//   organizationId Int
+//   createdAt      DateTime     @default(now()) @map("created_at")
+//   updatedAt      DateTime     @updatedAt @map("updated_at")
+
+//   @@map("available_time")
+// }

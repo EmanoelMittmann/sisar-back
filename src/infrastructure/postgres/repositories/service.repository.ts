@@ -36,7 +36,9 @@ export class ServicePostgresRepository implements IServiceRepository {
   async findAll(args: ServiceEntity): Promise<ServiceEntity[]> {
     const services = (await this.prisma.service.findMany({
       where: {
-        organizationId: args.getOrganization().getId(),
+        organization: {
+          uuid: args.getOrganization().getUuid(),
+        },
       },
     })) as unknown as ServiceDBReflection[];
 
@@ -46,7 +48,7 @@ export class ServicePostgresRepository implements IServiceRepository {
   async findOne(args: ServiceEntity): Promise<ServiceEntity> {
     const service = (await this.prisma.service.findUnique({
       where: {
-        id: args.getId(),
+        uuid: args.getUuid(),
       },
     })) as unknown as ServiceDBReflection;
 

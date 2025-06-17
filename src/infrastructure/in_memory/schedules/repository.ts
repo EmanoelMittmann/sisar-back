@@ -36,4 +36,18 @@ export class ScheduleInMemoryRepository implements IScheduleRepository {
   findSchedulesPending(): Promise<ScheduleEntity[]> {
     throw new Error('Method not implemented.');
   }
+
+  findOrganizationByService(
+    service_uuid: string,
+  ): Promise<{ organization_id: number; service_id: number } | null> {
+    throw new Error('Method not implemented.');
+  }
+
+  findByOrganizationUuid(organization_id: string): Promise<ScheduleEntity[]> {
+    throw new Error('Method not implemented.');
+  }
+
+  alterStatusByUuid(schedule_uuid: string, status: string): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
 }

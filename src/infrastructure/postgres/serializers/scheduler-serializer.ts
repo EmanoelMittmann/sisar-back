@@ -7,15 +7,21 @@ import { StatusSchedules } from 'src/shared/enum/status_schedules.enum';
 export interface IScheduleDBReflection {
   id: number;
   uuid: string;
-  organizationId: number;
-  serviceId: number;
   userId: number;
-  contract_at: Date;
+  contractAt: Date;
   status: StatusSchedules;
   remember_user: boolean;
   created_at: Date;
   updated_at: Date;
   canceled_at: Date | null;
+  organization: {
+    uuid: string;
+    social_name: string;
+  };
+  service: {
+    uuid: string;
+    name: string;
+  };
 }
 
 export interface ISchedulePendingDBReflection {
@@ -37,18 +43,20 @@ export class SchedulerSerializer {
     entity.setUuid(data.uuid);
 
     const organization = new OrganizationEntity();
-    organization.setId(data.organizationId);
+    organization.setUuid(data.organization.uuid);
+    organization.setSocialName(data.organization.social_name);
     entity.setOrganization(organization);
 
     const service = new ServiceEntity();
-    service.setId(data.serviceId);
+    service.setUuid(data.service.uuid);
+    service.setName(data.service.name);
     entity.setService(service);
 
     const user = new UserEntity();
     user.setId(data.userId);
     entity.setUser(user);
 
-    entity.setContractAt(data.contract_at);
+    entity.setContractAt(data.contractAt);
     entity.setStatus(data.status);
 
     return entity;

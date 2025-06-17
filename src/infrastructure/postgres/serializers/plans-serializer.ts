@@ -7,6 +7,7 @@ export interface IPlanDBReflection {
   name: string;
   price: number;
   recurrent: Recurrent;
+  status: boolean;
   description: string;
   dueDate: Date | null;
   createdAt: Date;
@@ -22,6 +23,7 @@ export class PlansSerializer {
     plan.setName(data.name);
     plan.setPrice(data.price);
     plan.setRecurrent(data.recurrent);
+    plan.setStatus(data.status);
     plan.setDescription(data.description);
     if (data.dueDate) {
       plan.setDueDate(data.dueDate);

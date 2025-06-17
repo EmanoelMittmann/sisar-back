@@ -9,6 +9,7 @@ export class PlanEntity {
   private _recurrent: Recurrent;
   private _description: string;
   private _dueDate: Date;
+  private _status: boolean;
   private _createdAt: Date;
   private _updatedAt: Date;
   private _organization: OrganizationEntity;
@@ -24,6 +25,10 @@ export class PlanEntity {
 
   getName(): string {
     return this._name;
+  }
+
+  getStatus(): boolean {
+    return this._status;
   }
 
   getPrice(): number {
@@ -93,5 +98,9 @@ export class PlanEntity {
 
   setOrganization(value: OrganizationEntity): void {
     this._organization = value;
+  }
+
+  setStatus(value: boolean): void {
+    this._status = value;
   }
 }

@@ -46,6 +46,8 @@ export class PlansController {
     const plans = new PlanEntity();
     plans.setOrganization(organization);
 
+    console.log(plans);
+
     return this.listPlansService.execute(plans);
   }
 
@@ -108,5 +110,15 @@ export class PlansController {
     const plan = new PlanEntity();
     plan.setUuid(id);
     return this.findOnePlanService.execute(plan);
+  }
+
+  @UseGuards(AuthGuard)
+  @Get()
+  async authenticated_plans(
+    @UseAuthUser() user: UserEntity,
+  ): Promise<ListPlansDto[]> {
+    const plan = new PlanEntity();
+    plan.setOrganization(user.getOrganization() as OrganizationEntity);
+    return this.listPlansService.execute(plan);
   }
 }

@@ -16,21 +16,9 @@ export class SchedulePostgresRepository implements IScheduleRepository {
   async create(args: ScheduleEntity): Promise<ScheduleEntity> {
     const data = (await this.prisma.schedule.create({
       data: {
-        service: {
-          connect: {
-            id: args.getService().getId(),
-          },
-        },
-        organization: {
-          connect: {
-            id: args.getOrganization().getId(),
-          },
-        },
-        user: {
-          connect: {
-            id: args.getUser().getId(),
-          },
-        },
+        organizationId: args.getOrganization().getId(),
+        userId: args.getUser().getId(),
+        serviceId: args.getService().getId(),
         contractAt: args.getContractAt(),
         status: args.getStatus(),
         rememberUser: args.getRememberUser(),
@@ -54,6 +42,20 @@ export class SchedulePostgresRepository implements IScheduleRepository {
     const data = (await this.prisma.schedule.findMany({
       where: {
         organizationId: args.getUser().getId(),
+      },
+      include: {
+        organization: {
+          select: {
+            uuid: true,
+            social_name: true,
+          },
+        },
+        service: {
+          select: {
+            uuid: true,
+            name: true,
+          },
+        },
       },
     })) as unknown as IScheduleDBReflection[];
 
@@ -122,5 +124,69 @@ export class SchedulePostgresRepository implements IScheduleRepository {
     })) as ISchedulePendingDBReflection[];
 
     return SchedulerSerializer.toManyPendingEntity(data);
+  }
+
+  async findOrganizationByService(
+    service_uuid: string,
+  ): Promise<{ organization_id: number; service_id: number } | null> {
+    const data = await this.prisma.service.findFirst({
+      where: {
+        uuid: service_uuid,
+      },
+      select: {
+        organizationId: true,
+        id: true,
+      },
+    });
+
+    if (!data) {
+      return null;
+    }
+
+    return { organization_id: data.organizationId, service_id: data.id };
+  }
+
+  async findByOrganizationUuid(
+    organization_id: string,
+  ): Promise<ScheduleEntity[]> {
+    const data = (await this.prisma.schedule.findMany({
+      where: {
+        organization: {
+          uuid: organization_id,
+        },
+      },
+      include: {
+        organization: {
+          select: {
+            uuid: true,
+            social_name: true,
+          },
+        },
+        service: {
+          select: {
+            uuid: true,
+            name: true,
+          },
+        },
+      },
+    })) as unknown as IScheduleDBReflection[];
+
+    if (!data) return [];
+
+    return SchedulerSerializer.toManyEntity(data);
+  }
+
+  async alterStatusByUuid(
+    schedule_uuid: string,
+    status: string,
+  ): Promise<void> {
+    await this.prisma.schedule.update({
+      where: {
+        uuid: schedule_uuid,
+      },
+      data: {
+        status: status as StatusSchedules,
+      },
+    });
   }
 }

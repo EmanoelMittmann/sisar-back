@@ -13,7 +13,6 @@ export class CreateServiceService
   ) {}
 
   async execute(args: ServiceEntity): Promise<ServiceEntity> {
-    console.log(args);
     return this.serviceRepository.create(args);
   }
 }
