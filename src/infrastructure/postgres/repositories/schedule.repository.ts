@@ -4,6 +4,7 @@ import { IScheduleRepository } from 'src/modules/schedules/repositories/schedule
 import { PrismaService } from '../prisma/prisma.service';
 import {
   ISchedulePendingDBReflection,
+  ScheduleDetailDBReflection,
   SchedulerSerializer,
 } from '../serializers/scheduler-serializer';
 import { IScheduleDBReflection } from '../serializers/scheduler-serializer';
@@ -188,5 +189,36 @@ export class SchedulePostgresRepository implements IScheduleRepository {
         status: status as StatusSchedules,
       },
     });
+  }
+
+  async findDetailByUuid(
+    schedule_uuid: string,
+  ): Promise<ScheduleEntity | null> {
+    const data = (await this.prisma.schedule.findUnique({
+      where: {
+        uuid: schedule_uuid,
+      },
+      include: {
+        user: {
+          select: {
+            name: true,
+            email: true,
+            phone: true,
+            cpf: true,
+          },
+        },
+        service: {
+          select: {
+            name: true,
+            price: true,
+            duration: true,
+          },
+        },
+      },
+    })) as unknown as ScheduleDetailDBReflection;
+
+    if (!data) return null;
+
+    return SchedulerSerializer.toDetailEntity(data);
   }
 }

@@ -133,6 +133,7 @@ model Schedule {
 
 model PublicSchedule {
   id             Int             @id @default(autoincrement())
+  uuid           String?         @unique @default(uuid()) @db.Uuid
   service        Service         @relation(fields: [serviceId], references: [id])
   serviceId      Int
   contractAt     DateTime        @map("contract_at")

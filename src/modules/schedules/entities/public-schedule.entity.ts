@@ -1,5 +1,6 @@
 import { OrganizationEntity } from 'src/modules/organization/entities/organization.entity';
 import { ServiceEntity } from 'src/modules/services/entities/service.entity';
+import { UserEntity } from 'src/modules/users';
 import { StatusSchedules } from 'src/shared/enum/status_schedules.enum';
 
 export class PublicScheduleEntity {
@@ -8,6 +9,7 @@ export class PublicScheduleEntity {
   private _service: ServiceEntity;
   private _organization: OrganizationEntity;
   private _contract_at: Date;
+  private _description: string;
   private _status: StatusSchedules;
   private _remember_user: boolean;
   private _created_at: Date;
@@ -83,5 +85,13 @@ export class PublicScheduleEntity {
 
   setContractAt(value: Date): void {
     this._contract_at = value;
+  }
+
+  getDescription(): string {
+    return this._description;
+  }
+
+  setDescription(value: string): void {
+    this._description = value;
   }
 }

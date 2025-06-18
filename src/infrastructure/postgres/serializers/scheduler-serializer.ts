@@ -35,8 +35,53 @@ export interface ISchedulePendingDBReflection {
     email: string;
   };
 }
+export interface ScheduleDetailDBReflection {
+  id: number;
+  contractAt: Date;
+  description: string;
+  status: string;
+  service: {
+    uuid: string;
+    name: string;
+    price: number;
+    duration: string;
+  };
+  user: {
+    name: string;
+    email: string;
+    phone: string;
+    cpf: string;
+  };
+}
 
 export class SchedulerSerializer {
+  static toDetailEntity(data: ScheduleDetailDBReflection): ScheduleEntity {
+    const entity = new ScheduleEntity();
+    entity.setId(data.id);
+    entity.setContractAt(data.contractAt);
+    entity.setStatus(data.status as StatusSchedules);
+
+    if (data.service) {
+      const service = new ServiceEntity();
+      service.setUuid(data.service.uuid);
+      service.setName(data.service.name);
+      service.setPrice(data.service.price);
+      service.setDuration(data.service.duration);
+      entity.setService(service);
+    }
+
+    if (data.user) {
+      const user = new UserEntity();
+      user.setName(data.user.name);
+      user.setEmail(data.user.email);
+      user.setPhone(data.user.phone);
+      user.setCpf(data.user.cpf);
+      entity.setUser(user);
+    }
+
+    return entity;
+  }
+
   static toEntity(data: IScheduleDBReflection): ScheduleEntity {
     const entity = new ScheduleEntity();
     entity.setId(data.id);

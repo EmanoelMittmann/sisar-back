@@ -6,14 +6,54 @@ import {
 } from '../dtos/update-scedule.dto';
 import { ScheduleEntity } from '../entities/schedule.entity';
 import { UserEntity } from 'src/modules/users/entities/user.entity';
+import { PublicScheduleEntity } from '../entities/public-schedule.entity';
+import { DetailsScheduleDto } from '../dtos/details-schedule.dto';
 
 export class ScheduleSerializer {
-  static toListMany(schedules: ScheduleEntity[]): ScheduleListDto[] {
+  static toListMany(
+    schedules: ScheduleEntity[] | PublicScheduleEntity[],
+  ): ScheduleListDto[] {
     // eslint-disable-next-line @typescript-eslint/unbound-method
     return schedules.map(this.toListOne);
   }
 
-  static toListOne(schedule: ScheduleEntity): ScheduleListDto {
+  static toDetails(
+    schedule: ScheduleEntity | PublicScheduleEntity,
+  ): DetailsScheduleDto {
+    if (schedule instanceof PublicScheduleEntity) {
+      return {
+        uuid: schedule.getUuid(),
+        contract_date: schedule.getContractAt(),
+        status: schedule.getStatus(),
+        service: {
+          name: schedule.getService().getName(),
+          price: schedule.getService().getPrice().toString(),
+          duration: schedule.getService().getDuration(),
+        },
+        user: null,
+      };
+    }
+    return {
+      uuid: schedule.getUuid(),
+      contract_date: schedule.getContractAt(),
+      status: schedule.getStatus(),
+      service: {
+        name: schedule.getService().getName(),
+        price: schedule.getService().getPrice().toString(),
+        duration: schedule.getService().getDuration(),
+      },
+      user: {
+        name: schedule.getUser().getName(),
+        email: schedule.getUser().getEmail(),
+        phone: schedule.getUser().getPhone(),
+        cpf: schedule.getUser().getCpf(),
+      },
+    };
+  }
+
+  static toListOne(
+    schedule: ScheduleEntity | PublicScheduleEntity,
+  ): ScheduleListDto {
     return {
       uuid: schedule.getUuid(),
       organization: {

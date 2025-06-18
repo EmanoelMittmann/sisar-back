@@ -46,11 +46,10 @@ export class PlansController {
     const plans = new PlanEntity();
     plans.setOrganization(organization);
 
-    console.log(plans);
-
     return this.listPlansService.execute(plans);
   }
 
+  @UseGuards(AuthGuard)
   @Patch('/user')
   async listByUser(@UseAuthUser() user: UserEntity): Promise<ListPlansDto[]> {
     return this.listByUserService.execute(user.getUuid());

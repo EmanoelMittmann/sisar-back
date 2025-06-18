@@ -7855,6 +7855,7 @@ export namespace Prisma {
 
   export type PublicScheduleMinAggregateOutputType = {
     id: number | null
+    uuid: string | null
     serviceId: number | null
     contractAt: Date | null
     description: string | null
@@ -7866,6 +7867,7 @@ export namespace Prisma {
 
   export type PublicScheduleMaxAggregateOutputType = {
     id: number | null
+    uuid: string | null
     serviceId: number | null
     contractAt: Date | null
     description: string | null
@@ -7877,6 +7879,7 @@ export namespace Prisma {
 
   export type PublicScheduleCountAggregateOutputType = {
     id: number
+    uuid: number
     serviceId: number
     contractAt: number
     description: number
@@ -7902,6 +7905,7 @@ export namespace Prisma {
 
   export type PublicScheduleMinAggregateInputType = {
     id?: true
+    uuid?: true
     serviceId?: true
     contractAt?: true
     description?: true
@@ -7913,6 +7917,7 @@ export namespace Prisma {
 
   export type PublicScheduleMaxAggregateInputType = {
     id?: true
+    uuid?: true
     serviceId?: true
     contractAt?: true
     description?: true
@@ -7924,6 +7929,7 @@ export namespace Prisma {
 
   export type PublicScheduleCountAggregateInputType = {
     id?: true
+    uuid?: true
     serviceId?: true
     contractAt?: true
     description?: true
@@ -8022,6 +8028,7 @@ export namespace Prisma {
 
   export type PublicScheduleGroupByOutputType = {
     id: number
+    uuid: string | null
     serviceId: number
     contractAt: Date
     description: string
@@ -8052,6 +8059,7 @@ export namespace Prisma {
 
   export type PublicScheduleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    uuid?: boolean
     serviceId?: boolean
     contractAt?: boolean
     description?: boolean
@@ -8065,6 +8073,7 @@ export namespace Prisma {
 
   export type PublicScheduleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    uuid?: boolean
     serviceId?: boolean
     contractAt?: boolean
     description?: boolean
@@ -8078,6 +8087,7 @@ export namespace Prisma {
 
   export type PublicScheduleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    uuid?: boolean
     serviceId?: boolean
     contractAt?: boolean
     description?: boolean
@@ -8091,6 +8101,7 @@ export namespace Prisma {
 
   export type PublicScheduleSelectScalar = {
     id?: boolean
+    uuid?: boolean
     serviceId?: boolean
     contractAt?: boolean
     description?: boolean
@@ -8100,7 +8111,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type PublicScheduleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "serviceId" | "contractAt" | "description" | "organizationId" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["publicSchedule"]>
+  export type PublicScheduleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uuid" | "serviceId" | "contractAt" | "description" | "organizationId" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["publicSchedule"]>
   export type PublicScheduleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     service?: boolean | ServiceDefaultArgs<ExtArgs>
     organization?: boolean | OrganizationDefaultArgs<ExtArgs>
@@ -8122,6 +8133,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      uuid: string | null
       serviceId: number
       contractAt: Date
       description: string
@@ -8555,6 +8567,7 @@ export namespace Prisma {
    */
   interface PublicScheduleFieldRefs {
     readonly id: FieldRef<"PublicSchedule", 'Int'>
+    readonly uuid: FieldRef<"PublicSchedule", 'String'>
     readonly serviceId: FieldRef<"PublicSchedule", 'Int'>
     readonly contractAt: FieldRef<"PublicSchedule", 'DateTime'>
     readonly description: FieldRef<"PublicSchedule", 'String'>
@@ -10188,6 +10201,7 @@ export namespace Prisma {
 
   export const PublicScheduleScalarFieldEnum: {
     id: 'id',
+    uuid: 'uuid',
     serviceId: 'serviceId',
     contractAt: 'contractAt',
     description: 'description',
@@ -10867,6 +10881,7 @@ export namespace Prisma {
     OR?: PublicScheduleWhereInput[]
     NOT?: PublicScheduleWhereInput | PublicScheduleWhereInput[]
     id?: IntFilter<"PublicSchedule"> | number
+    uuid?: UuidNullableFilter<"PublicSchedule"> | string | null
     serviceId?: IntFilter<"PublicSchedule"> | number
     contractAt?: DateTimeFilter<"PublicSchedule"> | Date | string
     description?: StringFilter<"PublicSchedule"> | string
@@ -10880,6 +10895,7 @@ export namespace Prisma {
 
   export type PublicScheduleOrderByWithRelationInput = {
     id?: SortOrder
+    uuid?: SortOrderInput | SortOrder
     serviceId?: SortOrder
     contractAt?: SortOrder
     description?: SortOrder
@@ -10893,6 +10909,7 @@ export namespace Prisma {
 
   export type PublicScheduleWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    uuid?: string
     AND?: PublicScheduleWhereInput | PublicScheduleWhereInput[]
     OR?: PublicScheduleWhereInput[]
     NOT?: PublicScheduleWhereInput | PublicScheduleWhereInput[]
@@ -10905,10 +10922,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"PublicSchedule"> | Date | string
     service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
     organization?: XOR<OrganizationScalarRelationFilter, OrganizationWhereInput>
-  }, "id">
+  }, "id" | "uuid">
 
   export type PublicScheduleOrderByWithAggregationInput = {
     id?: SortOrder
+    uuid?: SortOrderInput | SortOrder
     serviceId?: SortOrder
     contractAt?: SortOrder
     description?: SortOrder
@@ -10928,6 +10946,7 @@ export namespace Prisma {
     OR?: PublicScheduleScalarWhereWithAggregatesInput[]
     NOT?: PublicScheduleScalarWhereWithAggregatesInput | PublicScheduleScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"PublicSchedule"> | number
+    uuid?: UuidNullableWithAggregatesFilter<"PublicSchedule"> | string | null
     serviceId?: IntWithAggregatesFilter<"PublicSchedule"> | number
     contractAt?: DateTimeWithAggregatesFilter<"PublicSchedule"> | Date | string
     description?: StringWithAggregatesFilter<"PublicSchedule"> | string
@@ -11528,6 +11547,7 @@ export namespace Prisma {
   }
 
   export type PublicScheduleCreateInput = {
+    uuid?: string | null
     contractAt: Date | string
     description: string
     status?: $Enums.StatusSchedules
@@ -11539,6 +11559,7 @@ export namespace Prisma {
 
   export type PublicScheduleUncheckedCreateInput = {
     id?: number
+    uuid?: string | null
     serviceId: number
     contractAt: Date | string
     description: string
@@ -11549,6 +11570,7 @@ export namespace Prisma {
   }
 
   export type PublicScheduleUpdateInput = {
+    uuid?: NullableStringFieldUpdateOperationsInput | string | null
     contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
@@ -11560,6 +11582,7 @@ export namespace Prisma {
 
   export type PublicScheduleUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uuid?: NullableStringFieldUpdateOperationsInput | string | null
     serviceId?: IntFieldUpdateOperationsInput | number
     contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
@@ -11571,6 +11594,7 @@ export namespace Prisma {
 
   export type PublicScheduleCreateManyInput = {
     id?: number
+    uuid?: string | null
     serviceId: number
     contractAt: Date | string
     description: string
@@ -11581,6 +11605,7 @@ export namespace Prisma {
   }
 
   export type PublicScheduleUpdateManyMutationInput = {
+    uuid?: NullableStringFieldUpdateOperationsInput | string | null
     contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
@@ -11590,6 +11615,7 @@ export namespace Prisma {
 
   export type PublicScheduleUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uuid?: NullableStringFieldUpdateOperationsInput | string | null
     serviceId?: IntFieldUpdateOperationsInput | number
     contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
@@ -12310,8 +12336,21 @@ export namespace Prisma {
     _max?: NestedEnumStatusSchedulesFilter<$PrismaModel>
   }
 
+  export type UuidNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidNullableFilter<$PrismaModel> | string | null
+  }
+
   export type PublicScheduleCountOrderByAggregateInput = {
     id?: SortOrder
+    uuid?: SortOrder
     serviceId?: SortOrder
     contractAt?: SortOrder
     description?: SortOrder
@@ -12329,6 +12368,7 @@ export namespace Prisma {
 
   export type PublicScheduleMaxOrderByAggregateInput = {
     id?: SortOrder
+    uuid?: SortOrder
     serviceId?: SortOrder
     contractAt?: SortOrder
     description?: SortOrder
@@ -12340,6 +12380,7 @@ export namespace Prisma {
 
   export type PublicScheduleMinOrderByAggregateInput = {
     id?: SortOrder
+    uuid?: SortOrder
     serviceId?: SortOrder
     contractAt?: SortOrder
     description?: SortOrder
@@ -12353,6 +12394,21 @@ export namespace Prisma {
     id?: SortOrder
     serviceId?: SortOrder
     organizationId?: SortOrder
+  }
+
+  export type UuidNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type PlanScalarRelationFilter = {
@@ -13294,6 +13350,31 @@ export namespace Prisma {
     _max?: NestedEnumStatusSchedulesFilter<$PrismaModel>
   }
 
+  export type NestedUuidNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedUuidNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type OrganizationCreateWithoutUserInput = {
     uuid?: string
     social_name: string
@@ -13656,6 +13737,7 @@ export namespace Prisma {
   }
 
   export type PublicScheduleCreateWithoutOrganizationInput = {
+    uuid?: string | null
     contractAt: Date | string
     description: string
     status?: $Enums.StatusSchedules
@@ -13666,6 +13748,7 @@ export namespace Prisma {
 
   export type PublicScheduleUncheckedCreateWithoutOrganizationInput = {
     id?: number
+    uuid?: string | null
     serviceId: number
     contractAt: Date | string
     description: string
@@ -13827,6 +13910,7 @@ export namespace Prisma {
     OR?: PublicScheduleScalarWhereInput[]
     NOT?: PublicScheduleScalarWhereInput | PublicScheduleScalarWhereInput[]
     id?: IntFilter<"PublicSchedule"> | number
+    uuid?: UuidNullableFilter<"PublicSchedule"> | string | null
     serviceId?: IntFilter<"PublicSchedule"> | number
     contractAt?: DateTimeFilter<"PublicSchedule"> | Date | string
     description?: StringFilter<"PublicSchedule"> | string
@@ -13918,6 +14002,7 @@ export namespace Prisma {
   }
 
   export type PublicScheduleCreateWithoutServiceInput = {
+    uuid?: string | null
     contractAt: Date | string
     description: string
     status?: $Enums.StatusSchedules
@@ -13928,6 +14013,7 @@ export namespace Prisma {
 
   export type PublicScheduleUncheckedCreateWithoutServiceInput = {
     id?: number
+    uuid?: string | null
     contractAt: Date | string
     description: string
     organizationId: number
@@ -14848,6 +14934,7 @@ export namespace Prisma {
 
   export type PublicScheduleCreateManyOrganizationInput = {
     id?: number
+    uuid?: string | null
     serviceId: number
     contractAt: Date | string
     description: string
@@ -14977,6 +15064,7 @@ export namespace Prisma {
   }
 
   export type PublicScheduleUpdateWithoutOrganizationInput = {
+    uuid?: NullableStringFieldUpdateOperationsInput | string | null
     contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
@@ -14987,6 +15075,7 @@ export namespace Prisma {
 
   export type PublicScheduleUncheckedUpdateWithoutOrganizationInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uuid?: NullableStringFieldUpdateOperationsInput | string | null
     serviceId?: IntFieldUpdateOperationsInput | number
     contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
@@ -14997,6 +15086,7 @@ export namespace Prisma {
 
   export type PublicScheduleUncheckedUpdateManyWithoutOrganizationInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uuid?: NullableStringFieldUpdateOperationsInput | string | null
     serviceId?: IntFieldUpdateOperationsInput | number
     contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
@@ -15020,6 +15110,7 @@ export namespace Prisma {
 
   export type PublicScheduleCreateManyServiceInput = {
     id?: number
+    uuid?: string | null
     contractAt: Date | string
     description: string
     organizationId: number
@@ -15067,6 +15158,7 @@ export namespace Prisma {
   }
 
   export type PublicScheduleUpdateWithoutServiceInput = {
+    uuid?: NullableStringFieldUpdateOperationsInput | string | null
     contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     status?: EnumStatusSchedulesFieldUpdateOperationsInput | $Enums.StatusSchedules
@@ -15077,6 +15169,7 @@ export namespace Prisma {
 
   export type PublicScheduleUncheckedUpdateWithoutServiceInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uuid?: NullableStringFieldUpdateOperationsInput | string | null
     contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     organizationId?: IntFieldUpdateOperationsInput | number
@@ -15087,6 +15180,7 @@ export namespace Prisma {
 
   export type PublicScheduleUncheckedUpdateManyWithoutServiceInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uuid?: NullableStringFieldUpdateOperationsInput | string | null
     contractAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     organizationId?: IntFieldUpdateOperationsInput | number

@@ -192,6 +192,7 @@ exports.Prisma.ScheduleScalarFieldEnum = {
 
 exports.Prisma.PublicScheduleScalarFieldEnum = {
   id: 'id',
+  uuid: 'uuid',
   serviceId: 'serviceId',
   contractAt: 'contractAt',
   description: 'description',

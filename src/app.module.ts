@@ -27,7 +27,6 @@ import { AuthMiddleware } from './modules/auth/middleware/auth.middleware';
     AuthModule,
     PrismaModule,
     HashedModule,
-    OrganizationModule,
     SchedulesModule,
     ServiceModule,
     EmailModule,
@@ -50,8 +49,8 @@ export class AppModule implements NestModule {
           method: RequestMethod.ALL,
         },
         {
-          path: 'public/schedules/*',
-          method: RequestMethod.ALL,
+          path: 'public/schedules/:uuid',
+          method: RequestMethod.POST,
         },
       )
       .forRoutes('*');

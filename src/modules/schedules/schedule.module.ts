@@ -12,6 +12,8 @@ import { CreatePublicScheduleService } from './services/create-public-schedule.s
 import { FindByCompanyService } from './services/find-by-company.service';
 import { AlterStatusScheduleService } from './services/alter-status-schedule.service';
 import { PublicSchedulePostgresRepository } from 'src/infrastructure/postgres/repositories/public.repository';
+import { ListPublicScheduleService } from './services/list-public-schedules.service';
+import { GetDetailsScheduleService } from './services/get-details-schedule.service';
 
 @Module({
   imports: [RedisModule],
@@ -30,8 +32,10 @@ import { PublicSchedulePostgresRepository } from 'src/infrastructure/postgres/re
     DeleteScheduleService,
     ListScheduleService,
     UpdateScheduleService,
+    ListPublicScheduleService,
     CreatePublicScheduleService,
     FindByCompanyService,
+    GetDetailsScheduleService,
     AlterStatusScheduleService,
   ],
   exports: ['IScheduleRepository', FindByUuidService],

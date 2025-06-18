@@ -50,4 +50,8 @@ export class ScheduleInMemoryRepository implements IScheduleRepository {
   alterStatusByUuid(schedule_uuid: string, status: string): Promise<void> {
     throw new Error('Method not implemented.');
   }
+
+  findDetailByUuid(schedule_uuid: string): Promise<ScheduleEntity | null> {
+    throw new Error('Method not implemented.');
+  }
 }

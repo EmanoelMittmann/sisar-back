@@ -23,6 +23,7 @@ import { ScheduleListDto } from '../dtos/schedule-list.dto';
 import { FindByCompanyService } from '../services/find-by-company.service';
 import { AlterStatusScheduleService } from '../services/alter-status-schedule.service';
 import { StatusSchedules } from 'src/shared/enum/status_schedules.enum';
+import { GetDetailsScheduleService } from '../services/get-details-schedule.service';
 
 @Controller('schedules')
 export class ScheduleController {
@@ -34,6 +35,7 @@ export class ScheduleController {
     private readonly updateScheduleService: UpdateScheduleService,
     private readonly findByCompanyService: FindByCompanyService,
     private readonly alterStatusScheduleService: AlterStatusScheduleService,
+    private readonly getDetailsScheduleService: GetDetailsScheduleService,
   ) {}
 
   @UseGuards(AuthGuard)
@@ -53,6 +55,15 @@ export class ScheduleController {
   @Get()
   async findAll(@UseAuthUser() user: UserEntity): Promise<ScheduleListDto[]> {
     return this.listScheduleService.execute({ user_id: user.getUuid() });
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('/:uuid/details')
+  async getDetailsSchedule(@Param('uuid') schedule_id: string) {
+    if (!schedule_id) {
+      throw new Error('Schedule ID is required');
+    }
+    return this.getDetailsScheduleService.execute({ schedule_id });
   }
 
   @UseGuards(AuthGuard)

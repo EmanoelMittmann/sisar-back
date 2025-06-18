@@ -9,4 +9,5 @@ export interface IScheduleRepository
 
   findByOrganizationUuid(organization_id: string): Promise<ScheduleEntity[]>;
   alterStatusByUuid(schedule_uuid: string, status: string): Promise<void>;
+  findDetailByUuid(schedule_uuid: string): Promise<ScheduleEntity | null>;
 }
