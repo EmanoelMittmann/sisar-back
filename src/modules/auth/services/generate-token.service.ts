@@ -12,6 +12,7 @@ export class GenerateTokenService implements BaseService<UserEntity, string> {
     const payload: JwtDataContract = {
       sub: user.getUuid(),
       username: user.getName(),
+      image: user.getOrganization()?.getImagePath() ?? null,
       role: user.getRole(),
       expired_at: Math.floor(Date.now() / 1000) + 5 * 3600, // Token expires in 5 hours
     };

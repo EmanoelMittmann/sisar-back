@@ -9,4 +9,5 @@ export interface ISchedulePublicRepository {
   getDetailsPublicSchedule(
     schedule_id: string,
   ): Promise<PublicScheduleEntity | null>;
+  alterStatus(schedule_uuid: string, status: string): Promise<void>;
 }

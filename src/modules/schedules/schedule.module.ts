@@ -14,9 +14,13 @@ import { AlterStatusScheduleService } from './services/alter-status-schedule.ser
 import { PublicSchedulePostgresRepository } from 'src/infrastructure/postgres/repositories/public.repository';
 import { ListPublicScheduleService } from './services/list-public-schedules.service';
 import { GetDetailsScheduleService } from './services/get-details-schedule.service';
+import { AssocPlanToUserService } from './services/assoc-plan-to-user.service';
+import { PlansModule } from '../plans/plans.module';
+import { GatewaysModule } from 'src/infrastructure/gateways/gateways.module';
+import { CustomerAsaasRepository } from 'src/infrastructure/postgres/repositories/customer_asaas.repository';
 
 @Module({
-  imports: [RedisModule],
+  imports: [RedisModule, PlansModule, GatewaysModule],
   controllers: [ScheduleController, PublicScheduleController],
   providers: [
     {
@@ -27,8 +31,13 @@ import { GetDetailsScheduleService } from './services/get-details-schedule.servi
       provide: 'ISchedulePublicRepository',
       useClass: PublicSchedulePostgresRepository,
     },
+    {
+      provide: 'ICustomerAsaasRepository',
+      useClass: CustomerAsaasRepository,
+    },
     CreateScheduleService,
     FindByUuidService,
+    AssocPlanToUserService,
     DeleteScheduleService,
     ListScheduleService,
     UpdateScheduleService,

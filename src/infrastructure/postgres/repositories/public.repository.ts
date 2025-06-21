@@ -7,6 +7,7 @@ import {
   SerializerPublicSchedule,
 } from '../serializers/public-schedule.serializer';
 import { PublicScheduleEntity } from 'src/modules/schedules/entities/public-schedule.entity';
+import { StatusSchedules } from 'src/shared/enum/status_schedules.enum';
 
 @Injectable()
 export class PublicSchedulePostgresRepository
@@ -84,5 +85,16 @@ export class PublicSchedulePostgresRepository
     if (!data) return null;
 
     return SerializerPublicSchedule.toDetailEntity(data);
+  }
+
+  async alterStatus(schedule_uuid: string, status: string): Promise<void> {
+    await this.prisma.publicSchedule.update({
+      where: {
+        uuid: schedule_uuid,
+      },
+      data: {
+        status: status as StatusSchedules,
+      },
+    });
   }
 }

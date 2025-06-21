@@ -210,6 +210,31 @@ exports.Prisma.UserPlansScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.CustomerAsaasScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  customerAsaasId: 'customerAsaasId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.OrdersAsaasScalarFieldEnum = {
+  id: 'id',
+  customerAsaasId: 'customerAsaasId',
+  typeOrder: 'typeOrder',
+  transactionId: 'transactionId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PaymentsExceptionsScalarFieldEnum = {
+  id: 'id',
+  transactionId: 'transactionId',
+  reason: 'reason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -217,6 +242,10 @@ exports.Prisma.SortOrder = {
 
 exports.Prisma.NullableJsonNullValueInput = {
   DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.JsonNullValueInput = {
   JsonNull: Prisma.JsonNull
 };
 
@@ -253,6 +282,11 @@ exports.StatusSchedules = exports.$Enums.StatusSchedules = {
   CANCELED: 'CANCELED'
 };
 
+exports.TypeOrder = exports.$Enums.TypeOrder = {
+  SIGNATURE: 'SIGNATURE',
+  CHARGE: 'CHARGE'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Organization: 'Organization',
@@ -260,7 +294,10 @@ exports.Prisma.ModelName = {
   Plan: 'Plan',
   Schedule: 'Schedule',
   PublicSchedule: 'PublicSchedule',
-  UserPlans: 'UserPlans'
+  UserPlans: 'UserPlans',
+  CustomerAsaas: 'CustomerAsaas',
+  OrdersAsaas: 'OrdersAsaas',
+  PaymentsExceptions: 'PaymentsExceptions'
 };
 
 /**

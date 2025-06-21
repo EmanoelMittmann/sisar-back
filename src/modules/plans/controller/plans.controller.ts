@@ -52,6 +52,7 @@ export class PlansController {
   @UseGuards(AuthGuard)
   @Patch('/user')
   async listByUser(@UseAuthUser() user: UserEntity): Promise<ListPlansDto[]> {
+    console.log(user);
     return this.listByUserService.execute(user.getUuid());
   }
 

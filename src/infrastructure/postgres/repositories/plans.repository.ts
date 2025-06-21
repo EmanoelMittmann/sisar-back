@@ -7,6 +7,8 @@ import {
   PlansSerializer,
 } from '../serializers/plans-serializer';
 import { Recurrent } from 'orm-build/generated/prisma';
+import { BillingType } from 'src/shared/enum/billing-type.enum';
+import { CycleEnum } from 'src/shared/enum/cycle.enum';
 
 @Injectable()
 export class PlansPostgresRepository implements IPlanRepository {
@@ -102,5 +104,44 @@ export class PlansPostgresRepository implements IPlanRepository {
         .flatMap((i) => i.plan)
         .map((item) => PlansSerializer.toEntity(item as IPlanDBReflection))
     );
+  }
+
+  async assocUserToPlan(
+    user_id: string,
+    plan_id: string,
+  ): Promise<{
+    recurrent: CycleEnum;
+    dueDate: Date;
+    price: number;
+  }> {
+    const data = await this.prisma.userPlans.create({
+      data: {
+        user: {
+          connect: {
+            uuid: user_id,
+          },
+        },
+        plan: {
+          connect: {
+            uuid: plan_id,
+          },
+        },
+      },
+      select: {
+        plan: {
+          select: {
+            recurrent: true,
+            dueDate: true,
+            price: true,
+          },
+        },
+      },
+    });
+
+    return {
+      recurrent: data.plan.recurrent as CycleEnum,
+      dueDate: data.plan.dueDate as Date,
+      price: data.plan.price,
+    };
   }
 }

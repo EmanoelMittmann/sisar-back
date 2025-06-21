@@ -245,6 +245,11 @@ export interface ICustomerResponse {
   country: string;
 }
 
+export interface BaseDeleteResponse {
+  deleted: boolean;
+  id: string;
+}
+
 export interface ISignatureResponse {
   object: string;
   id: string;

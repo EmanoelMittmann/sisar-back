@@ -1,6 +1,5 @@
-
 export enum BillingType {
-    BOLETO = 'BOLETO',
-    CREDIT_CARD = 'CREDIT_CARD',
-    PIX = 'PIX',
+  BOLETO = 'BOLETO',
+  CREDIT_CARD = 'CREDIT_CARD',
+  PIX = 'PIX',
 }

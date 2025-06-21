@@ -2,10 +2,18 @@ import { HttpService } from '@nestjs/axios';
 import { BadGatewayException, Injectable, Logger } from '@nestjs/common';
 import { IChargeRequiredInput } from 'src/shared/contracts/charge.contract';
 import { IAbstractGatewayRepository } from 'src/shared/contracts/gateway-abstract.contract';
-import { IChargeResponse } from './_contracts-response';
+import {
+  BaseDeleteResponse,
+  IChargeResponse,
+  ICustomerResponse,
+  ISignatureResponse,
+} from './_contracts-response';
 import { ConfigService } from '@nestjs/config';
 import { lastValueFrom } from 'rxjs';
 import { ISignatureRequiredInput } from 'src/shared/contracts/signature.contract';
+import { ClientAsaasException } from 'src/shared/exceptions/client-asaas.exception';
+import { ChargeAsaasException } from 'src/shared/exceptions/charge-asaas.exception';
+import { SignatureAsaasException } from 'src/shared/exceptions/signature-asaas.exception';
 
 @Injectable()
 export class GatewayAsaasRepository implements IAbstractGatewayRepository {
@@ -40,33 +48,126 @@ export class GatewayAsaasRepository implements IAbstractGatewayRepository {
       return response.data;
     } catch (error) {
       this.logger.error(error);
-      throw new BadGatewayException({
-        message: 'Error creating charge',
-      });
+      throw new ChargeAsaasException('Error creating charge in Asaas');
     }
   }
 
-  create_customer(name: string, cpf: string): Promise<any> {
-    throw new Error('Method not implement');
+  async create_customer(name: string, cpf: string): Promise<ICustomerResponse> {
+    try {
+      const response = await lastValueFrom(
+        this.HttpService.post<ICustomerResponse>(
+          `${this.base_gateway_url}/customers`,
+          {
+            name: name,
+            cpfCnpj: cpf,
+          },
+          {
+            ...this.headers,
+          },
+        ),
+      );
+
+      return response.data;
+    } catch (error) {
+      this.logger.error(error);
+      throw new ClientAsaasException('Error creating customer in Asaas');
+    }
   }
 
-  create_signature(data: ISignatureRequiredInput): Promise<any> {
-    throw new Error('Method not implement');
+  async create_signature(
+    data: ISignatureRequiredInput,
+  ): Promise<ISignatureResponse> {
+    try {
+      const response = await lastValueFrom(
+        this.HttpService.post<ISignatureResponse>(
+          `${this.base_gateway_url}/subscriptions`,
+          data,
+          {
+            ...this.headers,
+          },
+        ),
+      );
+
+      return response.data;
+    } catch (error) {
+      this.logger.error(error);
+      throw new SignatureAsaasException('Error creating signature in Asaas');
+    }
   }
 
-  delete_charge(uuid: string): Promise<any> {
-    throw new Error('Method not implement');
+  async delete_charge(uuid: string): Promise<BaseDeleteResponse> {
+    try {
+      const response = await lastValueFrom(
+        this.HttpService.delete<BaseDeleteResponse>(
+          `${this.base_gateway_url}/payments/${uuid}`,
+          {
+            headers: this.headers,
+          },
+        ),
+      );
+
+      return response.data;
+    } catch (error) {
+      this.logger.error(error);
+      throw new ChargeAsaasException('Error deleting charge in Asaas');
+    }
   }
 
-  delete_signature(uuid: string): Promise<any> {
-    throw new Error('Method not implement');
+  async delete_signature(uuid: string): Promise<BaseDeleteResponse> {
+    try {
+      const response = await lastValueFrom(
+        this.HttpService.delete<BaseDeleteResponse>(
+          `${this.base_gateway_url}/subscriptions/${uuid}`,
+          {
+            headers: this.headers,
+          },
+        ),
+      );
+
+      return response.data;
+    } catch (error) {
+      this.logger.error(error);
+      throw new SignatureAsaasException('Error deleting signature in Asaas');
+    }
   }
 
-  find_by_uuid_customer(uuid: string): Promise<any> {
-    throw new Error('Method not implement');
+  async find_by_uuid_customer(uuid: string): Promise<ICustomerResponse> {
+    try {
+      const response = await lastValueFrom(
+        this.HttpService.get<ICustomerResponse>(
+          `${this.base_gateway_url}/customers/${uuid}`,
+          {
+            headers: this.headers,
+          },
+        ),
+      );
+
+      return response.data;
+    } catch (error) {
+      this.logger.error(error);
+      throw new ClientAsaasException('Error finding customer by UUID in Asaas');
+    }
   }
 
-  update_signature(uuid: string, data: ISignatureRequiredInput): Promise<any> {
-    throw new Error('Method not implement');
+  async update_signature(
+    uuid: string,
+    data: ISignatureRequiredInput,
+  ): Promise<ISignatureResponse> {
+    try {
+      const response = await lastValueFrom(
+        this.HttpService.put<ISignatureResponse>(
+          `${this.base_gateway_url}/subscriptions/${uuid}`,
+          data,
+          {
+            headers: this.headers,
+          },
+        ),
+      );
+
+      return response.data;
+    } catch (error) {
+      this.logger.error(error);
+      throw new SignatureAsaasException('Error updating signature in Asaas');
+    }
   }
 }

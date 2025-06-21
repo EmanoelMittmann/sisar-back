@@ -22,5 +22,6 @@ import { ListPlansByUserService } from './services/list-by-user.service';
     FindOnePlanService,
     ListPlansByUserService,
   ],
+  exports: ['IPlanRepository'],
 })
 export class PlansModule {}

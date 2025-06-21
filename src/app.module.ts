@@ -18,6 +18,7 @@ import { PlansModule } from './modules/plans/plans.module';
 import { EmailModule } from './infrastructure/warn-emails/warn-email.module';
 import { RedisModule } from './infrastructure/redis/redis.module';
 import { AuthMiddleware } from './modules/auth/middleware/auth.middleware';
+import { HttpModule } from '@nestjs/axios';
 // import { AuthMiddleware } from './modules/auth/middleware/auth.middleware';s
 
 @Module({

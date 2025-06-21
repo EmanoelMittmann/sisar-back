@@ -20,19 +20,20 @@ enum Role {
 }
 
 model User {
-  id           Int           @id @default(autoincrement())
-  uuid         String        @unique @default(uuid()) @db.Uuid
-  name         String
-  email        String
-  phone        String
-  cpf          String        @db.VarChar(30)
-  role         Role          @default(USER)
-  password     String
-  createdAt    DateTime      @default(now()) @map("created_at")
-  updatedAt    DateTime      @updatedAt @map("updated_at")
-  Organization Organization?
-  schedules    Schedule[]
-  UserPlans    UserPlans[]
+  id             Int            @id @default(autoincrement())
+  uuid           String         @unique @default(uuid()) @db.Uuid
+  name           String
+  email          String
+  phone          String
+  cpf            String         @db.VarChar(30)
+  role           Role           @default(USER)
+  password       String
+  createdAt      DateTime       @default(now()) @map("created_at")
+  updatedAt      DateTime       @updatedAt @map("updated_at")
+  Organization   Organization?
+  schedules      Schedule[]
+  UserPlans      UserPlans[]
+  customer_asaas CustomerAsaas?
 
   @@map("user")
 }
@@ -159,14 +160,43 @@ model UserPlans {
   @@map("user_plans")
 }
 
-// model AvailableTime {
-//   id             Int          @id @default(autoincrement())
-//   startTime      DateTime     @map("start_time")
-//   endTime        DateTime     @map("end_time")
-//   organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-//   organizationId Int
-//   createdAt      DateTime     @default(now()) @map("created_at")
-//   updatedAt      DateTime     @updatedAt @map("updated_at")
+model CustomerAsaas {
+  id              Int           @id @default(autoincrement())
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId          Int           @unique @map("user_id")
+  customerAsaasId String        @map("customer_asaas_id") @db.Uuid()
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+  OrdersAsaas     OrdersAsaas[]
 
-//   @@map("available_time")
-// }
+  @@map("customer_asaas")
+}
+
+enum TypeOrder {
+  SIGNATURE
+  CHARGE
+}
+
+model OrdersAsaas {
+  id                 Int                 @id @default(autoincrement())
+  customerAsaas      CustomerAsaas       @relation(fields: [customerAsaasId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  customerAsaasId    Int                 @map("customer_asaas_id")
+  typeOrder          TypeOrder           @default(CHARGE) @map("type_order")
+  transactionId      String?             @unique @map("transaction_id") @db.Uuid
+  createdAt          DateTime            @default(now()) @map("created_at")
+  updatedAt          DateTime            @updatedAt @map("updated_at")
+  PaymentsExceptions PaymentsExceptions?
+
+  @@map("orders_asaas")
+}
+
+model PaymentsExceptions {
+  id            Int         @id @default(autoincrement())
+  transaction   OrdersAsaas @relation(fields: [transactionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  transactionId Int         @unique @map("transaction_id")
+  reason        Json        @db.Json
+  createdAt     DateTime    @default(now()) @map("created_at")
+  updatedAt     DateTime    @updatedAt @map("updated_at")
+
+  @@map("payments_exceptions")
+}

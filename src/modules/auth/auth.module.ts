@@ -7,10 +7,13 @@ import { SignInService } from './services/sign-in.service';
 import { SignUpService } from './services/sign-up.service';
 import { SignUpCompanyService } from './services/sign-up-company.service';
 import { GenerateTokenService } from './services/generate-token.service';
+import { GatewaysModule } from 'src/infrastructure/gateways/gateways.module';
+import { CustomerAsaasRepository } from 'src/infrastructure/postgres/repositories/customer_asaas.repository';
 
 @Module({
   imports: [
     UserModule,
+    GatewaysModule,
     OrganizationModule,
     JwtModule.register({
       global: true,
@@ -18,6 +21,10 @@ import { GenerateTokenService } from './services/generate-token.service';
     }),
   ],
   providers: [
+    {
+      provide: 'ICustomerAsaasRepository',
+      useClass: CustomerAsaasRepository,
+    },
     SignInService,
     SignUpService,
     SignUpCompanyService,

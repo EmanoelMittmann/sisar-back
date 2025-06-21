@@ -24,6 +24,7 @@ import { FindByCompanyService } from '../services/find-by-company.service';
 import { AlterStatusScheduleService } from '../services/alter-status-schedule.service';
 import { StatusSchedules } from 'src/shared/enum/status_schedules.enum';
 import { GetDetailsScheduleService } from '../services/get-details-schedule.service';
+import { AssocPlanToUserService } from '../services/assoc-plan-to-user.service';
 
 @Controller('schedules')
 export class ScheduleController {
@@ -36,6 +37,7 @@ export class ScheduleController {
     private readonly findByCompanyService: FindByCompanyService,
     private readonly alterStatusScheduleService: AlterStatusScheduleService,
     private readonly getDetailsScheduleService: GetDetailsScheduleService,
+    private readonly assocPlanToUserService: AssocPlanToUserService,
   ) {}
 
   @UseGuards(AuthGuard)
@@ -103,6 +105,18 @@ export class ScheduleController {
       user_id: user.getUuid(),
     });
     await this.updateScheduleService.execute(serialize);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('/assoc-plan-to-user')
+  async assocPlanToUser(
+    @Body() body: { plan_id: string; user_id: string },
+  ): Promise<void> {
+    await this.assocPlanToUserService.execute({
+      plan_id: body.plan_id,
+      user_id: body.user_id,
+    });
+    return;
   }
 
   @UseGuards(AuthGuard)
