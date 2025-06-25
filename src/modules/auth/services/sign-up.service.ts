@@ -63,7 +63,7 @@ export class SignUpService implements BaseService<UserEntity, UserEntity> {
       );
       return;
     } catch (error) {
-      this.logger.error('Error creating customer', error);
+      this.logger.error(error);
       throw new BadRequestException({
         message: 'Error creating customer',
       });

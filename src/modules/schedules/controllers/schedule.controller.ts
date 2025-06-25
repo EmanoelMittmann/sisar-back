@@ -24,7 +24,7 @@ import { FindByCompanyService } from '../services/find-by-company.service';
 import { AlterStatusScheduleService } from '../services/alter-status-schedule.service';
 import { StatusSchedules } from 'src/shared/enum/status_schedules.enum';
 import { GetDetailsScheduleService } from '../services/get-details-schedule.service';
-import { AssocPlanToUserService } from '../services/assoc-plan-to-user.service';
+import { GenerateChargeService } from '../services/generate-charge.service';
 
 @Controller('schedules')
 export class ScheduleController {
@@ -37,7 +37,7 @@ export class ScheduleController {
     private readonly findByCompanyService: FindByCompanyService,
     private readonly alterStatusScheduleService: AlterStatusScheduleService,
     private readonly getDetailsScheduleService: GetDetailsScheduleService,
-    private readonly assocPlanToUserService: AssocPlanToUserService,
+    private readonly generateChargeService: GenerateChargeService,
   ) {}
 
   @UseGuards(AuthGuard)
@@ -108,18 +108,6 @@ export class ScheduleController {
   }
 
   @UseGuards(AuthGuard)
-  @Post('/assoc-plan-to-user')
-  async assocPlanToUser(
-    @Body() body: { plan_id: string; user_id: string },
-  ): Promise<void> {
-    await this.assocPlanToUserService.execute({
-      plan_id: body.plan_id,
-      user_id: body.user_id,
-    });
-    return;
-  }
-
-  @UseGuards(AuthGuard)
   @Put('/alter-status/:id')
   async alterStatus(
     @Param('id') id: string,
@@ -130,5 +118,16 @@ export class ScheduleController {
       status: body.status as StatusSchedules,
     });
     return;
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('/new-charge')
+  async generateCharge(
+    @Body() body: { service_id: string; client_id: string },
+  ): Promise<{ link: string }> {
+    return this.generateChargeService.execute({
+      service_id: body.service_id,
+      client_id: body.client_id,
+    });
   }
 }

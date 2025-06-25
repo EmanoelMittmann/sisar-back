@@ -5,7 +5,7 @@ export class ListPlansDto {
   name: string;
   price: number;
   status: boolean;
-  recurrent: Recurrent;
+  quantityInstallments: number;
   description: string;
   dueDate: Date;
 }

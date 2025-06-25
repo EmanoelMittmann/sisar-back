@@ -30,7 +30,7 @@ export class OrganizationPostgresRepository implements IOrganizationRepository {
       },
     });
 
-    return new OrganizationSerializer().toEntity(data);
+    return new OrganizationSerializer().toReflectionEntity(data);
   }
 
   async findAll(): Promise<OrganizationEntity[]> {

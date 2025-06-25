@@ -6,7 +6,7 @@ export class PlanEntity {
   private _uuid: string;
   private _name: string;
   private _price: number;
-  private _recurrent: Recurrent;
+  private _quantityInstallments: number;
   private _description: string;
   private _dueDate: Date;
   private _status: boolean;
@@ -33,10 +33,6 @@ export class PlanEntity {
 
   getPrice(): number {
     return this._price;
-  }
-
-  getRecurrent(): Recurrent {
-    return this._recurrent;
   }
 
   getDescription(): string {
@@ -76,10 +72,6 @@ export class PlanEntity {
     this._price = value;
   }
 
-  setRecurrent(value: Recurrent): void {
-    this._recurrent = value;
-  }
-
   setDescription(value: string): void {
     this._description = value;
   }
@@ -102,5 +94,13 @@ export class PlanEntity {
 
   setStatus(value: boolean): void {
     this._status = value;
+  }
+
+  setQuantityInstallments(value: number): void {
+    this._quantityInstallments = value;
+  }
+
+  getQuantityInstallments(): number {
+    return this._quantityInstallments;
   }
 }

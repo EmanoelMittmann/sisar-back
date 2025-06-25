@@ -10,7 +10,7 @@ export interface IPlanRepository
     user_id: string,
     plan_id: string,
   ): Promise<{
-    recurrent: CycleEnum;
+    quantityInstallment: number;
     dueDate: Date;
     price: number;
   }>;

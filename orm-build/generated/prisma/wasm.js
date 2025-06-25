@@ -144,8 +144,7 @@ exports.Prisma.OrganizationScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   inactiveAt: 'inactiveAt',
-  userId: 'userId',
-  openingHours: 'openingHours'
+  userId: 'userId'
 };
 
 exports.Prisma.ServiceScalarFieldEnum = {
@@ -167,7 +166,7 @@ exports.Prisma.PlanScalarFieldEnum = {
   uuid: 'uuid',
   name: 'name',
   price: 'price',
-  recurrent: 'recurrent',
+  quantityInstallment: 'quantityInstallment',
   description: 'description',
   status: 'status',
   dueDate: 'dueDate',
@@ -218,18 +217,18 @@ exports.Prisma.CustomerAsaasScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.OrdersAsaasScalarFieldEnum = {
+exports.Prisma.OrganizationAsaasAccountScalarFieldEnum = {
   id: 'id',
-  customerAsaasId: 'customerAsaasId',
-  typeOrder: 'typeOrder',
-  transactionId: 'transactionId',
+  organizationId: 'organizationId',
+  accountAsaasId: 'accountAsaasId',
+  apiKey: 'apiKey',
+  walletId: 'walletId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
 exports.Prisma.PaymentsExceptionsScalarFieldEnum = {
   id: 'id',
-  transactionId: 'transactionId',
   reason: 'reason',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -238,11 +237,6 @@ exports.Prisma.PaymentsExceptionsScalarFieldEnum = {
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
-};
-
-exports.Prisma.NullableJsonNullValueInput = {
-  DbNull: Prisma.DbNull,
-  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.JsonNullValueInput = {
@@ -254,25 +248,19 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 exports.Prisma.JsonNullValueFilter = {
   DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull,
   AnyNull: Prisma.AnyNull
 };
-
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
-};
 exports.Role = exports.$Enums.Role = {
   USER: 'USER',
   ADMIN: 'ADMIN'
-};
-
-exports.Recurrent = exports.$Enums.Recurrent = {
-  WEEKLY: 'WEEKLY',
-  MONTHLY: 'MONTHLY',
-  YEARLY: 'YEARLY'
 };
 
 exports.StatusSchedules = exports.$Enums.StatusSchedules = {
@@ -280,11 +268,6 @@ exports.StatusSchedules = exports.$Enums.StatusSchedules = {
   FINISH: 'FINISH',
   NOT_PAY: 'NOT_PAY',
   CANCELED: 'CANCELED'
-};
-
-exports.TypeOrder = exports.$Enums.TypeOrder = {
-  SIGNATURE: 'SIGNATURE',
-  CHARGE: 'CHARGE'
 };
 
 exports.Prisma.ModelName = {
@@ -296,7 +279,7 @@ exports.Prisma.ModelName = {
   PublicSchedule: 'PublicSchedule',
   UserPlans: 'UserPlans',
   CustomerAsaas: 'CustomerAsaas',
-  OrdersAsaas: 'OrdersAsaas',
+  OrganizationAsaasAccount: 'OrganizationAsaasAccount',
   PaymentsExceptions: 'PaymentsExceptions'
 };
 

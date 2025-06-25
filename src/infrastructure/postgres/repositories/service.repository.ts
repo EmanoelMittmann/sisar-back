@@ -17,7 +17,7 @@ export class ServicePostgresRepository implements IServiceRepository {
     const data = (await this.prisma.service.create({
       data: {
         name: args.getName(),
-        price: +args.getPrice(),
+        price: Math.round(+args.getPrice() * 100),
         duration: args.getDuration(),
         is_active: args.getIsActive(),
         is_quantitative: args.getIsQuantitative(),
@@ -58,11 +58,11 @@ export class ServicePostgresRepository implements IServiceRepository {
   async update(args: ServiceEntity): Promise<ServiceEntity> {
     const data = (await this.prisma.service.update({
       where: {
-        id: args.getId(),
+        uuid: args.getUuid(),
       },
       data: {
         name: args.getName(),
-        price: args.getPrice(),
+        price: Math.round(+args.getPrice() * 100),
         duration: args.getDuration(),
         is_active: args.getIsActive(),
         is_quantitative: args.getIsQuantitative(),
@@ -74,7 +74,7 @@ export class ServicePostgresRepository implements IServiceRepository {
   async delete(args: ServiceEntity): Promise<ServiceEntity> {
     await this.prisma.service.delete({
       where: {
-        id: args.getId(),
+        uuid: args.getUuid(),
       },
     });
 

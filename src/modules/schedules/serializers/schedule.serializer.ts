@@ -63,6 +63,7 @@ export class ScheduleSerializer {
       service: {
         uuid: schedule.getService().getUuid(),
         name: schedule.getService().getName(),
+        price: schedule.getService().getPrice(),
       },
       contractAt: schedule.getContractAt(),
       status: schedule.getStatus(),

@@ -7,6 +7,7 @@ export interface ScheduleListDto {
   service: {
     uuid: string;
     name: string;
+    price: number;
   };
   contractAt: Date;
   status: string;

@@ -11,8 +11,8 @@ export class PlansSerializer {
       uuid: plan.getUuid(),
       name: plan.getName(),
       price: plan.getPrice(),
+      quantityInstallments: plan.getQuantityInstallments(),
       status: plan.getStatus(),
-      recurrent: plan.getRecurrent(),
       description: plan.getDescription(),
       dueDate: plan.getDueDate(),
     };

@@ -24,6 +24,10 @@ export class SchedulePostgresRepository implements IScheduleRepository {
         status: args.getStatus(),
         rememberUser: args.getRememberUser(),
       },
+      include: {
+        organization: true,
+        service: true,
+      },
     })) as unknown as IScheduleDBReflection;
 
     return SchedulerSerializer.toEntity(data);
@@ -42,7 +46,9 @@ export class SchedulePostgresRepository implements IScheduleRepository {
   async findAll(args: ScheduleEntity): Promise<ScheduleEntity[]> {
     const data = (await this.prisma.schedule.findMany({
       where: {
-        organizationId: args.getUser().getId(),
+        user: {
+          uuid: args.getUser().getUuid(),
+        },
       },
       include: {
         organization: {
@@ -55,6 +61,7 @@ export class SchedulePostgresRepository implements IScheduleRepository {
           select: {
             uuid: true,
             name: true,
+            price: true,
           },
         },
       },

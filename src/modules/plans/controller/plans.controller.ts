@@ -52,7 +52,6 @@ export class PlansController {
   @UseGuards(AuthGuard)
   @Patch('/user')
   async listByUser(@UseAuthUser() user: UserEntity): Promise<ListPlansDto[]> {
-    console.log(user);
     return this.listByUserService.execute(user.getUuid());
   }
 
@@ -71,7 +70,7 @@ export class PlansController {
     plan.setDescription(createPlansDto.description);
     plan.setPrice(createPlansDto.price);
     plan.setDueDate(createPlansDto.dueDate);
-    plan.setRecurrent(createPlansDto.recurrent);
+    plan.setQuantityInstallments(createPlansDto.quantityInstallments);
 
     return await this.createPlansService.execute(plan);
   }
@@ -86,11 +85,10 @@ export class PlansController {
     plan.setUuid(id);
 
     plan.setName(updatePlansDto.name);
-    plan.setName(updatePlansDto.name);
     plan.setDescription(updatePlansDto.description);
     plan.setPrice(updatePlansDto.price);
     plan.setDueDate(updatePlansDto.dueDate);
-    plan.setRecurrent(updatePlansDto.recurrent);
+    plan.setQuantityInstallments(updatePlansDto.quantityInstallments);
 
     return this.updatePlansService.execute(plan);
   }

@@ -6,9 +6,6 @@ import {
   IPlanDBReflection,
   PlansSerializer,
 } from '../serializers/plans-serializer';
-import { Recurrent } from 'orm-build/generated/prisma';
-import { BillingType } from 'src/shared/enum/billing-type.enum';
-import { CycleEnum } from 'src/shared/enum/cycle.enum';
 
 @Injectable()
 export class PlansPostgresRepository implements IPlanRepository {
@@ -18,9 +15,9 @@ export class PlansPostgresRepository implements IPlanRepository {
     const plan = (await this.prisma.plan.create({
       data: {
         name: args.getName(),
-        price: +args.getPrice(),
-        recurrent: args.getRecurrent() as Recurrent,
+        price: Math.round(+args.getPrice() * 100),
         description: args.getDescription(),
+        quantityInstallment: args.getQuantityInstallments(),
         dueDate: args.getDueDate(),
         organization: {
           connect: {
@@ -58,12 +55,12 @@ export class PlansPostgresRepository implements IPlanRepository {
   async update(args: PlanEntity): Promise<PlanEntity> {
     const plan = (await this.prisma.plan.update({
       where: {
-        id: args.getId(),
+        uuid: args.getUuid(),
       },
       data: {
         name: args.getName(),
-        price: args.getPrice(),
-        recurrent: args.getRecurrent() as Recurrent,
+        price: Math.round(+args.getPrice() * 100),
+        quantityInstallment: args.getQuantityInstallments(),
         description: args.getDescription(),
       },
     })) as unknown as IPlanDBReflection;
@@ -74,7 +71,7 @@ export class PlansPostgresRepository implements IPlanRepository {
   async delete(args: PlanEntity): Promise<PlanEntity> {
     const plan = (await this.prisma.plan.delete({
       where: {
-        id: args.getId(),
+        uuid: args.getUuid(),
       },
     })) as unknown as IPlanDBReflection;
 
@@ -110,9 +107,9 @@ export class PlansPostgresRepository implements IPlanRepository {
     user_id: string,
     plan_id: string,
   ): Promise<{
-    recurrent: CycleEnum;
     dueDate: Date;
     price: number;
+    quantityInstallment: number;
   }> {
     const data = await this.prisma.userPlans.create({
       data: {
@@ -130,18 +127,24 @@ export class PlansPostgresRepository implements IPlanRepository {
       select: {
         plan: {
           select: {
-            recurrent: true,
             dueDate: true,
             price: true,
+            quantityInstallment: true,
           },
         },
       },
     });
 
+    const planData = data.plan as {
+      dueDate: Date;
+      price: number;
+      quantityInstallment: number;
+    };
+
     return {
-      recurrent: data.plan.recurrent as CycleEnum,
-      dueDate: data.plan.dueDate as Date,
-      price: data.plan.price,
+      dueDate: planData.dueDate,
+      price: planData.price,
+      quantityInstallment: planData.quantityInstallment,
     };
   }
 }

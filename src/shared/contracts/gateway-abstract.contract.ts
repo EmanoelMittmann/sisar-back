@@ -6,6 +6,10 @@ import {
 } from 'src/infrastructure/gateways/asaas/_contracts-response';
 import { IChargeRequiredInput } from './charge.contract';
 import { ISignatureRequiredInput } from './signature.contract';
+import {
+  ISubAccountContract,
+  ISubAccountResponse,
+} from './sub_account.contract';
 
 export interface IAbstractGatewayRepository {
   /**
@@ -45,6 +49,7 @@ export interface IAbstractGatewayRepository {
    * @param uuid - The uuid of the signature
    * @returns The signature deleted
    */
+  get_charge_by_uuid(charge_uuid: string): Promise<IChargeResponse>;
   delete_signature(uuid: string): Promise<BaseDeleteResponse>;
   /**
    * Update a signature by uuid
@@ -56,4 +61,6 @@ export interface IAbstractGatewayRepository {
     uuid: string,
     data: ISignatureRequiredInput,
   ): Promise<ISignatureResponse>;
+
+  create_sub_account(input: ISubAccountContract): Promise<ISubAccountResponse>;
 }

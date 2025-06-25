@@ -21,15 +21,10 @@ export class SchedulerService {
   async notify_clients() {
     this.logger.log('INIT PROCESS OF NOTIFY CLIENTS');
     const USER_NOTIFY_LIST_KEY = REMEMBER_USER_KEY;
-    const USER_NOTIFY_LIST = await this.redis_client.get(
+    const USER_NOTIFY_LIST = await this.redis_client.lrange(
       USER_NOTIFY_LIST_KEY,
-      (error, result) => {
-        if (error) {
-          this.logger.error(error);
-          return;
-        }
-        return result;
-      },
+      0,
+      -1,
     );
 
     if (!USER_NOTIFY_LIST || !USER_NOTIFY_LIST.length) {
@@ -39,7 +34,7 @@ export class SchedulerService {
 
     this.logger.log(`FOUND ${USER_NOTIFY_LIST.length} USERS TO NOTIFY`);
 
-    const users_uuids_array = JSON.parse(USER_NOTIFY_LIST) as string[];
+    const users_uuids_array = USER_NOTIFY_LIST;
     const YESTERDAY = new Date(TODAY.setDate(TODAY.getDate() - 1));
 
     for (const user_uuid of users_uuids_array) {
@@ -57,15 +52,18 @@ export class SchedulerService {
 
       if (!contract_at) {
         this.logger.log(`NO CONTRACT AT FOUND FOR USER ${user_uuid}`);
-        this.redis_client.del(schedule_key);
+        await this.redis_client.del(schedule_key);
         return;
       }
 
-      if (
-        new Date(contract_at) < new Date(TODAY.setHours(23, 59, 59, 999)) &&
-        new Date(contract_at) >= YESTERDAY &&
-        isBetweenTimeTable(new Date(contract_at))
-      ) {
+      const lessToday = (date: string) =>
+        new Date(date) < new Date(TODAY.setHours(23, 59, 59, 999));
+
+      const thanToday = (date: string) =>
+        new Date(date) >= YESTERDAY &&
+        isBetweenTimeTable(new Date(contract_at));
+
+      if (lessToday(contract_at) && thanToday(contract_at)) {
         this.logger.log(`SENDING EMAIL FOR USER ${user_uuid}`);
 
         const mail_key = USER_MAIL_KEY(user_uuid);

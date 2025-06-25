@@ -65,10 +65,10 @@ export class CreateScheduleService
 
       await this.scheduleRepository.create(entity);
       if (data.remember_user) {
-        await this.redis_client.lpush(REMEMBER_USER_KEY, data.user_id);
+        await this.redis_client.lpush(REMEMBER_USER_KEY, data.user_uuid);
         await this.redis_client.set(
           SCHEDULE_USER_KEY(data.user_uuid),
-          entity.getContractAt().toISOString(),
+          new Date(entity.getContractAt()).toISOString(),
         );
       }
     } catch (error) {

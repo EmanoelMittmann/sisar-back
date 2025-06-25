@@ -14,6 +14,8 @@ export class CustomerAsaasRepository implements ICustomerAsaasRepository {
     user_id: number,
     customer_asaas_id: string,
   ): Promise<void> {
+    console.log(user_id);
+    console.log(customer_asaas_id);
     await this.prisma.customerAsaas.create({
       data: {
         customerAsaasId: customer_asaas_id,

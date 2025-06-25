@@ -54,10 +54,10 @@ export type UserPlans = $Result.DefaultSelection<Prisma.$UserPlansPayload>
  */
 export type CustomerAsaas = $Result.DefaultSelection<Prisma.$CustomerAsaasPayload>
 /**
- * Model OrdersAsaas
+ * Model OrganizationAsaasAccount
  * 
  */
-export type OrdersAsaas = $Result.DefaultSelection<Prisma.$OrdersAsaasPayload>
+export type OrganizationAsaasAccount = $Result.DefaultSelection<Prisma.$OrganizationAsaasAccountPayload>
 /**
  * Model PaymentsExceptions
  * 
@@ -74,15 +74,6 @@ export namespace $Enums {
 };
 
 export type Role = (typeof Role)[keyof typeof Role]
-
-
-export const Recurrent: {
-  WEEKLY: 'WEEKLY',
-  MONTHLY: 'MONTHLY',
-  YEARLY: 'YEARLY'
-};
-
-export type Recurrent = (typeof Recurrent)[keyof typeof Recurrent]
 
 
 export const StatusSchedules: {
@@ -107,10 +98,6 @@ export type TypeOrder = (typeof TypeOrder)[keyof typeof TypeOrder]
 export type Role = $Enums.Role
 
 export const Role: typeof $Enums.Role
-
-export type Recurrent = $Enums.Recurrent
-
-export const Recurrent: typeof $Enums.Recurrent
 
 export type StatusSchedules = $Enums.StatusSchedules
 
@@ -326,14 +313,14 @@ export class PrismaClient<
   get customerAsaas(): Prisma.CustomerAsaasDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.ordersAsaas`: Exposes CRUD operations for the **OrdersAsaas** model.
+   * `prisma.organizationAsaasAccount`: Exposes CRUD operations for the **OrganizationAsaasAccount** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more OrdersAsaas
-    * const ordersAsaas = await prisma.ordersAsaas.findMany()
+    * // Fetch zero or more OrganizationAsaasAccounts
+    * const organizationAsaasAccounts = await prisma.organizationAsaasAccount.findMany()
     * ```
     */
-  get ordersAsaas(): Prisma.OrdersAsaasDelegate<ExtArgs, ClientOptions>;
+  get organizationAsaasAccount(): Prisma.OrganizationAsaasAccountDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.paymentsExceptions`: Exposes CRUD operations for the **PaymentsExceptions** model.
@@ -792,7 +779,7 @@ export namespace Prisma {
     PublicSchedule: 'PublicSchedule',
     UserPlans: 'UserPlans',
     CustomerAsaas: 'CustomerAsaas',
-    OrdersAsaas: 'OrdersAsaas',
+    OrganizationAsaasAccount: 'OrganizationAsaasAccount',
     PaymentsExceptions: 'PaymentsExceptions'
   };
 
@@ -812,7 +799,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "organization" | "service" | "plan" | "schedule" | "publicSchedule" | "userPlans" | "customerAsaas" | "ordersAsaas" | "paymentsExceptions"
+      modelProps: "user" | "organization" | "service" | "plan" | "schedule" | "publicSchedule" | "userPlans" | "customerAsaas" | "organizationAsaasAccount" | "paymentsExceptions"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1408,77 +1395,77 @@ export namespace Prisma {
           }
         }
       }
-      OrdersAsaas: {
-        payload: Prisma.$OrdersAsaasPayload<ExtArgs>
-        fields: Prisma.OrdersAsaasFieldRefs
+      OrganizationAsaasAccount: {
+        payload: Prisma.$OrganizationAsaasAccountPayload<ExtArgs>
+        fields: Prisma.OrganizationAsaasAccountFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.OrdersAsaasFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrdersAsaasPayload> | null
+            args: Prisma.OrganizationAsaasAccountFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizationAsaasAccountPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.OrdersAsaasFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrdersAsaasPayload>
+            args: Prisma.OrganizationAsaasAccountFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizationAsaasAccountPayload>
           }
           findFirst: {
-            args: Prisma.OrdersAsaasFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrdersAsaasPayload> | null
+            args: Prisma.OrganizationAsaasAccountFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizationAsaasAccountPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.OrdersAsaasFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrdersAsaasPayload>
+            args: Prisma.OrganizationAsaasAccountFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizationAsaasAccountPayload>
           }
           findMany: {
-            args: Prisma.OrdersAsaasFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrdersAsaasPayload>[]
+            args: Prisma.OrganizationAsaasAccountFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizationAsaasAccountPayload>[]
           }
           create: {
-            args: Prisma.OrdersAsaasCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrdersAsaasPayload>
+            args: Prisma.OrganizationAsaasAccountCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizationAsaasAccountPayload>
           }
           createMany: {
-            args: Prisma.OrdersAsaasCreateManyArgs<ExtArgs>
+            args: Prisma.OrganizationAsaasAccountCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.OrdersAsaasCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrdersAsaasPayload>[]
+            args: Prisma.OrganizationAsaasAccountCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizationAsaasAccountPayload>[]
           }
           delete: {
-            args: Prisma.OrdersAsaasDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrdersAsaasPayload>
+            args: Prisma.OrganizationAsaasAccountDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizationAsaasAccountPayload>
           }
           update: {
-            args: Prisma.OrdersAsaasUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrdersAsaasPayload>
+            args: Prisma.OrganizationAsaasAccountUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizationAsaasAccountPayload>
           }
           deleteMany: {
-            args: Prisma.OrdersAsaasDeleteManyArgs<ExtArgs>
+            args: Prisma.OrganizationAsaasAccountDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.OrdersAsaasUpdateManyArgs<ExtArgs>
+            args: Prisma.OrganizationAsaasAccountUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.OrdersAsaasUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrdersAsaasPayload>[]
+            args: Prisma.OrganizationAsaasAccountUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizationAsaasAccountPayload>[]
           }
           upsert: {
-            args: Prisma.OrdersAsaasUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrdersAsaasPayload>
+            args: Prisma.OrganizationAsaasAccountUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganizationAsaasAccountPayload>
           }
           aggregate: {
-            args: Prisma.OrdersAsaasAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateOrdersAsaas>
+            args: Prisma.OrganizationAsaasAccountAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOrganizationAsaasAccount>
           }
           groupBy: {
-            args: Prisma.OrdersAsaasGroupByArgs<ExtArgs>
-            result: $Utils.Optional<OrdersAsaasGroupByOutputType>[]
+            args: Prisma.OrganizationAsaasAccountGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OrganizationAsaasAccountGroupByOutputType>[]
           }
           count: {
-            args: Prisma.OrdersAsaasCountArgs<ExtArgs>
-            result: $Utils.Optional<OrdersAsaasCountAggregateOutputType> | number
+            args: Prisma.OrganizationAsaasAccountCountArgs<ExtArgs>
+            result: $Utils.Optional<OrganizationAsaasAccountCountAggregateOutputType> | number
           }
         }
       }
@@ -1648,7 +1635,7 @@ export namespace Prisma {
     publicSchedule?: PublicScheduleOmit
     userPlans?: UserPlansOmit
     customerAsaas?: CustomerAsaasOmit
-    ordersAsaas?: OrdersAsaasOmit
+    organizationAsaasAccount?: OrganizationAsaasAccountOmit
     paymentsExceptions?: PaymentsExceptionsOmit
   }
 
@@ -1905,37 +1892,6 @@ export namespace Prisma {
    */
   export type PlanCountOutputTypeCountUserPlansArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserPlansWhereInput
-  }
-
-
-  /**
-   * Count Type CustomerAsaasCountOutputType
-   */
-
-  export type CustomerAsaasCountOutputType = {
-    OrdersAsaas: number
-  }
-
-  export type CustomerAsaasCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    OrdersAsaas?: boolean | CustomerAsaasCountOutputTypeCountOrdersAsaasArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * CustomerAsaasCountOutputType without action
-   */
-  export type CustomerAsaasCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CustomerAsaasCountOutputType
-     */
-    select?: CustomerAsaasCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * CustomerAsaasCountOutputType without action
-   */
-  export type CustomerAsaasCountOutputTypeCountOrdersAsaasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: OrdersAsaasWhereInput
   }
 
 
@@ -3257,7 +3213,6 @@ export namespace Prisma {
     updatedAt: number
     inactiveAt: number
     userId: number
-    openingHours: number
     _all: number
   }
 
@@ -3321,7 +3276,6 @@ export namespace Prisma {
     updatedAt?: true
     inactiveAt?: true
     userId?: true
-    openingHours?: true
     _all?: true
   }
 
@@ -3426,7 +3380,6 @@ export namespace Prisma {
     updatedAt: Date
     inactiveAt: Date | null
     userId: number
-    openingHours: JsonValue | null
     _count: OrganizationCountAggregateOutputType | null
     _avg: OrganizationAvgAggregateOutputType | null
     _sum: OrganizationSumAggregateOutputType | null
@@ -3463,12 +3416,12 @@ export namespace Prisma {
     updatedAt?: boolean
     inactiveAt?: boolean
     userId?: boolean
-    openingHours?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     services?: boolean | Organization$servicesArgs<ExtArgs>
     plans?: boolean | Organization$plansArgs<ExtArgs>
     schedules?: boolean | Organization$schedulesArgs<ExtArgs>
     PublicSchedule?: boolean | Organization$PublicScheduleArgs<ExtArgs>
+    OrganizationAsaasAccount?: boolean | Organization$OrganizationAsaasAccountArgs<ExtArgs>
     _count?: boolean | OrganizationCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organization"]>
 
@@ -3487,7 +3440,6 @@ export namespace Prisma {
     updatedAt?: boolean
     inactiveAt?: boolean
     userId?: boolean
-    openingHours?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organization"]>
 
@@ -3506,7 +3458,6 @@ export namespace Prisma {
     updatedAt?: boolean
     inactiveAt?: boolean
     userId?: boolean
-    openingHours?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organization"]>
 
@@ -3525,16 +3476,16 @@ export namespace Prisma {
     updatedAt?: boolean
     inactiveAt?: boolean
     userId?: boolean
-    openingHours?: boolean
   }
 
-  export type OrganizationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uuid" | "social_name" | "fantasy_name" | "cnpj" | "email" | "phone" | "is_active" | "office" | "image_path" | "createdAt" | "updatedAt" | "inactiveAt" | "userId" | "openingHours", ExtArgs["result"]["organization"]>
+  export type OrganizationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uuid" | "social_name" | "fantasy_name" | "cnpj" | "email" | "phone" | "is_active" | "office" | "image_path" | "createdAt" | "updatedAt" | "inactiveAt" | "userId", ExtArgs["result"]["organization"]>
   export type OrganizationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     services?: boolean | Organization$servicesArgs<ExtArgs>
     plans?: boolean | Organization$plansArgs<ExtArgs>
     schedules?: boolean | Organization$schedulesArgs<ExtArgs>
     PublicSchedule?: boolean | Organization$PublicScheduleArgs<ExtArgs>
+    OrganizationAsaasAccount?: boolean | Organization$OrganizationAsaasAccountArgs<ExtArgs>
     _count?: boolean | OrganizationCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type OrganizationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3552,6 +3503,7 @@ export namespace Prisma {
       plans: Prisma.$PlanPayload<ExtArgs>[]
       schedules: Prisma.$SchedulePayload<ExtArgs>[]
       PublicSchedule: Prisma.$PublicSchedulePayload<ExtArgs>[]
+      OrganizationAsaasAccount: Prisma.$OrganizationAsaasAccountPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3568,7 +3520,6 @@ export namespace Prisma {
       updatedAt: Date
       inactiveAt: Date | null
       userId: number
-      openingHours: Prisma.JsonValue | null
     }, ExtArgs["result"]["organization"]>
     composites: {}
   }
@@ -3968,6 +3919,7 @@ export namespace Prisma {
     plans<T extends Organization$plansArgs<ExtArgs> = {}>(args?: Subset<T, Organization$plansArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     schedules<T extends Organization$schedulesArgs<ExtArgs> = {}>(args?: Subset<T, Organization$schedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     PublicSchedule<T extends Organization$PublicScheduleArgs<ExtArgs> = {}>(args?: Subset<T, Organization$PublicScheduleArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    OrganizationAsaasAccount<T extends Organization$OrganizationAsaasAccountArgs<ExtArgs> = {}>(args?: Subset<T, Organization$OrganizationAsaasAccountArgs<ExtArgs>>): Prisma__OrganizationAsaasAccountClient<$Result.GetResult<Prisma.$OrganizationAsaasAccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4011,7 +3963,6 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"Organization", 'DateTime'>
     readonly inactiveAt: FieldRef<"Organization", 'DateTime'>
     readonly userId: FieldRef<"Organization", 'Int'>
-    readonly openingHours: FieldRef<"Organization", 'Json'>
   }
     
 
@@ -4501,6 +4452,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PublicScheduleScalarFieldEnum | PublicScheduleScalarFieldEnum[]
+  }
+
+  /**
+   * Organization.OrganizationAsaasAccount
+   */
+  export type Organization$OrganizationAsaasAccountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrganizationAsaasAccount
+     */
+    select?: OrganizationAsaasAccountSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrganizationAsaasAccount
+     */
+    omit?: OrganizationAsaasAccountOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganizationAsaasAccountInclude<ExtArgs> | null
+    where?: OrganizationAsaasAccountWhereInput
   }
 
   /**
@@ -5777,12 +5747,14 @@ export namespace Prisma {
   export type PlanAvgAggregateOutputType = {
     id: number | null
     price: number | null
+    quantityInstallment: number | null
     organizationId: number | null
   }
 
   export type PlanSumAggregateOutputType = {
     id: number | null
     price: number | null
+    quantityInstallment: number | null
     organizationId: number | null
   }
 
@@ -5791,7 +5763,7 @@ export namespace Prisma {
     uuid: string | null
     name: string | null
     price: number | null
-    recurrent: $Enums.Recurrent | null
+    quantityInstallment: number | null
     description: string | null
     status: boolean | null
     dueDate: Date | null
@@ -5805,7 +5777,7 @@ export namespace Prisma {
     uuid: string | null
     name: string | null
     price: number | null
-    recurrent: $Enums.Recurrent | null
+    quantityInstallment: number | null
     description: string | null
     status: boolean | null
     dueDate: Date | null
@@ -5819,7 +5791,7 @@ export namespace Prisma {
     uuid: number
     name: number
     price: number
-    recurrent: number
+    quantityInstallment: number
     description: number
     status: number
     dueDate: number
@@ -5833,12 +5805,14 @@ export namespace Prisma {
   export type PlanAvgAggregateInputType = {
     id?: true
     price?: true
+    quantityInstallment?: true
     organizationId?: true
   }
 
   export type PlanSumAggregateInputType = {
     id?: true
     price?: true
+    quantityInstallment?: true
     organizationId?: true
   }
 
@@ -5847,7 +5821,7 @@ export namespace Prisma {
     uuid?: true
     name?: true
     price?: true
-    recurrent?: true
+    quantityInstallment?: true
     description?: true
     status?: true
     dueDate?: true
@@ -5861,7 +5835,7 @@ export namespace Prisma {
     uuid?: true
     name?: true
     price?: true
-    recurrent?: true
+    quantityInstallment?: true
     description?: true
     status?: true
     dueDate?: true
@@ -5875,7 +5849,7 @@ export namespace Prisma {
     uuid?: true
     name?: true
     price?: true
-    recurrent?: true
+    quantityInstallment?: true
     description?: true
     status?: true
     dueDate?: true
@@ -5976,7 +5950,7 @@ export namespace Prisma {
     uuid: string
     name: string
     price: number
-    recurrent: $Enums.Recurrent
+    quantityInstallment: number
     description: string
     status: boolean
     dueDate: Date | null
@@ -6009,7 +5983,7 @@ export namespace Prisma {
     uuid?: boolean
     name?: boolean
     price?: boolean
-    recurrent?: boolean
+    quantityInstallment?: boolean
     description?: boolean
     status?: boolean
     dueDate?: boolean
@@ -6026,7 +6000,7 @@ export namespace Prisma {
     uuid?: boolean
     name?: boolean
     price?: boolean
-    recurrent?: boolean
+    quantityInstallment?: boolean
     description?: boolean
     status?: boolean
     dueDate?: boolean
@@ -6041,7 +6015,7 @@ export namespace Prisma {
     uuid?: boolean
     name?: boolean
     price?: boolean
-    recurrent?: boolean
+    quantityInstallment?: boolean
     description?: boolean
     status?: boolean
     dueDate?: boolean
@@ -6056,7 +6030,7 @@ export namespace Prisma {
     uuid?: boolean
     name?: boolean
     price?: boolean
-    recurrent?: boolean
+    quantityInstallment?: boolean
     description?: boolean
     status?: boolean
     dueDate?: boolean
@@ -6065,7 +6039,7 @@ export namespace Prisma {
     organizationId?: boolean
   }
 
-  export type PlanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uuid" | "name" | "price" | "recurrent" | "description" | "status" | "dueDate" | "createdAt" | "updatedAt" | "organizationId", ExtArgs["result"]["plan"]>
+  export type PlanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uuid" | "name" | "price" | "quantityInstallment" | "description" | "status" | "dueDate" | "createdAt" | "updatedAt" | "organizationId", ExtArgs["result"]["plan"]>
   export type PlanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     organization?: boolean | OrganizationDefaultArgs<ExtArgs>
     UserPlans?: boolean | Plan$UserPlansArgs<ExtArgs>
@@ -6089,7 +6063,7 @@ export namespace Prisma {
       uuid: string
       name: string
       price: number
-      recurrent: $Enums.Recurrent
+      quantityInstallment: number
       description: string
       status: boolean
       dueDate: Date | null
@@ -6525,7 +6499,7 @@ export namespace Prisma {
     readonly uuid: FieldRef<"Plan", 'String'>
     readonly name: FieldRef<"Plan", 'String'>
     readonly price: FieldRef<"Plan", 'Int'>
-    readonly recurrent: FieldRef<"Plan", 'Recurrent'>
+    readonly quantityInstallment: FieldRef<"Plan", 'Int'>
     readonly description: FieldRef<"Plan", 'String'>
     readonly status: FieldRef<"Plan", 'Boolean'>
     readonly dueDate: FieldRef<"Plan", 'DateTime'>
@@ -10639,8 +10613,6 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    OrdersAsaas?: boolean | CustomerAsaas$OrdersAsaasArgs<ExtArgs>
-    _count?: boolean | CustomerAsaasCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["customerAsaas"]>
 
   export type CustomerAsaasSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10672,8 +10644,6 @@ export namespace Prisma {
   export type CustomerAsaasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "customerAsaasId" | "createdAt" | "updatedAt", ExtArgs["result"]["customerAsaas"]>
   export type CustomerAsaasInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    OrdersAsaas?: boolean | CustomerAsaas$OrdersAsaasArgs<ExtArgs>
-    _count?: boolean | CustomerAsaasCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CustomerAsaasIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -10686,7 +10656,6 @@ export namespace Prisma {
     name: "CustomerAsaas"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      OrdersAsaas: Prisma.$OrdersAsaasPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -11089,7 +11058,6 @@ export namespace Prisma {
   export interface Prisma__CustomerAsaasClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    OrdersAsaas<T extends CustomerAsaas$OrdersAsaasArgs<ExtArgs> = {}>(args?: Subset<T, CustomerAsaas$OrdersAsaasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrdersAsaasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11520,30 +11488,6 @@ export namespace Prisma {
   }
 
   /**
-   * CustomerAsaas.OrdersAsaas
-   */
-  export type CustomerAsaas$OrdersAsaasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the OrdersAsaas
-     */
-    select?: OrdersAsaasSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the OrdersAsaas
-     */
-    omit?: OrdersAsaasOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: OrdersAsaasInclude<ExtArgs> | null
-    where?: OrdersAsaasWhereInput
-    orderBy?: OrdersAsaasOrderByWithRelationInput | OrdersAsaasOrderByWithRelationInput[]
-    cursor?: OrdersAsaasWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: OrdersAsaasScalarFieldEnum | OrdersAsaasScalarFieldEnum[]
-  }
-
-  /**
    * CustomerAsaas without action
    */
   export type CustomerAsaasDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11563,403 +11507,412 @@ export namespace Prisma {
 
 
   /**
-   * Model OrdersAsaas
+   * Model OrganizationAsaasAccount
    */
 
-  export type AggregateOrdersAsaas = {
-    _count: OrdersAsaasCountAggregateOutputType | null
-    _avg: OrdersAsaasAvgAggregateOutputType | null
-    _sum: OrdersAsaasSumAggregateOutputType | null
-    _min: OrdersAsaasMinAggregateOutputType | null
-    _max: OrdersAsaasMaxAggregateOutputType | null
+  export type AggregateOrganizationAsaasAccount = {
+    _count: OrganizationAsaasAccountCountAggregateOutputType | null
+    _avg: OrganizationAsaasAccountAvgAggregateOutputType | null
+    _sum: OrganizationAsaasAccountSumAggregateOutputType | null
+    _min: OrganizationAsaasAccountMinAggregateOutputType | null
+    _max: OrganizationAsaasAccountMaxAggregateOutputType | null
   }
 
-  export type OrdersAsaasAvgAggregateOutputType = {
+  export type OrganizationAsaasAccountAvgAggregateOutputType = {
     id: number | null
-    customerAsaasId: number | null
+    organizationId: number | null
   }
 
-  export type OrdersAsaasSumAggregateOutputType = {
+  export type OrganizationAsaasAccountSumAggregateOutputType = {
     id: number | null
-    customerAsaasId: number | null
+    organizationId: number | null
   }
 
-  export type OrdersAsaasMinAggregateOutputType = {
+  export type OrganizationAsaasAccountMinAggregateOutputType = {
     id: number | null
-    customerAsaasId: number | null
-    typeOrder: $Enums.TypeOrder | null
-    transactionId: string | null
+    organizationId: number | null
+    accountAsaasId: string | null
+    apiKey: string | null
+    walletId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type OrdersAsaasMaxAggregateOutputType = {
+  export type OrganizationAsaasAccountMaxAggregateOutputType = {
     id: number | null
-    customerAsaasId: number | null
-    typeOrder: $Enums.TypeOrder | null
-    transactionId: string | null
+    organizationId: number | null
+    accountAsaasId: string | null
+    apiKey: string | null
+    walletId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type OrdersAsaasCountAggregateOutputType = {
+  export type OrganizationAsaasAccountCountAggregateOutputType = {
     id: number
-    customerAsaasId: number
-    typeOrder: number
-    transactionId: number
+    organizationId: number
+    accountAsaasId: number
+    apiKey: number
+    walletId: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
 
-  export type OrdersAsaasAvgAggregateInputType = {
+  export type OrganizationAsaasAccountAvgAggregateInputType = {
     id?: true
-    customerAsaasId?: true
+    organizationId?: true
   }
 
-  export type OrdersAsaasSumAggregateInputType = {
+  export type OrganizationAsaasAccountSumAggregateInputType = {
     id?: true
-    customerAsaasId?: true
+    organizationId?: true
   }
 
-  export type OrdersAsaasMinAggregateInputType = {
+  export type OrganizationAsaasAccountMinAggregateInputType = {
     id?: true
-    customerAsaasId?: true
-    typeOrder?: true
-    transactionId?: true
+    organizationId?: true
+    accountAsaasId?: true
+    apiKey?: true
+    walletId?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type OrdersAsaasMaxAggregateInputType = {
+  export type OrganizationAsaasAccountMaxAggregateInputType = {
     id?: true
-    customerAsaasId?: true
-    typeOrder?: true
-    transactionId?: true
+    organizationId?: true
+    accountAsaasId?: true
+    apiKey?: true
+    walletId?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type OrdersAsaasCountAggregateInputType = {
+  export type OrganizationAsaasAccountCountAggregateInputType = {
     id?: true
-    customerAsaasId?: true
-    typeOrder?: true
-    transactionId?: true
+    organizationId?: true
+    accountAsaasId?: true
+    apiKey?: true
+    walletId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
   }
 
-  export type OrdersAsaasAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which OrdersAsaas to aggregate.
+     * Filter which OrganizationAsaasAccount to aggregate.
      */
-    where?: OrdersAsaasWhereInput
+    where?: OrganizationAsaasAccountWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of OrdersAsaas to fetch.
+     * Determine the order of OrganizationAsaasAccounts to fetch.
      */
-    orderBy?: OrdersAsaasOrderByWithRelationInput | OrdersAsaasOrderByWithRelationInput[]
+    orderBy?: OrganizationAsaasAccountOrderByWithRelationInput | OrganizationAsaasAccountOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: OrdersAsaasWhereUniqueInput
+    cursor?: OrganizationAsaasAccountWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` OrdersAsaas from the position of the cursor.
+     * Take `±n` OrganizationAsaasAccounts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` OrdersAsaas.
+     * Skip the first `n` OrganizationAsaasAccounts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned OrdersAsaas
+     * Count returned OrganizationAsaasAccounts
     **/
-    _count?: true | OrdersAsaasCountAggregateInputType
+    _count?: true | OrganizationAsaasAccountCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: OrdersAsaasAvgAggregateInputType
+    _avg?: OrganizationAsaasAccountAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: OrdersAsaasSumAggregateInputType
+    _sum?: OrganizationAsaasAccountSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: OrdersAsaasMinAggregateInputType
+    _min?: OrganizationAsaasAccountMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: OrdersAsaasMaxAggregateInputType
+    _max?: OrganizationAsaasAccountMaxAggregateInputType
   }
 
-  export type GetOrdersAsaasAggregateType<T extends OrdersAsaasAggregateArgs> = {
-        [P in keyof T & keyof AggregateOrdersAsaas]: P extends '_count' | 'count'
+  export type GetOrganizationAsaasAccountAggregateType<T extends OrganizationAsaasAccountAggregateArgs> = {
+        [P in keyof T & keyof AggregateOrganizationAsaasAccount]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateOrdersAsaas[P]>
-      : GetScalarType<T[P], AggregateOrdersAsaas[P]>
+        : GetScalarType<T[P], AggregateOrganizationAsaasAccount[P]>
+      : GetScalarType<T[P], AggregateOrganizationAsaasAccount[P]>
   }
 
 
 
 
-  export type OrdersAsaasGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: OrdersAsaasWhereInput
-    orderBy?: OrdersAsaasOrderByWithAggregationInput | OrdersAsaasOrderByWithAggregationInput[]
-    by: OrdersAsaasScalarFieldEnum[] | OrdersAsaasScalarFieldEnum
-    having?: OrdersAsaasScalarWhereWithAggregatesInput
+  export type OrganizationAsaasAccountGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OrganizationAsaasAccountWhereInput
+    orderBy?: OrganizationAsaasAccountOrderByWithAggregationInput | OrganizationAsaasAccountOrderByWithAggregationInput[]
+    by: OrganizationAsaasAccountScalarFieldEnum[] | OrganizationAsaasAccountScalarFieldEnum
+    having?: OrganizationAsaasAccountScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: OrdersAsaasCountAggregateInputType | true
-    _avg?: OrdersAsaasAvgAggregateInputType
-    _sum?: OrdersAsaasSumAggregateInputType
-    _min?: OrdersAsaasMinAggregateInputType
-    _max?: OrdersAsaasMaxAggregateInputType
+    _count?: OrganizationAsaasAccountCountAggregateInputType | true
+    _avg?: OrganizationAsaasAccountAvgAggregateInputType
+    _sum?: OrganizationAsaasAccountSumAggregateInputType
+    _min?: OrganizationAsaasAccountMinAggregateInputType
+    _max?: OrganizationAsaasAccountMaxAggregateInputType
   }
 
-  export type OrdersAsaasGroupByOutputType = {
+  export type OrganizationAsaasAccountGroupByOutputType = {
     id: number
-    customerAsaasId: number
-    typeOrder: $Enums.TypeOrder
-    transactionId: string | null
+    organizationId: number
+    accountAsaasId: string
+    apiKey: string
+    walletId: string
     createdAt: Date
     updatedAt: Date
-    _count: OrdersAsaasCountAggregateOutputType | null
-    _avg: OrdersAsaasAvgAggregateOutputType | null
-    _sum: OrdersAsaasSumAggregateOutputType | null
-    _min: OrdersAsaasMinAggregateOutputType | null
-    _max: OrdersAsaasMaxAggregateOutputType | null
+    _count: OrganizationAsaasAccountCountAggregateOutputType | null
+    _avg: OrganizationAsaasAccountAvgAggregateOutputType | null
+    _sum: OrganizationAsaasAccountSumAggregateOutputType | null
+    _min: OrganizationAsaasAccountMinAggregateOutputType | null
+    _max: OrganizationAsaasAccountMaxAggregateOutputType | null
   }
 
-  type GetOrdersAsaasGroupByPayload<T extends OrdersAsaasGroupByArgs> = Prisma.PrismaPromise<
+  type GetOrganizationAsaasAccountGroupByPayload<T extends OrganizationAsaasAccountGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<OrdersAsaasGroupByOutputType, T['by']> &
+      PickEnumerable<OrganizationAsaasAccountGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof OrdersAsaasGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof OrganizationAsaasAccountGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], OrdersAsaasGroupByOutputType[P]>
-            : GetScalarType<T[P], OrdersAsaasGroupByOutputType[P]>
+              : GetScalarType<T[P], OrganizationAsaasAccountGroupByOutputType[P]>
+            : GetScalarType<T[P], OrganizationAsaasAccountGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type OrdersAsaasSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type OrganizationAsaasAccountSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    customerAsaasId?: boolean
-    typeOrder?: boolean
-    transactionId?: boolean
+    organizationId?: boolean
+    accountAsaasId?: boolean
+    apiKey?: boolean
+    walletId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    customerAsaas?: boolean | CustomerAsaasDefaultArgs<ExtArgs>
-    PaymentsExceptions?: boolean | OrdersAsaas$PaymentsExceptionsArgs<ExtArgs>
-  }, ExtArgs["result"]["ordersAsaas"]>
+    organization?: boolean | OrganizationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["organizationAsaasAccount"]>
 
-  export type OrdersAsaasSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type OrganizationAsaasAccountSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    customerAsaasId?: boolean
-    typeOrder?: boolean
-    transactionId?: boolean
+    organizationId?: boolean
+    accountAsaasId?: boolean
+    apiKey?: boolean
+    walletId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    customerAsaas?: boolean | CustomerAsaasDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["ordersAsaas"]>
+    organization?: boolean | OrganizationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["organizationAsaasAccount"]>
 
-  export type OrdersAsaasSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type OrganizationAsaasAccountSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    customerAsaasId?: boolean
-    typeOrder?: boolean
-    transactionId?: boolean
+    organizationId?: boolean
+    accountAsaasId?: boolean
+    apiKey?: boolean
+    walletId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    customerAsaas?: boolean | CustomerAsaasDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["ordersAsaas"]>
+    organization?: boolean | OrganizationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["organizationAsaasAccount"]>
 
-  export type OrdersAsaasSelectScalar = {
+  export type OrganizationAsaasAccountSelectScalar = {
     id?: boolean
-    customerAsaasId?: boolean
-    typeOrder?: boolean
-    transactionId?: boolean
+    organizationId?: boolean
+    accountAsaasId?: boolean
+    apiKey?: boolean
+    walletId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type OrdersAsaasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customerAsaasId" | "typeOrder" | "transactionId" | "createdAt" | "updatedAt", ExtArgs["result"]["ordersAsaas"]>
-  export type OrdersAsaasInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customerAsaas?: boolean | CustomerAsaasDefaultArgs<ExtArgs>
-    PaymentsExceptions?: boolean | OrdersAsaas$PaymentsExceptionsArgs<ExtArgs>
+  export type OrganizationAsaasAccountOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "organizationId" | "accountAsaasId" | "apiKey" | "walletId" | "createdAt" | "updatedAt", ExtArgs["result"]["organizationAsaasAccount"]>
+  export type OrganizationAsaasAccountInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    organization?: boolean | OrganizationDefaultArgs<ExtArgs>
   }
-  export type OrdersAsaasIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customerAsaas?: boolean | CustomerAsaasDefaultArgs<ExtArgs>
+  export type OrganizationAsaasAccountIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    organization?: boolean | OrganizationDefaultArgs<ExtArgs>
   }
-  export type OrdersAsaasIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customerAsaas?: boolean | CustomerAsaasDefaultArgs<ExtArgs>
+  export type OrganizationAsaasAccountIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    organization?: boolean | OrganizationDefaultArgs<ExtArgs>
   }
 
-  export type $OrdersAsaasPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "OrdersAsaas"
+  export type $OrganizationAsaasAccountPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OrganizationAsaasAccount"
     objects: {
-      customerAsaas: Prisma.$CustomerAsaasPayload<ExtArgs>
-      PaymentsExceptions: Prisma.$PaymentsExceptionsPayload<ExtArgs> | null
+      organization: Prisma.$OrganizationPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      customerAsaasId: number
-      typeOrder: $Enums.TypeOrder
-      transactionId: string | null
+      organizationId: number
+      accountAsaasId: string
+      apiKey: string
+      walletId: string
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["ordersAsaas"]>
+    }, ExtArgs["result"]["organizationAsaasAccount"]>
     composites: {}
   }
 
-  type OrdersAsaasGetPayload<S extends boolean | null | undefined | OrdersAsaasDefaultArgs> = $Result.GetResult<Prisma.$OrdersAsaasPayload, S>
+  type OrganizationAsaasAccountGetPayload<S extends boolean | null | undefined | OrganizationAsaasAccountDefaultArgs> = $Result.GetResult<Prisma.$OrganizationAsaasAccountPayload, S>
 
-  type OrdersAsaasCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<OrdersAsaasFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: OrdersAsaasCountAggregateInputType | true
+  type OrganizationAsaasAccountCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OrganizationAsaasAccountFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OrganizationAsaasAccountCountAggregateInputType | true
     }
 
-  export interface OrdersAsaasDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OrdersAsaas'], meta: { name: 'OrdersAsaas' } }
+  export interface OrganizationAsaasAccountDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OrganizationAsaasAccount'], meta: { name: 'OrganizationAsaasAccount' } }
     /**
-     * Find zero or one OrdersAsaas that matches the filter.
-     * @param {OrdersAsaasFindUniqueArgs} args - Arguments to find a OrdersAsaas
+     * Find zero or one OrganizationAsaasAccount that matches the filter.
+     * @param {OrganizationAsaasAccountFindUniqueArgs} args - Arguments to find a OrganizationAsaasAccount
      * @example
-     * // Get one OrdersAsaas
-     * const ordersAsaas = await prisma.ordersAsaas.findUnique({
+     * // Get one OrganizationAsaasAccount
+     * const organizationAsaasAccount = await prisma.organizationAsaasAccount.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends OrdersAsaasFindUniqueArgs>(args: SelectSubset<T, OrdersAsaasFindUniqueArgs<ExtArgs>>): Prisma__OrdersAsaasClient<$Result.GetResult<Prisma.$OrdersAsaasPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends OrganizationAsaasAccountFindUniqueArgs>(args: SelectSubset<T, OrganizationAsaasAccountFindUniqueArgs<ExtArgs>>): Prisma__OrganizationAsaasAccountClient<$Result.GetResult<Prisma.$OrganizationAsaasAccountPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one OrdersAsaas that matches the filter or throw an error with `error.code='P2025'`
+     * Find one OrganizationAsaasAccount that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {OrdersAsaasFindUniqueOrThrowArgs} args - Arguments to find a OrdersAsaas
+     * @param {OrganizationAsaasAccountFindUniqueOrThrowArgs} args - Arguments to find a OrganizationAsaasAccount
      * @example
-     * // Get one OrdersAsaas
-     * const ordersAsaas = await prisma.ordersAsaas.findUniqueOrThrow({
+     * // Get one OrganizationAsaasAccount
+     * const organizationAsaasAccount = await prisma.organizationAsaasAccount.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends OrdersAsaasFindUniqueOrThrowArgs>(args: SelectSubset<T, OrdersAsaasFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OrdersAsaasClient<$Result.GetResult<Prisma.$OrdersAsaasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends OrganizationAsaasAccountFindUniqueOrThrowArgs>(args: SelectSubset<T, OrganizationAsaasAccountFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OrganizationAsaasAccountClient<$Result.GetResult<Prisma.$OrganizationAsaasAccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first OrdersAsaas that matches the filter.
+     * Find the first OrganizationAsaasAccount that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OrdersAsaasFindFirstArgs} args - Arguments to find a OrdersAsaas
+     * @param {OrganizationAsaasAccountFindFirstArgs} args - Arguments to find a OrganizationAsaasAccount
      * @example
-     * // Get one OrdersAsaas
-     * const ordersAsaas = await prisma.ordersAsaas.findFirst({
+     * // Get one OrganizationAsaasAccount
+     * const organizationAsaasAccount = await prisma.organizationAsaasAccount.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends OrdersAsaasFindFirstArgs>(args?: SelectSubset<T, OrdersAsaasFindFirstArgs<ExtArgs>>): Prisma__OrdersAsaasClient<$Result.GetResult<Prisma.$OrdersAsaasPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends OrganizationAsaasAccountFindFirstArgs>(args?: SelectSubset<T, OrganizationAsaasAccountFindFirstArgs<ExtArgs>>): Prisma__OrganizationAsaasAccountClient<$Result.GetResult<Prisma.$OrganizationAsaasAccountPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first OrdersAsaas that matches the filter or
+     * Find the first OrganizationAsaasAccount that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OrdersAsaasFindFirstOrThrowArgs} args - Arguments to find a OrdersAsaas
+     * @param {OrganizationAsaasAccountFindFirstOrThrowArgs} args - Arguments to find a OrganizationAsaasAccount
      * @example
-     * // Get one OrdersAsaas
-     * const ordersAsaas = await prisma.ordersAsaas.findFirstOrThrow({
+     * // Get one OrganizationAsaasAccount
+     * const organizationAsaasAccount = await prisma.organizationAsaasAccount.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends OrdersAsaasFindFirstOrThrowArgs>(args?: SelectSubset<T, OrdersAsaasFindFirstOrThrowArgs<ExtArgs>>): Prisma__OrdersAsaasClient<$Result.GetResult<Prisma.$OrdersAsaasPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends OrganizationAsaasAccountFindFirstOrThrowArgs>(args?: SelectSubset<T, OrganizationAsaasAccountFindFirstOrThrowArgs<ExtArgs>>): Prisma__OrganizationAsaasAccountClient<$Result.GetResult<Prisma.$OrganizationAsaasAccountPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more OrdersAsaas that matches the filter.
+     * Find zero or more OrganizationAsaasAccounts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OrdersAsaasFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {OrganizationAsaasAccountFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all OrdersAsaas
-     * const ordersAsaas = await prisma.ordersAsaas.findMany()
+     * // Get all OrganizationAsaasAccounts
+     * const organizationAsaasAccounts = await prisma.organizationAsaasAccount.findMany()
      * 
-     * // Get first 10 OrdersAsaas
-     * const ordersAsaas = await prisma.ordersAsaas.findMany({ take: 10 })
+     * // Get first 10 OrganizationAsaasAccounts
+     * const organizationAsaasAccounts = await prisma.organizationAsaasAccount.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const ordersAsaasWithIdOnly = await prisma.ordersAsaas.findMany({ select: { id: true } })
+     * const organizationAsaasAccountWithIdOnly = await prisma.organizationAsaasAccount.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends OrdersAsaasFindManyArgs>(args?: SelectSubset<T, OrdersAsaasFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrdersAsaasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends OrganizationAsaasAccountFindManyArgs>(args?: SelectSubset<T, OrganizationAsaasAccountFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganizationAsaasAccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a OrdersAsaas.
-     * @param {OrdersAsaasCreateArgs} args - Arguments to create a OrdersAsaas.
+     * Create a OrganizationAsaasAccount.
+     * @param {OrganizationAsaasAccountCreateArgs} args - Arguments to create a OrganizationAsaasAccount.
      * @example
-     * // Create one OrdersAsaas
-     * const OrdersAsaas = await prisma.ordersAsaas.create({
+     * // Create one OrganizationAsaasAccount
+     * const OrganizationAsaasAccount = await prisma.organizationAsaasAccount.create({
      *   data: {
-     *     // ... data to create a OrdersAsaas
+     *     // ... data to create a OrganizationAsaasAccount
      *   }
      * })
      * 
      */
-    create<T extends OrdersAsaasCreateArgs>(args: SelectSubset<T, OrdersAsaasCreateArgs<ExtArgs>>): Prisma__OrdersAsaasClient<$Result.GetResult<Prisma.$OrdersAsaasPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends OrganizationAsaasAccountCreateArgs>(args: SelectSubset<T, OrganizationAsaasAccountCreateArgs<ExtArgs>>): Prisma__OrganizationAsaasAccountClient<$Result.GetResult<Prisma.$OrganizationAsaasAccountPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many OrdersAsaas.
-     * @param {OrdersAsaasCreateManyArgs} args - Arguments to create many OrdersAsaas.
+     * Create many OrganizationAsaasAccounts.
+     * @param {OrganizationAsaasAccountCreateManyArgs} args - Arguments to create many OrganizationAsaasAccounts.
      * @example
-     * // Create many OrdersAsaas
-     * const ordersAsaas = await prisma.ordersAsaas.createMany({
+     * // Create many OrganizationAsaasAccounts
+     * const organizationAsaasAccount = await prisma.organizationAsaasAccount.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends OrdersAsaasCreateManyArgs>(args?: SelectSubset<T, OrdersAsaasCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends OrganizationAsaasAccountCreateManyArgs>(args?: SelectSubset<T, OrganizationAsaasAccountCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many OrdersAsaas and returns the data saved in the database.
-     * @param {OrdersAsaasCreateManyAndReturnArgs} args - Arguments to create many OrdersAsaas.
+     * Create many OrganizationAsaasAccounts and returns the data saved in the database.
+     * @param {OrganizationAsaasAccountCreateManyAndReturnArgs} args - Arguments to create many OrganizationAsaasAccounts.
      * @example
-     * // Create many OrdersAsaas
-     * const ordersAsaas = await prisma.ordersAsaas.createManyAndReturn({
+     * // Create many OrganizationAsaasAccounts
+     * const organizationAsaasAccount = await prisma.organizationAsaasAccount.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many OrdersAsaas and only return the `id`
-     * const ordersAsaasWithIdOnly = await prisma.ordersAsaas.createManyAndReturn({
+     * // Create many OrganizationAsaasAccounts and only return the `id`
+     * const organizationAsaasAccountWithIdOnly = await prisma.organizationAsaasAccount.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -11969,28 +11922,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends OrdersAsaasCreateManyAndReturnArgs>(args?: SelectSubset<T, OrdersAsaasCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrdersAsaasPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends OrganizationAsaasAccountCreateManyAndReturnArgs>(args?: SelectSubset<T, OrganizationAsaasAccountCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganizationAsaasAccountPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a OrdersAsaas.
-     * @param {OrdersAsaasDeleteArgs} args - Arguments to delete one OrdersAsaas.
+     * Delete a OrganizationAsaasAccount.
+     * @param {OrganizationAsaasAccountDeleteArgs} args - Arguments to delete one OrganizationAsaasAccount.
      * @example
-     * // Delete one OrdersAsaas
-     * const OrdersAsaas = await prisma.ordersAsaas.delete({
+     * // Delete one OrganizationAsaasAccount
+     * const OrganizationAsaasAccount = await prisma.organizationAsaasAccount.delete({
      *   where: {
-     *     // ... filter to delete one OrdersAsaas
+     *     // ... filter to delete one OrganizationAsaasAccount
      *   }
      * })
      * 
      */
-    delete<T extends OrdersAsaasDeleteArgs>(args: SelectSubset<T, OrdersAsaasDeleteArgs<ExtArgs>>): Prisma__OrdersAsaasClient<$Result.GetResult<Prisma.$OrdersAsaasPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends OrganizationAsaasAccountDeleteArgs>(args: SelectSubset<T, OrganizationAsaasAccountDeleteArgs<ExtArgs>>): Prisma__OrganizationAsaasAccountClient<$Result.GetResult<Prisma.$OrganizationAsaasAccountPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one OrdersAsaas.
-     * @param {OrdersAsaasUpdateArgs} args - Arguments to update one OrdersAsaas.
+     * Update one OrganizationAsaasAccount.
+     * @param {OrganizationAsaasAccountUpdateArgs} args - Arguments to update one OrganizationAsaasAccount.
      * @example
-     * // Update one OrdersAsaas
-     * const ordersAsaas = await prisma.ordersAsaas.update({
+     * // Update one OrganizationAsaasAccount
+     * const organizationAsaasAccount = await prisma.organizationAsaasAccount.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -12000,30 +11953,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends OrdersAsaasUpdateArgs>(args: SelectSubset<T, OrdersAsaasUpdateArgs<ExtArgs>>): Prisma__OrdersAsaasClient<$Result.GetResult<Prisma.$OrdersAsaasPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends OrganizationAsaasAccountUpdateArgs>(args: SelectSubset<T, OrganizationAsaasAccountUpdateArgs<ExtArgs>>): Prisma__OrganizationAsaasAccountClient<$Result.GetResult<Prisma.$OrganizationAsaasAccountPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more OrdersAsaas.
-     * @param {OrdersAsaasDeleteManyArgs} args - Arguments to filter OrdersAsaas to delete.
+     * Delete zero or more OrganizationAsaasAccounts.
+     * @param {OrganizationAsaasAccountDeleteManyArgs} args - Arguments to filter OrganizationAsaasAccounts to delete.
      * @example
-     * // Delete a few OrdersAsaas
-     * const { count } = await prisma.ordersAsaas.deleteMany({
+     * // Delete a few OrganizationAsaasAccounts
+     * const { count } = await prisma.organizationAsaasAccount.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends OrdersAsaasDeleteManyArgs>(args?: SelectSubset<T, OrdersAsaasDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends OrganizationAsaasAccountDeleteManyArgs>(args?: SelectSubset<T, OrganizationAsaasAccountDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more OrdersAsaas.
+     * Update zero or more OrganizationAsaasAccounts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OrdersAsaasUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {OrganizationAsaasAccountUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many OrdersAsaas
-     * const ordersAsaas = await prisma.ordersAsaas.updateMany({
+     * // Update many OrganizationAsaasAccounts
+     * const organizationAsaasAccount = await prisma.organizationAsaasAccount.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -12033,14 +11986,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends OrdersAsaasUpdateManyArgs>(args: SelectSubset<T, OrdersAsaasUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends OrganizationAsaasAccountUpdateManyArgs>(args: SelectSubset<T, OrganizationAsaasAccountUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more OrdersAsaas and returns the data updated in the database.
-     * @param {OrdersAsaasUpdateManyAndReturnArgs} args - Arguments to update many OrdersAsaas.
+     * Update zero or more OrganizationAsaasAccounts and returns the data updated in the database.
+     * @param {OrganizationAsaasAccountUpdateManyAndReturnArgs} args - Arguments to update many OrganizationAsaasAccounts.
      * @example
-     * // Update many OrdersAsaas
-     * const ordersAsaas = await prisma.ordersAsaas.updateManyAndReturn({
+     * // Update many OrganizationAsaasAccounts
+     * const organizationAsaasAccount = await prisma.organizationAsaasAccount.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -12049,8 +12002,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more OrdersAsaas and only return the `id`
-     * const ordersAsaasWithIdOnly = await prisma.ordersAsaas.updateManyAndReturn({
+     * // Update zero or more OrganizationAsaasAccounts and only return the `id`
+     * const organizationAsaasAccountWithIdOnly = await prisma.organizationAsaasAccount.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -12063,56 +12016,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends OrdersAsaasUpdateManyAndReturnArgs>(args: SelectSubset<T, OrdersAsaasUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrdersAsaasPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends OrganizationAsaasAccountUpdateManyAndReturnArgs>(args: SelectSubset<T, OrganizationAsaasAccountUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganizationAsaasAccountPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one OrdersAsaas.
-     * @param {OrdersAsaasUpsertArgs} args - Arguments to update or create a OrdersAsaas.
+     * Create or update one OrganizationAsaasAccount.
+     * @param {OrganizationAsaasAccountUpsertArgs} args - Arguments to update or create a OrganizationAsaasAccount.
      * @example
-     * // Update or create a OrdersAsaas
-     * const ordersAsaas = await prisma.ordersAsaas.upsert({
+     * // Update or create a OrganizationAsaasAccount
+     * const organizationAsaasAccount = await prisma.organizationAsaasAccount.upsert({
      *   create: {
-     *     // ... data to create a OrdersAsaas
+     *     // ... data to create a OrganizationAsaasAccount
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the OrdersAsaas we want to update
+     *     // ... the filter for the OrganizationAsaasAccount we want to update
      *   }
      * })
      */
-    upsert<T extends OrdersAsaasUpsertArgs>(args: SelectSubset<T, OrdersAsaasUpsertArgs<ExtArgs>>): Prisma__OrdersAsaasClient<$Result.GetResult<Prisma.$OrdersAsaasPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends OrganizationAsaasAccountUpsertArgs>(args: SelectSubset<T, OrganizationAsaasAccountUpsertArgs<ExtArgs>>): Prisma__OrganizationAsaasAccountClient<$Result.GetResult<Prisma.$OrganizationAsaasAccountPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of OrdersAsaas.
+     * Count the number of OrganizationAsaasAccounts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OrdersAsaasCountArgs} args - Arguments to filter OrdersAsaas to count.
+     * @param {OrganizationAsaasAccountCountArgs} args - Arguments to filter OrganizationAsaasAccounts to count.
      * @example
-     * // Count the number of OrdersAsaas
-     * const count = await prisma.ordersAsaas.count({
+     * // Count the number of OrganizationAsaasAccounts
+     * const count = await prisma.organizationAsaasAccount.count({
      *   where: {
-     *     // ... the filter for the OrdersAsaas we want to count
+     *     // ... the filter for the OrganizationAsaasAccounts we want to count
      *   }
      * })
     **/
-    count<T extends OrdersAsaasCountArgs>(
-      args?: Subset<T, OrdersAsaasCountArgs>,
+    count<T extends OrganizationAsaasAccountCountArgs>(
+      args?: Subset<T, OrganizationAsaasAccountCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], OrdersAsaasCountAggregateOutputType>
+          : GetScalarType<T['select'], OrganizationAsaasAccountCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a OrdersAsaas.
+     * Allows you to perform aggregations operations on a OrganizationAsaasAccount.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OrdersAsaasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {OrganizationAsaasAccountAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -12132,13 +12085,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends OrdersAsaasAggregateArgs>(args: Subset<T, OrdersAsaasAggregateArgs>): Prisma.PrismaPromise<GetOrdersAsaasAggregateType<T>>
+    aggregate<T extends OrganizationAsaasAccountAggregateArgs>(args: Subset<T, OrganizationAsaasAccountAggregateArgs>): Prisma.PrismaPromise<GetOrganizationAsaasAccountAggregateType<T>>
 
     /**
-     * Group by OrdersAsaas.
+     * Group by OrganizationAsaasAccount.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OrdersAsaasGroupByArgs} args - Group by arguments.
+     * @param {OrganizationAsaasAccountGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -12153,14 +12106,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends OrdersAsaasGroupByArgs,
+      T extends OrganizationAsaasAccountGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: OrdersAsaasGroupByArgs['orderBy'] }
-        : { orderBy?: OrdersAsaasGroupByArgs['orderBy'] },
+        ? { orderBy: OrganizationAsaasAccountGroupByArgs['orderBy'] }
+        : { orderBy?: OrganizationAsaasAccountGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -12209,23 +12162,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, OrdersAsaasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOrdersAsaasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, OrganizationAsaasAccountGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOrganizationAsaasAccountGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the OrdersAsaas model
+   * Fields of the OrganizationAsaasAccount model
    */
-  readonly fields: OrdersAsaasFieldRefs;
+  readonly fields: OrganizationAsaasAccountFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for OrdersAsaas.
+   * The delegate class that acts as a "Promise-like" for OrganizationAsaasAccount.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__OrdersAsaasClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__OrganizationAsaasAccountClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    customerAsaas<T extends CustomerAsaasDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CustomerAsaasDefaultArgs<ExtArgs>>): Prisma__CustomerAsaasClient<$Result.GetResult<Prisma.$CustomerAsaasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    PaymentsExceptions<T extends OrdersAsaas$PaymentsExceptionsArgs<ExtArgs> = {}>(args?: Subset<T, OrdersAsaas$PaymentsExceptionsArgs<ExtArgs>>): Prisma__PaymentsExceptionsClient<$Result.GetResult<Prisma.$PaymentsExceptionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    organization<T extends OrganizationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganizationDefaultArgs<ExtArgs>>): Prisma__OrganizationClient<$Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12252,445 +12204,427 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the OrdersAsaas model
+   * Fields of the OrganizationAsaasAccount model
    */
-  interface OrdersAsaasFieldRefs {
-    readonly id: FieldRef<"OrdersAsaas", 'Int'>
-    readonly customerAsaasId: FieldRef<"OrdersAsaas", 'Int'>
-    readonly typeOrder: FieldRef<"OrdersAsaas", 'TypeOrder'>
-    readonly transactionId: FieldRef<"OrdersAsaas", 'String'>
-    readonly createdAt: FieldRef<"OrdersAsaas", 'DateTime'>
-    readonly updatedAt: FieldRef<"OrdersAsaas", 'DateTime'>
+  interface OrganizationAsaasAccountFieldRefs {
+    readonly id: FieldRef<"OrganizationAsaasAccount", 'Int'>
+    readonly organizationId: FieldRef<"OrganizationAsaasAccount", 'Int'>
+    readonly accountAsaasId: FieldRef<"OrganizationAsaasAccount", 'String'>
+    readonly apiKey: FieldRef<"OrganizationAsaasAccount", 'String'>
+    readonly walletId: FieldRef<"OrganizationAsaasAccount", 'String'>
+    readonly createdAt: FieldRef<"OrganizationAsaasAccount", 'DateTime'>
+    readonly updatedAt: FieldRef<"OrganizationAsaasAccount", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * OrdersAsaas findUnique
+   * OrganizationAsaasAccount findUnique
    */
-  export type OrdersAsaasFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OrdersAsaas
+     * Select specific fields to fetch from the OrganizationAsaasAccount
      */
-    select?: OrdersAsaasSelect<ExtArgs> | null
+    select?: OrganizationAsaasAccountSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OrdersAsaas
+     * Omit specific fields from the OrganizationAsaasAccount
      */
-    omit?: OrdersAsaasOmit<ExtArgs> | null
+    omit?: OrganizationAsaasAccountOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OrdersAsaasInclude<ExtArgs> | null
+    include?: OrganizationAsaasAccountInclude<ExtArgs> | null
     /**
-     * Filter, which OrdersAsaas to fetch.
+     * Filter, which OrganizationAsaasAccount to fetch.
      */
-    where: OrdersAsaasWhereUniqueInput
+    where: OrganizationAsaasAccountWhereUniqueInput
   }
 
   /**
-   * OrdersAsaas findUniqueOrThrow
+   * OrganizationAsaasAccount findUniqueOrThrow
    */
-  export type OrdersAsaasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OrdersAsaas
+     * Select specific fields to fetch from the OrganizationAsaasAccount
      */
-    select?: OrdersAsaasSelect<ExtArgs> | null
+    select?: OrganizationAsaasAccountSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OrdersAsaas
+     * Omit specific fields from the OrganizationAsaasAccount
      */
-    omit?: OrdersAsaasOmit<ExtArgs> | null
+    omit?: OrganizationAsaasAccountOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OrdersAsaasInclude<ExtArgs> | null
+    include?: OrganizationAsaasAccountInclude<ExtArgs> | null
     /**
-     * Filter, which OrdersAsaas to fetch.
+     * Filter, which OrganizationAsaasAccount to fetch.
      */
-    where: OrdersAsaasWhereUniqueInput
+    where: OrganizationAsaasAccountWhereUniqueInput
   }
 
   /**
-   * OrdersAsaas findFirst
+   * OrganizationAsaasAccount findFirst
    */
-  export type OrdersAsaasFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OrdersAsaas
+     * Select specific fields to fetch from the OrganizationAsaasAccount
      */
-    select?: OrdersAsaasSelect<ExtArgs> | null
+    select?: OrganizationAsaasAccountSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OrdersAsaas
+     * Omit specific fields from the OrganizationAsaasAccount
      */
-    omit?: OrdersAsaasOmit<ExtArgs> | null
+    omit?: OrganizationAsaasAccountOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OrdersAsaasInclude<ExtArgs> | null
+    include?: OrganizationAsaasAccountInclude<ExtArgs> | null
     /**
-     * Filter, which OrdersAsaas to fetch.
+     * Filter, which OrganizationAsaasAccount to fetch.
      */
-    where?: OrdersAsaasWhereInput
+    where?: OrganizationAsaasAccountWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of OrdersAsaas to fetch.
+     * Determine the order of OrganizationAsaasAccounts to fetch.
      */
-    orderBy?: OrdersAsaasOrderByWithRelationInput | OrdersAsaasOrderByWithRelationInput[]
+    orderBy?: OrganizationAsaasAccountOrderByWithRelationInput | OrganizationAsaasAccountOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for OrdersAsaas.
+     * Sets the position for searching for OrganizationAsaasAccounts.
      */
-    cursor?: OrdersAsaasWhereUniqueInput
+    cursor?: OrganizationAsaasAccountWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` OrdersAsaas from the position of the cursor.
+     * Take `±n` OrganizationAsaasAccounts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` OrdersAsaas.
+     * Skip the first `n` OrganizationAsaasAccounts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of OrdersAsaas.
+     * Filter by unique combinations of OrganizationAsaasAccounts.
      */
-    distinct?: OrdersAsaasScalarFieldEnum | OrdersAsaasScalarFieldEnum[]
+    distinct?: OrganizationAsaasAccountScalarFieldEnum | OrganizationAsaasAccountScalarFieldEnum[]
   }
 
   /**
-   * OrdersAsaas findFirstOrThrow
+   * OrganizationAsaasAccount findFirstOrThrow
    */
-  export type OrdersAsaasFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OrdersAsaas
+     * Select specific fields to fetch from the OrganizationAsaasAccount
      */
-    select?: OrdersAsaasSelect<ExtArgs> | null
+    select?: OrganizationAsaasAccountSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OrdersAsaas
+     * Omit specific fields from the OrganizationAsaasAccount
      */
-    omit?: OrdersAsaasOmit<ExtArgs> | null
+    omit?: OrganizationAsaasAccountOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OrdersAsaasInclude<ExtArgs> | null
+    include?: OrganizationAsaasAccountInclude<ExtArgs> | null
     /**
-     * Filter, which OrdersAsaas to fetch.
+     * Filter, which OrganizationAsaasAccount to fetch.
      */
-    where?: OrdersAsaasWhereInput
+    where?: OrganizationAsaasAccountWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of OrdersAsaas to fetch.
+     * Determine the order of OrganizationAsaasAccounts to fetch.
      */
-    orderBy?: OrdersAsaasOrderByWithRelationInput | OrdersAsaasOrderByWithRelationInput[]
+    orderBy?: OrganizationAsaasAccountOrderByWithRelationInput | OrganizationAsaasAccountOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for OrdersAsaas.
+     * Sets the position for searching for OrganizationAsaasAccounts.
      */
-    cursor?: OrdersAsaasWhereUniqueInput
+    cursor?: OrganizationAsaasAccountWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` OrdersAsaas from the position of the cursor.
+     * Take `±n` OrganizationAsaasAccounts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` OrdersAsaas.
+     * Skip the first `n` OrganizationAsaasAccounts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of OrdersAsaas.
+     * Filter by unique combinations of OrganizationAsaasAccounts.
      */
-    distinct?: OrdersAsaasScalarFieldEnum | OrdersAsaasScalarFieldEnum[]
+    distinct?: OrganizationAsaasAccountScalarFieldEnum | OrganizationAsaasAccountScalarFieldEnum[]
   }
 
   /**
-   * OrdersAsaas findMany
+   * OrganizationAsaasAccount findMany
    */
-  export type OrdersAsaasFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OrdersAsaas
+     * Select specific fields to fetch from the OrganizationAsaasAccount
      */
-    select?: OrdersAsaasSelect<ExtArgs> | null
+    select?: OrganizationAsaasAccountSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OrdersAsaas
+     * Omit specific fields from the OrganizationAsaasAccount
      */
-    omit?: OrdersAsaasOmit<ExtArgs> | null
+    omit?: OrganizationAsaasAccountOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OrdersAsaasInclude<ExtArgs> | null
+    include?: OrganizationAsaasAccountInclude<ExtArgs> | null
     /**
-     * Filter, which OrdersAsaas to fetch.
+     * Filter, which OrganizationAsaasAccounts to fetch.
      */
-    where?: OrdersAsaasWhereInput
+    where?: OrganizationAsaasAccountWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of OrdersAsaas to fetch.
+     * Determine the order of OrganizationAsaasAccounts to fetch.
      */
-    orderBy?: OrdersAsaasOrderByWithRelationInput | OrdersAsaasOrderByWithRelationInput[]
+    orderBy?: OrganizationAsaasAccountOrderByWithRelationInput | OrganizationAsaasAccountOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing OrdersAsaas.
+     * Sets the position for listing OrganizationAsaasAccounts.
      */
-    cursor?: OrdersAsaasWhereUniqueInput
+    cursor?: OrganizationAsaasAccountWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` OrdersAsaas from the position of the cursor.
+     * Take `±n` OrganizationAsaasAccounts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` OrdersAsaas.
+     * Skip the first `n` OrganizationAsaasAccounts.
      */
     skip?: number
-    distinct?: OrdersAsaasScalarFieldEnum | OrdersAsaasScalarFieldEnum[]
+    distinct?: OrganizationAsaasAccountScalarFieldEnum | OrganizationAsaasAccountScalarFieldEnum[]
   }
 
   /**
-   * OrdersAsaas create
+   * OrganizationAsaasAccount create
    */
-  export type OrdersAsaasCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OrdersAsaas
+     * Select specific fields to fetch from the OrganizationAsaasAccount
      */
-    select?: OrdersAsaasSelect<ExtArgs> | null
+    select?: OrganizationAsaasAccountSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OrdersAsaas
+     * Omit specific fields from the OrganizationAsaasAccount
      */
-    omit?: OrdersAsaasOmit<ExtArgs> | null
+    omit?: OrganizationAsaasAccountOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OrdersAsaasInclude<ExtArgs> | null
+    include?: OrganizationAsaasAccountInclude<ExtArgs> | null
     /**
-     * The data needed to create a OrdersAsaas.
+     * The data needed to create a OrganizationAsaasAccount.
      */
-    data: XOR<OrdersAsaasCreateInput, OrdersAsaasUncheckedCreateInput>
+    data: XOR<OrganizationAsaasAccountCreateInput, OrganizationAsaasAccountUncheckedCreateInput>
   }
 
   /**
-   * OrdersAsaas createMany
+   * OrganizationAsaasAccount createMany
    */
-  export type OrdersAsaasCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many OrdersAsaas.
+     * The data used to create many OrganizationAsaasAccounts.
      */
-    data: OrdersAsaasCreateManyInput | OrdersAsaasCreateManyInput[]
+    data: OrganizationAsaasAccountCreateManyInput | OrganizationAsaasAccountCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * OrdersAsaas createManyAndReturn
+   * OrganizationAsaasAccount createManyAndReturn
    */
-  export type OrdersAsaasCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OrdersAsaas
+     * Select specific fields to fetch from the OrganizationAsaasAccount
      */
-    select?: OrdersAsaasSelectCreateManyAndReturn<ExtArgs> | null
+    select?: OrganizationAsaasAccountSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the OrdersAsaas
+     * Omit specific fields from the OrganizationAsaasAccount
      */
-    omit?: OrdersAsaasOmit<ExtArgs> | null
+    omit?: OrganizationAsaasAccountOmit<ExtArgs> | null
     /**
-     * The data used to create many OrdersAsaas.
+     * The data used to create many OrganizationAsaasAccounts.
      */
-    data: OrdersAsaasCreateManyInput | OrdersAsaasCreateManyInput[]
+    data: OrganizationAsaasAccountCreateManyInput | OrganizationAsaasAccountCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OrdersAsaasIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: OrganizationAsaasAccountIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * OrdersAsaas update
+   * OrganizationAsaasAccount update
    */
-  export type OrdersAsaasUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OrdersAsaas
+     * Select specific fields to fetch from the OrganizationAsaasAccount
      */
-    select?: OrdersAsaasSelect<ExtArgs> | null
+    select?: OrganizationAsaasAccountSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OrdersAsaas
+     * Omit specific fields from the OrganizationAsaasAccount
      */
-    omit?: OrdersAsaasOmit<ExtArgs> | null
+    omit?: OrganizationAsaasAccountOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OrdersAsaasInclude<ExtArgs> | null
+    include?: OrganizationAsaasAccountInclude<ExtArgs> | null
     /**
-     * The data needed to update a OrdersAsaas.
+     * The data needed to update a OrganizationAsaasAccount.
      */
-    data: XOR<OrdersAsaasUpdateInput, OrdersAsaasUncheckedUpdateInput>
+    data: XOR<OrganizationAsaasAccountUpdateInput, OrganizationAsaasAccountUncheckedUpdateInput>
     /**
-     * Choose, which OrdersAsaas to update.
+     * Choose, which OrganizationAsaasAccount to update.
      */
-    where: OrdersAsaasWhereUniqueInput
+    where: OrganizationAsaasAccountWhereUniqueInput
   }
 
   /**
-   * OrdersAsaas updateMany
+   * OrganizationAsaasAccount updateMany
    */
-  export type OrdersAsaasUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update OrdersAsaas.
+     * The data used to update OrganizationAsaasAccounts.
      */
-    data: XOR<OrdersAsaasUpdateManyMutationInput, OrdersAsaasUncheckedUpdateManyInput>
+    data: XOR<OrganizationAsaasAccountUpdateManyMutationInput, OrganizationAsaasAccountUncheckedUpdateManyInput>
     /**
-     * Filter which OrdersAsaas to update
+     * Filter which OrganizationAsaasAccounts to update
      */
-    where?: OrdersAsaasWhereInput
+    where?: OrganizationAsaasAccountWhereInput
     /**
-     * Limit how many OrdersAsaas to update.
+     * Limit how many OrganizationAsaasAccounts to update.
      */
     limit?: number
   }
 
   /**
-   * OrdersAsaas updateManyAndReturn
+   * OrganizationAsaasAccount updateManyAndReturn
    */
-  export type OrdersAsaasUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OrdersAsaas
+     * Select specific fields to fetch from the OrganizationAsaasAccount
      */
-    select?: OrdersAsaasSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: OrganizationAsaasAccountSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the OrdersAsaas
+     * Omit specific fields from the OrganizationAsaasAccount
      */
-    omit?: OrdersAsaasOmit<ExtArgs> | null
+    omit?: OrganizationAsaasAccountOmit<ExtArgs> | null
     /**
-     * The data used to update OrdersAsaas.
+     * The data used to update OrganizationAsaasAccounts.
      */
-    data: XOR<OrdersAsaasUpdateManyMutationInput, OrdersAsaasUncheckedUpdateManyInput>
+    data: XOR<OrganizationAsaasAccountUpdateManyMutationInput, OrganizationAsaasAccountUncheckedUpdateManyInput>
     /**
-     * Filter which OrdersAsaas to update
+     * Filter which OrganizationAsaasAccounts to update
      */
-    where?: OrdersAsaasWhereInput
+    where?: OrganizationAsaasAccountWhereInput
     /**
-     * Limit how many OrdersAsaas to update.
+     * Limit how many OrganizationAsaasAccounts to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OrdersAsaasIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: OrganizationAsaasAccountIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * OrdersAsaas upsert
+   * OrganizationAsaasAccount upsert
    */
-  export type OrdersAsaasUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OrdersAsaas
+     * Select specific fields to fetch from the OrganizationAsaasAccount
      */
-    select?: OrdersAsaasSelect<ExtArgs> | null
+    select?: OrganizationAsaasAccountSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OrdersAsaas
+     * Omit specific fields from the OrganizationAsaasAccount
      */
-    omit?: OrdersAsaasOmit<ExtArgs> | null
+    omit?: OrganizationAsaasAccountOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OrdersAsaasInclude<ExtArgs> | null
+    include?: OrganizationAsaasAccountInclude<ExtArgs> | null
     /**
-     * The filter to search for the OrdersAsaas to update in case it exists.
+     * The filter to search for the OrganizationAsaasAccount to update in case it exists.
      */
-    where: OrdersAsaasWhereUniqueInput
+    where: OrganizationAsaasAccountWhereUniqueInput
     /**
-     * In case the OrdersAsaas found by the `where` argument doesn't exist, create a new OrdersAsaas with this data.
+     * In case the OrganizationAsaasAccount found by the `where` argument doesn't exist, create a new OrganizationAsaasAccount with this data.
      */
-    create: XOR<OrdersAsaasCreateInput, OrdersAsaasUncheckedCreateInput>
+    create: XOR<OrganizationAsaasAccountCreateInput, OrganizationAsaasAccountUncheckedCreateInput>
     /**
-     * In case the OrdersAsaas was found with the provided `where` argument, update it with this data.
+     * In case the OrganizationAsaasAccount was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<OrdersAsaasUpdateInput, OrdersAsaasUncheckedUpdateInput>
+    update: XOR<OrganizationAsaasAccountUpdateInput, OrganizationAsaasAccountUncheckedUpdateInput>
   }
 
   /**
-   * OrdersAsaas delete
+   * OrganizationAsaasAccount delete
    */
-  export type OrdersAsaasDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OrdersAsaas
+     * Select specific fields to fetch from the OrganizationAsaasAccount
      */
-    select?: OrdersAsaasSelect<ExtArgs> | null
+    select?: OrganizationAsaasAccountSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OrdersAsaas
+     * Omit specific fields from the OrganizationAsaasAccount
      */
-    omit?: OrdersAsaasOmit<ExtArgs> | null
+    omit?: OrganizationAsaasAccountOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OrdersAsaasInclude<ExtArgs> | null
+    include?: OrganizationAsaasAccountInclude<ExtArgs> | null
     /**
-     * Filter which OrdersAsaas to delete.
+     * Filter which OrganizationAsaasAccount to delete.
      */
-    where: OrdersAsaasWhereUniqueInput
+    where: OrganizationAsaasAccountWhereUniqueInput
   }
 
   /**
-   * OrdersAsaas deleteMany
+   * OrganizationAsaasAccount deleteMany
    */
-  export type OrdersAsaasDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which OrdersAsaas to delete
+     * Filter which OrganizationAsaasAccounts to delete
      */
-    where?: OrdersAsaasWhereInput
+    where?: OrganizationAsaasAccountWhereInput
     /**
-     * Limit how many OrdersAsaas to delete.
+     * Limit how many OrganizationAsaasAccounts to delete.
      */
     limit?: number
   }
 
   /**
-   * OrdersAsaas.PaymentsExceptions
+   * OrganizationAsaasAccount without action
    */
-  export type OrdersAsaas$PaymentsExceptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OrganizationAsaasAccountDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PaymentsExceptions
+     * Select specific fields to fetch from the OrganizationAsaasAccount
      */
-    select?: PaymentsExceptionsSelect<ExtArgs> | null
+    select?: OrganizationAsaasAccountSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PaymentsExceptions
+     * Omit specific fields from the OrganizationAsaasAccount
      */
-    omit?: PaymentsExceptionsOmit<ExtArgs> | null
+    omit?: OrganizationAsaasAccountOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PaymentsExceptionsInclude<ExtArgs> | null
-    where?: PaymentsExceptionsWhereInput
-  }
-
-  /**
-   * OrdersAsaas without action
-   */
-  export type OrdersAsaasDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the OrdersAsaas
-     */
-    select?: OrdersAsaasSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the OrdersAsaas
-     */
-    omit?: OrdersAsaasOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: OrdersAsaasInclude<ExtArgs> | null
+    include?: OrganizationAsaasAccountInclude<ExtArgs> | null
   }
 
 
@@ -12708,31 +12642,26 @@ export namespace Prisma {
 
   export type PaymentsExceptionsAvgAggregateOutputType = {
     id: number | null
-    transactionId: number | null
   }
 
   export type PaymentsExceptionsSumAggregateOutputType = {
     id: number | null
-    transactionId: number | null
   }
 
   export type PaymentsExceptionsMinAggregateOutputType = {
     id: number | null
-    transactionId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type PaymentsExceptionsMaxAggregateOutputType = {
     id: number | null
-    transactionId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type PaymentsExceptionsCountAggregateOutputType = {
     id: number
-    transactionId: number
     reason: number
     createdAt: number
     updatedAt: number
@@ -12742,31 +12671,26 @@ export namespace Prisma {
 
   export type PaymentsExceptionsAvgAggregateInputType = {
     id?: true
-    transactionId?: true
   }
 
   export type PaymentsExceptionsSumAggregateInputType = {
     id?: true
-    transactionId?: true
   }
 
   export type PaymentsExceptionsMinAggregateInputType = {
     id?: true
-    transactionId?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type PaymentsExceptionsMaxAggregateInputType = {
     id?: true
-    transactionId?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type PaymentsExceptionsCountAggregateInputType = {
     id?: true
-    transactionId?: true
     reason?: true
     createdAt?: true
     updatedAt?: true
@@ -12861,7 +12785,6 @@ export namespace Prisma {
 
   export type PaymentsExceptionsGroupByOutputType = {
     id: number
-    transactionId: number
     reason: JsonValue
     createdAt: Date
     updatedAt: Date
@@ -12888,58 +12811,39 @@ export namespace Prisma {
 
   export type PaymentsExceptionsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    transactionId?: boolean
     reason?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    transaction?: boolean | OrdersAsaasDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["paymentsExceptions"]>
 
   export type PaymentsExceptionsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    transactionId?: boolean
     reason?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    transaction?: boolean | OrdersAsaasDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["paymentsExceptions"]>
 
   export type PaymentsExceptionsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    transactionId?: boolean
     reason?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    transaction?: boolean | OrdersAsaasDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["paymentsExceptions"]>
 
   export type PaymentsExceptionsSelectScalar = {
     id?: boolean
-    transactionId?: boolean
     reason?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type PaymentsExceptionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "transactionId" | "reason" | "createdAt" | "updatedAt", ExtArgs["result"]["paymentsExceptions"]>
-  export type PaymentsExceptionsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    transaction?: boolean | OrdersAsaasDefaultArgs<ExtArgs>
-  }
-  export type PaymentsExceptionsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    transaction?: boolean | OrdersAsaasDefaultArgs<ExtArgs>
-  }
-  export type PaymentsExceptionsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    transaction?: boolean | OrdersAsaasDefaultArgs<ExtArgs>
-  }
+  export type PaymentsExceptionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "reason" | "createdAt" | "updatedAt", ExtArgs["result"]["paymentsExceptions"]>
 
   export type $PaymentsExceptionsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PaymentsExceptions"
-    objects: {
-      transaction: Prisma.$OrdersAsaasPayload<ExtArgs>
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      transactionId: number
       reason: Prisma.JsonValue
       createdAt: Date
       updatedAt: Date
@@ -13337,7 +13241,6 @@ export namespace Prisma {
    */
   export interface Prisma__PaymentsExceptionsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    transaction<T extends OrdersAsaasDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrdersAsaasDefaultArgs<ExtArgs>>): Prisma__OrdersAsaasClient<$Result.GetResult<Prisma.$OrdersAsaasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13368,7 +13271,6 @@ export namespace Prisma {
    */
   interface PaymentsExceptionsFieldRefs {
     readonly id: FieldRef<"PaymentsExceptions", 'Int'>
-    readonly transactionId: FieldRef<"PaymentsExceptions", 'Int'>
     readonly reason: FieldRef<"PaymentsExceptions", 'Json'>
     readonly createdAt: FieldRef<"PaymentsExceptions", 'DateTime'>
     readonly updatedAt: FieldRef<"PaymentsExceptions", 'DateTime'>
@@ -13389,10 +13291,6 @@ export namespace Prisma {
      */
     omit?: PaymentsExceptionsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PaymentsExceptionsInclude<ExtArgs> | null
-    /**
      * Filter, which PaymentsExceptions to fetch.
      */
     where: PaymentsExceptionsWhereUniqueInput
@@ -13411,10 +13309,6 @@ export namespace Prisma {
      */
     omit?: PaymentsExceptionsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PaymentsExceptionsInclude<ExtArgs> | null
-    /**
      * Filter, which PaymentsExceptions to fetch.
      */
     where: PaymentsExceptionsWhereUniqueInput
@@ -13432,10 +13326,6 @@ export namespace Prisma {
      * Omit specific fields from the PaymentsExceptions
      */
     omit?: PaymentsExceptionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PaymentsExceptionsInclude<ExtArgs> | null
     /**
      * Filter, which PaymentsExceptions to fetch.
      */
@@ -13485,10 +13375,6 @@ export namespace Prisma {
      */
     omit?: PaymentsExceptionsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PaymentsExceptionsInclude<ExtArgs> | null
-    /**
      * Filter, which PaymentsExceptions to fetch.
      */
     where?: PaymentsExceptionsWhereInput
@@ -13537,10 +13423,6 @@ export namespace Prisma {
      */
     omit?: PaymentsExceptionsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PaymentsExceptionsInclude<ExtArgs> | null
-    /**
      * Filter, which PaymentsExceptions to fetch.
      */
     where?: PaymentsExceptionsWhereInput
@@ -13584,10 +13466,6 @@ export namespace Prisma {
      */
     omit?: PaymentsExceptionsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PaymentsExceptionsInclude<ExtArgs> | null
-    /**
      * The data needed to create a PaymentsExceptions.
      */
     data: XOR<PaymentsExceptionsCreateInput, PaymentsExceptionsUncheckedCreateInput>
@@ -13621,10 +13499,6 @@ export namespace Prisma {
      */
     data: PaymentsExceptionsCreateManyInput | PaymentsExceptionsCreateManyInput[]
     skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PaymentsExceptionsIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -13639,10 +13513,6 @@ export namespace Prisma {
      * Omit specific fields from the PaymentsExceptions
      */
     omit?: PaymentsExceptionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PaymentsExceptionsInclude<ExtArgs> | null
     /**
      * The data needed to update a PaymentsExceptions.
      */
@@ -13695,10 +13565,6 @@ export namespace Prisma {
      * Limit how many PaymentsExceptions to update.
      */
     limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PaymentsExceptionsIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -13713,10 +13579,6 @@ export namespace Prisma {
      * Omit specific fields from the PaymentsExceptions
      */
     omit?: PaymentsExceptionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PaymentsExceptionsInclude<ExtArgs> | null
     /**
      * The filter to search for the PaymentsExceptions to update in case it exists.
      */
@@ -13743,10 +13605,6 @@ export namespace Prisma {
      * Omit specific fields from the PaymentsExceptions
      */
     omit?: PaymentsExceptionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PaymentsExceptionsInclude<ExtArgs> | null
     /**
      * Filter which PaymentsExceptions to delete.
      */
@@ -13779,10 +13637,6 @@ export namespace Prisma {
      * Omit specific fields from the PaymentsExceptions
      */
     omit?: PaymentsExceptionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PaymentsExceptionsInclude<ExtArgs> | null
   }
 
 
@@ -13830,8 +13684,7 @@ export namespace Prisma {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     inactiveAt: 'inactiveAt',
-    userId: 'userId',
-    openingHours: 'openingHours'
+    userId: 'userId'
   };
 
   export type OrganizationScalarFieldEnum = (typeof OrganizationScalarFieldEnum)[keyof typeof OrganizationScalarFieldEnum]
@@ -13859,7 +13712,7 @@ export namespace Prisma {
     uuid: 'uuid',
     name: 'name',
     price: 'price',
-    recurrent: 'recurrent',
+    quantityInstallment: 'quantityInstallment',
     description: 'description',
     status: 'status',
     dueDate: 'dueDate',
@@ -13925,21 +13778,21 @@ export namespace Prisma {
   export type CustomerAsaasScalarFieldEnum = (typeof CustomerAsaasScalarFieldEnum)[keyof typeof CustomerAsaasScalarFieldEnum]
 
 
-  export const OrdersAsaasScalarFieldEnum: {
+  export const OrganizationAsaasAccountScalarFieldEnum: {
     id: 'id',
-    customerAsaasId: 'customerAsaasId',
-    typeOrder: 'typeOrder',
-    transactionId: 'transactionId',
+    organizationId: 'organizationId',
+    accountAsaasId: 'accountAsaasId',
+    apiKey: 'apiKey',
+    walletId: 'walletId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type OrdersAsaasScalarFieldEnum = (typeof OrdersAsaasScalarFieldEnum)[keyof typeof OrdersAsaasScalarFieldEnum]
+  export type OrganizationAsaasAccountScalarFieldEnum = (typeof OrganizationAsaasAccountScalarFieldEnum)[keyof typeof OrganizationAsaasAccountScalarFieldEnum]
 
 
   export const PaymentsExceptionsScalarFieldEnum: {
     id: 'id',
-    transactionId: 'transactionId',
     reason: 'reason',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -13954,14 +13807,6 @@ export namespace Prisma {
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
-
-
-  export const NullableJsonNullValueInput: {
-    DbNull: typeof DbNull,
-    JsonNull: typeof JsonNull
-  };
-
-  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const JsonNullValueInput: {
@@ -13979,6 +13824,14 @@ export namespace Prisma {
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
   export const JsonNullValueFilter: {
     DbNull: typeof DbNull,
     JsonNull: typeof JsonNull,
@@ -13986,14 +13839,6 @@ export namespace Prisma {
   };
 
   export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
-
-
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -14065,34 +13910,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Json'
-   */
-  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
-    
-
-
-  /**
-   * Reference to a field of type 'QueryMode'
-   */
-  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
-    
-
-
-  /**
-   * Reference to a field of type 'Recurrent'
-   */
-  export type EnumRecurrentFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Recurrent'>
-    
-
-
-  /**
-   * Reference to a field of type 'Recurrent[]'
-   */
-  export type ListEnumRecurrentFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Recurrent[]'>
-    
-
-
-  /**
    * Reference to a field of type 'StatusSchedules'
    */
   export type EnumStatusSchedulesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusSchedules'>
@@ -14107,16 +13924,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'TypeOrder'
+   * Reference to a field of type 'Json'
    */
-  export type EnumTypeOrderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeOrder'>
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
     
 
 
   /**
-   * Reference to a field of type 'TypeOrder[]'
+   * Reference to a field of type 'QueryMode'
    */
-  export type ListEnumTypeOrderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeOrder[]'>
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -14246,12 +14063,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Organization"> | Date | string
     inactiveAt?: DateTimeNullableFilter<"Organization"> | Date | string | null
     userId?: IntFilter<"Organization"> | number
-    openingHours?: JsonNullableFilter<"Organization">
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     services?: ServiceListRelationFilter
     plans?: PlanListRelationFilter
     schedules?: ScheduleListRelationFilter
     PublicSchedule?: PublicScheduleListRelationFilter
+    OrganizationAsaasAccount?: XOR<OrganizationAsaasAccountNullableScalarRelationFilter, OrganizationAsaasAccountWhereInput> | null
   }
 
   export type OrganizationOrderByWithRelationInput = {
@@ -14269,12 +14086,12 @@ export namespace Prisma {
     updatedAt?: SortOrder
     inactiveAt?: SortOrderInput | SortOrder
     userId?: SortOrder
-    openingHours?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     services?: ServiceOrderByRelationAggregateInput
     plans?: PlanOrderByRelationAggregateInput
     schedules?: ScheduleOrderByRelationAggregateInput
     PublicSchedule?: PublicScheduleOrderByRelationAggregateInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountOrderByWithRelationInput
   }
 
   export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
@@ -14295,12 +14112,12 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Organization"> | Date | string
     updatedAt?: DateTimeFilter<"Organization"> | Date | string
     inactiveAt?: DateTimeNullableFilter<"Organization"> | Date | string | null
-    openingHours?: JsonNullableFilter<"Organization">
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     services?: ServiceListRelationFilter
     plans?: PlanListRelationFilter
     schedules?: ScheduleListRelationFilter
     PublicSchedule?: PublicScheduleListRelationFilter
+    OrganizationAsaasAccount?: XOR<OrganizationAsaasAccountNullableScalarRelationFilter, OrganizationAsaasAccountWhereInput> | null
   }, "id" | "uuid" | "userId">
 
   export type OrganizationOrderByWithAggregationInput = {
@@ -14318,7 +14135,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
     inactiveAt?: SortOrderInput | SortOrder
     userId?: SortOrder
-    openingHours?: SortOrderInput | SortOrder
     _count?: OrganizationCountOrderByAggregateInput
     _avg?: OrganizationAvgOrderByAggregateInput
     _max?: OrganizationMaxOrderByAggregateInput
@@ -14344,7 +14160,6 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Organization"> | Date | string
     inactiveAt?: DateTimeNullableWithAggregatesFilter<"Organization"> | Date | string | null
     userId?: IntWithAggregatesFilter<"Organization"> | number
-    openingHours?: JsonNullableWithAggregatesFilter<"Organization">
   }
 
   export type ServiceWhereInput = {
@@ -14448,7 +14263,7 @@ export namespace Prisma {
     uuid?: UuidFilter<"Plan"> | string
     name?: StringFilter<"Plan"> | string
     price?: IntFilter<"Plan"> | number
-    recurrent?: EnumRecurrentFilter<"Plan"> | $Enums.Recurrent
+    quantityInstallment?: IntFilter<"Plan"> | number
     description?: StringFilter<"Plan"> | string
     status?: BoolFilter<"Plan"> | boolean
     dueDate?: DateTimeNullableFilter<"Plan"> | Date | string | null
@@ -14464,7 +14279,7 @@ export namespace Prisma {
     uuid?: SortOrder
     name?: SortOrder
     price?: SortOrder
-    recurrent?: SortOrder
+    quantityInstallment?: SortOrder
     description?: SortOrder
     status?: SortOrder
     dueDate?: SortOrderInput | SortOrder
@@ -14483,7 +14298,7 @@ export namespace Prisma {
     NOT?: PlanWhereInput | PlanWhereInput[]
     name?: StringFilter<"Plan"> | string
     price?: IntFilter<"Plan"> | number
-    recurrent?: EnumRecurrentFilter<"Plan"> | $Enums.Recurrent
+    quantityInstallment?: IntFilter<"Plan"> | number
     description?: StringFilter<"Plan"> | string
     status?: BoolFilter<"Plan"> | boolean
     dueDate?: DateTimeNullableFilter<"Plan"> | Date | string | null
@@ -14499,7 +14314,7 @@ export namespace Prisma {
     uuid?: SortOrder
     name?: SortOrder
     price?: SortOrder
-    recurrent?: SortOrder
+    quantityInstallment?: SortOrder
     description?: SortOrder
     status?: SortOrder
     dueDate?: SortOrderInput | SortOrder
@@ -14521,7 +14336,7 @@ export namespace Prisma {
     uuid?: UuidWithAggregatesFilter<"Plan"> | string
     name?: StringWithAggregatesFilter<"Plan"> | string
     price?: IntWithAggregatesFilter<"Plan"> | number
-    recurrent?: EnumRecurrentWithAggregatesFilter<"Plan"> | $Enums.Recurrent
+    quantityInstallment?: IntWithAggregatesFilter<"Plan"> | number
     description?: StringWithAggregatesFilter<"Plan"> | string
     status?: BoolWithAggregatesFilter<"Plan"> | boolean
     dueDate?: DateTimeNullableWithAggregatesFilter<"Plan"> | Date | string | null
@@ -14769,11 +14584,10 @@ export namespace Prisma {
     NOT?: CustomerAsaasWhereInput | CustomerAsaasWhereInput[]
     id?: IntFilter<"CustomerAsaas"> | number
     userId?: IntFilter<"CustomerAsaas"> | number
-    customerAsaasId?: UuidFilter<"CustomerAsaas"> | string
+    customerAsaasId?: StringFilter<"CustomerAsaas"> | string
     createdAt?: DateTimeFilter<"CustomerAsaas"> | Date | string
     updatedAt?: DateTimeFilter<"CustomerAsaas"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    OrdersAsaas?: OrdersAsaasListRelationFilter
   }
 
   export type CustomerAsaasOrderByWithRelationInput = {
@@ -14783,7 +14597,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
-    OrdersAsaas?: OrdersAsaasOrderByRelationAggregateInput
   }
 
   export type CustomerAsaasWhereUniqueInput = Prisma.AtLeast<{
@@ -14792,11 +14605,10 @@ export namespace Prisma {
     AND?: CustomerAsaasWhereInput | CustomerAsaasWhereInput[]
     OR?: CustomerAsaasWhereInput[]
     NOT?: CustomerAsaasWhereInput | CustomerAsaasWhereInput[]
-    customerAsaasId?: UuidFilter<"CustomerAsaas"> | string
+    customerAsaasId?: StringFilter<"CustomerAsaas"> | string
     createdAt?: DateTimeFilter<"CustomerAsaas"> | Date | string
     updatedAt?: DateTimeFilter<"CustomerAsaas"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    OrdersAsaas?: OrdersAsaasListRelationFilter
   }, "id" | "userId">
 
   export type CustomerAsaasOrderByWithAggregationInput = {
@@ -14818,74 +14630,76 @@ export namespace Prisma {
     NOT?: CustomerAsaasScalarWhereWithAggregatesInput | CustomerAsaasScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"CustomerAsaas"> | number
     userId?: IntWithAggregatesFilter<"CustomerAsaas"> | number
-    customerAsaasId?: UuidWithAggregatesFilter<"CustomerAsaas"> | string
+    customerAsaasId?: StringWithAggregatesFilter<"CustomerAsaas"> | string
     createdAt?: DateTimeWithAggregatesFilter<"CustomerAsaas"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"CustomerAsaas"> | Date | string
   }
 
-  export type OrdersAsaasWhereInput = {
-    AND?: OrdersAsaasWhereInput | OrdersAsaasWhereInput[]
-    OR?: OrdersAsaasWhereInput[]
-    NOT?: OrdersAsaasWhereInput | OrdersAsaasWhereInput[]
-    id?: IntFilter<"OrdersAsaas"> | number
-    customerAsaasId?: IntFilter<"OrdersAsaas"> | number
-    typeOrder?: EnumTypeOrderFilter<"OrdersAsaas"> | $Enums.TypeOrder
-    transactionId?: UuidNullableFilter<"OrdersAsaas"> | string | null
-    createdAt?: DateTimeFilter<"OrdersAsaas"> | Date | string
-    updatedAt?: DateTimeFilter<"OrdersAsaas"> | Date | string
-    customerAsaas?: XOR<CustomerAsaasScalarRelationFilter, CustomerAsaasWhereInput>
-    PaymentsExceptions?: XOR<PaymentsExceptionsNullableScalarRelationFilter, PaymentsExceptionsWhereInput> | null
+  export type OrganizationAsaasAccountWhereInput = {
+    AND?: OrganizationAsaasAccountWhereInput | OrganizationAsaasAccountWhereInput[]
+    OR?: OrganizationAsaasAccountWhereInput[]
+    NOT?: OrganizationAsaasAccountWhereInput | OrganizationAsaasAccountWhereInput[]
+    id?: IntFilter<"OrganizationAsaasAccount"> | number
+    organizationId?: IntFilter<"OrganizationAsaasAccount"> | number
+    accountAsaasId?: StringFilter<"OrganizationAsaasAccount"> | string
+    apiKey?: StringFilter<"OrganizationAsaasAccount"> | string
+    walletId?: StringFilter<"OrganizationAsaasAccount"> | string
+    createdAt?: DateTimeFilter<"OrganizationAsaasAccount"> | Date | string
+    updatedAt?: DateTimeFilter<"OrganizationAsaasAccount"> | Date | string
+    organization?: XOR<OrganizationScalarRelationFilter, OrganizationWhereInput>
   }
 
-  export type OrdersAsaasOrderByWithRelationInput = {
+  export type OrganizationAsaasAccountOrderByWithRelationInput = {
     id?: SortOrder
-    customerAsaasId?: SortOrder
-    typeOrder?: SortOrder
-    transactionId?: SortOrderInput | SortOrder
+    organizationId?: SortOrder
+    accountAsaasId?: SortOrder
+    apiKey?: SortOrder
+    walletId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    customerAsaas?: CustomerAsaasOrderByWithRelationInput
-    PaymentsExceptions?: PaymentsExceptionsOrderByWithRelationInput
+    organization?: OrganizationOrderByWithRelationInput
   }
 
-  export type OrdersAsaasWhereUniqueInput = Prisma.AtLeast<{
+  export type OrganizationAsaasAccountWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    transactionId?: string
-    AND?: OrdersAsaasWhereInput | OrdersAsaasWhereInput[]
-    OR?: OrdersAsaasWhereInput[]
-    NOT?: OrdersAsaasWhereInput | OrdersAsaasWhereInput[]
-    customerAsaasId?: IntFilter<"OrdersAsaas"> | number
-    typeOrder?: EnumTypeOrderFilter<"OrdersAsaas"> | $Enums.TypeOrder
-    createdAt?: DateTimeFilter<"OrdersAsaas"> | Date | string
-    updatedAt?: DateTimeFilter<"OrdersAsaas"> | Date | string
-    customerAsaas?: XOR<CustomerAsaasScalarRelationFilter, CustomerAsaasWhereInput>
-    PaymentsExceptions?: XOR<PaymentsExceptionsNullableScalarRelationFilter, PaymentsExceptionsWhereInput> | null
-  }, "id" | "transactionId">
+    organizationId?: number
+    AND?: OrganizationAsaasAccountWhereInput | OrganizationAsaasAccountWhereInput[]
+    OR?: OrganizationAsaasAccountWhereInput[]
+    NOT?: OrganizationAsaasAccountWhereInput | OrganizationAsaasAccountWhereInput[]
+    accountAsaasId?: StringFilter<"OrganizationAsaasAccount"> | string
+    apiKey?: StringFilter<"OrganizationAsaasAccount"> | string
+    walletId?: StringFilter<"OrganizationAsaasAccount"> | string
+    createdAt?: DateTimeFilter<"OrganizationAsaasAccount"> | Date | string
+    updatedAt?: DateTimeFilter<"OrganizationAsaasAccount"> | Date | string
+    organization?: XOR<OrganizationScalarRelationFilter, OrganizationWhereInput>
+  }, "id" | "organizationId">
 
-  export type OrdersAsaasOrderByWithAggregationInput = {
+  export type OrganizationAsaasAccountOrderByWithAggregationInput = {
     id?: SortOrder
-    customerAsaasId?: SortOrder
-    typeOrder?: SortOrder
-    transactionId?: SortOrderInput | SortOrder
+    organizationId?: SortOrder
+    accountAsaasId?: SortOrder
+    apiKey?: SortOrder
+    walletId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: OrdersAsaasCountOrderByAggregateInput
-    _avg?: OrdersAsaasAvgOrderByAggregateInput
-    _max?: OrdersAsaasMaxOrderByAggregateInput
-    _min?: OrdersAsaasMinOrderByAggregateInput
-    _sum?: OrdersAsaasSumOrderByAggregateInput
+    _count?: OrganizationAsaasAccountCountOrderByAggregateInput
+    _avg?: OrganizationAsaasAccountAvgOrderByAggregateInput
+    _max?: OrganizationAsaasAccountMaxOrderByAggregateInput
+    _min?: OrganizationAsaasAccountMinOrderByAggregateInput
+    _sum?: OrganizationAsaasAccountSumOrderByAggregateInput
   }
 
-  export type OrdersAsaasScalarWhereWithAggregatesInput = {
-    AND?: OrdersAsaasScalarWhereWithAggregatesInput | OrdersAsaasScalarWhereWithAggregatesInput[]
-    OR?: OrdersAsaasScalarWhereWithAggregatesInput[]
-    NOT?: OrdersAsaasScalarWhereWithAggregatesInput | OrdersAsaasScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"OrdersAsaas"> | number
-    customerAsaasId?: IntWithAggregatesFilter<"OrdersAsaas"> | number
-    typeOrder?: EnumTypeOrderWithAggregatesFilter<"OrdersAsaas"> | $Enums.TypeOrder
-    transactionId?: UuidNullableWithAggregatesFilter<"OrdersAsaas"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"OrdersAsaas"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"OrdersAsaas"> | Date | string
+  export type OrganizationAsaasAccountScalarWhereWithAggregatesInput = {
+    AND?: OrganizationAsaasAccountScalarWhereWithAggregatesInput | OrganizationAsaasAccountScalarWhereWithAggregatesInput[]
+    OR?: OrganizationAsaasAccountScalarWhereWithAggregatesInput[]
+    NOT?: OrganizationAsaasAccountScalarWhereWithAggregatesInput | OrganizationAsaasAccountScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"OrganizationAsaasAccount"> | number
+    organizationId?: IntWithAggregatesFilter<"OrganizationAsaasAccount"> | number
+    accountAsaasId?: StringWithAggregatesFilter<"OrganizationAsaasAccount"> | string
+    apiKey?: StringWithAggregatesFilter<"OrganizationAsaasAccount"> | string
+    walletId?: StringWithAggregatesFilter<"OrganizationAsaasAccount"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"OrganizationAsaasAccount"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"OrganizationAsaasAccount"> | Date | string
   }
 
   export type PaymentsExceptionsWhereInput = {
@@ -14893,37 +14707,30 @@ export namespace Prisma {
     OR?: PaymentsExceptionsWhereInput[]
     NOT?: PaymentsExceptionsWhereInput | PaymentsExceptionsWhereInput[]
     id?: IntFilter<"PaymentsExceptions"> | number
-    transactionId?: IntFilter<"PaymentsExceptions"> | number
     reason?: JsonFilter<"PaymentsExceptions">
     createdAt?: DateTimeFilter<"PaymentsExceptions"> | Date | string
     updatedAt?: DateTimeFilter<"PaymentsExceptions"> | Date | string
-    transaction?: XOR<OrdersAsaasScalarRelationFilter, OrdersAsaasWhereInput>
   }
 
   export type PaymentsExceptionsOrderByWithRelationInput = {
     id?: SortOrder
-    transactionId?: SortOrder
     reason?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    transaction?: OrdersAsaasOrderByWithRelationInput
   }
 
   export type PaymentsExceptionsWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    transactionId?: number
     AND?: PaymentsExceptionsWhereInput | PaymentsExceptionsWhereInput[]
     OR?: PaymentsExceptionsWhereInput[]
     NOT?: PaymentsExceptionsWhereInput | PaymentsExceptionsWhereInput[]
     reason?: JsonFilter<"PaymentsExceptions">
     createdAt?: DateTimeFilter<"PaymentsExceptions"> | Date | string
     updatedAt?: DateTimeFilter<"PaymentsExceptions"> | Date | string
-    transaction?: XOR<OrdersAsaasScalarRelationFilter, OrdersAsaasWhereInput>
-  }, "id" | "transactionId">
+  }, "id">
 
   export type PaymentsExceptionsOrderByWithAggregationInput = {
     id?: SortOrder
-    transactionId?: SortOrder
     reason?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -14939,7 +14746,6 @@ export namespace Prisma {
     OR?: PaymentsExceptionsScalarWhereWithAggregatesInput[]
     NOT?: PaymentsExceptionsScalarWhereWithAggregatesInput | PaymentsExceptionsScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"PaymentsExceptions"> | number
-    transactionId?: IntWithAggregatesFilter<"PaymentsExceptions"> | number
     reason?: JsonWithAggregatesFilter<"PaymentsExceptions">
     createdAt?: DateTimeWithAggregatesFilter<"PaymentsExceptions"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"PaymentsExceptions"> | Date | string
@@ -15062,12 +14868,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user: UserCreateNestedOneWithoutOrganizationInput
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleCreateNestedManyWithoutOrganizationInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountCreateNestedOneWithoutOrganizationInput
   }
 
   export type OrganizationUncheckedCreateInput = {
@@ -15085,11 +14891,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
     userId: number
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUncheckedCreateNestedOneWithoutOrganizationInput
   }
 
   export type OrganizationUpdateInput = {
@@ -15105,12 +14911,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUpdateOneWithoutOrganizationNestedInput
   }
 
   export type OrganizationUncheckedUpdateInput = {
@@ -15128,11 +14934,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: IntFieldUpdateOperationsInput | number
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUncheckedUpdateOneWithoutOrganizationNestedInput
   }
 
   export type OrganizationCreateManyInput = {
@@ -15150,7 +14956,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
     userId: number
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type OrganizationUpdateManyMutationInput = {
@@ -15166,7 +14971,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type OrganizationUncheckedUpdateManyInput = {
@@ -15184,7 +14988,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: IntFieldUpdateOperationsInput | number
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type ServiceCreateInput = {
@@ -15293,7 +15096,7 @@ export namespace Prisma {
     uuid?: string
     name: string
     price: number
-    recurrent: $Enums.Recurrent
+    quantityInstallment: number
     description: string
     status?: boolean
     dueDate?: Date | string | null
@@ -15308,7 +15111,7 @@ export namespace Prisma {
     uuid?: string
     name: string
     price: number
-    recurrent: $Enums.Recurrent
+    quantityInstallment: number
     description: string
     status?: boolean
     dueDate?: Date | string | null
@@ -15322,7 +15125,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
+    quantityInstallment?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15337,7 +15140,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
+    quantityInstallment?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15352,7 +15155,7 @@ export namespace Prisma {
     uuid?: string
     name: string
     price: number
-    recurrent: $Enums.Recurrent
+    quantityInstallment: number
     description: string
     status?: boolean
     dueDate?: Date | string | null
@@ -15365,7 +15168,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
+    quantityInstallment?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15378,7 +15181,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
+    quantityInstallment?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15614,7 +15417,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutCustomer_asaasInput
-    OrdersAsaas?: OrdersAsaasCreateNestedManyWithoutCustomerAsaasInput
   }
 
   export type CustomerAsaasUncheckedCreateInput = {
@@ -15623,7 +15425,6 @@ export namespace Prisma {
     customerAsaasId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    OrdersAsaas?: OrdersAsaasUncheckedCreateNestedManyWithoutCustomerAsaasInput
   }
 
   export type CustomerAsaasUpdateInput = {
@@ -15631,7 +15432,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCustomer_asaasNestedInput
-    OrdersAsaas?: OrdersAsaasUpdateManyWithoutCustomerAsaasNestedInput
   }
 
   export type CustomerAsaasUncheckedUpdateInput = {
@@ -15640,7 +15440,6 @@ export namespace Prisma {
     customerAsaasId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    OrdersAsaas?: OrdersAsaasUncheckedUpdateManyWithoutCustomerAsaasNestedInput
   }
 
   export type CustomerAsaasCreateManyInput = {
@@ -15665,65 +15464,68 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type OrdersAsaasCreateInput = {
-    typeOrder?: $Enums.TypeOrder
-    transactionId?: string | null
+  export type OrganizationAsaasAccountCreateInput = {
+    accountAsaasId: string
+    apiKey: string
+    walletId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    customerAsaas: CustomerAsaasCreateNestedOneWithoutOrdersAsaasInput
-    PaymentsExceptions?: PaymentsExceptionsCreateNestedOneWithoutTransactionInput
+    organization: OrganizationCreateNestedOneWithoutOrganizationAsaasAccountInput
   }
 
-  export type OrdersAsaasUncheckedCreateInput = {
+  export type OrganizationAsaasAccountUncheckedCreateInput = {
     id?: number
-    customerAsaasId: number
-    typeOrder?: $Enums.TypeOrder
-    transactionId?: string | null
+    organizationId: number
+    accountAsaasId: string
+    apiKey: string
+    walletId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    PaymentsExceptions?: PaymentsExceptionsUncheckedCreateNestedOneWithoutTransactionInput
   }
 
-  export type OrdersAsaasUpdateInput = {
-    typeOrder?: EnumTypeOrderFieldUpdateOperationsInput | $Enums.TypeOrder
-    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
+  export type OrganizationAsaasAccountUpdateInput = {
+    accountAsaasId?: StringFieldUpdateOperationsInput | string
+    apiKey?: StringFieldUpdateOperationsInput | string
+    walletId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerAsaas?: CustomerAsaasUpdateOneRequiredWithoutOrdersAsaasNestedInput
-    PaymentsExceptions?: PaymentsExceptionsUpdateOneWithoutTransactionNestedInput
+    organization?: OrganizationUpdateOneRequiredWithoutOrganizationAsaasAccountNestedInput
   }
 
-  export type OrdersAsaasUncheckedUpdateInput = {
+  export type OrganizationAsaasAccountUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    customerAsaasId?: IntFieldUpdateOperationsInput | number
-    typeOrder?: EnumTypeOrderFieldUpdateOperationsInput | $Enums.TypeOrder
-    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
+    organizationId?: IntFieldUpdateOperationsInput | number
+    accountAsaasId?: StringFieldUpdateOperationsInput | string
+    apiKey?: StringFieldUpdateOperationsInput | string
+    walletId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    PaymentsExceptions?: PaymentsExceptionsUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
-  export type OrdersAsaasCreateManyInput = {
+  export type OrganizationAsaasAccountCreateManyInput = {
     id?: number
-    customerAsaasId: number
-    typeOrder?: $Enums.TypeOrder
-    transactionId?: string | null
+    organizationId: number
+    accountAsaasId: string
+    apiKey: string
+    walletId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type OrdersAsaasUpdateManyMutationInput = {
-    typeOrder?: EnumTypeOrderFieldUpdateOperationsInput | $Enums.TypeOrder
-    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
+  export type OrganizationAsaasAccountUpdateManyMutationInput = {
+    accountAsaasId?: StringFieldUpdateOperationsInput | string
+    apiKey?: StringFieldUpdateOperationsInput | string
+    walletId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type OrdersAsaasUncheckedUpdateManyInput = {
+  export type OrganizationAsaasAccountUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    customerAsaasId?: IntFieldUpdateOperationsInput | number
-    typeOrder?: EnumTypeOrderFieldUpdateOperationsInput | $Enums.TypeOrder
-    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
+    organizationId?: IntFieldUpdateOperationsInput | number
+    accountAsaasId?: StringFieldUpdateOperationsInput | string
+    apiKey?: StringFieldUpdateOperationsInput | string
+    walletId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15732,12 +15534,10 @@ export namespace Prisma {
     reason: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    transaction: OrdersAsaasCreateNestedOneWithoutPaymentsExceptionsInput
   }
 
   export type PaymentsExceptionsUncheckedCreateInput = {
     id?: number
-    transactionId: number
     reason: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -15747,12 +15547,10 @@ export namespace Prisma {
     reason?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    transaction?: OrdersAsaasUpdateOneRequiredWithoutPaymentsExceptionsNestedInput
   }
 
   export type PaymentsExceptionsUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    transactionId?: IntFieldUpdateOperationsInput | number
     reason?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15760,7 +15558,6 @@ export namespace Prisma {
 
   export type PaymentsExceptionsCreateManyInput = {
     id?: number
-    transactionId: number
     reason: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -15774,7 +15571,6 @@ export namespace Prisma {
 
   export type PaymentsExceptionsUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    transactionId?: IntFieldUpdateOperationsInput | number
     reason?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16016,29 +15812,6 @@ export namespace Prisma {
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
-  export type JsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
@@ -16061,6 +15834,11 @@ export namespace Prisma {
     every?: PublicScheduleWhereInput
     some?: PublicScheduleWhereInput
     none?: PublicScheduleWhereInput
+  }
+
+  export type OrganizationAsaasAccountNullableScalarRelationFilter = {
+    is?: OrganizationAsaasAccountWhereInput | null
+    isNot?: OrganizationAsaasAccountWhereInput | null
   }
 
   export type SortOrderInput = {
@@ -16095,7 +15873,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
     inactiveAt?: SortOrder
     userId?: SortOrder
-    openingHours?: SortOrder
   }
 
   export type OrganizationAvgOrderByAggregateInput = {
@@ -16180,32 +15957,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -16296,19 +16047,12 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type EnumRecurrentFilter<$PrismaModel = never> = {
-    equals?: $Enums.Recurrent | EnumRecurrentFieldRefInput<$PrismaModel>
-    in?: $Enums.Recurrent[] | ListEnumRecurrentFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Recurrent[] | ListEnumRecurrentFieldRefInput<$PrismaModel>
-    not?: NestedEnumRecurrentFilter<$PrismaModel> | $Enums.Recurrent
-  }
-
   export type PlanCountOrderByAggregateInput = {
     id?: SortOrder
     uuid?: SortOrder
     name?: SortOrder
     price?: SortOrder
-    recurrent?: SortOrder
+    quantityInstallment?: SortOrder
     description?: SortOrder
     status?: SortOrder
     dueDate?: SortOrder
@@ -16320,6 +16064,7 @@ export namespace Prisma {
   export type PlanAvgOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
+    quantityInstallment?: SortOrder
     organizationId?: SortOrder
   }
 
@@ -16328,7 +16073,7 @@ export namespace Prisma {
     uuid?: SortOrder
     name?: SortOrder
     price?: SortOrder
-    recurrent?: SortOrder
+    quantityInstallment?: SortOrder
     description?: SortOrder
     status?: SortOrder
     dueDate?: SortOrder
@@ -16342,7 +16087,7 @@ export namespace Prisma {
     uuid?: SortOrder
     name?: SortOrder
     price?: SortOrder
-    recurrent?: SortOrder
+    quantityInstallment?: SortOrder
     description?: SortOrder
     status?: SortOrder
     dueDate?: SortOrder
@@ -16354,17 +16099,8 @@ export namespace Prisma {
   export type PlanSumOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
+    quantityInstallment?: SortOrder
     organizationId?: SortOrder
-  }
-
-  export type EnumRecurrentWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Recurrent | EnumRecurrentFieldRefInput<$PrismaModel>
-    in?: $Enums.Recurrent[] | ListEnumRecurrentFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Recurrent[] | ListEnumRecurrentFieldRefInput<$PrismaModel>
-    not?: NestedEnumRecurrentWithAggregatesFilter<$PrismaModel> | $Enums.Recurrent
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumRecurrentFilter<$PrismaModel>
-    _max?: NestedEnumRecurrentFilter<$PrismaModel>
   }
 
   export type EnumStatusSchedulesFilter<$PrismaModel = never> = {
@@ -16561,16 +16297,6 @@ export namespace Prisma {
     planId?: SortOrder
   }
 
-  export type OrdersAsaasListRelationFilter = {
-    every?: OrdersAsaasWhereInput
-    some?: OrdersAsaasWhereInput
-    none?: OrdersAsaasWhereInput
-  }
-
-  export type OrdersAsaasOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type CustomerAsaasCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
@@ -16605,68 +16331,44 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
-  export type EnumTypeOrderFilter<$PrismaModel = never> = {
-    equals?: $Enums.TypeOrder | EnumTypeOrderFieldRefInput<$PrismaModel>
-    in?: $Enums.TypeOrder[] | ListEnumTypeOrderFieldRefInput<$PrismaModel>
-    notIn?: $Enums.TypeOrder[] | ListEnumTypeOrderFieldRefInput<$PrismaModel>
-    not?: NestedEnumTypeOrderFilter<$PrismaModel> | $Enums.TypeOrder
-  }
-
-  export type CustomerAsaasScalarRelationFilter = {
-    is?: CustomerAsaasWhereInput
-    isNot?: CustomerAsaasWhereInput
-  }
-
-  export type PaymentsExceptionsNullableScalarRelationFilter = {
-    is?: PaymentsExceptionsWhereInput | null
-    isNot?: PaymentsExceptionsWhereInput | null
-  }
-
-  export type OrdersAsaasCountOrderByAggregateInput = {
+  export type OrganizationAsaasAccountCountOrderByAggregateInput = {
     id?: SortOrder
-    customerAsaasId?: SortOrder
-    typeOrder?: SortOrder
-    transactionId?: SortOrder
+    organizationId?: SortOrder
+    accountAsaasId?: SortOrder
+    apiKey?: SortOrder
+    walletId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type OrdersAsaasAvgOrderByAggregateInput = {
+  export type OrganizationAsaasAccountAvgOrderByAggregateInput = {
     id?: SortOrder
-    customerAsaasId?: SortOrder
+    organizationId?: SortOrder
   }
 
-  export type OrdersAsaasMaxOrderByAggregateInput = {
+  export type OrganizationAsaasAccountMaxOrderByAggregateInput = {
     id?: SortOrder
-    customerAsaasId?: SortOrder
-    typeOrder?: SortOrder
-    transactionId?: SortOrder
+    organizationId?: SortOrder
+    accountAsaasId?: SortOrder
+    apiKey?: SortOrder
+    walletId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type OrdersAsaasMinOrderByAggregateInput = {
+  export type OrganizationAsaasAccountMinOrderByAggregateInput = {
     id?: SortOrder
-    customerAsaasId?: SortOrder
-    typeOrder?: SortOrder
-    transactionId?: SortOrder
+    organizationId?: SortOrder
+    accountAsaasId?: SortOrder
+    apiKey?: SortOrder
+    walletId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type OrdersAsaasSumOrderByAggregateInput = {
+  export type OrganizationAsaasAccountSumOrderByAggregateInput = {
     id?: SortOrder
-    customerAsaasId?: SortOrder
-  }
-
-  export type EnumTypeOrderWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.TypeOrder | EnumTypeOrderFieldRefInput<$PrismaModel>
-    in?: $Enums.TypeOrder[] | ListEnumTypeOrderFieldRefInput<$PrismaModel>
-    notIn?: $Enums.TypeOrder[] | ListEnumTypeOrderFieldRefInput<$PrismaModel>
-    not?: NestedEnumTypeOrderWithAggregatesFilter<$PrismaModel> | $Enums.TypeOrder
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumTypeOrderFilter<$PrismaModel>
-    _max?: NestedEnumTypeOrderFilter<$PrismaModel>
+    organizationId?: SortOrder
   }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -16692,14 +16394,8 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type OrdersAsaasScalarRelationFilter = {
-    is?: OrdersAsaasWhereInput
-    isNot?: OrdersAsaasWhereInput
-  }
-
   export type PaymentsExceptionsCountOrderByAggregateInput = {
     id?: SortOrder
-    transactionId?: SortOrder
     reason?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -16707,26 +16403,22 @@ export namespace Prisma {
 
   export type PaymentsExceptionsAvgOrderByAggregateInput = {
     id?: SortOrder
-    transactionId?: SortOrder
   }
 
   export type PaymentsExceptionsMaxOrderByAggregateInput = {
     id?: SortOrder
-    transactionId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type PaymentsExceptionsMinOrderByAggregateInput = {
     id?: SortOrder
-    transactionId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type PaymentsExceptionsSumOrderByAggregateInput = {
     id?: SortOrder
-    transactionId?: SortOrder
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -16957,6 +16649,12 @@ export namespace Prisma {
     connect?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
   }
 
+  export type OrganizationAsaasAccountCreateNestedOneWithoutOrganizationInput = {
+    create?: XOR<OrganizationAsaasAccountCreateWithoutOrganizationInput, OrganizationAsaasAccountUncheckedCreateWithoutOrganizationInput>
+    connectOrCreate?: OrganizationAsaasAccountCreateOrConnectWithoutOrganizationInput
+    connect?: OrganizationAsaasAccountWhereUniqueInput
+  }
+
   export type ServiceUncheckedCreateNestedManyWithoutOrganizationInput = {
     create?: XOR<ServiceCreateWithoutOrganizationInput, ServiceUncheckedCreateWithoutOrganizationInput> | ServiceCreateWithoutOrganizationInput[] | ServiceUncheckedCreateWithoutOrganizationInput[]
     connectOrCreate?: ServiceCreateOrConnectWithoutOrganizationInput | ServiceCreateOrConnectWithoutOrganizationInput[]
@@ -16983,6 +16681,12 @@ export namespace Prisma {
     connectOrCreate?: PublicScheduleCreateOrConnectWithoutOrganizationInput | PublicScheduleCreateOrConnectWithoutOrganizationInput[]
     createMany?: PublicScheduleCreateManyOrganizationInputEnvelope
     connect?: PublicScheduleWhereUniqueInput | PublicScheduleWhereUniqueInput[]
+  }
+
+  export type OrganizationAsaasAccountUncheckedCreateNestedOneWithoutOrganizationInput = {
+    create?: XOR<OrganizationAsaasAccountCreateWithoutOrganizationInput, OrganizationAsaasAccountUncheckedCreateWithoutOrganizationInput>
+    connectOrCreate?: OrganizationAsaasAccountCreateOrConnectWithoutOrganizationInput
+    connect?: OrganizationAsaasAccountWhereUniqueInput
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -17061,6 +16765,16 @@ export namespace Prisma {
     deleteMany?: PublicScheduleScalarWhereInput | PublicScheduleScalarWhereInput[]
   }
 
+  export type OrganizationAsaasAccountUpdateOneWithoutOrganizationNestedInput = {
+    create?: XOR<OrganizationAsaasAccountCreateWithoutOrganizationInput, OrganizationAsaasAccountUncheckedCreateWithoutOrganizationInput>
+    connectOrCreate?: OrganizationAsaasAccountCreateOrConnectWithoutOrganizationInput
+    upsert?: OrganizationAsaasAccountUpsertWithoutOrganizationInput
+    disconnect?: OrganizationAsaasAccountWhereInput | boolean
+    delete?: OrganizationAsaasAccountWhereInput | boolean
+    connect?: OrganizationAsaasAccountWhereUniqueInput
+    update?: XOR<XOR<OrganizationAsaasAccountUpdateToOneWithWhereWithoutOrganizationInput, OrganizationAsaasAccountUpdateWithoutOrganizationInput>, OrganizationAsaasAccountUncheckedUpdateWithoutOrganizationInput>
+  }
+
   export type ServiceUncheckedUpdateManyWithoutOrganizationNestedInput = {
     create?: XOR<ServiceCreateWithoutOrganizationInput, ServiceUncheckedCreateWithoutOrganizationInput> | ServiceCreateWithoutOrganizationInput[] | ServiceUncheckedCreateWithoutOrganizationInput[]
     connectOrCreate?: ServiceCreateOrConnectWithoutOrganizationInput | ServiceCreateOrConnectWithoutOrganizationInput[]
@@ -17115,6 +16829,16 @@ export namespace Prisma {
     update?: PublicScheduleUpdateWithWhereUniqueWithoutOrganizationInput | PublicScheduleUpdateWithWhereUniqueWithoutOrganizationInput[]
     updateMany?: PublicScheduleUpdateManyWithWhereWithoutOrganizationInput | PublicScheduleUpdateManyWithWhereWithoutOrganizationInput[]
     deleteMany?: PublicScheduleScalarWhereInput | PublicScheduleScalarWhereInput[]
+  }
+
+  export type OrganizationAsaasAccountUncheckedUpdateOneWithoutOrganizationNestedInput = {
+    create?: XOR<OrganizationAsaasAccountCreateWithoutOrganizationInput, OrganizationAsaasAccountUncheckedCreateWithoutOrganizationInput>
+    connectOrCreate?: OrganizationAsaasAccountCreateOrConnectWithoutOrganizationInput
+    upsert?: OrganizationAsaasAccountUpsertWithoutOrganizationInput
+    disconnect?: OrganizationAsaasAccountWhereInput | boolean
+    delete?: OrganizationAsaasAccountWhereInput | boolean
+    connect?: OrganizationAsaasAccountWhereUniqueInput
+    update?: XOR<XOR<OrganizationAsaasAccountUpdateToOneWithWhereWithoutOrganizationInput, OrganizationAsaasAccountUpdateWithoutOrganizationInput>, OrganizationAsaasAccountUncheckedUpdateWithoutOrganizationInput>
   }
 
   export type OrganizationCreateNestedOneWithoutServicesInput = {
@@ -17241,10 +16965,6 @@ export namespace Prisma {
     connectOrCreate?: UserPlansCreateOrConnectWithoutPlanInput | UserPlansCreateOrConnectWithoutPlanInput[]
     createMany?: UserPlansCreateManyPlanInputEnvelope
     connect?: UserPlansWhereUniqueInput | UserPlansWhereUniqueInput[]
-  }
-
-  export type EnumRecurrentFieldUpdateOperationsInput = {
-    set?: $Enums.Recurrent
   }
 
   export type OrganizationUpdateOneRequiredWithoutPlansNestedInput = {
@@ -17391,20 +17111,6 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type OrdersAsaasCreateNestedManyWithoutCustomerAsaasInput = {
-    create?: XOR<OrdersAsaasCreateWithoutCustomerAsaasInput, OrdersAsaasUncheckedCreateWithoutCustomerAsaasInput> | OrdersAsaasCreateWithoutCustomerAsaasInput[] | OrdersAsaasUncheckedCreateWithoutCustomerAsaasInput[]
-    connectOrCreate?: OrdersAsaasCreateOrConnectWithoutCustomerAsaasInput | OrdersAsaasCreateOrConnectWithoutCustomerAsaasInput[]
-    createMany?: OrdersAsaasCreateManyCustomerAsaasInputEnvelope
-    connect?: OrdersAsaasWhereUniqueInput | OrdersAsaasWhereUniqueInput[]
-  }
-
-  export type OrdersAsaasUncheckedCreateNestedManyWithoutCustomerAsaasInput = {
-    create?: XOR<OrdersAsaasCreateWithoutCustomerAsaasInput, OrdersAsaasUncheckedCreateWithoutCustomerAsaasInput> | OrdersAsaasCreateWithoutCustomerAsaasInput[] | OrdersAsaasUncheckedCreateWithoutCustomerAsaasInput[]
-    connectOrCreate?: OrdersAsaasCreateOrConnectWithoutCustomerAsaasInput | OrdersAsaasCreateOrConnectWithoutCustomerAsaasInput[]
-    createMany?: OrdersAsaasCreateManyCustomerAsaasInputEnvelope
-    connect?: OrdersAsaasWhereUniqueInput | OrdersAsaasWhereUniqueInput[]
-  }
-
   export type UserUpdateOneRequiredWithoutCustomer_asaasNestedInput = {
     create?: XOR<UserCreateWithoutCustomer_asaasInput, UserUncheckedCreateWithoutCustomer_asaasInput>
     connectOrCreate?: UserCreateOrConnectWithoutCustomer_asaasInput
@@ -17413,96 +17119,18 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCustomer_asaasInput, UserUpdateWithoutCustomer_asaasInput>, UserUncheckedUpdateWithoutCustomer_asaasInput>
   }
 
-  export type OrdersAsaasUpdateManyWithoutCustomerAsaasNestedInput = {
-    create?: XOR<OrdersAsaasCreateWithoutCustomerAsaasInput, OrdersAsaasUncheckedCreateWithoutCustomerAsaasInput> | OrdersAsaasCreateWithoutCustomerAsaasInput[] | OrdersAsaasUncheckedCreateWithoutCustomerAsaasInput[]
-    connectOrCreate?: OrdersAsaasCreateOrConnectWithoutCustomerAsaasInput | OrdersAsaasCreateOrConnectWithoutCustomerAsaasInput[]
-    upsert?: OrdersAsaasUpsertWithWhereUniqueWithoutCustomerAsaasInput | OrdersAsaasUpsertWithWhereUniqueWithoutCustomerAsaasInput[]
-    createMany?: OrdersAsaasCreateManyCustomerAsaasInputEnvelope
-    set?: OrdersAsaasWhereUniqueInput | OrdersAsaasWhereUniqueInput[]
-    disconnect?: OrdersAsaasWhereUniqueInput | OrdersAsaasWhereUniqueInput[]
-    delete?: OrdersAsaasWhereUniqueInput | OrdersAsaasWhereUniqueInput[]
-    connect?: OrdersAsaasWhereUniqueInput | OrdersAsaasWhereUniqueInput[]
-    update?: OrdersAsaasUpdateWithWhereUniqueWithoutCustomerAsaasInput | OrdersAsaasUpdateWithWhereUniqueWithoutCustomerAsaasInput[]
-    updateMany?: OrdersAsaasUpdateManyWithWhereWithoutCustomerAsaasInput | OrdersAsaasUpdateManyWithWhereWithoutCustomerAsaasInput[]
-    deleteMany?: OrdersAsaasScalarWhereInput | OrdersAsaasScalarWhereInput[]
+  export type OrganizationCreateNestedOneWithoutOrganizationAsaasAccountInput = {
+    create?: XOR<OrganizationCreateWithoutOrganizationAsaasAccountInput, OrganizationUncheckedCreateWithoutOrganizationAsaasAccountInput>
+    connectOrCreate?: OrganizationCreateOrConnectWithoutOrganizationAsaasAccountInput
+    connect?: OrganizationWhereUniqueInput
   }
 
-  export type OrdersAsaasUncheckedUpdateManyWithoutCustomerAsaasNestedInput = {
-    create?: XOR<OrdersAsaasCreateWithoutCustomerAsaasInput, OrdersAsaasUncheckedCreateWithoutCustomerAsaasInput> | OrdersAsaasCreateWithoutCustomerAsaasInput[] | OrdersAsaasUncheckedCreateWithoutCustomerAsaasInput[]
-    connectOrCreate?: OrdersAsaasCreateOrConnectWithoutCustomerAsaasInput | OrdersAsaasCreateOrConnectWithoutCustomerAsaasInput[]
-    upsert?: OrdersAsaasUpsertWithWhereUniqueWithoutCustomerAsaasInput | OrdersAsaasUpsertWithWhereUniqueWithoutCustomerAsaasInput[]
-    createMany?: OrdersAsaasCreateManyCustomerAsaasInputEnvelope
-    set?: OrdersAsaasWhereUniqueInput | OrdersAsaasWhereUniqueInput[]
-    disconnect?: OrdersAsaasWhereUniqueInput | OrdersAsaasWhereUniqueInput[]
-    delete?: OrdersAsaasWhereUniqueInput | OrdersAsaasWhereUniqueInput[]
-    connect?: OrdersAsaasWhereUniqueInput | OrdersAsaasWhereUniqueInput[]
-    update?: OrdersAsaasUpdateWithWhereUniqueWithoutCustomerAsaasInput | OrdersAsaasUpdateWithWhereUniqueWithoutCustomerAsaasInput[]
-    updateMany?: OrdersAsaasUpdateManyWithWhereWithoutCustomerAsaasInput | OrdersAsaasUpdateManyWithWhereWithoutCustomerAsaasInput[]
-    deleteMany?: OrdersAsaasScalarWhereInput | OrdersAsaasScalarWhereInput[]
-  }
-
-  export type CustomerAsaasCreateNestedOneWithoutOrdersAsaasInput = {
-    create?: XOR<CustomerAsaasCreateWithoutOrdersAsaasInput, CustomerAsaasUncheckedCreateWithoutOrdersAsaasInput>
-    connectOrCreate?: CustomerAsaasCreateOrConnectWithoutOrdersAsaasInput
-    connect?: CustomerAsaasWhereUniqueInput
-  }
-
-  export type PaymentsExceptionsCreateNestedOneWithoutTransactionInput = {
-    create?: XOR<PaymentsExceptionsCreateWithoutTransactionInput, PaymentsExceptionsUncheckedCreateWithoutTransactionInput>
-    connectOrCreate?: PaymentsExceptionsCreateOrConnectWithoutTransactionInput
-    connect?: PaymentsExceptionsWhereUniqueInput
-  }
-
-  export type PaymentsExceptionsUncheckedCreateNestedOneWithoutTransactionInput = {
-    create?: XOR<PaymentsExceptionsCreateWithoutTransactionInput, PaymentsExceptionsUncheckedCreateWithoutTransactionInput>
-    connectOrCreate?: PaymentsExceptionsCreateOrConnectWithoutTransactionInput
-    connect?: PaymentsExceptionsWhereUniqueInput
-  }
-
-  export type EnumTypeOrderFieldUpdateOperationsInput = {
-    set?: $Enums.TypeOrder
-  }
-
-  export type CustomerAsaasUpdateOneRequiredWithoutOrdersAsaasNestedInput = {
-    create?: XOR<CustomerAsaasCreateWithoutOrdersAsaasInput, CustomerAsaasUncheckedCreateWithoutOrdersAsaasInput>
-    connectOrCreate?: CustomerAsaasCreateOrConnectWithoutOrdersAsaasInput
-    upsert?: CustomerAsaasUpsertWithoutOrdersAsaasInput
-    connect?: CustomerAsaasWhereUniqueInput
-    update?: XOR<XOR<CustomerAsaasUpdateToOneWithWhereWithoutOrdersAsaasInput, CustomerAsaasUpdateWithoutOrdersAsaasInput>, CustomerAsaasUncheckedUpdateWithoutOrdersAsaasInput>
-  }
-
-  export type PaymentsExceptionsUpdateOneWithoutTransactionNestedInput = {
-    create?: XOR<PaymentsExceptionsCreateWithoutTransactionInput, PaymentsExceptionsUncheckedCreateWithoutTransactionInput>
-    connectOrCreate?: PaymentsExceptionsCreateOrConnectWithoutTransactionInput
-    upsert?: PaymentsExceptionsUpsertWithoutTransactionInput
-    disconnect?: PaymentsExceptionsWhereInput | boolean
-    delete?: PaymentsExceptionsWhereInput | boolean
-    connect?: PaymentsExceptionsWhereUniqueInput
-    update?: XOR<XOR<PaymentsExceptionsUpdateToOneWithWhereWithoutTransactionInput, PaymentsExceptionsUpdateWithoutTransactionInput>, PaymentsExceptionsUncheckedUpdateWithoutTransactionInput>
-  }
-
-  export type PaymentsExceptionsUncheckedUpdateOneWithoutTransactionNestedInput = {
-    create?: XOR<PaymentsExceptionsCreateWithoutTransactionInput, PaymentsExceptionsUncheckedCreateWithoutTransactionInput>
-    connectOrCreate?: PaymentsExceptionsCreateOrConnectWithoutTransactionInput
-    upsert?: PaymentsExceptionsUpsertWithoutTransactionInput
-    disconnect?: PaymentsExceptionsWhereInput | boolean
-    delete?: PaymentsExceptionsWhereInput | boolean
-    connect?: PaymentsExceptionsWhereUniqueInput
-    update?: XOR<XOR<PaymentsExceptionsUpdateToOneWithWhereWithoutTransactionInput, PaymentsExceptionsUpdateWithoutTransactionInput>, PaymentsExceptionsUncheckedUpdateWithoutTransactionInput>
-  }
-
-  export type OrdersAsaasCreateNestedOneWithoutPaymentsExceptionsInput = {
-    create?: XOR<OrdersAsaasCreateWithoutPaymentsExceptionsInput, OrdersAsaasUncheckedCreateWithoutPaymentsExceptionsInput>
-    connectOrCreate?: OrdersAsaasCreateOrConnectWithoutPaymentsExceptionsInput
-    connect?: OrdersAsaasWhereUniqueInput
-  }
-
-  export type OrdersAsaasUpdateOneRequiredWithoutPaymentsExceptionsNestedInput = {
-    create?: XOR<OrdersAsaasCreateWithoutPaymentsExceptionsInput, OrdersAsaasUncheckedCreateWithoutPaymentsExceptionsInput>
-    connectOrCreate?: OrdersAsaasCreateOrConnectWithoutPaymentsExceptionsInput
-    upsert?: OrdersAsaasUpsertWithoutPaymentsExceptionsInput
-    connect?: OrdersAsaasWhereUniqueInput
-    update?: XOR<XOR<OrdersAsaasUpdateToOneWithWhereWithoutPaymentsExceptionsInput, OrdersAsaasUpdateWithoutPaymentsExceptionsInput>, OrdersAsaasUncheckedUpdateWithoutPaymentsExceptionsInput>
+  export type OrganizationUpdateOneRequiredWithoutOrganizationAsaasAccountNestedInput = {
+    create?: XOR<OrganizationCreateWithoutOrganizationAsaasAccountInput, OrganizationUncheckedCreateWithoutOrganizationAsaasAccountInput>
+    connectOrCreate?: OrganizationCreateOrConnectWithoutOrganizationAsaasAccountInput
+    upsert?: OrganizationUpsertWithoutOrganizationAsaasAccountInput
+    connect?: OrganizationWhereUniqueInput
+    update?: XOR<XOR<OrganizationUpdateToOneWithWhereWithoutOrganizationAsaasAccountInput, OrganizationUpdateWithoutOrganizationAsaasAccountInput>, OrganizationUncheckedUpdateWithoutOrganizationAsaasAccountInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -17720,29 +17348,6 @@ export namespace Prisma {
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
-  export type NestedJsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
@@ -17769,23 +17374,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedEnumRecurrentFilter<$PrismaModel = never> = {
-    equals?: $Enums.Recurrent | EnumRecurrentFieldRefInput<$PrismaModel>
-    in?: $Enums.Recurrent[] | ListEnumRecurrentFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Recurrent[] | ListEnumRecurrentFieldRefInput<$PrismaModel>
-    not?: NestedEnumRecurrentFilter<$PrismaModel> | $Enums.Recurrent
-  }
-
-  export type NestedEnumRecurrentWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Recurrent | EnumRecurrentFieldRefInput<$PrismaModel>
-    in?: $Enums.Recurrent[] | ListEnumRecurrentFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Recurrent[] | ListEnumRecurrentFieldRefInput<$PrismaModel>
-    not?: NestedEnumRecurrentWithAggregatesFilter<$PrismaModel> | $Enums.Recurrent
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumRecurrentFilter<$PrismaModel>
-    _max?: NestedEnumRecurrentFilter<$PrismaModel>
   }
 
   export type NestedEnumStatusSchedulesFilter<$PrismaModel = never> = {
@@ -17829,23 +17417,6 @@ export namespace Prisma {
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
-
-  export type NestedEnumTypeOrderFilter<$PrismaModel = never> = {
-    equals?: $Enums.TypeOrder | EnumTypeOrderFieldRefInput<$PrismaModel>
-    in?: $Enums.TypeOrder[] | ListEnumTypeOrderFieldRefInput<$PrismaModel>
-    notIn?: $Enums.TypeOrder[] | ListEnumTypeOrderFieldRefInput<$PrismaModel>
-    not?: NestedEnumTypeOrderFilter<$PrismaModel> | $Enums.TypeOrder
-  }
-
-  export type NestedEnumTypeOrderWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.TypeOrder | EnumTypeOrderFieldRefInput<$PrismaModel>
-    in?: $Enums.TypeOrder[] | ListEnumTypeOrderFieldRefInput<$PrismaModel>
-    notIn?: $Enums.TypeOrder[] | ListEnumTypeOrderFieldRefInput<$PrismaModel>
-    not?: NestedEnumTypeOrderWithAggregatesFilter<$PrismaModel> | $Enums.TypeOrder
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumTypeOrderFilter<$PrismaModel>
-    _max?: NestedEnumTypeOrderFilter<$PrismaModel>
-  }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -17883,11 +17454,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleCreateNestedManyWithoutOrganizationInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountCreateNestedOneWithoutOrganizationInput
   }
 
   export type OrganizationUncheckedCreateWithoutUserInput = {
@@ -17904,11 +17475,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUncheckedCreateNestedOneWithoutOrganizationInput
   }
 
   export type OrganizationCreateOrConnectWithoutUserInput = {
@@ -17978,7 +17549,6 @@ export namespace Prisma {
     customerAsaasId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    OrdersAsaas?: OrdersAsaasCreateNestedManyWithoutCustomerAsaasInput
   }
 
   export type CustomerAsaasUncheckedCreateWithoutUserInput = {
@@ -17986,7 +17556,6 @@ export namespace Prisma {
     customerAsaasId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    OrdersAsaas?: OrdersAsaasUncheckedCreateNestedManyWithoutCustomerAsaasInput
   }
 
   export type CustomerAsaasCreateOrConnectWithoutUserInput = {
@@ -18018,11 +17587,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUpdateOneWithoutOrganizationNestedInput
   }
 
   export type OrganizationUncheckedUpdateWithoutUserInput = {
@@ -18039,11 +17608,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUncheckedUpdateOneWithoutOrganizationNestedInput
   }
 
   export type ScheduleUpsertWithWhereUniqueWithoutUserInput = {
@@ -18121,7 +17690,6 @@ export namespace Prisma {
     customerAsaasId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    OrdersAsaas?: OrdersAsaasUpdateManyWithoutCustomerAsaasNestedInput
   }
 
   export type CustomerAsaasUncheckedUpdateWithoutUserInput = {
@@ -18129,7 +17697,6 @@ export namespace Prisma {
     customerAsaasId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    OrdersAsaas?: OrdersAsaasUncheckedUpdateManyWithoutCustomerAsaasNestedInput
   }
 
   export type UserCreateWithoutOrganizationInput = {
@@ -18211,7 +17778,7 @@ export namespace Prisma {
     uuid?: string
     name: string
     price: number
-    recurrent: $Enums.Recurrent
+    quantityInstallment: number
     description: string
     status?: boolean
     dueDate?: Date | string | null
@@ -18225,7 +17792,7 @@ export namespace Prisma {
     uuid?: string
     name: string
     price: number
-    recurrent: $Enums.Recurrent
+    quantityInstallment: number
     description: string
     status?: boolean
     dueDate?: Date | string | null
@@ -18308,6 +17875,28 @@ export namespace Prisma {
   export type PublicScheduleCreateManyOrganizationInputEnvelope = {
     data: PublicScheduleCreateManyOrganizationInput | PublicScheduleCreateManyOrganizationInput[]
     skipDuplicates?: boolean
+  }
+
+  export type OrganizationAsaasAccountCreateWithoutOrganizationInput = {
+    accountAsaasId: string
+    apiKey: string
+    walletId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type OrganizationAsaasAccountUncheckedCreateWithoutOrganizationInput = {
+    id?: number
+    accountAsaasId: string
+    apiKey: string
+    walletId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type OrganizationAsaasAccountCreateOrConnectWithoutOrganizationInput = {
+    where: OrganizationAsaasAccountWhereUniqueInput
+    create: XOR<OrganizationAsaasAccountCreateWithoutOrganizationInput, OrganizationAsaasAccountUncheckedCreateWithoutOrganizationInput>
   }
 
   export type UserUpsertWithoutOrganizationInput = {
@@ -18409,7 +17998,7 @@ export namespace Prisma {
     uuid?: UuidFilter<"Plan"> | string
     name?: StringFilter<"Plan"> | string
     price?: IntFilter<"Plan"> | number
-    recurrent?: EnumRecurrentFilter<"Plan"> | $Enums.Recurrent
+    quantityInstallment?: IntFilter<"Plan"> | number
     description?: StringFilter<"Plan"> | string
     status?: BoolFilter<"Plan"> | boolean
     dueDate?: DateTimeNullableFilter<"Plan"> | Date | string | null
@@ -18465,6 +18054,34 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"PublicSchedule"> | Date | string
   }
 
+  export type OrganizationAsaasAccountUpsertWithoutOrganizationInput = {
+    update: XOR<OrganizationAsaasAccountUpdateWithoutOrganizationInput, OrganizationAsaasAccountUncheckedUpdateWithoutOrganizationInput>
+    create: XOR<OrganizationAsaasAccountCreateWithoutOrganizationInput, OrganizationAsaasAccountUncheckedCreateWithoutOrganizationInput>
+    where?: OrganizationAsaasAccountWhereInput
+  }
+
+  export type OrganizationAsaasAccountUpdateToOneWithWhereWithoutOrganizationInput = {
+    where?: OrganizationAsaasAccountWhereInput
+    data: XOR<OrganizationAsaasAccountUpdateWithoutOrganizationInput, OrganizationAsaasAccountUncheckedUpdateWithoutOrganizationInput>
+  }
+
+  export type OrganizationAsaasAccountUpdateWithoutOrganizationInput = {
+    accountAsaasId?: StringFieldUpdateOperationsInput | string
+    apiKey?: StringFieldUpdateOperationsInput | string
+    walletId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OrganizationAsaasAccountUncheckedUpdateWithoutOrganizationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    accountAsaasId?: StringFieldUpdateOperationsInput | string
+    apiKey?: StringFieldUpdateOperationsInput | string
+    walletId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type OrganizationCreateWithoutServicesInput = {
     uuid?: string
     social_name: string
@@ -18478,11 +18095,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user: UserCreateNestedOneWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleCreateNestedManyWithoutOrganizationInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountCreateNestedOneWithoutOrganizationInput
   }
 
   export type OrganizationUncheckedCreateWithoutServicesInput = {
@@ -18500,10 +18117,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
     userId: number
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUncheckedCreateNestedOneWithoutOrganizationInput
   }
 
   export type OrganizationCreateOrConnectWithoutServicesInput = {
@@ -18601,11 +18218,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUpdateOneWithoutOrganizationNestedInput
   }
 
   export type OrganizationUncheckedUpdateWithoutServicesInput = {
@@ -18623,10 +18240,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: IntFieldUpdateOperationsInput | number
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUncheckedUpdateOneWithoutOrganizationNestedInput
   }
 
   export type ScheduleUpsertWithWhereUniqueWithoutServiceInput = {
@@ -18674,11 +18291,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user: UserCreateNestedOneWithoutOrganizationInput
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleCreateNestedManyWithoutOrganizationInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountCreateNestedOneWithoutOrganizationInput
   }
 
   export type OrganizationUncheckedCreateWithoutPlansInput = {
@@ -18696,10 +18313,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
     userId: number
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUncheckedCreateNestedOneWithoutOrganizationInput
   }
 
   export type OrganizationCreateOrConnectWithoutPlansInput = {
@@ -18754,11 +18371,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUpdateOneWithoutOrganizationNestedInput
   }
 
   export type OrganizationUncheckedUpdateWithoutPlansInput = {
@@ -18776,10 +18393,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: IntFieldUpdateOperationsInput | number
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUncheckedUpdateOneWithoutOrganizationNestedInput
   }
 
   export type UserPlansUpsertWithWhereUniqueWithoutPlanInput = {
@@ -18881,11 +18498,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user: UserCreateNestedOneWithoutOrganizationInput
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleCreateNestedManyWithoutOrganizationInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountCreateNestedOneWithoutOrganizationInput
   }
 
   export type OrganizationUncheckedCreateWithoutSchedulesInput = {
@@ -18903,10 +18520,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
     userId: number
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUncheckedCreateNestedOneWithoutOrganizationInput
   }
 
   export type OrganizationCreateOrConnectWithoutSchedulesInput = {
@@ -19020,11 +18637,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUpdateOneWithoutOrganizationNestedInput
   }
 
   export type OrganizationUncheckedUpdateWithoutSchedulesInput = {
@@ -19042,10 +18659,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: IntFieldUpdateOperationsInput | number
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUncheckedUpdateOneWithoutOrganizationNestedInput
   }
 
   export type ServiceCreateWithoutPublicScheduleInput = {
@@ -19095,11 +18712,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user: UserCreateNestedOneWithoutOrganizationInput
     services?: ServiceCreateNestedManyWithoutOrganizationInput
     plans?: PlanCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountCreateNestedOneWithoutOrganizationInput
   }
 
   export type OrganizationUncheckedCreateWithoutPublicScheduleInput = {
@@ -19117,10 +18734,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     inactiveAt?: Date | string | null
     userId: number
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
     plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
     schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUncheckedCreateNestedOneWithoutOrganizationInput
   }
 
   export type OrganizationCreateOrConnectWithoutPublicScheduleInput = {
@@ -19192,11 +18809,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
     services?: ServiceUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUpdateOneWithoutOrganizationNestedInput
   }
 
   export type OrganizationUncheckedUpdateWithoutPublicScheduleInput = {
@@ -19214,10 +18831,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: IntFieldUpdateOperationsInput | number
-    openingHours?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
     plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
     schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
+    OrganizationAsaasAccount?: OrganizationAsaasAccountUncheckedUpdateOneWithoutOrganizationNestedInput
   }
 
   export type UserCreateWithoutUserPlansInput = {
@@ -19260,7 +18877,7 @@ export namespace Prisma {
     uuid?: string
     name: string
     price: number
-    recurrent: $Enums.Recurrent
+    quantityInstallment: number
     description: string
     status?: boolean
     dueDate?: Date | string | null
@@ -19274,7 +18891,7 @@ export namespace Prisma {
     uuid?: string
     name: string
     price: number
-    recurrent: $Enums.Recurrent
+    quantityInstallment: number
     description: string
     status?: boolean
     dueDate?: Date | string | null
@@ -19345,7 +18962,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
+    quantityInstallment?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19359,7 +18976,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
+    quantityInstallment?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19404,33 +19021,6 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutCustomer_asaasInput, UserUncheckedCreateWithoutCustomer_asaasInput>
   }
 
-  export type OrdersAsaasCreateWithoutCustomerAsaasInput = {
-    typeOrder?: $Enums.TypeOrder
-    transactionId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    PaymentsExceptions?: PaymentsExceptionsCreateNestedOneWithoutTransactionInput
-  }
-
-  export type OrdersAsaasUncheckedCreateWithoutCustomerAsaasInput = {
-    id?: number
-    typeOrder?: $Enums.TypeOrder
-    transactionId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    PaymentsExceptions?: PaymentsExceptionsUncheckedCreateNestedOneWithoutTransactionInput
-  }
-
-  export type OrdersAsaasCreateOrConnectWithoutCustomerAsaasInput = {
-    where: OrdersAsaasWhereUniqueInput
-    create: XOR<OrdersAsaasCreateWithoutCustomerAsaasInput, OrdersAsaasUncheckedCreateWithoutCustomerAsaasInput>
-  }
-
-  export type OrdersAsaasCreateManyCustomerAsaasInputEnvelope = {
-    data: OrdersAsaasCreateManyCustomerAsaasInput | OrdersAsaasCreateManyCustomerAsaasInput[]
-    skipDuplicates?: boolean
-  }
-
   export type UserUpsertWithoutCustomer_asaasInput = {
     update: XOR<UserUpdateWithoutCustomer_asaasInput, UserUncheckedUpdateWithoutCustomer_asaasInput>
     create: XOR<UserCreateWithoutCustomer_asaasInput, UserUncheckedCreateWithoutCustomer_asaasInput>
@@ -19473,170 +19063,102 @@ export namespace Prisma {
     UserPlans?: UserPlansUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type OrdersAsaasUpsertWithWhereUniqueWithoutCustomerAsaasInput = {
-    where: OrdersAsaasWhereUniqueInput
-    update: XOR<OrdersAsaasUpdateWithoutCustomerAsaasInput, OrdersAsaasUncheckedUpdateWithoutCustomerAsaasInput>
-    create: XOR<OrdersAsaasCreateWithoutCustomerAsaasInput, OrdersAsaasUncheckedCreateWithoutCustomerAsaasInput>
-  }
-
-  export type OrdersAsaasUpdateWithWhereUniqueWithoutCustomerAsaasInput = {
-    where: OrdersAsaasWhereUniqueInput
-    data: XOR<OrdersAsaasUpdateWithoutCustomerAsaasInput, OrdersAsaasUncheckedUpdateWithoutCustomerAsaasInput>
-  }
-
-  export type OrdersAsaasUpdateManyWithWhereWithoutCustomerAsaasInput = {
-    where: OrdersAsaasScalarWhereInput
-    data: XOR<OrdersAsaasUpdateManyMutationInput, OrdersAsaasUncheckedUpdateManyWithoutCustomerAsaasInput>
-  }
-
-  export type OrdersAsaasScalarWhereInput = {
-    AND?: OrdersAsaasScalarWhereInput | OrdersAsaasScalarWhereInput[]
-    OR?: OrdersAsaasScalarWhereInput[]
-    NOT?: OrdersAsaasScalarWhereInput | OrdersAsaasScalarWhereInput[]
-    id?: IntFilter<"OrdersAsaas"> | number
-    customerAsaasId?: IntFilter<"OrdersAsaas"> | number
-    typeOrder?: EnumTypeOrderFilter<"OrdersAsaas"> | $Enums.TypeOrder
-    transactionId?: UuidNullableFilter<"OrdersAsaas"> | string | null
-    createdAt?: DateTimeFilter<"OrdersAsaas"> | Date | string
-    updatedAt?: DateTimeFilter<"OrdersAsaas"> | Date | string
-  }
-
-  export type CustomerAsaasCreateWithoutOrdersAsaasInput = {
-    customerAsaasId: string
+  export type OrganizationCreateWithoutOrganizationAsaasAccountInput = {
+    uuid?: string
+    social_name: string
+    fantasy_name: string
+    cnpj: string
+    email: string
+    phone: string
+    is_active?: boolean
+    office: string
+    image_path?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutCustomer_asaasInput
+    inactiveAt?: Date | string | null
+    user: UserCreateNestedOneWithoutOrganizationInput
+    services?: ServiceCreateNestedManyWithoutOrganizationInput
+    plans?: PlanCreateNestedManyWithoutOrganizationInput
+    schedules?: ScheduleCreateNestedManyWithoutOrganizationInput
+    PublicSchedule?: PublicScheduleCreateNestedManyWithoutOrganizationInput
   }
 
-  export type CustomerAsaasUncheckedCreateWithoutOrdersAsaasInput = {
+  export type OrganizationUncheckedCreateWithoutOrganizationAsaasAccountInput = {
     id?: number
+    uuid?: string
+    social_name: string
+    fantasy_name: string
+    cnpj: string
+    email: string
+    phone: string
+    is_active?: boolean
+    office: string
+    image_path?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    inactiveAt?: Date | string | null
     userId: number
-    customerAsaasId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    services?: ServiceUncheckedCreateNestedManyWithoutOrganizationInput
+    plans?: PlanUncheckedCreateNestedManyWithoutOrganizationInput
+    schedules?: ScheduleUncheckedCreateNestedManyWithoutOrganizationInput
+    PublicSchedule?: PublicScheduleUncheckedCreateNestedManyWithoutOrganizationInput
   }
 
-  export type CustomerAsaasCreateOrConnectWithoutOrdersAsaasInput = {
-    where: CustomerAsaasWhereUniqueInput
-    create: XOR<CustomerAsaasCreateWithoutOrdersAsaasInput, CustomerAsaasUncheckedCreateWithoutOrdersAsaasInput>
+  export type OrganizationCreateOrConnectWithoutOrganizationAsaasAccountInput = {
+    where: OrganizationWhereUniqueInput
+    create: XOR<OrganizationCreateWithoutOrganizationAsaasAccountInput, OrganizationUncheckedCreateWithoutOrganizationAsaasAccountInput>
   }
 
-  export type PaymentsExceptionsCreateWithoutTransactionInput = {
-    reason: JsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
+  export type OrganizationUpsertWithoutOrganizationAsaasAccountInput = {
+    update: XOR<OrganizationUpdateWithoutOrganizationAsaasAccountInput, OrganizationUncheckedUpdateWithoutOrganizationAsaasAccountInput>
+    create: XOR<OrganizationCreateWithoutOrganizationAsaasAccountInput, OrganizationUncheckedCreateWithoutOrganizationAsaasAccountInput>
+    where?: OrganizationWhereInput
   }
 
-  export type PaymentsExceptionsUncheckedCreateWithoutTransactionInput = {
-    id?: number
-    reason: JsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
+  export type OrganizationUpdateToOneWithWhereWithoutOrganizationAsaasAccountInput = {
+    where?: OrganizationWhereInput
+    data: XOR<OrganizationUpdateWithoutOrganizationAsaasAccountInput, OrganizationUncheckedUpdateWithoutOrganizationAsaasAccountInput>
   }
 
-  export type PaymentsExceptionsCreateOrConnectWithoutTransactionInput = {
-    where: PaymentsExceptionsWhereUniqueInput
-    create: XOR<PaymentsExceptionsCreateWithoutTransactionInput, PaymentsExceptionsUncheckedCreateWithoutTransactionInput>
-  }
-
-  export type CustomerAsaasUpsertWithoutOrdersAsaasInput = {
-    update: XOR<CustomerAsaasUpdateWithoutOrdersAsaasInput, CustomerAsaasUncheckedUpdateWithoutOrdersAsaasInput>
-    create: XOR<CustomerAsaasCreateWithoutOrdersAsaasInput, CustomerAsaasUncheckedCreateWithoutOrdersAsaasInput>
-    where?: CustomerAsaasWhereInput
-  }
-
-  export type CustomerAsaasUpdateToOneWithWhereWithoutOrdersAsaasInput = {
-    where?: CustomerAsaasWhereInput
-    data: XOR<CustomerAsaasUpdateWithoutOrdersAsaasInput, CustomerAsaasUncheckedUpdateWithoutOrdersAsaasInput>
-  }
-
-  export type CustomerAsaasUpdateWithoutOrdersAsaasInput = {
-    customerAsaasId?: StringFieldUpdateOperationsInput | string
+  export type OrganizationUpdateWithoutOrganizationAsaasAccountInput = {
+    uuid?: StringFieldUpdateOperationsInput | string
+    social_name?: StringFieldUpdateOperationsInput | string
+    fantasy_name?: StringFieldUpdateOperationsInput | string
+    cnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    office?: StringFieldUpdateOperationsInput | string
+    image_path?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutCustomer_asaasNestedInput
+    inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneRequiredWithoutOrganizationNestedInput
+    services?: ServiceUpdateManyWithoutOrganizationNestedInput
+    plans?: PlanUpdateManyWithoutOrganizationNestedInput
+    schedules?: ScheduleUpdateManyWithoutOrganizationNestedInput
+    PublicSchedule?: PublicScheduleUpdateManyWithoutOrganizationNestedInput
   }
 
-  export type CustomerAsaasUncheckedUpdateWithoutOrdersAsaasInput = {
+  export type OrganizationUncheckedUpdateWithoutOrganizationAsaasAccountInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uuid?: StringFieldUpdateOperationsInput | string
+    social_name?: StringFieldUpdateOperationsInput | string
+    fantasy_name?: StringFieldUpdateOperationsInput | string
+    cnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    office?: StringFieldUpdateOperationsInput | string
+    image_path?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    inactiveAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: IntFieldUpdateOperationsInput | number
-    customerAsaasId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PaymentsExceptionsUpsertWithoutTransactionInput = {
-    update: XOR<PaymentsExceptionsUpdateWithoutTransactionInput, PaymentsExceptionsUncheckedUpdateWithoutTransactionInput>
-    create: XOR<PaymentsExceptionsCreateWithoutTransactionInput, PaymentsExceptionsUncheckedCreateWithoutTransactionInput>
-    where?: PaymentsExceptionsWhereInput
-  }
-
-  export type PaymentsExceptionsUpdateToOneWithWhereWithoutTransactionInput = {
-    where?: PaymentsExceptionsWhereInput
-    data: XOR<PaymentsExceptionsUpdateWithoutTransactionInput, PaymentsExceptionsUncheckedUpdateWithoutTransactionInput>
-  }
-
-  export type PaymentsExceptionsUpdateWithoutTransactionInput = {
-    reason?: JsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PaymentsExceptionsUncheckedUpdateWithoutTransactionInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    reason?: JsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type OrdersAsaasCreateWithoutPaymentsExceptionsInput = {
-    typeOrder?: $Enums.TypeOrder
-    transactionId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    customerAsaas: CustomerAsaasCreateNestedOneWithoutOrdersAsaasInput
-  }
-
-  export type OrdersAsaasUncheckedCreateWithoutPaymentsExceptionsInput = {
-    id?: number
-    customerAsaasId: number
-    typeOrder?: $Enums.TypeOrder
-    transactionId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type OrdersAsaasCreateOrConnectWithoutPaymentsExceptionsInput = {
-    where: OrdersAsaasWhereUniqueInput
-    create: XOR<OrdersAsaasCreateWithoutPaymentsExceptionsInput, OrdersAsaasUncheckedCreateWithoutPaymentsExceptionsInput>
-  }
-
-  export type OrdersAsaasUpsertWithoutPaymentsExceptionsInput = {
-    update: XOR<OrdersAsaasUpdateWithoutPaymentsExceptionsInput, OrdersAsaasUncheckedUpdateWithoutPaymentsExceptionsInput>
-    create: XOR<OrdersAsaasCreateWithoutPaymentsExceptionsInput, OrdersAsaasUncheckedCreateWithoutPaymentsExceptionsInput>
-    where?: OrdersAsaasWhereInput
-  }
-
-  export type OrdersAsaasUpdateToOneWithWhereWithoutPaymentsExceptionsInput = {
-    where?: OrdersAsaasWhereInput
-    data: XOR<OrdersAsaasUpdateWithoutPaymentsExceptionsInput, OrdersAsaasUncheckedUpdateWithoutPaymentsExceptionsInput>
-  }
-
-  export type OrdersAsaasUpdateWithoutPaymentsExceptionsInput = {
-    typeOrder?: EnumTypeOrderFieldUpdateOperationsInput | $Enums.TypeOrder
-    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customerAsaas?: CustomerAsaasUpdateOneRequiredWithoutOrdersAsaasNestedInput
-  }
-
-  export type OrdersAsaasUncheckedUpdateWithoutPaymentsExceptionsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    customerAsaasId?: IntFieldUpdateOperationsInput | number
-    typeOrder?: EnumTypeOrderFieldUpdateOperationsInput | $Enums.TypeOrder
-    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    services?: ServiceUncheckedUpdateManyWithoutOrganizationNestedInput
+    plans?: PlanUncheckedUpdateManyWithoutOrganizationNestedInput
+    schedules?: ScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
+    PublicSchedule?: PublicScheduleUncheckedUpdateManyWithoutOrganizationNestedInput
   }
 
   export type ScheduleCreateManyUserInput = {
@@ -19735,7 +19257,7 @@ export namespace Prisma {
     uuid?: string
     name: string
     price: number
-    recurrent: $Enums.Recurrent
+    quantityInstallment: number
     description: string
     status?: boolean
     dueDate?: Date | string | null
@@ -19813,7 +19335,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
+    quantityInstallment?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19827,7 +19349,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
+    quantityInstallment?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19841,7 +19363,7 @@ export namespace Prisma {
     uuid?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    recurrent?: EnumRecurrentFieldUpdateOperationsInput | $Enums.Recurrent
+    quantityInstallment?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     dueDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -20036,39 +19558,6 @@ export namespace Prisma {
   export type UserPlansUncheckedUpdateManyWithoutPlanInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type OrdersAsaasCreateManyCustomerAsaasInput = {
-    id?: number
-    typeOrder?: $Enums.TypeOrder
-    transactionId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type OrdersAsaasUpdateWithoutCustomerAsaasInput = {
-    typeOrder?: EnumTypeOrderFieldUpdateOperationsInput | $Enums.TypeOrder
-    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    PaymentsExceptions?: PaymentsExceptionsUpdateOneWithoutTransactionNestedInput
-  }
-
-  export type OrdersAsaasUncheckedUpdateWithoutCustomerAsaasInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    typeOrder?: EnumTypeOrderFieldUpdateOperationsInput | $Enums.TypeOrder
-    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    PaymentsExceptions?: PaymentsExceptionsUncheckedUpdateOneWithoutTransactionNestedInput
-  }
-
-  export type OrdersAsaasUncheckedUpdateManyWithoutCustomerAsaasInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    typeOrder?: EnumTypeOrderFieldUpdateOperationsInput | $Enums.TypeOrder
-    transactionId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

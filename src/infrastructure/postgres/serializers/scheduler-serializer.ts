@@ -21,6 +21,7 @@ export interface IScheduleDBReflection {
   service: {
     uuid: string;
     name: string;
+    price: number;
   };
 }
 
@@ -87,14 +88,17 @@ export class SchedulerSerializer {
     entity.setId(data.id);
     entity.setUuid(data.uuid);
 
-    const organization = new OrganizationEntity();
-    organization.setUuid(data.organization.uuid);
-    organization.setSocialName(data.organization.social_name);
-    entity.setOrganization(organization);
+    if (data.organization) {
+      const organization = new OrganizationEntity();
+      organization.setUuid(data.organization.uuid);
+      organization.setSocialName(data.organization.social_name);
+      entity.setOrganization(organization);
+    }
 
     const service = new ServiceEntity();
     service.setUuid(data.service.uuid);
     service.setName(data.service.name);
+    service.setPrice(data.service.price);
     entity.setService(service);
 
     const user = new UserEntity();

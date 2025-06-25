@@ -16,7 +16,45 @@ export interface IFindByUser {
   image_path: string | null;
 }
 
+export interface IOrganizationReflection {
+  id: number;
+  createdAt: Date;
+  updatedAt: Date;
+  uuid: string;
+  social_name: string;
+  fantasy_name: string;
+  cnpj: string;
+  email: string;
+  phone: string;
+  is_active: boolean;
+  office: string;
+  image_path: string | null;
+  inactiveAt: Date | null;
+  userId: number;
+}
+
 export class OrganizationSerializer {
+  toReflectionEntity(input: IOrganizationReflection): OrganizationEntity {
+    const organization = new OrganizationEntity();
+    organization.setId(input.id);
+    organization.setUuid(input.uuid);
+    organization.setSocialName(input.social_name);
+    organization.setCnpj(input.cnpj);
+    organization.setEmail(input.email);
+    organization.setPhone(input.phone);
+    organization.setIsActive(input.is_active);
+    organization.setOffice(input.office);
+    if (input.image_path) {
+      organization.setImagePath(input.image_path);
+    }
+    organization.setCreatedAt(input.createdAt);
+    organization.setUpdatedAt(input.updatedAt);
+    if (input.inactiveAt) {
+      organization.setInactiveAt(input.inactiveAt);
+    }
+    return organization;
+  }
+
   toEntity(input: IListAll): OrganizationEntity {
     const organization = new OrganizationEntity();
     organization.setUuid(input.uuid);

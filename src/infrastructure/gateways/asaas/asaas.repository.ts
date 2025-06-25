@@ -14,62 +14,97 @@ import { ISignatureRequiredInput } from 'src/shared/contracts/signature.contract
 import { ClientAsaasException } from 'src/shared/exceptions/client-asaas.exception';
 import { ChargeAsaasException } from 'src/shared/exceptions/charge-asaas.exception';
 import { SignatureAsaasException } from 'src/shared/exceptions/signature-asaas.exception';
+import {
+  ISubAccountContract,
+  ISubAccountResponse,
+} from 'src/shared/contracts/sub_account.contract';
 
 @Injectable()
 export class GatewayAsaasRepository implements IAbstractGatewayRepository {
   private logger = new Logger(GatewayAsaasRepository.name);
   private base_gateway_url: string;
   private headers: Record<string, string>;
-  constructor(
-    private readonly HttpService: HttpService,
-    private readonly configService: ConfigService,
-  ) {
+  constructor(private readonly configService: ConfigService) {
     this.base_gateway_url = this.configService.get(
       'GATEWAY_ASAAS_BASE_URL',
     ) as string;
     this.headers = {
-      access_token: this.configService.get('GATEWAY_ASAAS_TOKEN') as string,
-      'Content-Type': 'application/json',
+      access_token: `${this.configService.get('GATEWAY_ASAAS_TOKEN')}`,
+      accept: 'application/json',
+      'content-type': 'application/json',
     };
   }
 
   async create_charge(data: IChargeRequiredInput): Promise<IChargeResponse> {
     try {
-      const response = await lastValueFrom(
-        this.HttpService.post<IChargeResponse>(
-          `${this.base_gateway_url}/payments`,
-          data,
-          {
-            ...this.headers,
-          },
-        ),
-      );
+      const request = await fetch(`${this.base_gateway_url}/payments`, {
+        method: 'POST',
+        headers: this.headers,
+        body: JSON.stringify(data),
+      });
 
-      return response.data;
+      if (request.ok) {
+        const response = (await request.json()) as IChargeResponse;
+
+        return response;
+      }
+
+      throw new BadGatewayException({
+        message: 'Error creating charge in Asaas',
+      });
     } catch (error) {
       this.logger.error(error);
       throw new ChargeAsaasException('Error creating charge in Asaas');
     }
   }
 
-  async create_customer(name: string, cpf: string): Promise<ICustomerResponse> {
+  async get_charge_by_uuid(charge_uuid: string): Promise<IChargeResponse> {
     try {
-      const response = await lastValueFrom(
-        this.HttpService.post<ICustomerResponse>(
-          `${this.base_gateway_url}/customers`,
-          {
-            name: name,
-            cpfCnpj: cpf,
-          },
-          {
-            ...this.headers,
-          },
-        ),
+      const request = await fetch(
+        `${this.base_gateway_url}/payments/${charge_uuid}`,
+        {
+          method: 'GET',
+          headers: this.headers,
+        },
       );
 
-      return response.data;
+      if (request.ok) {
+        const response = (await request.json()) as IChargeResponse;
+
+        return response;
+      }
+
+      throw new BadGatewayException({
+        message: 'Error getting charge by UUID in Asaas',
+      });
     } catch (error) {
       this.logger.error(error);
+      throw new ChargeAsaasException('Error getting charge by UUID in Asaas');
+    }
+  }
+
+  async create_customer(name: string, cpf: string): Promise<ICustomerResponse> {
+    try {
+      const request = await fetch(`${this.base_gateway_url}/customers`, {
+        method: 'POST',
+        headers: this.headers,
+        body: JSON.stringify({
+          name: name,
+          cpfCnpj: cpf,
+        }),
+      });
+
+      if (request.ok) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const response = await request.json();
+
+        return response as ICustomerResponse;
+      }
+
+      throw new BadGatewayException({
+        message: 'Error creating customer in Asaas',
+      });
+    } catch (error) {
       throw new ClientAsaasException('Error creating customer in Asaas');
     }
   }
@@ -78,17 +113,21 @@ export class GatewayAsaasRepository implements IAbstractGatewayRepository {
     data: ISignatureRequiredInput,
   ): Promise<ISignatureResponse> {
     try {
-      const response = await lastValueFrom(
-        this.HttpService.post<ISignatureResponse>(
-          `${this.base_gateway_url}/subscriptions`,
-          data,
-          {
-            ...this.headers,
-          },
-        ),
-      );
+      const request = await fetch(`${this.base_gateway_url}/subscriptions`, {
+        method: 'POST',
+        headers: this.headers,
+        body: JSON.stringify(data),
+      });
 
-      return response.data;
+      if (request.ok) {
+        const response = (await request.json()) as ISignatureResponse;
+
+        return response;
+      }
+
+      throw new BadGatewayException({
+        message: 'Error creating signature in Asaas',
+      });
     } catch (error) {
       this.logger.error(error);
       throw new SignatureAsaasException('Error creating signature in Asaas');
@@ -97,16 +136,20 @@ export class GatewayAsaasRepository implements IAbstractGatewayRepository {
 
   async delete_charge(uuid: string): Promise<BaseDeleteResponse> {
     try {
-      const response = await lastValueFrom(
-        this.HttpService.delete<BaseDeleteResponse>(
-          `${this.base_gateway_url}/payments/${uuid}`,
-          {
-            headers: this.headers,
-          },
-        ),
-      );
+      const request = await fetch(`${this.base_gateway_url}/payments/${uuid}`, {
+        method: 'DELETE',
+        headers: this.headers,
+      });
 
-      return response.data;
+      if (request.ok) {
+        const response = (await request.json()) as BaseDeleteResponse;
+
+        return response;
+      }
+
+      throw new BadGatewayException({
+        message: 'Error deleting charge in Asaas',
+      });
     } catch (error) {
       this.logger.error(error);
       throw new ChargeAsaasException('Error deleting charge in Asaas');
@@ -115,16 +158,23 @@ export class GatewayAsaasRepository implements IAbstractGatewayRepository {
 
   async delete_signature(uuid: string): Promise<BaseDeleteResponse> {
     try {
-      const response = await lastValueFrom(
-        this.HttpService.delete<BaseDeleteResponse>(
-          `${this.base_gateway_url}/subscriptions/${uuid}`,
-          {
-            headers: this.headers,
-          },
-        ),
+      const request = await fetch(
+        `${this.base_gateway_url}/subscriptions/${uuid}`,
+        {
+          method: 'DELETE',
+          headers: this.headers,
+        },
       );
 
-      return response.data;
+      if (request.ok) {
+        const response = (await request.json()) as BaseDeleteResponse;
+
+        return response;
+      }
+
+      throw new BadGatewayException({
+        message: 'Error deleting signature in Asaas',
+      });
     } catch (error) {
       this.logger.error(error);
       throw new SignatureAsaasException('Error deleting signature in Asaas');
@@ -133,19 +183,51 @@ export class GatewayAsaasRepository implements IAbstractGatewayRepository {
 
   async find_by_uuid_customer(uuid: string): Promise<ICustomerResponse> {
     try {
-      const response = await lastValueFrom(
-        this.HttpService.get<ICustomerResponse>(
-          `${this.base_gateway_url}/customers/${uuid}`,
-          {
-            headers: this.headers,
-          },
-        ),
+      const request = await fetch(
+        `${this.base_gateway_url}/customers/${uuid}`,
+        {
+          method: 'GET',
+          headers: this.headers,
+        },
       );
 
-      return response.data;
+      if (request.ok) {
+        const response = (await request.json()) as ICustomerResponse;
+
+        return response;
+      }
+
+      throw new BadGatewayException({
+        message: 'Error finding customer by UUID in Asaas',
+      });
     } catch (error) {
       this.logger.error(error);
       throw new ClientAsaasException('Error finding customer by UUID in Asaas');
+    }
+  }
+
+  async create_sub_account(
+    input: ISubAccountContract,
+  ): Promise<ISubAccountResponse> {
+    try {
+      const request = await fetch(`${this.base_gateway_url}/accounts`, {
+        method: 'POST',
+        headers: this.headers,
+        body: JSON.stringify(input),
+      });
+
+      if (request.ok) {
+        const response = (await request.json()) as ISubAccountResponse;
+
+        return response;
+      }
+      console.error(await request.json());
+      throw new BadGatewayException({
+        message: 'Error creating sub account in Asaas',
+      });
+    } catch (error) {
+      this.logger.error(error);
+      throw new ClientAsaasException('Error creating sub account in Asaas');
     }
   }
 
@@ -154,17 +236,24 @@ export class GatewayAsaasRepository implements IAbstractGatewayRepository {
     data: ISignatureRequiredInput,
   ): Promise<ISignatureResponse> {
     try {
-      const response = await lastValueFrom(
-        this.HttpService.put<ISignatureResponse>(
-          `${this.base_gateway_url}/subscriptions/${uuid}`,
-          data,
-          {
-            headers: this.headers,
-          },
-        ),
+      const request = await fetch(
+        `${this.base_gateway_url}/subscriptions/${uuid}`,
+        {
+          method: 'PUT',
+          headers: this.headers,
+          body: JSON.stringify(data),
+        },
       );
 
-      return response.data;
+      if (request.ok) {
+        const response = (await request.json()) as ISignatureResponse;
+
+        return response;
+      }
+
+      throw new BadGatewayException({
+        message: 'Error updating signature in Asaas',
+      });
     } catch (error) {
       this.logger.error(error);
       throw new SignatureAsaasException('Error updating signature in Asaas');
