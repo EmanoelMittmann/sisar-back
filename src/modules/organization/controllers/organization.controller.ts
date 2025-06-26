@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, ForbiddenException, Get } from '@nestjs/common';
 import { ListEstablishmentDto } from '../dto/list-establishment.dto';
 import { ListEstablishmentService } from '../services/list-establishment.service';
 import { OrganizationEntity } from '../entities/organization.entity';
@@ -6,12 +6,14 @@ import { UseAuthUser } from 'src/shared/decorator/use-auth-user.decorator';
 import { UserEntity } from 'src/modules/users';
 import { FindOrganizationByAuthenticatedUserService } from '../services/find-organization-by-authenticated-user.service';
 import { IFindByUser } from '../dto/find-by-user.dto';
+import { GetBalanceOrganization } from '../services/get_balace.service';
 
 @Controller('organization')
 export class OrganizationController {
   constructor(
     private readonly listEstablishmentService: ListEstablishmentService,
     private readonly findOrganizationByAuthenticatedUserService: FindOrganizationByAuthenticatedUserService,
+    private readonly getBalanceOrganizationService: GetBalanceOrganization,
   ) {}
 
   @Get('/list-establishment')
@@ -32,5 +34,20 @@ export class OrganizationController {
     return this.findOrganizationByAuthenticatedUserService.execute(
       user.getUuid(),
     );
+  }
+
+  @Get('/balance')
+  async getBalanceByOrganization(
+    @UseAuthUser() user: UserEntity,
+  ): Promise<number> {
+    const organization = user.getOrganization();
+
+    if (!organization) {
+      throw new ForbiddenException(
+        'Você não tem permissão para acessar esta informação.',
+      );
+    }
+
+    return this.getBalanceOrganizationService.execute(organization.getUuid());
   }
 }

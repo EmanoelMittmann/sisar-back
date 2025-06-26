@@ -7,6 +7,7 @@ import { CreatePlansService } from './services/create-plans.service';
 import { UpdatePlansService } from './services/update-plans.service';
 import { DeletePlansService } from './services/delete-plans.service';
 import { ListPlansByUserService } from './services/list-by-user.service';
+import { CreateChargeWithInstallmentsService } from './services/create_charge_with_installments.service';
 
 @Module({
   controllers: [PlansController],
@@ -21,6 +22,7 @@ import { ListPlansByUserService } from './services/list-by-user.service';
     DeletePlansService,
     FindOnePlanService,
     ListPlansByUserService,
+    CreateChargeWithInstallmentsService,
   ],
   exports: ['IPlanRepository'],
 })

@@ -17,8 +17,11 @@
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/src/main.ts",
       "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["start:dev"],
       "sourceMaps": true,
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "restart": true
     }
   ]
 }

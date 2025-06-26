@@ -12662,6 +12662,7 @@ export namespace Prisma {
 
   export type PaymentsExceptionsCountAggregateOutputType = {
     id: number
+    input: number
     reason: number
     createdAt: number
     updatedAt: number
@@ -12691,6 +12692,7 @@ export namespace Prisma {
 
   export type PaymentsExceptionsCountAggregateInputType = {
     id?: true
+    input?: true
     reason?: true
     createdAt?: true
     updatedAt?: true
@@ -12785,6 +12787,7 @@ export namespace Prisma {
 
   export type PaymentsExceptionsGroupByOutputType = {
     id: number
+    input: JsonValue | null
     reason: JsonValue
     createdAt: Date
     updatedAt: Date
@@ -12811,6 +12814,7 @@ export namespace Prisma {
 
   export type PaymentsExceptionsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    input?: boolean
     reason?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -12818,6 +12822,7 @@ export namespace Prisma {
 
   export type PaymentsExceptionsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    input?: boolean
     reason?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -12825,6 +12830,7 @@ export namespace Prisma {
 
   export type PaymentsExceptionsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    input?: boolean
     reason?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -12832,18 +12838,20 @@ export namespace Prisma {
 
   export type PaymentsExceptionsSelectScalar = {
     id?: boolean
+    input?: boolean
     reason?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type PaymentsExceptionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "reason" | "createdAt" | "updatedAt", ExtArgs["result"]["paymentsExceptions"]>
+  export type PaymentsExceptionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "input" | "reason" | "createdAt" | "updatedAt", ExtArgs["result"]["paymentsExceptions"]>
 
   export type $PaymentsExceptionsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PaymentsExceptions"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      input: Prisma.JsonValue | null
       reason: Prisma.JsonValue
       createdAt: Date
       updatedAt: Date
@@ -13271,6 +13279,7 @@ export namespace Prisma {
    */
   interface PaymentsExceptionsFieldRefs {
     readonly id: FieldRef<"PaymentsExceptions", 'Int'>
+    readonly input: FieldRef<"PaymentsExceptions", 'Json'>
     readonly reason: FieldRef<"PaymentsExceptions", 'Json'>
     readonly createdAt: FieldRef<"PaymentsExceptions", 'DateTime'>
     readonly updatedAt: FieldRef<"PaymentsExceptions", 'DateTime'>
@@ -13793,6 +13802,7 @@ export namespace Prisma {
 
   export const PaymentsExceptionsScalarFieldEnum: {
     id: 'id',
+    input: 'input',
     reason: 'reason',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -13807,6 +13817,14 @@ export namespace Prisma {
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const JsonNullValueInput: {
@@ -14707,6 +14725,7 @@ export namespace Prisma {
     OR?: PaymentsExceptionsWhereInput[]
     NOT?: PaymentsExceptionsWhereInput | PaymentsExceptionsWhereInput[]
     id?: IntFilter<"PaymentsExceptions"> | number
+    input?: JsonNullableFilter<"PaymentsExceptions">
     reason?: JsonFilter<"PaymentsExceptions">
     createdAt?: DateTimeFilter<"PaymentsExceptions"> | Date | string
     updatedAt?: DateTimeFilter<"PaymentsExceptions"> | Date | string
@@ -14714,6 +14733,7 @@ export namespace Prisma {
 
   export type PaymentsExceptionsOrderByWithRelationInput = {
     id?: SortOrder
+    input?: SortOrderInput | SortOrder
     reason?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -14724,6 +14744,7 @@ export namespace Prisma {
     AND?: PaymentsExceptionsWhereInput | PaymentsExceptionsWhereInput[]
     OR?: PaymentsExceptionsWhereInput[]
     NOT?: PaymentsExceptionsWhereInput | PaymentsExceptionsWhereInput[]
+    input?: JsonNullableFilter<"PaymentsExceptions">
     reason?: JsonFilter<"PaymentsExceptions">
     createdAt?: DateTimeFilter<"PaymentsExceptions"> | Date | string
     updatedAt?: DateTimeFilter<"PaymentsExceptions"> | Date | string
@@ -14731,6 +14752,7 @@ export namespace Prisma {
 
   export type PaymentsExceptionsOrderByWithAggregationInput = {
     id?: SortOrder
+    input?: SortOrderInput | SortOrder
     reason?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -14746,6 +14768,7 @@ export namespace Prisma {
     OR?: PaymentsExceptionsScalarWhereWithAggregatesInput[]
     NOT?: PaymentsExceptionsScalarWhereWithAggregatesInput | PaymentsExceptionsScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"PaymentsExceptions"> | number
+    input?: JsonNullableWithAggregatesFilter<"PaymentsExceptions">
     reason?: JsonWithAggregatesFilter<"PaymentsExceptions">
     createdAt?: DateTimeWithAggregatesFilter<"PaymentsExceptions"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"PaymentsExceptions"> | Date | string
@@ -15531,6 +15554,7 @@ export namespace Prisma {
   }
 
   export type PaymentsExceptionsCreateInput = {
+    input?: NullableJsonNullValueInput | InputJsonValue
     reason: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -15538,12 +15562,14 @@ export namespace Prisma {
 
   export type PaymentsExceptionsUncheckedCreateInput = {
     id?: number
+    input?: NullableJsonNullValueInput | InputJsonValue
     reason: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type PaymentsExceptionsUpdateInput = {
+    input?: NullableJsonNullValueInput | InputJsonValue
     reason?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15551,6 +15577,7 @@ export namespace Prisma {
 
   export type PaymentsExceptionsUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    input?: NullableJsonNullValueInput | InputJsonValue
     reason?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15558,12 +15585,14 @@ export namespace Prisma {
 
   export type PaymentsExceptionsCreateManyInput = {
     id?: number
+    input?: NullableJsonNullValueInput | InputJsonValue
     reason: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type PaymentsExceptionsUpdateManyMutationInput = {
+    input?: NullableJsonNullValueInput | InputJsonValue
     reason?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15571,6 +15600,7 @@ export namespace Prisma {
 
   export type PaymentsExceptionsUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    input?: NullableJsonNullValueInput | InputJsonValue
     reason?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16370,6 +16400,29 @@ export namespace Prisma {
     id?: SortOrder
     organizationId?: SortOrder
   }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -16396,6 +16449,7 @@ export namespace Prisma {
 
   export type PaymentsExceptionsCountOrderByAggregateInput = {
     id?: SortOrder
+    input?: SortOrder
     reason?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -16419,6 +16473,32 @@ export namespace Prisma {
 
   export type PaymentsExceptionsSumOrderByAggregateInput = {
     id?: SortOrder
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -17416,6 +17496,29 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<

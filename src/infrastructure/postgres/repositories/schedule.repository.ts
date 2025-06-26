@@ -164,6 +164,12 @@ export class SchedulePostgresRepository implements IScheduleRepository {
         },
       },
       include: {
+        user: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
         organization: {
           select: {
             uuid: true,
@@ -174,6 +180,7 @@ export class SchedulePostgresRepository implements IScheduleRepository {
           select: {
             uuid: true,
             name: true,
+            price: true,
           },
         },
       },

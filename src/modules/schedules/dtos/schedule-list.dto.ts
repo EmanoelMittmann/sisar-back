@@ -9,6 +9,9 @@ export interface ScheduleListDto {
     name: string;
     price: number;
   };
+  user: {
+    name: string | null;
+  } | null;
   contractAt: Date;
   status: string;
 }

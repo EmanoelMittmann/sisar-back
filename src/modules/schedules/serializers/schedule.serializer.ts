@@ -54,6 +54,23 @@ export class ScheduleSerializer {
   static toListOne(
     schedule: ScheduleEntity | PublicScheduleEntity,
   ): ScheduleListDto {
+    if (schedule instanceof PublicScheduleEntity) {
+      return {
+        uuid: schedule.getUuid(),
+        organization: {
+          uuid: schedule.getOrganization().getUuid(),
+          name: schedule.getOrganization().getSocialName(),
+        },
+        service: {
+          uuid: schedule.getService().getUuid(),
+          name: schedule.getService().getName(),
+          price: schedule.getService().getPrice(),
+        },
+        user: null,
+        contractAt: schedule.getContractAt(),
+        status: schedule.getStatus(),
+      };
+    }
     return {
       uuid: schedule.getUuid(),
       organization: {
@@ -64,6 +81,9 @@ export class ScheduleSerializer {
         uuid: schedule.getService().getUuid(),
         name: schedule.getService().getName(),
         price: schedule.getService().getPrice(),
+      },
+      user: {
+        name: schedule.getUser().getName(),
       },
       contractAt: schedule.getContractAt(),
       status: schedule.getStatus(),

@@ -23,6 +23,8 @@ import { AuthGuard } from 'src/modules/auth/guards/auth.guard';
 import { ListPlansByUserService } from '../services/list-by-user.service';
 import { UserEntity } from 'src/modules/users';
 import { UseAuthUser } from 'src/shared/decorator/use-auth-user.decorator';
+import { AssociateUserToPlanDto } from '../dto/associate-user-to-plan.dto';
+import { CreateChargeWithInstallmentsService } from '../services/create_charge_with_installments.service';
 
 @Controller('plans')
 export class PlansController {
@@ -33,6 +35,7 @@ export class PlansController {
     private readonly deletePlansService: DeletePlansService,
     private readonly findOnePlanService: FindOnePlanService,
     private readonly listByUserService: ListPlansByUserService,
+    private readonly createChargeWithInstallmentsService: CreateChargeWithInstallmentsService,
   ) {}
 
   @UseGuards(AuthGuard)
@@ -118,5 +121,20 @@ export class PlansController {
     const plan = new PlanEntity();
     plan.setOrganization(user.getOrganization() as OrganizationEntity);
     return this.listPlansService.execute(plan);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('/associate')
+  async associatePlan(
+    @Body() body: AssociateUserToPlanDto,
+    @UseAuthUser() user: UserEntity,
+  ): Promise<{ link: string }> {
+    const generateCharge =
+      await this.createChargeWithInstallmentsService.execute({
+        userId: user.getUuid(),
+        planId: body.planId,
+      });
+
+    return generateCharge;
   }
 }

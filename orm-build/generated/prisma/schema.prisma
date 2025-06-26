@@ -185,6 +185,7 @@ model OrganizationAsaasAccount {
 
 model PaymentsExceptions {
   id        Int      @id @default(autoincrement())
+  input     Json?    @db.Json
   reason    Json     @db.Json
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")

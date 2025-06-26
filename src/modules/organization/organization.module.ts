@@ -3,6 +3,7 @@ import { OrganizationPostgresRepository } from 'src/infrastructure/postgres/repo
 import { OrganizationController } from './controllers/organization.controller';
 import { ListEstablishmentService } from './services/list-establishment.service';
 import { FindOrganizationByAuthenticatedUserService } from './services/find-organization-by-authenticated-user.service';
+import { GetBalanceOrganization } from './services/get_balace.service';
 
 @Module({
   controllers: [OrganizationController],
@@ -13,6 +14,7 @@ import { FindOrganizationByAuthenticatedUserService } from './services/find-orga
     },
     ListEstablishmentService,
     FindOrganizationByAuthenticatedUserService,
+    GetBalanceOrganization,
   ],
   exports: ['IOrganizationRepository'],
 })
