@@ -83,7 +83,7 @@ export class ScheduleSerializer {
         price: schedule.getService().getPrice(),
       },
       user: {
-        name: schedule.getUser().getName(),
+        name: schedule?.getUser()?.getName() || null,
       },
       contractAt: schedule.getContractAt(),
       status: schedule.getStatus(),

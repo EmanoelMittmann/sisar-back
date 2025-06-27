@@ -38,11 +38,11 @@ export class SignUpService implements BaseService<UserEntity, UserEntity> {
 
     const user = await this.userRepository.create(args);
 
-    await this.create_customer_asaas(
-      user.getId(),
-      user.getName(),
-      user.getCpf(),
-    );
+    // await this.create_customer_asaas(
+    //   user.getId(),
+    //   user.getName(),
+    //   user.getCpf(),
+    // );
 
     return user;
   }

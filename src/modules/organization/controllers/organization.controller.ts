@@ -1,4 +1,11 @@
-import { Controller, ForbiddenException, Get } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  ForbiddenException,
+  Get,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { ListEstablishmentDto } from '../dto/list-establishment.dto';
 import { ListEstablishmentService } from '../services/list-establishment.service';
 import { OrganizationEntity } from '../entities/organization.entity';
@@ -49,5 +56,21 @@ export class OrganizationController {
     }
 
     return this.getBalanceOrganizationService.execute(organization.getUuid());
+  }
+
+  @Put('/upsert-image')
+  upsertImage(
+    @UseAuthUser() user: UserEntity,
+    @Body() body: { thumbnail: string },
+  ): Promise<void> {
+    console.log(body);
+    throw new ForbiddenException('Upsert image is not implemented yet.');
+  }
+
+  @Post('/webhook-charge-listener')
+  webhookChargeListener(): Promise<void> {
+    throw new ForbiddenException(
+      'Webhook charge listener is not implemented yet.',
+    );
   }
 }
