@@ -22,10 +22,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm config set loglevel verbose
 RUN pnpm ci
-COPY . .
 RUN pnpm deploy:migrate && pnpm build
-
 WORKDIR /app
+COPY . .
 COPY --from=build /app ./
 
 EXPOSE 8000
