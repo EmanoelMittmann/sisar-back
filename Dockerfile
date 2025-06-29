@@ -21,7 +21,7 @@ FROM node:20-bookworm AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm config set loglevel verbose
-RUN npm install -g pnpm && pnpm install
+RUN npm install && npx prisma migrate deploy --schema=./src/infrastructure/postgres/prisma/schema.prisma
 COPY . .
 RUN npm run build
 
