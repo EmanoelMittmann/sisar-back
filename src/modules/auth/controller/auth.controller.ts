@@ -1,4 +1,11 @@
-import { Body, Controller, HttpCode, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpCode,
+  Param,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { SignInService } from '../services/sign-in.service';
 import { SignUpService } from '../services/sign-up.service';
 import { GenerateTokenService } from '../services/generate-token.service';
@@ -8,6 +15,8 @@ import { SignUpDto } from '../dtos/signup-up.dto';
 import { SignUpCompanyDto } from '../dtos/sign-up-company.dto';
 import { OrganizationEntity } from 'src/modules/organization/entities/organization.entity';
 import { SignUpCompanyService } from '../services/sign-up-company.service';
+import { AuthGuard } from '../guards/auth.guard';
+import { UseAuthUser } from 'src/shared/decorator/use-auth-user.decorator';
 
 @Controller('auth')
 export class AuthController {
@@ -73,6 +82,23 @@ export class AuthController {
 
     return {
       message: 'Company created successfully',
+    };
+  }
+
+  @HttpCode(200)
+  @UseGuards(AuthGuard)
+  @Post('/me')
+  me(@UseAuthUser() user: UserEntity): { img_url: string } {
+    const org = user.getOrganization();
+
+    if (!org) {
+      return {
+        img_url: '',
+      };
+    }
+
+    return {
+      img_url: org.getImagePath(),
     };
   }
 }

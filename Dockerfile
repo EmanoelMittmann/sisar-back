@@ -22,7 +22,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm config set loglevel verbose
 RUN npm install
-RUN npx prisma migrate deploy --schema=./src/infrastructure/postgres/prisma/schema.prisma
+# RUN npx prisma migrate deploy --schema=./src/infrastructure/postgres/prisma/schema.prisma
 COPY . .
 RUN npm run build
 
