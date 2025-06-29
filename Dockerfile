@@ -30,5 +30,5 @@ FROM node:20-bookworm AS production
 WORKDIR /app
 COPY --from=build /app ./
 
-EXPOSE 8000
+EXPOSE 8080
 CMD ["npm", "start:prod"]
