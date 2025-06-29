@@ -31,4 +31,4 @@ WORKDIR /app
 COPY --from=build /app ./
 
 EXPOSE 8080
-CMD ["npm", "start:prod"]
+CMD ["node", "dist/main.js"]
