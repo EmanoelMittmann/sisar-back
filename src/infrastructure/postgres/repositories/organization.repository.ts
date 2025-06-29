@@ -30,6 +30,15 @@ export class OrganizationPostgresRepository implements IOrganizationRepository {
       },
     });
 
+    await this.prisma.user.update({
+      where: {
+        uuid: userId,
+      },
+      data: {
+        role: 'ADMIN',
+      },
+    });
+
     return new OrganizationSerializer().toReflectionEntity(data);
   }
 
@@ -79,11 +88,29 @@ export class OrganizationPostgresRepository implements IOrganizationRepository {
         email: true,
         phone: true,
         cnpj: true,
+        OrganizationAsaasAccount: {
+          select: {
+            apiKey: true,
+            walletId: true,
+          },
+        },
       },
     });
 
     if (!organization) return null;
 
     return new OrganizationSerializer().transformToEntity(organization);
+  }
+
+  async findByUuid(uuid: string): Promise<OrganizationEntity | null> {
+    console.log(uuid);
+    const organization = await this.prisma.organization.findFirst({
+      where: {
+        uuid: uuid,
+      },
+    });
+    if (!organization) return null;
+
+    return new OrganizationSerializer().toReflectionEntity(organization);
   }
 }

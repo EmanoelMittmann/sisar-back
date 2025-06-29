@@ -24,6 +24,8 @@ export class OrganizationSerializer {
       phone: entity.getPhone(),
       office: entity.getOffice(),
       image_path: entity.getImagePath(),
+      wallet_id: entity.getWalletId() ?? null,
+      api_key: entity.getApiKey() ?? null,
     };
   }
 }

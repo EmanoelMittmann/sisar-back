@@ -13,8 +13,20 @@ export interface PrismaFindOneContract {
   createdAt: Date;
   updatedAt: Date;
   Organization?: {
+    userId: number;
+    createdAt: Date;
+    updatedAt: Date;
+    id: number;
     uuid: string;
     social_name: string;
+    fantasy_name: string;
+    cnpj: string;
+    email: string;
+    phone: string;
+    is_active: boolean;
+    office: string;
+    image_path: string | null;
+    inactiveAt: Date | null;
   };
 }
 
@@ -35,6 +47,9 @@ export class UserSerializer {
       const organization = new OrganizationEntity();
       organization.setUuid(input.Organization?.uuid);
       organization.setSocialName(input.Organization?.social_name);
+      if (input.Organization?.image_path) {
+        organization.setImagePath(input.Organization?.image_path);
+      }
       entity.setOrganization(organization);
     }
     return entity;

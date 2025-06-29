@@ -6,4 +6,6 @@ export interface IFindByUser {
   phone: string;
   office: string;
   image_path: string | null;
+  wallet_id: string | null;
+  api_key: string | null;
 }

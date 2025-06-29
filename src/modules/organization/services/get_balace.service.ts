@@ -26,7 +26,7 @@ export class GetBalanceOrganization implements BaseService<string, number> {
     });
 
     if (!credentials || !credentials.apiKey) {
-      throw new NotFoundException('Credenciais da empresa não encontradas');
+      return 0;
     }
 
     return this.consultBalance(credentials?.apiKey);
@@ -56,11 +56,11 @@ export class GetBalanceOrganization implements BaseService<string, number> {
           reason: JSON.stringify(await request.json()),
         },
       });
-      throw new InternalServerErrorException(
+      throw new NotFoundException(
         'Erro ao consultar o saldo da empresa. Por favor, tente novamente mais tarde.',
       );
     } catch (error) {
-      throw new InternalServerErrorException(
+      throw new NotFoundException(
         'Erro ao consultar o saldo da empresa. Por favor, tente novamente mais tarde.',
       );
     }

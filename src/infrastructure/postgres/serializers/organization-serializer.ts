@@ -14,6 +14,10 @@ export interface IFindByUser {
   phone: string;
   office: string;
   image_path: string | null;
+  OrganizationAsaasAccount: {
+    apiKey: string;
+    walletId: string;
+  } | null;
 }
 
 export interface IOrganizationReflection {
@@ -86,6 +90,10 @@ export class OrganizationSerializer {
     organization.setOffice(input.office);
     if (input.image_path) {
       organization.setImagePath(input.image_path);
+    }
+    if (input.OrganizationAsaasAccount) {
+      organization.setApiKey(input.OrganizationAsaasAccount.apiKey);
+      organization.setWalletId(input.OrganizationAsaasAccount.walletId);
     }
     return organization;
   }

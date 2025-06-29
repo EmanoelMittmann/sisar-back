@@ -3,9 +3,11 @@ import {
   Controller,
   ForbiddenException,
   Get,
+  Param,
   Post,
   Put,
   UploadedFile,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { ListEstablishmentDto } from '../dto/list-establishment.dto';
@@ -18,6 +20,8 @@ import { IFindByUser } from '../dto/find-by-user.dto';
 import { GetBalanceOrganization } from '../services/get_balace.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { SaveImgOrganizationService } from '../services/save-img-organization.service';
+import { CreateSubAccountService } from '../services/create-sub-account.service';
+import { AuthGuard } from 'src/modules/auth/guards/auth.guard';
 
 @Controller('organization')
 export class OrganizationController {
@@ -26,6 +30,7 @@ export class OrganizationController {
     private readonly findOrganizationByAuthenticatedUserService: FindOrganizationByAuthenticatedUserService,
     private readonly getBalanceOrganizationService: GetBalanceOrganization,
     private readonly saveImgOrganizationService: SaveImgOrganizationService,
+    private readonly createSubAccountService: CreateSubAccountService,
   ) {}
 
   @Get('/list-establishment')
@@ -48,18 +53,22 @@ export class OrganizationController {
     );
   }
 
+  @UseGuards(AuthGuard)
+  @Post('/create-sub-account/:uuid')
+  async createSubAccount(@Param('uuid') uuid: string): Promise<void> {
+    return this.createSubAccountService.execute({ uuid });
+  }
+
   @Get('/balance')
   async getBalanceByOrganization(
     @UseAuthUser() user: UserEntity,
   ): Promise<number> {
     const organization = user.getOrganization();
-
     if (!organization) {
       throw new ForbiddenException(
         'Você não tem permissão para acessar esta informação.',
       );
     }
-
     return this.getBalanceOrganizationService.execute(organization.getUuid());
   }
 
@@ -75,7 +84,6 @@ export class OrganizationController {
         'Você não tem permissão para atualizar a imagem da organização.',
       );
     }
-
     await this.saveImgOrganizationService.execute({
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       file: file,
@@ -84,9 +92,8 @@ export class OrganizationController {
   }
 
   @Post('/webhook-charge-listener')
-  webhookChargeListener(): Promise<void> {
-    throw new ForbiddenException(
-      'Webhook charge listener is not implemented yet.',
-    );
+  webhookChargeListener(@Body() data: any): void {
+    console.log(data);
+    return;
   }
 }

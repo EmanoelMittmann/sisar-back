@@ -5,8 +5,11 @@ import { ListEstablishmentService } from './services/list-establishment.service'
 import { FindOrganizationByAuthenticatedUserService } from './services/find-organization-by-authenticated-user.service';
 import { GetBalanceOrganization } from './services/get_balace.service';
 import { SaveImgOrganizationService } from './services/save-img-organization.service';
+import { CreateSubAccountService } from './services/create-sub-account.service';
+import { GatewaysModule } from 'src/infrastructure/gateways/gateways.module';
 
 @Module({
+  imports: [GatewaysModule],
   controllers: [OrganizationController],
   providers: [
     {
@@ -17,6 +20,7 @@ import { SaveImgOrganizationService } from './services/save-img-organization.ser
     FindOrganizationByAuthenticatedUserService,
     GetBalanceOrganization,
     SaveImgOrganizationService,
+    CreateSubAccountService,
   ],
   exports: ['IOrganizationRepository'],
 })

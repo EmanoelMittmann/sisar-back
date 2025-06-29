@@ -14,6 +14,24 @@ export class OrganizationEntity {
   private _updated_at: Date;
   private _inactive_at: Date;
   private _user: UserEntity | null;
+  private _api_key: string | null;
+  private _wallet_id: string | null;
+
+  getApiKey(): string | null {
+    return this._api_key;
+  }
+
+  setApiKey(value: string | null) {
+    this._api_key = value;
+  }
+
+  getWalletId(): string | null {
+    return this._wallet_id;
+  }
+
+  setWalletId(value: string | null) {
+    this._wallet_id = value;
+  }
 
   getImagePath(): string {
     return this._image_path;
