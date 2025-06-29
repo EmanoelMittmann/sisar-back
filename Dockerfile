@@ -1,4 +1,4 @@
-FROM node:20-bookworm as build
+FROM node:20-bookworm AS build
 
 ARG JWT_SECRET
 ARG DATABASE_URL
@@ -21,7 +21,7 @@ ENV GATEWAY_ASAAS_BASE_URL=${GATEWAY_ASAAS_BASE_URL}
 WORKDIR /app
 COPY package*.json ./
 RUN npm config set loglevel verbose
-RUN pnpm install
+RUN pnpm ci
 COPY . .
 RUN pnpm deploy:migrate && pnpm build
 
