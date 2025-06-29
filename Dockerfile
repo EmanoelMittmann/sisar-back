@@ -21,11 +21,14 @@ ENV GATEWAY_ASAAS_BASE_URL=${GATEWAY_ASAAS_BASE_URL}
 WORKDIR /app
 COPY package*.json ./
 RUN npm config set loglevel verbose
-RUN pnpm ci
-RUN pnpm deploy:migrate && pnpm build
-WORKDIR /app
+RUN npm install -g pnpm && pnpm install
 COPY . .
+RUN pnpm deploy:migrate && pnpm build
+
+FROM node:20-bookworm AS production
+
+WORKDIR /app
 COPY --from=build /app ./
 
 EXPOSE 8000
-CMD ["npm", "start"]
+CMD ["npm", "start:prod"]
