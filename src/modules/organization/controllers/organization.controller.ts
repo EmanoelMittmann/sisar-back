@@ -5,6 +5,8 @@ import {
   Get,
   Post,
   Put,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ListEstablishmentDto } from '../dto/list-establishment.dto';
 import { ListEstablishmentService } from '../services/list-establishment.service';
@@ -14,6 +16,8 @@ import { UserEntity } from 'src/modules/users';
 import { FindOrganizationByAuthenticatedUserService } from '../services/find-organization-by-authenticated-user.service';
 import { IFindByUser } from '../dto/find-by-user.dto';
 import { GetBalanceOrganization } from '../services/get_balace.service';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { SaveImgOrganizationService } from '../services/save-img-organization.service';
 
 @Controller('organization')
 export class OrganizationController {
@@ -21,6 +25,7 @@ export class OrganizationController {
     private readonly listEstablishmentService: ListEstablishmentService,
     private readonly findOrganizationByAuthenticatedUserService: FindOrganizationByAuthenticatedUserService,
     private readonly getBalanceOrganizationService: GetBalanceOrganization,
+    private readonly saveImgOrganizationService: SaveImgOrganizationService,
   ) {}
 
   @Get('/list-establishment')
@@ -59,12 +64,23 @@ export class OrganizationController {
   }
 
   @Put('/upsert-image')
-  upsertImage(
+  @UseInterceptors(FileInterceptor('file'))
+  async upsertImage(
     @UseAuthUser() user: UserEntity,
-    @Body() body: { thumbnail: string },
+    @UploadedFile() file: Express.Multer.File,
   ): Promise<void> {
-    console.log(body);
-    throw new ForbiddenException('Upsert image is not implemented yet.');
+    const org = user.getOrganization();
+    if (!org) {
+      throw new ForbiddenException(
+        'Você não tem permissão para atualizar a imagem da organização.',
+      );
+    }
+
+    await this.saveImgOrganizationService.execute({
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      file: file,
+      organizationUuid: user.getOrganization()?.getUuid(),
+    });
   }
 
   @Post('/webhook-charge-listener')

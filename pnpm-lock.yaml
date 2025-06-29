@@ -47,6 +47,9 @@ importers:
       bcrypt:
         specifier: ^5.1.1
         version: 5.1.1
+      blob-polyfill:
+        specifier: ^9.0.20240710
+        version: 9.0.20240710
       cache-manager:
         specifier: ^6.4.2
         version: 6.4.2
@@ -99,6 +102,9 @@ importers:
       '@types/jest':
         specifier: ^29.5.14
         version: 29.5.14
+      '@types/multer':
+        specifier: ^1.4.13
+        version: 1.4.13
       '@types/node':
         specifier: ^22.10.7
         version: 22.14.1
@@ -1341,6 +1347,9 @@ packages:
   '@types/mjml@4.7.4':
     resolution: {integrity: sha512-vyi1vzWgMzFMwZY7GSZYX0GU0dmtC8vLHwpgk+NWmwbwRSrlieVyJ9sn5elodwUfklJM7yGl0zQeet1brKTWaQ==}
 
+  '@types/multer@1.4.13':
+    resolution: {integrity: sha512-bhhdtPw7JqCiEfC9Jimx5LqX9BDIPJEh2q/fQ4bqbBPtyEZYr3cvF22NwG0DmPZNYA0CAf2CnqDB4KIGGpJcaw==}
+
   '@types/node@22.14.1':
     resolution: {integrity: sha512-u0HuPQwe/dHrItgHHpmw3N2fYCR6x4ivMNbPHRkBVP4CvN+kiRrKHWk3i8tXiO/joPwXLMYvF9TTF0eqgHIuOw==}
 
@@ -1721,6 +1730,9 @@ packages:
 
   bl@4.1.0:
     resolution: {integrity: sha512-1W07cM9gS6DcLperZfFSj+bWLtaPGSOHWhPiGzXmvVJbRLdG82sH/Kn8EtW1VqWVA54AKf2h5k5BbnIbwF3h6w==}
+
+  blob-polyfill@9.0.20240710:
+    resolution: {integrity: sha512-DPUO/EjNANCgSVg0geTy1vmUpu5hhp9tV2F7xUSTUd1jwe4XpwupGB+lt5PhVUqpqAk+zK1etqp6Pl/HVf71Ug==}
 
   body-parser@2.2.0:
     resolution: {integrity: sha512-02qvAaxv8tp7fBa/mw1ga98OGm+eCbqzJOKoRt70sLmfEEi+jyBYVTDGfCL/k06/4EMk/z01gCe7HoCH/f2LTg==}
@@ -5848,6 +5860,10 @@ snapshots:
       '@types/mjml-core': 4.15.1
     optional: true
 
+  '@types/multer@1.4.13':
+    dependencies:
+      '@types/express': 5.0.1
+
   '@types/node@22.14.1':
     dependencies:
       undici-types: 6.21.0
@@ -6339,6 +6355,8 @@ snapshots:
       buffer: 5.7.1
       inherits: 2.0.4
       readable-stream: 3.6.2
+
+  blob-polyfill@9.0.20240710: {}
 
   body-parser@2.2.0:
     dependencies:

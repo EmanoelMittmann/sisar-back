@@ -4,6 +4,7 @@ import { OrganizationController } from './controllers/organization.controller';
 import { ListEstablishmentService } from './services/list-establishment.service';
 import { FindOrganizationByAuthenticatedUserService } from './services/find-organization-by-authenticated-user.service';
 import { GetBalanceOrganization } from './services/get_balace.service';
+import { SaveImgOrganizationService } from './services/save-img-organization.service';
 
 @Module({
   controllers: [OrganizationController],
@@ -15,6 +16,7 @@ import { GetBalanceOrganization } from './services/get_balace.service';
     ListEstablishmentService,
     FindOrganizationByAuthenticatedUserService,
     GetBalanceOrganization,
+    SaveImgOrganizationService,
   ],
   exports: ['IOrganizationRepository'],
 })
