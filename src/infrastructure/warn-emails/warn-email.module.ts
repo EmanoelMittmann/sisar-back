@@ -2,26 +2,30 @@ import { Module } from '@nestjs/common';
 import { EmailService } from './warn.service';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
+import { ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
     MailerModule.forRootAsync({
-      useFactory: () => ({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
         transport: {
-          host: process.env.SMTP_HOST,
-          port: process.env.SMTP_PORT,
+          host: config.get<string>('SMTP_HOST'),
+          port: config.get<string>('SMTP_PORT'),
           secure: false,
           auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASSWORD,
+            user: config.get<string>('SMTP_USER'),
+            pass: config.get<string>('SMTP_PASSWORD'),
           },
         },
         defaults: {
-          from: process.env.SMTP_FROM,
+          from: config.get<string>('SMTP_FROM'),
         },
         template: {
-          dir: __dirname + '../../shared/templates',
-          adapter: new PugAdapter(),
+          dir: './templates',
+          adapter: new PugAdapter({
+            inlineCssEnabled: true,
+          }),
           options: {
             strict: true,
           },

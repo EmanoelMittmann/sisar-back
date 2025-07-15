@@ -10,7 +10,7 @@ export class EmailService {
     to: string;
     subject: string;
     template: string;
-    context: ISendMailOptions['context'];
+    context?: ISendMailOptions['context'];
   }) {
     try {
       if (!args.to) {
@@ -25,7 +25,7 @@ export class EmailService {
         context: args.context,
       };
 
-      const response = await this.mailerService.sendMail(MAIL_PARAMS);
+      await this.mailerService.sendMail(MAIL_PARAMS);
 
       this.logger.log(`Email sent to ${args.to}`);
     } catch (error) {

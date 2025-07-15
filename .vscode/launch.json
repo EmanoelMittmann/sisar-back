@@ -6,9 +6,12 @@
       "name": "Launch SCHEDULER",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/src/scheduler.ts",
+      "runtimeExecutable": "pnpm",
       "cwd": "${workspaceFolder}",
+      "runtimeArgs": ["start:worker"],
       "sourceMaps": true,
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "restart": true
     },
     {
       "type": "node",

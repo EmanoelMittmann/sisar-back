@@ -2,23 +2,14 @@ import {
   BadGatewayException,
   Inject,
   Injectable,
-  InternalServerErrorException,
   Logger,
   NotFoundException,
 } from '@nestjs/common';
-import { IScheduleRepository } from '../repositories/schedules.repository';
 import { BaseService } from 'src/shared/contracts';
-import {
-  CreateScheduleDto,
-  CreateScheduleServiceDto,
-} from '../dtos/create-schedule.dto';
-import { ScheduleEntity } from '../entities/schedule.entity';
-import { ServiceEntity } from 'src/modules/services/entities/service.entity';
-import { UserEntity } from 'src/modules/users/entities/user.entity';
+import { CreateScheduleServiceDto } from '../dtos/create-schedule.dto';
 import Redis from 'ioredis';
 import { REMEMBER_USER_KEY } from 'src/shared/keys/remember-user.key';
 import { SCHEDULE_USER_KEY } from 'src/shared/keys/schedule-user.key';
-import { OrganizationEntity } from 'src/modules/organization/entities/organization.entity';
 import {
   IChargeResponse,
   ICustomerResponse,
@@ -26,6 +17,7 @@ import {
 import { PrismaService } from 'src/infrastructure/postgres/prisma/prisma.service';
 import { ClientAsaasException } from 'src/shared/exceptions/client-asaas.exception';
 import { ChargeAsaasException } from 'src/shared/exceptions/charge-asaas.exception';
+import { USER_MAIL_KEY } from 'src/shared/keys/user-mail.key';
 
 @Injectable()
 export class CreateScheduleService
@@ -86,6 +78,11 @@ export class CreateScheduleService
             service: true,
           },
         });
+
+        await this.redis_client.set(
+          USER_MAIL_KEY(user_uuid),
+          createdSchedule.user.email,
+        );
 
         const customer = await this.createCustomerAsaas(
           createdSchedule.user.name,

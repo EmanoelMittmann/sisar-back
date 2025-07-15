@@ -1,5 +1,6 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
+import { isAfter, isBefore, toDate } from 'date-fns';
 import Redis from 'ioredis';
 import { EmailService } from 'src/infrastructure/warn-emails/warn.service';
 import { TODAY } from 'src/shared/contants/today';
@@ -35,7 +36,6 @@ export class SchedulerService {
     this.logger.log(`FOUND ${USER_NOTIFY_LIST.length} USERS TO NOTIFY`);
 
     const users_uuids_array = USER_NOTIFY_LIST;
-    const YESTERDAY = new Date(TODAY.setDate(TODAY.getDate() - 1));
 
     for (const user_uuid of users_uuids_array) {
       const schedule_key = SCHEDULE_USER_KEY(user_uuid);
@@ -56,16 +56,15 @@ export class SchedulerService {
         return;
       }
 
-      const lessToday = (date: string) =>
-        new Date(date) < new Date(TODAY.setHours(23, 59, 59, 999));
+      const contractDate = new Date(contract_at);
+      const today = new Date();
 
-      const thanToday = (date: string) =>
-        new Date(date) >= YESTERDAY &&
-        isBetweenTimeTable(new Date(contract_at));
+      const isSameDay =
+        contractDate.getFullYear() === today.getFullYear() &&
+        contractDate.getMonth() === today.getMonth() &&
+        contractDate.getDate() === today.getDate();
 
-      if (lessToday(contract_at) && thanToday(contract_at)) {
-        this.logger.log(`SENDING EMAIL FOR USER ${user_uuid}`);
-
+      if (isSameDay) {
         const mail_key = USER_MAIL_KEY(user_uuid);
         const mail = await this.redis_client.get(mail_key, (error, result) => {
           if (error) {
@@ -79,16 +78,21 @@ export class SchedulerService {
           this.logger.log(`NO MAIL FOUND FOR USER ${user_uuid}`);
           continue;
         }
+        this.logger.log(`SENDING EMAIL FOR USER ${user_uuid}`);
 
         //@TODO move publish in queue to send email
-        this.email_service.sendEmail({
+        await this.email_service.sendEmail({
           to: mail,
           subject: 'Aviso de Agendamento',
           template: 'warn-schedule',
           context: {
-            name: '',
+            email: mail,
           },
         });
+
+        this.logger.log(`EMAIL SENT TO ${mail} FOR USER ${user_uuid}`);
+
+        await this.redis_client.lrem(USER_NOTIFY_LIST_KEY, 1, user_uuid);
       }
     }
   }
