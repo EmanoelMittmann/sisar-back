@@ -50,6 +50,14 @@ export class AppModule implements NestModule {
           method: RequestMethod.ALL,
         },
         {
+          path: 'services/*',
+          method: RequestMethod.PATCH,
+        },
+        {
+          path: 'organization/:uuid',
+          method: RequestMethod.ALL,
+        },
+        {
           path: 'public/schedules/:uuid',
           method: RequestMethod.POST,
         },

@@ -53,6 +53,13 @@ export class OrganizationController {
     );
   }
 
+  @Get(':uuid')
+  async findCompanyByAuthenticatedPublic(
+    @Param() uuid: string,
+  ): Promise<IFindByUser> {
+    return this.findOrganizationByAuthenticatedUserService.execute(uuid);
+  }
+
   @UseGuards(AuthGuard)
   @Post('/create-sub-account/:uuid')
   async createSubAccount(@Param('uuid') uuid: string): Promise<void> {
